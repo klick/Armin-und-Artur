@@ -1,0 +1,148 @@
+dateModified: 1681495553
+email:
+  fromEmail: me@marcusscheller.com
+  fromName: 'Armin & Artur'
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  bilder:
+    hasUrls: true
+    name: Bilder
+    settings:
+      path: '@webroot/bilder'
+    type: craft\fs\Local
+    url: '@web/bilder'
+meta:
+  __names__:
+    01ea5acd-a561-4c24-92e1-a99675a731f7: Autor # Autor
+    3bbde26d-60d2-468f-b648-991c3603e80c: Excerpt # Excerpt
+    6e7f4ada-5896-4954-a687-b65570ccfd15: Readtime # Readtime
+    7e9ba3cc-acd2-4baa-ad4a-a0c936316dec: Geschichten # Geschichten
+    7f3606d2-88a5-4912-a779-e0a26737e261: Bild-Alttext # Bild-Alttext
+    8e4dd4d0-be39-48db-b977-dc2bf7655579: Geschichte # Geschichte
+    19a8c7f5-af22-411d-b853-b7e733678b85: Bildunterschrift # Bildunterschrift
+    42ca441c-21db-4cce-9dd6-74af65fdf470: Body # Body
+    052c597a-1661-44ad-af6a-c27c5cdfa355: Bilder # Bilder
+    359d960b-bbd2-4552-9e48-5f69abc91382: Klassiker # Klassiker
+    892cd95a-b813-4d5d-a5e6-5e20e3db19a5: Home # Home
+    2480e5ab-25e5-4372-9a26-e37a1d55bece: Geschichten # Geschichten
+    7178f6c5-4d84-4be2-ae67-46508d1dbcc8: SEO # SEO
+    7274ef7d-b972-4149-a0a6-42d17fa8a3f7: Geschichten # Geschichten
+    9590d88e-4c68-4ee2-bf34-09bbb3fc8833: 'Armin & Artur' # Armin & Artur
+    83262edd-7265-48b8-adcd-1a1cec0c51a8: 'Armin & Artur' # Armin & Artur
+    a4115fcc-1941-4286-a95a-929dfa29b161: Intro # Intro
+    aa7ac094-9175-46bf-a56b-eaaadd28eb16: Start # Start
+    b9b89a71-acc1-41f6-890e-280322eef061: Autor # Autor
+    b498f081-a398-4f88-b9b7-25afbf7a44f9: 'Public Schema' # Public Schema
+    bc114695-97bc-44c6-a0de-c5152243cd6e: Kurzbeschreibung # Kurzbeschreibung
+    d566da45-e6de-4333-84d1-d9ed9a1d31fd: Kategorie # Kategorie
+    d9146733-1222-4c11-a9d4-326fa757b7e3: Bild-Urheber # Bild-Urheber
+    ea544490-5469-4ada-905e-2683e038aa74: Bild # Bild
+    eafb163d-141a-4a25-8213-4922010ea059: Common # Common
+    f8a87993-286a-442c-95f6-d708ba6fc31d: Start # Start
+plugins:
+  assetrev:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  blitz-recommendations:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.1.0
+  feed-me:
+    schemaVersion: 4.3.0
+  logs:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
+  preparse-field:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.5
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  redactor-custom-styles:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  reverserelations:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+  seo:
+    edition: standard
+    enabled: false
+    schemaVersion: 3.2.0
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: 06HEPMIU0IWXWGGTRCDWR4I2
+    schemaVersion: 3.0.11
+    settings:
+      addHrefLang: true
+      addPaginatedHreflang: true
+      addXDefaultHrefLang: true
+      alwaysIncludeCanonicalUrls: false
+      cpTitlePrefix: '⚙ '
+      cspNonce: ''
+      cspScriptSrcPolicies:
+        -
+          __assoc__:
+            -
+              - policy
+              - '''self'''
+      devModeCpTitlePrefix: '&#x1f6a7;⚙ '
+      devModeTitlePrefix: '&#x1f6a7; '
+      displayAnalysisSidebar: true
+      displayPreviewSidebar: true
+      enableJsonLdEndpoint: false
+      enableMetaContainerEndpoint: false
+      enableSeoFileLinkEndpoint: false
+      environment: live
+      excludeNonCanonicalUrls: false
+      generatorEnabled: true
+      headersEnabled: true
+      includeHomepageInBreadcrumbs: true
+      lowercaseCanonicalUrl: true
+      manuallySetEnvironment: false
+      maxDescriptionLength: 155
+      maxTitleLength: 70
+      metaCacheDuration: 'null'
+      pluginName: SEOmatic
+      regenerateSitemapsAutomatically: true
+      renderEnabled: true
+      separatorChar: —
+      sidebarDisplayPreviewTypes:
+        - google
+        - twitter
+        - facebook
+      siteGroupsSeparate: '1'
+      siteUrlOverride: ''
+      sitemapsEnabled: true
+      socialMediaPreviewTarget: true
+      submitSitemaps: true
+      truncateDescriptionTags: '1'
+      truncateTitleTags: '1'
+  venveo-bulk-edit:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.1.0
+  wordsmith:
+    edition: standard
+    enabled: true
+    schemaVersion: 0.0.0.0
+system:
+  edition: solo
+  live: true
+  name: 'Armin & Artur'
+  retryDuration: null
+  schemaVersion: 4.4.0.4
+  timeZone: Europe/Berlin
+users:
+  allowPublicRegistration: false
+  deactivateByDefault: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

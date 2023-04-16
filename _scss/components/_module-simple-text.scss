@@ -1,0 +1,63 @@
+div.module {
+	&__text {
+		margin-bottom: 12px;
+		@include for-tablet-landscape-up() {
+			margin-bottom: 24px;
+		}
+		@include for-desktop-up() {
+			margin-bottom: 32px;
+		}
+		p:not(:last-of-type) {
+			margin-bottom: 12px;
+			@include for-tablet-landscape-up() {
+				margin-bottom: 32px;
+			}
+		}
+		@include for-phone-only() {
+			padding: 0 12px;
+		}
+		margin-left: auto;
+		margin-right: auto;
+		h2 {
+			color: $primary-color-headlines;
+			padding-left: 12px;
+		}
+		h2,
+		h3 {
+			margin-top: 24px;
+			margin-bottom: 18px;
+		}
+		@include for-tablet-landscape-up() {
+			width: 502.63px;
+			h2,
+			h3 {
+				margin-left: -64.3px;
+				padding-left: 0;
+			}
+		}
+		@include for-desktop-up() {
+			width: 636px;
+			h2,
+			h3 {
+				margin-left: -82px;
+				margin-top: 24px;
+				margin-bottom: 18px;
+			}
+		}
+		&:after {
+			content: "";
+			clear: both;
+			display: table;
+		}
+		svg.initial {
+			height: 15px;
+		    float: left;
+		    margin-top: 5px;
+		    margin-right: 6px;
+			@include for-tablet-landscape-up() {
+				height: 17px;
+				margin-top: 7px;
+			}
+		}
+	}
+}

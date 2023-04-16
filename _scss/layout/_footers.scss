@@ -1,0 +1,42 @@
+// partials/_footers.scss
+
+footer {
+	&.footer-global {
+		text-align: center;
+		opacity: .6;
+		div.content {
+			// padding-top: 12px;
+			// border-top: 1px solid #333333;
+		}
+
+		margin: 24px 0;
+		@include for-phone-only {
+
+		}
+		@include for-tablet-portrait-up() {
+
+		}
+		@include for-tablet-landscape-up() {
+			margin: 60px 0 36px 0;
+		}
+		@include for-desktop-up() {
+		margin: 60px 0 60px 0;
+			div.footer-bar {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			ul {
+				display: flex;
+				li {
+					&:not(:last-child) {
+						margin-right: 12px;
+					}
+				}
+			}
+		}
+		}
+		@include for-big-desktop-up() {
+
+		}
+	}
+}

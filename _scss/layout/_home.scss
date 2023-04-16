@@ -1,0 +1,45 @@
+// partials/_home.scss
+
+section.hero-intro {
+	h1.display {
+		font-weight: 400;
+	}
+}
+section.tales-list {
+	div.list {
+		@extend .single-column-centered;
+	}
+	
+	header {
+		margin-bottom: 24px;
+	}
+	div.grid {
+		//justify-items: center;
+		justify-content: center;
+	}
+	div.project {
+		grid-column: 1 / -1;
+		@include for-phone-only() {	
+
+		}
+		@include for-tablet-portrait-up() {
+			grid-column: span 1;
+		}
+		@include for-tablet-landscape-up() {
+			grid-column: span 4;
+			&:first-child {
+				grid-column: 3 / span 4;
+			}
+			//align-self: center;
+		}
+		@include for-desktop-up() {
+
+		}
+		@include for-big-desktop-up() {
+
+		}
+		figure {
+			margin-bottom: 12px;
+		}
+	}
+}

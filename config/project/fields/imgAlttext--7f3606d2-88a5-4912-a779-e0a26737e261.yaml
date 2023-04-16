@@ -1,0 +1,19 @@
+columnSuffix: ykccuotn
+contentColumnType: text
+fieldGroup: eafb163d-141a-4a25-8213-4922010ea059 # Common
+handle: imgAlttext
+instructions: ''
+name: Bild-Alttext
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,19 @@
+div.cc-window {
+	padding: 12px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	a.cc-link {
+		text-decoration: underline;
+	}
+	a.cc-btn {
+		@extend .button;
+		color: black;
+	}
+	div.cc-compliance {
+		cursor: pointer;
+	}
+	&.cc-invisible {
+		display: none !important;
+	}
+}

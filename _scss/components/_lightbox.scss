@@ -1,0 +1,65 @@
+div.theater.lightbox {
+	cursor: pointer;
+	@include for-phone-only() {
+		display: none !important;
+	}
+	position: fixed;
+	z-index: 3;
+	background: transparentize(#333333, .1);
+	top: 0;
+	left:0;
+	div.lightbox-container {
+		width: 100vw;
+		height: 100vh;
+	}
+	div.controls {
+		display: flex;
+		padding: 12px 24px 12px 0;
+		height: 60px;
+		box-sizing: border-box;
+		align-items: center;
+		justify-content: flex-end;
+		a, svg {
+			height: 20px;
+		}
+		svg.close {
+			cursor: pointer;
+		}
+		small.caption {
+			max-width: 80%;
+		}
+	}
+	div.stage {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		//padding: 48px;
+		height: calc(100vh - 80px);
+		figure {
+			display: inline-block;
+			height: calc(100vh - 80px);
+			width: min-content;
+			figcaption {
+				padding-top: 12px;
+				max-height: calc(100vh - 128px);
+				max-width: calc(100vw - 48px);
+				display: inline;
+				width: auto;
+				color: white;
+				-webkit-font-smoothing: antialiased;
+			}
+		}
+		div.image {
+			height: calc(100vh - 128px);
+			justify-content: center;
+			align-items: center;
+		}
+		img {
+			width: auto;
+			height: auto;
+			max-height: calc(100vh - 152px);
+			max-width: calc(100vw - 48px);
+			margin-bottom: 12px;
+		}
+	}
+}

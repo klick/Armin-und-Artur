@@ -1,0 +1,20 @@
+// partials/_page.scss
+
+div.body {
+	grid-column: 1 / -1;
+	@include for-desktop-up() {
+		grid-column: 3 / span 8;
+	}
+}
+section.about.logos {
+	margin-top: 48px;
+	@include for-desktop-up() {
+		div.module__body {
+			display: flex;
+			justify-content: space-between;
+		}
+		figure {
+			flex: 0 0 45%;
+		}
+	}
+}

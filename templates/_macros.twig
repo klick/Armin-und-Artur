@@ -1,0 +1,30 @@
+{#
+ # IMG SRCSET
+ #}
+
+{% macro imgFullWidth(img, imgLink, deferImages, params, imageAltText, caption) %}
+	{% if img.hasFocalPoint is defined %}
+		{% set focalPoint = img.getFocalPoint() %}
+		{% set position = img.getFocalPoint() %}
+	{% else %}
+		{% set position = 'center-center' %}
+	{% endif %}
+
+	{% set transformedImages = craft.imager.transformImage(img, 
+		params
+		, { ratio: 16/9, position:position, jpegQuality: 80 }) 
+	%}
+
+	{% if imgLink|length %}
+	<a href="{{ imgLink }}">
+		<img data-sizes="auto" {{ deferImages ? 'data-' }}src="{{ craft.imager.transformImage(img, { width: 800, height: 500, mode: 'crop', position:position }) }}" {{( img.imageAltText is defined ? 'alt="' ~ img.imageAltText ~ '"')|raw }} {{ deferImages ? 'data-' }}srcset="{{ craft.imager.srcset(transformedImages) }}" class="{{ deferImages ? 'lazyload' }}">
+	</a>
+	{% else %}
+	<img data-sizes="auto" {{ deferImages ? 'data-' }}src="{{ craft.imager.transformImage(img, { width: 800, height: 500, mode: 'crop', position:position }) }}" {{( img.imageAltText is defined ? 'alt="' ~ img.imageAltText ~ '"')|raw }} {{ deferImages ? 'data-' }}srcset="{{ craft.imager.srcset(transformedImages) }}" class="{{ deferImages ? 'lazyload' }}">
+	{% endif %}
+	{% if caption %}
+	<figcaption>
+		{{ img.caption|length ? img.caption }}
+	</figcaption>
+	{% endif %}
+{% endmacro %}

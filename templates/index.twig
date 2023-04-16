@@ -1,0 +1,36 @@
+{% import '_macros.twig' as macros %}
+{% set allEntries = craft.entries.section('geschichten').type('geschichte').with(['kategorie']).orderBy('title asc').all() %}
+{% set allEntriesByGroup = allEntries | group('title[:1]') %}
+
+
+{% extends "_layout" %}
+
+{% block content %}
+
+
+<div class="content">
+    <section class="sub-section tales-list">
+        <div class="grid">
+            <div class="list centered">
+            {% cache %}
+            {% for firstletter, entriesInGroup in allEntriesByGroup %}
+            <h3>{{firstletter}}</h3>
+            <ul>
+            {% for entry in entriesInGroup %}
+                <li>
+                    <a href="{{ entry.url }}">
+                        {{entry.title }} 
+                        {# <small style="font-size: 14px">{{ entry.body }} </small><br><a href="{{ entry.cpEditUrl }}">Edit</a> #}
+                        {# ({{ entry.readtime }} {{ entry.readtime > 1 ? 'Minuten' : 'Minute' }}) #}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul><br>
+            {% endfor %}
+            {% endcache %}
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

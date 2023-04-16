@@ -1,0 +1,41 @@
+defaultPlacement: end
+fieldLayouts:
+  f5e367be-30f9-4591-94de-e44eaffaf2ff:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            warning: null
+            width: 100
+        name: Inhalt
+        sortOrder: 1
+handle: klassiker
+name: Klassiker
+siteSettings:
+  9590d88e-4c68-4ee2-bf34-09bbb3fc8833: # Armin & Artur
+    hasUrls: true
+    template: null
+    uriFormat: 'klassiker/{slug}'
+structure:
+  maxLevels: null
+  uid: afb67b6d-f37f-409c-a902-5ded4757b2ba

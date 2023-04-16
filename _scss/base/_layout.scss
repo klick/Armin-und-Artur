@@ -1,0 +1,95 @@
+// Layout
+
+// GLOBAL TEMPLATE AREAS
+
+
+div.grid-header {
+	grid-template-areas: "logo burger";
+	align-items: center;
+	@include for-phone-only() {
+		grid-template-areas: "logo burger";
+	}
+	@include for-tablet-portrait-up() {
+		grid-template-areas: "logo burger";
+	}
+	@include for-tablet-landscape-up() {
+		grid-template-areas: "nav-group-one nav-group-one nav-group-one logo logo nav-group-two nav-group-two nav-group-two";
+	}
+	@include for-desktop-up() {
+		grid-template-areas: "nav-group-one nav-group-one nav-group-one nav-group-one nav-group-one logo logo nav-group-two nav-group-two nav-group-two nav-group-two nav-group-two";
+	}
+	@include for-big-desktop-up() {
+		grid-template-areas: ". . nav-group-one nav-group-one nav-group-one logo logo nav-group-two nav-group-two nav-group-two . .";
+	}
+}
+
+div.logo {
+	grid-area: logo;
+	a {
+		display: block;
+	}
+}
+nav.group-one {
+	grid-area: nav-group-one;
+	text-align: right;
+}
+nav.group-two {
+	grid-area: nav-group-two;
+}
+div.burger {
+	grid-area: burger;
+}
+
+// div.base-grid.global {
+// 	grid-template-areas: 	"header-global main-nav"
+// 							"main-content main-content"
+// 							"footer-global footer-global";
+// 	@include for-tablet-landscape-up() {
+// 		grid-template-areas: 	". header-global header-global header-global main-nav main-nav main-nav ."
+// 								"main-content main-content main-content main-content main-content main-content main-content main-content"
+// 								". footer-global footer-global footer-global footer-global footer-global footer-global .";
+// 	}
+// 	@include for-desktop-up() {
+// 		grid-template-areas: 	". . . header-global header-global header-global main-nav main-nav main-nav . . ."
+// 								"main-content main-content main-content main-content main-content main-content main-content main-content main-content main-content main-content main-content"
+// 								". . . footer-global footer-global footer-global footer-global footer-global footer-global . . .";
+// 		}
+// 	@include for-big-desktop-up() {
+// 		grid-template-areas: 	". . . header-global header-global header-global main-nav main-nav main-nav . . ."
+// 								"main-content main-content main-content main-content main-content main-content main-content main-content main-content main-content main-content main-content"
+// 								". . . footer-global footer-global footer-global footer-global footer-global footer-global . . .";
+// 	}
+// }
+
+div.main-content {
+	margin-top: 48px;
+	@include for-phone-only {
+
+	}
+	@include for-tablet-portrait-up() {
+		margin-top: 96px;
+	}
+	@include for-tablet-landscape-up() {
+		
+	}
+	@include for-desktop-up() {
+		margin-top: 120px;
+	}
+	@include for-big-desktop-up() {
+		
+	}
+}
+
+div.grid *.centered-content {
+	grid-column: 1 / -1;
+	@include for-tablet-landscape-up() {
+		grid-column: 2 / span 6;
+	}
+	@include for-desktop-up() {
+		grid-column: 3 / span 8;
+	}
+	@include for-big-desktop-up() {
+		grid-column: 4 / span 6;
+	}
+}
+

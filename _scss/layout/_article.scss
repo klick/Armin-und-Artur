@@ -1,0 +1,49 @@
+// partials/_article.scss
+
+article {
+	div.grid {
+		div.contents {
+			@extend .single-column-centered;
+		}
+	}
+	header.page-header {
+		margin-bottom: 24px;
+		@include for-desktop-up() {
+			margin-bottom: 48px;
+		}
+		text-align: center;
+		div.contents {
+			@include for-tablet-landscape-up() {
+				grid-column: 4/span 6;
+			}
+			
+		}
+		h1 {
+			font-weight: 400;
+			margin-bottom: 12px;
+			hyphens: none;
+		}
+		p {
+			&.author {
+
+			}
+		}
+	}
+	section.article-intro {
+		margin-bottom: 36px;
+	}
+	section.article-body {
+		p:not(:first-child) {
+			text-indent: 50px;
+		}
+		p, h2 {
+			//margin-bottom: 24px;
+		}
+		h2 {
+			@include for-desktop-up() {
+				margin: 24px 0 24px 0;
+			}
+		}
+	}
+}
+

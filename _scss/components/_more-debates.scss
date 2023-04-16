@@ -1,0 +1,17 @@
+div.module__more-debates {
+	margin-top: 48px;
+	header {
+		h1 {
+			font-size: 24px;
+    		line-height: 32px;
+		}
+	}
+	&.other-debates {
+		div.card__body {
+			p {
+				font-size: 20px;
+				line-height: 1.3em;
+			}
+		}
+	}
+}

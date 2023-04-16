@@ -1,0 +1,73 @@
+// Mixins
+
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1820px) { @content; }
+}
+
+// Flexbox
+
+@mixin flex-container($direction:row wrap, $justify:flex-start, $align: flex-start) {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-flow: $direction;
+  -moz-flex-flow: $direction;
+  -ms-flex-flow: $direction;
+  flex-flow: $direction;
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -webkit-align-items: $align;
+  -moz-align-items: $align;
+  -ms-align-items: $align;
+  align-items: $align;
+}
+
+@mixin flex-item($grow: 0, $shrink: 0, $width: auto) {
+  -webkit-flex: $grow $shrink $width;
+  -moz-flex: $grow $shrink $width;
+  -ms-flex: $grow $shrink $width;
+  flex: $grow $shrink $width;
+}
+
+@mixin background-gradient {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100&amp;0+0,0.9+100 */
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(0,0,0,0.9))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#b3000000',GradientType=0 ); /* IE6-9 */
+}
+
+// Background images + high res
+@mixin background-image($image, $image2x, $color: transparent) {
+  background: $color url($image) no-repeat;
+  background-size: auto;
+  //background-position: center center; 
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (    min--moz-device-pixel-ratio: 2),
+        only screen and (    -o-min-device-pixel-ratio: 2/1),
+        only screen and (         min-device-pixel-ratio: 2),
+        only screen and (            min-resolution: 192dpi),
+        only screen and (             min-resolution: 2dppx) {
+          background: $color url($image2x) no-repeat;
+          background-size: auto;
+          //background-position: center center; 
+  }
+}

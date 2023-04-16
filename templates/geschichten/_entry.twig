@@ -1,0 +1,35 @@
+{% import '_macros.twig' as macros %}
+{% extends "_layout" %}
+
+{% block content %}
+
+<div class="content">
+
+	<article class="page geschichte">
+		<header class="header page-header">
+			<div class="grid">
+				<div class="contents">
+					<h1>{{ entry.title | widont }}</h1>
+					<p class="author"><i>von</i>&ensp;<span class="font-small-caps">{{ entry.autor.one().title ? entry.autor.one().title : 'Unbekannt' }}</span>{# <br> Lesezeit: {{ entry.readtime }} {{ entry.readtime > 1 ? 'Minuten' : 'Minute' }} #}</p>
+				</div>
+			</div>
+		</header>
+		{# <section class="article-intro">
+			<div class="grid">
+				<div class="contents module__text">
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolore culpa architecto facilis possimus sint laborum dolorum ex, ut harum consectetur ab labore doloremque temporibus earum libero amet tempora iure?</p>
+				</div>
+			</div>
+		</section> #}
+		<section class="article-body">
+			<div class="grid">
+				<div class="contents module__text">
+					{{ entry.body | typogrify }}
+				</div>
+			</div>
+		</section>
+	</article>
+	
+</div>
+
+{% endblock %}

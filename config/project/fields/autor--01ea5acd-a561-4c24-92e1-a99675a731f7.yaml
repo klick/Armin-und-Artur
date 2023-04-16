@@ -1,0 +1,22 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 7274ef7d-b972-4149-a0a6-42d17fa8a3f7 # Geschichten
+handle: autor
+instructions: ''
+name: Autor
+searchable: true
+settings:
+  allowSelfRelations: false
+  limit: '1'
+  localizeRelations: false
+  selectionLabel: ''
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:7e9ba3cc-acd2-4baa-ad4a-a0c936316dec' # Geschichten
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

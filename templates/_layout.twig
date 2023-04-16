@@ -1,0 +1,71 @@
+{#
+ # Layout template
+ #}
+
+{# {% set phpTypographySettings = getPhpTypographySettings() %}
+{% do phpTypographySettings.set_hyphenation_language('de') %}
+{% do phpTypographySettings.set_diacritic_language('de') %} #}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.app.locale }}">
+<head>
+	<title>{{ entry.title is defined ? entry.title ~ ' | ' : null }}Armin & Artur</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="home" href="{{ siteUrl }}" />
+	{% hook 'seomaticRender' %}
+	<link rel="stylesheet" rel="preload" href="{{ rev('css/styles.css') }}" as="style" onload="this.rel='stylesheet'">
+	<link rel="preload" href="/fonts/signifier/Signifier-Regular.woff" as="font" type="font/woff" crossorigin>
+	<link rel="preload" href="/fonts/signifier/signifier-regular.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/signifier/signifier-regular-italic.woff" as="font" type="font/woff" crossorigin>
+	<link rel="preload" href="/fonts/signifier/signifier-regular-italic.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/signifier/signifier-bold.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/signifier/signifier-bold-italic.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/realcondensed/RealTextPro-CnMedium.woff" as="font" type="font/woff" crossorigin>
+	<link rel="preload" href="/fonts/realtextdemi/RealTextWebPro-Demibold.woff" as="font" type="font/woff" crossorigin>
+</head>
+
+<body class="">
+
+	<div class="container">
+
+		<header class="header-global">
+			<div class="content">
+				<div class="header-bar">
+					<div class="site-name">
+						<p><a href="/"><span class="">Armin & Artur</span></a></p>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="main-content">
+			{% block content %}
+				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+			{% endblock %}
+		</div>
+
+		<footer class="footer-global color-negative">
+			<div class="content">
+				<div class="footer-bar">
+					{# <div class="site-name">
+						<p>Armin & Artur</p>
+					</div> #}
+					<div class="links font-small-caps">
+						<ul>
+							{# <li><a href="kontakt">Kontakt</a></li> #}
+							<li><a href="impressum">Impressum</a></li>
+							<li><a href="datenschutz">Datenschutz</a></li>
+						</ul>
+					</div>	
+				</div>
+			</div>
+		</footer>
+	</div>
+
+
+{% do view.registerJsFile(rev('js/bundle.js')) %}
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+// @font-face{
+//     src:url(../fonts/UnitWeb/UnitWebPro) format("woff2"),url(fonts/open_sans/LightItalic/OpenSans-LightItalic.woff?v=1.101) format("woff");
+//     font-weight:300;
+//     font-style:normal
+// }
+// @font-face{
+//     font-family:"UnitWeb";
+//     src:url(../fonts/UnitWeb/UnitWebPro) format("woff2"),url(fonts/open_sans/LightItalic/OpenSans-LightItalic.woff?v=1.101) format("woff");
+//     font-weight:300;
+//     font-style:italic
+// }
+@font-face{
+    font-family:"realText";
+    src:url(../fonts/RealTextWebPro-Light.woff) format("woff"),url(../fonts/RealTextWebPro-Light.woff) format("woff");
+    font-weight:200;
+    font-style:normal;
+    font-display: swap;
+}
+@font-face{
+    font-family:"realText";
+    src:url(../fonts/RealTextWebPro-Book.woff) format("woff"),url(../fonts/RealTextWebPro-Book.woff) format("woff");
+    font-weight:400;
+    font-style:normal;
+    font-display: swap;
+}
+@font-face{
+    font-family:"realText";
+    src:url(../fonts/RealTextPro-BookItalic.woff) format("woff"),url(../fonts/RealTextPro-BookItalic.woff) format("woff");
+    font-weight:400;
+    font-style:italic;
+    font-display: swap;
+}
+@font-face{
+    font-family:"realText";
+    src:url(../fonts/RealTextWebPro-Bold.woff) format("woff"),url(../fonts/RealTextWebPro-Bold.woff) format("woff");
+    font-weight:600;
+    font-style:normal;
+    font-display: swap;
+}
+@font-face{
+    font-family:"realText";
+    src:url(../fonts/RealTextPro-BoldItalic.woff) format("woff"),url(../fonts/RealTextPro-BoldItalic.woff) format("woff");
+    font-weight:600;
+    font-style:italic;
+    font-display: swap;
+}
+@font-face{
+    font-family:"realHead";
+    src:url(../fonts/RealHead-Regular.woff) format("woff"),url(../fonts/RealHead-Regular.woff) format("woff");
+    font-weight:400;
+    font-style:normal;
+    font-display: swap;
+}
+@font-face{
+    font-family:"realHead";
+    src:url(../fonts/RealHeadWebPro-Bold.woff) format("woff"),url(../fonts/RealHeadWebPro-Bold.woff) format("woff");
+    font-weight:600;
+    font-style:normal;
+    font-display: swap;
+}
+@font-face{
+    font-family:"realHead";
+    src:url(../fonts/RealHeadWebPro-Black.woff) format("woff"),url(../fonts/RealHeadWebPro-Black.woff) format("woff");
+    font-weight:800;
+    font-style:normal;
+    font-display: swap;
+}
+@font-face {
+  font-family: 'Signifier Web';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('../fonts/signifier/signifier-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/signifier/signifier-regular.woff') format('woff'); /* Legacy iOS */
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Signifier Web';
+  font-style: italic;
+  font-weight: 400;
+  src: local(''),
+       url('../fonts/signifier/signifier-regular-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/signifier/signifier-regular-italic.woff') format('woff'); /* Legacy iOS */
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Signifier Web';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('../fonts/signifier/signifier-bold.woff2') format('woff2'); /* Super Modern Browsers */
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Signifier Web';
+  font-style: italic;
+  font-weight: 700;
+  src: local(''),
+       url('../fonts/signifier/signifier-bold-italic.woff2') format('woff2'); /* Super Modern Browsers */
+  font-display: swap;
+}
+
+// @font-face{
+//     font-family:"UnitWeb";
+//     src:url(../fonts/UnitWeb/UnitWebPro) format("woff2"),url(fonts/open_sans/Italic/OpenSans-Italic.woff?v=1.101) format("woff");
+//     font-weight:400;
+//     font-style:italic
+// }
+// @font-face{
+//     font-family:"UnitWeb";
+//     src:url(../fonts/UnitWeb/UnitWebPro) format("woff2"),url(fonts/open_sans/Semibold/OpenSans-Semibold.woff?v=1.101) format("woff");
+//     font-weight:600;
+//     font-style:normal
+// }
+// @font-face{
+//     font-family:"UnitWeb";
+//     src:url(../UnitWeb/UnitWebPro) format("woff2"),url(fonts/open_sans/SemiboldItalic/OpenSans-SemiboldItalic.woff?v=1.101) format("woff");
+//     font-weight:600;
+//     font-style:italic
+// }
+// @font-face{
+//     font-family:"UnitWeb";
+//     src:url(../fonts/UnitWeb/UnitWebPro-Bold.woff) format("woff"),url(../fonts/UnitWeb/UnitWebPro-Bold.woff) format("woff");
+//     font-weight:700;
+//     font-style:normal
+// }
+// @font-face{
+//     font-family:"Open Sans";
+//     src:url(../fonts/UnitWeb/UnitWebPro) format("woff2"),url(fonts/open_sans/BoldItalic/OpenSans-BoldItalic.woff?v=1.101) format("woff");
+//     font-weight:700;
+//     font-style:italic
+// }
+// @font-face{
+//     font-family:"Open Sans";
+//     src:url(../fonts/UnitWeb/UnitWebPro) format("woff2"),url(fonts/open_sans/ExtraBold/OpenSans-ExtraBold.woff?v=1.101) format("woff");
+//     font-weight:800;
+//     font-style:normal
+// }
+// @font-face{
+//     font-family:"Open Sans";
+//     src:url(../fonts/UnitWeb/UnitWebPro) format("woff2"),url(fonts/open_sans/ExtraBoldItalic/OpenSans-ExtraBoldItalic.woff?v=1.101) format("woff");
+//     font-weight:800;
+//     font-style:italic
+// }
+
+// @font-face{
+//     font-family:"messer";
+//     src:url(../fonts/messer/MesserV1.3-WebRegular.woff2) format("woff2"),url(../fonts/messer/MesserV1.3-WebRegular.woff) format("woff");
+//     font-weight:400;
+//     font-style:normal
+// }
+// @font-face{
+//     font-family:"messer";
+//     src:url(../fonts/messer/MesserV1.3-WebItalic.woff2) format("woff2"),url(../fonts/messer/MesserV1.3-WebRegular.woff2) format("woff");
+//     font-weight:400;
+//     font-style:italic
+// }

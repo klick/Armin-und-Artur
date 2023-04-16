@@ -1,0 +1,17 @@
+section.search-form {
+	
+	box-sizing: border-box;
+	margin-bottom: 24px;
+	div.form {
+		
+	}
+}
+section.search-results {
+	header.section-header {
+		@extend .mobile-full-edge-padding;
+		h1 {
+			color: $dark-grey;
+		}
+	}
+	
+}

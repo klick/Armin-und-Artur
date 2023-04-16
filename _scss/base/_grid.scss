@@ -1,0 +1,104 @@
+// _scss/grid.scss
+
+div.container {
+	min-height: 100vh;
+	//background: red;
+	margin: 0 auto;
+	@include for-phone-only() {
+		
+	}
+	@include for-tablet-portrait-up() {
+		max-width: 600px;
+	}
+	@include for-tablet-landscape-up() {
+		max-width: 800px;
+	}
+	@include for-desktop-up() {
+		max-width: 1140px;
+	}
+	@include for-big-desktop-up() {
+		max-width: 1620px;
+	}
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+
+	header {
+	
+	}
+	main {
+
+	}
+	footer {
+
+	}
+}
+
+.content {
+	@include for-phone-only() {
+		//min-width: 350px;
+		margin: 0 24px;
+		box-sizing: border-box;
+
+	}
+	@include for-tablet-portrait-up() {
+		max-width: 560px;
+	}
+	@include for-tablet-landscape-up() {
+		max-width: 760px;
+	}
+	@include for-desktop-up() {
+		max-width: 1140px;
+	}
+	@include for-big-desktop-up() {
+		max-width: 1620px;
+	}
+	margin: 0 auto;
+}
+
+
+
+*.grid {
+	
+	word-wrap: break-word;
+	display: grid;
+	grid-gap: 12px;
+	//grid-template-columns: repeat(2, 130px);
+	@include for-phone-only() {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@include for-tablet-portrait-up() {
+		grid-template-columns: repeat(auto-fill, minmax(213px, 1fr));
+	}
+	@include for-tablet-landscape-up() {
+		grid-template-columns: repeat(auto-fill, minmax(52.3px, 1fr));
+	}
+	@include for-desktop-up() {
+		grid-gap: 24px;
+		grid-template-columns: repeat(auto-fill, minmax(73px, 1fr));
+	}
+	@include for-big-desktop-up() {
+		grid-template-columns: repeat(auto-fill, minmax(113px, 1fr));
+	}
+	>* {
+		//overflow: hidden;  /* NEW */
+		min-width: 0;      /* NEW; needed for Firefox */
+
+	}
+	&.grid-two {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	&.dir-columm {
+		// grid-template-columns: auto;
+		// grid-auto-flow: column;
+	}
+	&.result-grid {
+		grid-row-gap: 60px;
+	}
+}
+
+// &.base-grid.global {
+// 		grid-template-rows: 60px 1fr 60px;
+// 		@include for-big-desktop-up() {
+// 			grid-template-rows: 120px 1fr 120px;
+// 		}
+// 	}

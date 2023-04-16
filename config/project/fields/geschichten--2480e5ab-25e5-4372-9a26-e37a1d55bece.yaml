@@ -1,0 +1,14 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 7274ef7d-b972-4149-a0a6-42d17fa8a3f7 # Geschichten
+handle: geschichten
+instructions: ''
+name: Geschichten
+searchable: false
+settings:
+  errorMessage: 'Component class ''robuust\reverserelations\fields\ReverseEntries'' belongs to an uninstalled plugin (Reverse Relations).'
+  expectedType: robuust\reverserelations\fields\ReverseEntries
+  settings: '{"allowSelfRelations":false,"limit":null,"localizeRelations":false,"readOnly":"1","selectionLabel":"","showSiteMenu":true,"source":null,"sources":["section:7e9ba3cc-acd2-4baa-ad4a-a0c936316dec"],"targetFieldId":"01ea5acd-a561-4c24-92e1-a99675a731f7","targetSiteId":null,"validateRelatedElements":false,"viewMode":null}' # Autor # Geschichten
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\MissingField

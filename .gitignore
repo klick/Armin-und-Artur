@@ -1,0 +1,16 @@
+/.env
+/.idea
+/vendor
+.DS_Store
+/node_modules
+/_box
+/scripts
+/storage
+/web/.htaccess
+/web/index.php
+/web/bilder
+/web/media-assets
+/node_modules
+/craft/package-lock.json
+/web/imager
+/web/cpresources

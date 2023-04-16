@@ -1,0 +1,11 @@
+figcaption {
+	margin-top: 6px;
+	@include for-tablet-landscape-up() {
+		margin: 0 auto;
+		margin-top: 12px;
+		//width: 502.63px;
+	}
+	@include for-desktop-up() {
+		//width: 636px;
+	}
+}

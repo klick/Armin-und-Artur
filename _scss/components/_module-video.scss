@@ -1,0 +1,16 @@
+div.module__video {
+	margin-bottom: 24px;
+	grid-column: 1 / -1;
+	@include for-tablet-portrait-up() {
+		figcaption {
+			padding-left: 20px;
+		}
+	}
+	@include for-tablet-landscape-up() {
+		width: auto;
+		figcaption {
+			padding: 0;
+		}
+		grid-column: 2 / span 10;
+	}
+}

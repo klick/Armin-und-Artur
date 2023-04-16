@@ -1,0 +1,71 @@
+*.newsletter-signup {
+	form.newsletter-form {
+		margin-top: 24px;
+		input {
+			margin-bottom: 12px;
+		}
+	}
+	span.retry {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	&--index {
+		padding: 12px;
+		@include for-tablet-landscape-up() {
+			padding: 24px;
+		}
+		div.response {
+			img {
+				max-width: 60%;
+				margin: 0 auto;
+				margin-top: 24px;
+			}
+		}
+		form.newsletter-form {
+			margin-top: 24px;
+			input {
+				margin-bottom: 12px;
+			}
+		}
+	}
+	&--article {
+		@include for-tablet-portrait-up() {
+			div.response {
+				img {
+					max-width: 200px;
+					margin: 0 auto;
+					margin-top: 24px;
+				}
+			}
+			form.newsletter-form {
+				display: flex;
+				flex-flow: row wrap;
+				>* {
+					//flex: 0 0 50%;
+					width: calc(50% - 12px);
+					&:not(:last-child) {
+						margin-right: 12px;
+					}
+				}
+				input {
+					&[type="email"],
+					&[type="submit"] {
+						//height: 64px;
+					}
+					
+				}
+			}
+		}
+	}
+	// TEMP
+	@at-root {
+		div.module.newsletter-signup {
+			div.module__body {
+				@include for-tablet-portrait-up() {
+					padding-right: 24px;
+				}
+			}
+		}
+	}
+	
+}

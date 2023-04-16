@@ -1,0 +1,68 @@
+// partials/_header.scss
+
+header {
+	&.header-global {
+		margin: 24px 0 0 0;
+		div.menu {
+			//display: none;
+			a {
+				// &.highlight {
+				// 	border: 2px solid $rot;
+				// 	background: $rot;
+				// 	color: $rot;
+				// 	color: #ffffff;
+				// 	display: inline-block;
+				// 	padding: 3px 8px;
+				// }
+			}
+		}
+		div.header-bar {
+			display: flex;
+			justify-content: center;
+		}
+		@include for-phone-only {
+
+		}
+		@include for-tablet-portrait-up() {
+
+		}
+		@include for-tablet-landscape-up() {
+			margin: 36px 0 0 0;
+			div.header-bar {
+				display: flex;
+				justify-content: center;
+				div.menu {
+					display: block;
+					ul {
+						margin: 0;
+						padding: 0;
+						li {
+							display: inline;
+							&:not(:last-child) {
+								margin-right: 12px;
+							}
+						}
+					}
+				}
+			}
+			
+		}
+		@include for-desktop-up() {
+
+		}
+		@include for-big-desktop-up() {
+			margin: 36px 0 0 0;
+			div.header-bar {
+				div.menu {
+					ul {
+						li {
+							&:not(:last-child) {
+								margin-right: 24px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

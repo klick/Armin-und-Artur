@@ -1,0 +1,65 @@
+fieldLayouts:
+  bd9ee145-23e4-4c9d-a172-c69c675520d6:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            warning: null
+            width: 100
+          -
+            fieldUid: d9146733-1222-4c11-a9d4-326fa757b7e3 # Bild-Urheber
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 7f3606d2-88a5-4912-a779-e0a26737e261 # Bild-Alttext
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 19a8c7f5-af22-411d-b853-b7e733678b85 # Bildunterschrift
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Inhalt
+        sortOrder: 1
+fs: bilder
+handle: bilder
+hasUrls: true
+name: Bilder
+sortOrder: 1
+titleTranslationKeyFormat: null
+titleTranslationMethod: null
+url: '@web/bilder'

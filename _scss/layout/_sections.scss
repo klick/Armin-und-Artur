@@ -1,0 +1,38 @@
+section, div {
+	header.section-header {
+		grid-column: span 4;
+		@extend .mobile-full-edge-padding;
+	}
+	&.grid.post-grid {
+		grid-row-gap: 72px;
+		margin-top: 12px;
+		margin-bottom: 24px;
+		@include for-tablet-landscape-up() {
+			
+		}
+		.post.grid-item {
+			grid-column: 1 / -1;
+			@include for-tablet-landscape-up() {
+				grid-column: span 4;
+			}
+		}
+	}
+	&.sub-section {
+		margin: 48px 0;
+		@include for-tablet-portrait-up() {
+			//margin: 96px 0;
+		}
+		@include for-desktop-up() {
+			//margin: 144px 0;
+		}
+	}
+	&.article-cover {
+		margin: 48px 0;
+		@include for-tablet-portrait-up() {
+			margin: 48px 0 96px 0;
+		}
+		@include for-desktop-up() {
+			margin: 48px 0 96px 0;
+		}
+	}
+}

@@ -1,0 +1,150 @@
+// components/_forms.scss
+
+form {
+	label {
+		display: none;
+	}
+	input {
+		border-radius: 4px;
+		padding: 12px;
+		@include for-tablet-landscape-up() {
+			padding: 24px;
+		}
+		&[type="email"],
+		&[type="text"] {
+			border: 1px solid #22DCB5;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		&[type="submit"] {
+			background: #06635E;
+			color: white;
+			border: none;
+			outline: none;
+			width: 100%;
+			// &:before {
+			// 	content: "pihio";
+			// }
+		}
+	}
+	&.newsletter-form {
+		input {
+			&[type="submit"] {
+				transition: background-position .1s ease-in-out;
+				//background: rgb(57,99,95) url('data:image/svg+xml; utf8, <svg viewBox="0 0 500 378.8" xmlns="http://www.w3.org/2000/svg"><polygon id="XMLID_351_" points="250.001 161.212 469.827 0.002 30.168 0" fill="%23ffffff" stroke="none"/><path id="XMLID_350_" d="M 263.44 207.722 C 259.439 210.655 254.719 212.121 250.001 212.121 C 245.28 212.121 240.561 210.655 236.56 207.722 L 45.454 67.579 L 0.002 34.247 L 0 356.061 C 0.002 368.613 10.176 378.788 22.727 378.788 L 477.273 378.787 C 489.826 378.787 500 368.611 500 356.061 L 500 34.245 L 454.544 67.579 L 263.44 207.722 Z" fill="%23ffffff" stroke="none"/></svg>');
+				background-size: auto 30%;
+				background-repeat: no-repeat;
+				background-position: 12px center;
+			}
+		}
+	}
+	input::placeholder {
+		color: #22DCB5;
+		opacity: 1;
+	}
+	&.search-form--header,
+	&.search-form--result-page {
+		display: flex;
+		align-items: center;
+		input {
+			height: 35px;
+			border-radius:3px;
+			padding: 0;
+			box-sizing: border-box;
+			padding: 6px;
+			flex-grow: 1;
+		}
+		input {
+			font-size: 16px;
+			&[type="search"] {
+				padding-left: 12px;
+				padding-right: 50px;
+				border: 1px solid $middle-grey;
+				border-radius: 3px 0 0 3px;
+				border-right: none;
+			}
+		}
+		input {
+			&[type="submit"] {
+				background: black;
+				display: block;
+				width: auto;
+				border: 1px solid black;
+				padding-right: 12px;
+				padding-left: 12px;
+			}
+		}
+		input::placeholder {
+			color: $middle-grey;
+			opacity: 1;
+		}
+		span.toggle-search-form {
+			margin-left: 12px;
+			font-weight: 400;
+			cursor: pointer;
+			width: 20px;
+			height: 20px;
+
+		}
+	}
+	&.search-form--header {
+		float: right;
+	}
+	&.search-form--result-page {
+		background: $light-grey;
+		padding: 24px 12px;
+		justify-content: center;
+		@include for-tablet-landscape-up() {
+			padding: 48px 0;
+			input {
+				&[type="search"],
+				&[type="submit"] {
+					@include for-tablet-landscape-up() {
+						height: 50px;
+					}
+				}
+				&[type="search"] {
+					width: 400px;
+					flex-grow: 0;
+				}
+				&[type="submit"] {
+					width: 100px;
+					flex-grow: 0;
+				}
+			}
+		}
+		
+	}
+	
+}
+svg.close {
+	width: 20px;
+	height: 20px;
+	line {
+		stroke-width: 1.2px;
+	}
+}
+*.button {
+	display: inline-block;
+	color: white;
+	text-decoration: none;
+	border-radius: 4px;
+	padding: 12px 24px;
+	&.button-yt {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	&.green {
+		background: #06635E;
+	}
+	&.bordered {
+		border: 2px solid #E3E2E7;
+		background: white;
+		color: $text-color;
+	}
+	&.grey {
+		background: #EEEDF3;
+		color: $text-color;
+		border: 2px solid #EEEDF3;
+	}
+}

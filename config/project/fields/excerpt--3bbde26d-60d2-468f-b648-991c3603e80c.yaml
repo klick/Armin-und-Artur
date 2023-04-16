@@ -1,0 +1,19 @@
+columnSuffix: null
+contentColumnType: string(1000)
+fieldGroup: eafb163d-141a-4a25-8213-4922010ea059 # Common
+handle: excerpt
+instructions: ''
+name: Excerpt
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 250
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: '1'
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,61 @@
+div.debate-teaser {
+	div.grid {
+		>* {
+			grid-column: 1 / -1;
+		}
+	}
+	article {
+		div.body,
+		aside {
+		    padding: 0 24px;
+		}
+		aside.debate-teaser__related-posts {
+			div.related-post {
+				display: flex;
+				padding-bottom: 12px;
+				&__cover {
+					flex: 0 0 100px;
+					margin-right: 12px;
+				}
+			}
+		}
+	}
+	@include for-tablet-landscape-up() {
+		article {
+			p.over-line {
+				margin-bottom: 8px;
+			}
+			h1 {
+				font-size: 30px;
+				line-height: 32px;
+				margin-bottom: 16px;
+			}
+			p.intro {
+				font-size: 18px;
+				line-height: 24px;
+			}
+			figure.cover {
+				grid-column: span 7;
+			}
+			div.body {
+				grid-column: span 5;
+				padding: 0 0 0 12px;
+			}
+			aside.debate-teaser__related-posts {
+				padding: 0;
+				margin-top: 32px;
+				div.related-post {
+					margin-top: 12px;
+					&__cover {
+						flex: 0 0 140px;
+						margin-right: 12px;
+					}
+					p {
+						font-size: 20px;
+						line-height: 24px;
+					}
+				}
+			}
+		}
+	}
+}

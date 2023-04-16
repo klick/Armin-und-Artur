@@ -1,0 +1,56 @@
+article.single-debate-post {
+	div.header-area {
+		margin: 0 0 48px 0;
+		@include for-tablet-landscape-up() {
+			margin: 84px 0;
+		}
+		div.grid {
+			align-items: start;
+		}
+	}
+	nav.debate-nav {
+		grid-column: 1 / -1;
+	}
+	header.header-article {
+		grid-column: 1 / -1;
+		.over-line {
+			margin: 12px 0;
+		}
+		h1 {
+			margin-bottom: 24px;
+		}
+	}
+	section.article-body {
+
+	}
+	@include for-tablet-landscape-up() {
+		header.header-article {
+			grid-column: 2 / span 8;
+			.over-line {
+				margin-bottom: 12px;
+			}
+			h1 {
+				margin-bottom: 40px;
+			}
+		}
+		nav.debate-nav {
+			order: 2;
+			grid-column: 10 / -1;
+		}
+	}
+	@include for-desktop-up() {
+		header.header-article {
+			grid-column: 2 / span 7;
+		}
+		nav.debate-nav {
+			grid-column: 10 / -1;
+		}
+	}
+	p.intro {
+		margin-bottom: 24px;
+	}
+	section.article-body {
+
+	}
+	
+}

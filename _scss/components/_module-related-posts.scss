@@ -1,0 +1,27 @@
+div.module__related-posts {
+	div.slick-slider {
+		div.slick-slide {
+			margin-right: 12px;
+			article {
+				height: 310px !important;
+				@include for-tablet-landscape-up() {
+					height: 420px !important;
+				}
+			}
+		}
+		
+	}
+	div.nexti_slider {
+		@include for-tablet-landscape-up() {
+			padding-right: 16px;
+		}
+		@include for-desktop-up() {
+			padding-right: 24px;
+		}
+	}
+	&:after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+}

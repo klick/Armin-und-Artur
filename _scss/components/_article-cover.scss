@@ -1,0 +1,34 @@
+div.article-cover {
+	margin-bottom: 38px;
+	figcaption {
+		padding-left: 24px;
+	}
+	@include for-phone-only() {
+		figcaption {
+			padding-left: 12px;
+		}
+	}
+	@include for-tablet-portrait-up() {
+		float: left;
+		width: 300px;
+		margin-left: -20px;
+		margin-right: 24px;
+		cursor: pointer;
+	}
+	@include for-tablet-landscape-up() {
+		width: 265px;
+		figure {
+			img {
+				margin-top: 7px;
+			}
+		}
+	}
+	@include for-desktop-up() {
+		width: 345px;
+		margin-left: -33px;
+		margin-right: 36px;
+		figcaption {
+			padding-left: 33px;
+		}
+	}
+}

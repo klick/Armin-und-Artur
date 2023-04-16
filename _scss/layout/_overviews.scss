@@ -1,0 +1,54 @@
+.cover-styles {
+	height: 200px;
+	@include for-tablet-landscape-up() {
+		height: 200px;
+	}
+	@include for-desktop-up() {
+		height: 350px;
+	}
+	background-color: $middle-grey !important;
+	background-size: cover !important;
+	background-blend-mode: multiply !important;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	svg.logo-www {
+		max-width: 100px;
+		width: 100px;
+		margin-bottom: 12px;
+	}
+	h1 {
+		color: white;
+		hyphens: none;
+		max-width: 70%;
+		text-align: center;
+		-webkit-font-smoothing: antialiased;
+	}
+}
+
+section.debates-overview {
+	div.debates__item {
+		a.debates__link {
+   			@extend .cover-styles ;
+   			margin-bottom: 12px;
+   	// 		&:hover {
+				// background-color: rgba(255, 255, 128, 0) !important;
+   	// 		}
+   			
+			img {
+				visibility: hidden;
+			}
+			.cover {
+				h1 {
+					
+				}
+			}
+		}
+	}
+}
+section.podcasts-overview {
+	div.debates__item {
+		@extend .cover-styles ;
+	}
+}

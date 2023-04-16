@@ -1,0 +1,9 @@
+baseUrl: $PRIMARY_SITE_URL
+enabled: true
+handle: default
+hasUrls: true
+language: de-DE
+name: 'Armin & Artur'
+primary: true
+siteGroup: 83262edd-7265-48b8-adcd-1a1cec0c51a8 # Armin & Artur
+sortOrder: 1
