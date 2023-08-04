@@ -1,0 +1,12 @@
+defaultPlacement: end
+enableVersioning: true
+handle: kontakt
+name: Kontakt
+propagationMethod: all
+siteSettings:
+  9590d88e-4c68-4ee2-bf34-09bbb3fc8833: # Armin & Artur
+    enabledByDefault: true
+    hasUrls: true
+    template: page.twig
+    uriFormat: kontakt
+type: single

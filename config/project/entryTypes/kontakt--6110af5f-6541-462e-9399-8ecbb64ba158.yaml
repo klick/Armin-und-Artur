@@ -1,5 +1,5 @@
 fieldLayouts:
-  cb61d8f9-dc56-4d39-a6dd-89578753bef6:
+  14c23847-3f04-4702-a7a5-389405ccc552:
     tabs:
       -
         elementCondition: null
@@ -26,47 +26,29 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 96cdcf98-556a-4d79-8f12-e64296cff246
+            uid: 2308bf68-c545-4809-97da-09176e7ba326
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: a4115fcc-1941-4286-a95a-929dfa29b161 # Intro
+            fieldUid: 42ca441c-21db-4cce-9dd6-74af65fdf470 # Body
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: c6a7eb09-2047-4f52-9afc-26022bbedb4a
+            uid: 76338275-bbbd-4cac-8376-a778b083240e
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: e5ead8d2-e689-417b-a1d4-5b3118ce6b62
+        uid: a641840e-6467-4d7b-a119-c567f33ad699
         userCondition: null
-      -
-        elementCondition: null
-        elements:
-          -
-            elementCondition: null
-            fieldUid: 7178f6c5-4d84-4be2-ae67-46508d1dbcc8 # SEO
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 0f3d47ec-3ce6-4310-9598-023ec567ab6b
-            userCondition: null
-            warning: null
-            width: 100
-        name: SEO
-        uid: 8eca1559-c533-467f-b46a-174f1c8608bc
-        userCondition: null
-handle: home
-hasTitleField: true
-name: Start
-section: aa7ac094-9175-46bf-a56b-eaaadd28eb16 # Start
+handle: kontakt
+hasTitleField: false
+name: Kontakt
+section: f8a6c0a3-3c3d-4d8d-8746-66529b735b79 # Kontakt
 sortOrder: 1
 titleFormat: '{section.name|raw}'
 titleTranslationKeyFormat: null

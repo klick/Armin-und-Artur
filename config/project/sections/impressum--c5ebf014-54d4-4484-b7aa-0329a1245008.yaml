@@ -1,0 +1,12 @@
+defaultPlacement: end
+enableVersioning: true
+handle: impressum
+name: Impressum
+propagationMethod: all
+siteSettings:
+  9590d88e-4c68-4ee2-bf34-09bbb3fc8833: # Armin & Artur
+    enabledByDefault: true
+    hasUrls: true
+    template: page.twig
+    uriFormat: impressum
+type: single

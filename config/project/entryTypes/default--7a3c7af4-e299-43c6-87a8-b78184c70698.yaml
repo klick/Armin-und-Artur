@@ -1,5 +1,5 @@
 fieldLayouts:
-  cb61d8f9-dc56-4d39-a6dd-89578753bef6:
+  242d5aa2-3e18-434d-be14-a89b65f220c9:
     tabs:
       -
         elementCondition: null
@@ -26,48 +26,30 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
-            uid: 96cdcf98-556a-4d79-8f12-e64296cff246
+            uid: 0af4073e-be0d-4a88-a802-8178252ddbce
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: a4115fcc-1941-4286-a95a-929dfa29b161 # Intro
+            fieldUid: 2480e5ab-25e5-4372-9a26-e37a1d55bece # Geschichten
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: c6a7eb09-2047-4f52-9afc-26022bbedb4a
+            uid: 76b7de19-81f7-49cb-86c6-519dca7c5a4a
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: e5ead8d2-e689-417b-a1d4-5b3118ce6b62
+        uid: 0f99c966-244f-4f4b-ab26-ac13c5b49bc4
         userCondition: null
-      -
-        elementCondition: null
-        elements:
-          -
-            elementCondition: null
-            fieldUid: 7178f6c5-4d84-4be2-ae67-46508d1dbcc8 # SEO
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 0f3d47ec-3ce6-4310-9598-023ec567ab6b
-            userCondition: null
-            warning: null
-            width: 100
-        name: SEO
-        uid: 8eca1559-c533-467f-b46a-174f1c8608bc
-        userCondition: null
-handle: home
+handle: default
 hasTitleField: true
-name: Start
-section: aa7ac094-9175-46bf-a56b-eaaadd28eb16 # Start
+name: Standard
+section: 9ddbc4e0-4c02-4dda-ae0f-541f66f6d950 # Sammlungen
 sortOrder: 1
-titleFormat: '{section.name|raw}'
+titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site

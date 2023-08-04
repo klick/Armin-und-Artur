@@ -6,26 +6,27 @@
 {% extends "_layout" %}
 
 {% block content %}
-
-
 <div class="content">
+<div style="text-align: center">
+<h1 style="font-weight:400;font-size:5em;margin-bottom:1em"><span style="color:#d32025">Deutsche M&auml;rchen</span><span style="display:block;font-size:.45em;line-height:1;font-style:italic">zum Lesen und Vorlesen</span></h1>
+</div>
     <section class="sub-section tales-list">
         <div class="grid">
             <div class="list centered">
             {% cache %}
             {% for firstletter, entriesInGroup in allEntriesByGroup %}
-            <h3>{{firstletter}}</h3>
+            <h3><span style="color:#d32025;font-size:1.4em">{{firstletter}}</span></h3>
             <ul>
             {% for entry in entriesInGroup %}
                 <li>
-                    <a href="{{ entry.url }}">
-                        {{entry.title }} 
+                    <a href="{{ entry.url }}" style="display:block;padding: 6px 0">
+                        {{ entry.title|raw }} 
                         {# <small style="font-size: 14px">{{ entry.body }} </small><br><a href="{{ entry.cpEditUrl }}">Edit</a> #}
                         {# ({{ entry.readtime }} {{ entry.readtime > 1 ? 'Minuten' : 'Minute' }}) #}
                     </a>
                 </li>
             {% endfor %}
-            </ul><br>
+            </ul><br><br>
             {% endfor %}
             {% endcache %}
             </div>
