@@ -2,30 +2,34 @@ columnSuffix: null
 contentColumnType: string
 fieldGroup: eafb163d-141a-4a25-8213-4922010ea059 # Common
 handle: bild
-instructions: ''
+instructions: null
 name: Bild
 searchable: false
 settings:
   allowSelfRelations: false
-  allowUploads: true
+  allowSubfolders: false
+  allowUploads: false
   allowedKinds:
     - image
+  branchLimit: null
   defaultUploadLocationSource: 'volume:052c597a-1661-44ad-af6a-c27c5cdfa355' # Bilder
-  defaultUploadLocationSubpath: ''
-  limit: '1'
+  defaultUploadLocationSubpath: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   previewMode: full
-  restrictFiles: '1'
-  selectionLabel: ''
-  showSiteMenu: false
+  restrictFiles: true
+  restrictLocation: true
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:052c597a-1661-44ad-af6a-c27c5cdfa355' # Bilder
+  restrictedLocationSubpath: null
+  selectionLabel: null
+  showSiteMenu: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
-  singleUploadLocationSource: 'volume:052c597a-1661-44ad-af6a-c27c5cdfa355' # Bilder
-  singleUploadLocationSubpath: ''
-  source: null
   sources: '*'
   targetSiteId: null
-  useSingleFolder: true
   validateRelatedElements: false
   viewMode: large
 translationKeyFormat: null

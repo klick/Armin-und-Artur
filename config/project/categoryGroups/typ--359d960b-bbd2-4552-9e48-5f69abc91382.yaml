@@ -1,0 +1,59 @@
+defaultPlacement: end
+fieldLayouts:
+  f5e367be-30f9-4591-94de-e44eaffaf2ff:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: fabc81ae-ffd1-454d-91ac-7ab1c26c18ac
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 42ca441c-21db-4cce-9dd6-74af65fdf470 # Body
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7186c8d6-a29a-4ad1-b795-de5ab9e46205
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 193440b0-5b4a-42fc-a385-c9cacf4a2d0b
+        userCondition: null
+handle: typ
+name: Typ
+siteSettings:
+  9590d88e-4c68-4ee2-bf34-09bbb3fc8833: # Armin & Artur
+    hasUrls: true
+    template: kategorie.twig
+    uriFormat: '{slug}'
+structure:
+  maxLevels: null
+  uid: afb67b6d-f37f-409c-a902-5ded4757b2ba

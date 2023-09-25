@@ -2,6 +2,7 @@ fieldLayouts:
   bd9ee145-23e4-4c9d-a172-c69c675520d6:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,6 +10,7 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
             instructions: null
             label: null
@@ -24,42 +26,54 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 278cff3a-d88b-4cd4-a046-7e1ec9dfbeea
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: d9146733-1222-4c11-a9d4-326fa757b7e3 # Bild-Urheber
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: e1a57c9e-9d7d-4b56-b38b-a8cc55ab0a89
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 7f3606d2-88a5-4912-a779-e0a26737e261 # Bild-Alttext
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 6d346e4b-9809-4bfe-bf39-02363fadfa8f
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 19a8c7f5-af22-411d-b853-b7e733678b85 # Bildunterschrift
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: be6411cb-88d8-4433-b33c-fcb62eb146f1
+            userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        sortOrder: 1
+        uid: 204dc717-2ec6-4c83-a58e-43f16971a653
+        userCondition: null
 fs: bilder
 handle: bilder
-hasUrls: true
 name: Bilder
 sortOrder: 1
 titleTranslationKeyFormat: null
-titleTranslationMethod: null
-url: '@web/bilder'
+titleTranslationMethod: site
+transformFs: null
+transformSubpath: ''

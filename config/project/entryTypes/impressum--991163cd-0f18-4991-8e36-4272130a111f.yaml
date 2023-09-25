@@ -45,6 +45,24 @@ fieldLayouts:
         name: Inhalt
         uid: ab56f5c7-defc-41bd-98e0-5cdb1f2632c3
         userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 7178f6c5-4d84-4be2-ae67-46508d1dbcc8 # SEO
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: de01c5c4-757c-45b1-8ae1-e90d56a6c93e
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: 45bb93db-1f3c-4222-bf72-68fde0730595
+        userCondition: null
 handle: impressum
 hasTitleField: false
 name: Impressum

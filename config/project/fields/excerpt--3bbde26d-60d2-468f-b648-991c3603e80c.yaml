@@ -2,16 +2,16 @@ columnSuffix: null
 contentColumnType: string(1000)
 fieldGroup: eafb163d-141a-4a25-8213-4922010ea059 # Common
 handle: excerpt
-instructions: ''
+instructions: null
 name: Excerpt
 searchable: false
 settings:
   byteLimit: null
   charLimit: 250
-  code: ''
+  code: false
   columnType: null
-  initialRows: '4'
-  multiline: '1'
+  initialRows: 4
+  multiline: true
   placeholder: null
   uiMode: normal
 translationKeyFormat: null

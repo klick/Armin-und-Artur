@@ -45,6 +45,24 @@ fieldLayouts:
         name: Inhalt
         uid: ce077583-c188-4a8b-84b0-54883bacfaf3
         userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 7178f6c5-4d84-4be2-ae67-46508d1dbcc8 # SEO
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c18ee5bf-3d97-43c5-9e90-108a3e4ee8eb
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: 49e319a0-37eb-4ce5-96ad-0636e9beb95b
+        userCondition: null
 handle: datenschutz
 hasTitleField: false
 name: Datenschutz

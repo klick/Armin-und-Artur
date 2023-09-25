@@ -1,0 +1,24 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: eafb163d-141a-4a25-8213-4922010ea059 # Common
+handle: verfasser
+instructions: null
+name: Verfasser
+searchable: true
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: 1
+  selectionLabel: null
+  showSiteMenu: true
+  sources:
+    - 'section:da051380-6a4c-422f-8f83-26f2ff828f94' # Verfasser
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

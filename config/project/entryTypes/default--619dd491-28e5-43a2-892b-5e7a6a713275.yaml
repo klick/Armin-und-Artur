@@ -1,0 +1,71 @@
+fieldLayouts:
+  0945e104-ef7b-4303-97d1-e21c780bb4c1:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: ed4b2ccd-2d75-4e17-a52f-9fa461a4c608
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: ea544490-5469-4ada-905e-2683e038aa74 # Bild
+            instructions: null
+            label: Portrait
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d7a646a2-904a-4778-b285-c14200adca7a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 2480e5ab-25e5-4372-9a26-e37a1d55bece # Geschichten
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: de62099b-5ed5-4d29-ad44-03e8627aa42d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: be5fe866-5726-4453-91f8-dafd2462ca3b
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Standard
+section: da051380-6a4c-422f-8f83-26f2ff828f94 # Verfasser
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

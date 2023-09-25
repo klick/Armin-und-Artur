@@ -2,19 +2,19 @@ columnSuffix: null
 contentColumnType: text
 fieldGroup: 7274ef7d-b972-4149-a0a6-42d17fa8a3f7 # Geschichten
 handle: readtime
-instructions: ''
+instructions: null
 name: Readtime
 searchable: false
 settings:
   allowSelect: false
   columnType: text
-  decimals: '0'
+  decimals: 0
   displayType: textinput
   fieldTwig: '{{ readTime(entry.body, rate=179, minimum=5) }}'
-  parseBeforeSave: '1'
+  parseBeforeSave: true
   parseOnMove: false
   showField: false
-  textareaRows: '5'
+  textareaRows: 5
 translationKeyFormat: null
 translationMethod: none
 type: besteadfast\preparsefield\fields\PreparseFieldType

@@ -2,20 +2,19 @@ columnSuffix: null
 contentColumnType: string
 fieldGroup: eafb163d-141a-4a25-8213-4922010ea059 # Common
 handle: kategorie
-instructions: ''
+instructions: null
 name: Kategorie
 searchable: false
 settings:
-  allowLimit: false
-  allowMultipleSources: false
   allowSelfRelations: false
-  branchLimit: ''
-  limit: null
+  branchLimit: null
   localizeRelations: false
-  selectionLabel: ''
+  maintainHierarchy: true
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
   showSiteMenu: false
-  source: 'group:359d960b-bbd2-4552-9e48-5f69abc91382' # Klassiker
-  sources: '*'
+  source: 'group:359d960b-bbd2-4552-9e48-5f69abc91382' # Typ
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

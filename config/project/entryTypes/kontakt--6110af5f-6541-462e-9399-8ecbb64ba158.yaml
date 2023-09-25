@@ -45,6 +45,24 @@ fieldLayouts:
         name: Inhalt
         uid: a641840e-6467-4d7b-a119-c567f33ad699
         userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 7178f6c5-4d84-4be2-ae67-46508d1dbcc8 # SEO
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a89e6e76-de20-40fa-a177-f5fa08382513
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: 2757b555-9fbb-4b11-bdd3-f354b9842b32
+        userCondition: null
 handle: kontakt
 hasTitleField: false
 name: Kontakt

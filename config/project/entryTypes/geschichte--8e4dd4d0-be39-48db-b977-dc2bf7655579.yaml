@@ -2,14 +2,29 @@ fieldLayouts:
   e08c83f2-64b9-46c5-a41d-cdb5dc965e65:
     tabs:
       -
+        elementCondition: null
         elements:
+          -
+            elementCondition: null
+            fieldUid: c30a509f-3a8c-4422-9e5a-5a19518cad94 # Klassiker
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1725e01a-6091-41a3-b580-a0791de3f72c
+            userCondition: null
+            warning: null
+            width: 100
           -
             autocapitalize: true
             autocomplete: false
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,92 +39,137 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: d6b5b5e7-8559-49fb-af02-d19c9f82c48a
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 1f5bcf2f-931e-419e-a5fc-447ecf99fc3b
+            userCondition: null
+          -
+            elementCondition: null
             fieldUid: ea544490-5469-4ada-905e-2683e038aa74 # Bild
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 1eb2552b-9ddc-4a85-89a3-08e555c38330
+            userCondition: null
             warning: null
-            width: 100
+            width: 25
           -
-            fieldUid: 6e7f4ada-5896-4954-a687-b65570ccfd15 # Readtime
+            elementCondition: null
+            fieldUid: 2bfb70f4-994d-4e48-93f2-f8654294d7e9 # Verfasser
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 8bd0ae40-6312-4d58-b6aa-41168d234b89
+            userCondition: null
             warning: null
-            width: 100
+            width: 25
           -
-            fieldUid: 01ea5acd-a561-4c24-92e1-a99675a731f7 # Autor
-            instructions: ''
-            label: ''
-            required: ''
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 100
-          -
+            elementCondition: null
             fieldUid: d566da45-e6de-4333-84d1-d9ed9a1d31fd # Kategorie
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: e831185b-2f38-48a8-9bfc-5953eb09d492
+            userCondition: null
             warning: null
-            width: 100
+            width: 25
           -
+            elementCondition: null
+            fieldUid: 6e7f4ada-5896-4954-a687-b65570ccfd15 # Readtime
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 79d1a8e9-e9eb-4043-abe8-16cff0608ae3
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: c5cb28e3-3656-4bcf-8966-65e51052e204
+            userCondition: null
+          -
+            elementCondition: null
             fieldUid: bc114695-97bc-44c6-a0de-c5152243cd6e # Kurzbeschreibung
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 09f66969-9d3f-4fa6-84c4-b62b5bcef08c
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 42ca441c-21db-4cce-9dd6-74af65fdf470 # Body
-            instructions: ''
-            label: ''
-            required: '1'
+            instructions: null
+            label: null
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: db122b28-5bde-4688-ad72-966809b3e7db
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule
+            uid: 1f5d2300-8e54-467d-97b9-3fbce374507a
+            userCondition: null
           -
+            elementCondition: null
             fieldUid: 3bbde26d-60d2-468f-b648-991c3603e80c # Excerpt
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: d0fd104d-f1f5-434c-b24e-20a1540ee140
+            userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        sortOrder: 1
+        uid: 0049a6da-0dcc-4892-ad5b-6ccf89adbfd1
+        userCondition: null
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: 7178f6c5-4d84-4be2-ae67-46508d1dbcc8 # SEO
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: a950e92b-2823-4bc2-943b-bbe787c22bcc
+            userCondition: null
             warning: null
             width: 100
         name: SEO
-        sortOrder: 2
+        uid: 114612e4-d2e6-4f49-b133-2e7703112602
+        userCondition: null
 handle: geschichte
 hasTitleField: true
 name: Geschichte
 section: 7e9ba3cc-acd2-4baa-ad4a-a0c936316dec # Geschichten
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

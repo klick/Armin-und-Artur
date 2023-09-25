@@ -10,7 +10,7 @@
 			<div class="grid">
 				<div class="contents">
 					<h1>{{ entry.title | widont }}</h1>
-					<p class="author"><i>von</i>&ensp;<span class="font-small-caps">{{ entry.autor.one().title ? entry.autor.one().title : 'Unbekannt' }}</span>{# <br> Lesezeit: {{ entry.readtime }} {{ entry.readtime > 1 ? 'Minuten' : 'Minute' }} #}</p>
+					<p class="author"><i>von</i>&ensp;<span class="font-small-caps">{{ entry.verfasser.one().title ? entry.verfasser.one().title : 'Unbekannt' }}</span>{# <br> Lesezeit: {{ entry.readtime }} {{ entry.readtime > 1 ? 'Minuten' : 'Minute' }} #}</p>
 				</div>
 			</div>
 		</header>

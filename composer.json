@@ -3,13 +3,14 @@
     "besteadfast/craft-preparse-field": "^2.0",
     "carlcs/craft-redactorcustomstyles": "^4.0",
     "clubstudioltd/craft-asset-rev": "^7.0",
-    "craftcms/cms": "4.4.16.1",
-    "craftcms/feed-me": "^5.2",
+    "craftcms/cms": "4.7.4",
+    "craftcms/element-api": "3.0.1.1",
+    "craftcms/feed-me": "5.3.0",
     "craftcms/redactor": "^3.0",
-    "nystudio107/craft-seomatic": "^4.0",
-    "putyourlightson/craft-blitz-recommendations": "^2.1",
+    "nystudio107/craft-seomatic": "4.0.42",
+    "putyourlightson/craft-blitz-recommendations": "2.1.3",
     "robuust/craft-reverserelations": "^2.0",
-    "topshelfcraft/wordsmith": "^4.2",
+    "topshelfcraft/wordsmith": "4.4.0",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {
@@ -36,5 +37,12 @@
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example.dev', '.env');\""
     ]
-  }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.craftcms.com",
+      "canonical": false
+    }
+  ]
 }
