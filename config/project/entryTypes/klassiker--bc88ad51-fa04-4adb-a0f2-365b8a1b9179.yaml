@@ -1,6 +1,5 @@
-defaultPlacement: end
 fieldLayouts:
-  f5e367be-30f9-4591-94de-e44eaffaf2ff:
+  f835a84a-e433-45a8-9b69-59878ec225ba:
     tabs:
       -
         elementCondition: null
@@ -27,33 +26,34 @@ fieldLayouts:
             step: null
             tip: null
             title: null
-            type: craft\fieldlayoutelements\TitleField
-            uid: fabc81ae-ffd1-454d-91ac-7ab1c26c18ac
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 565e366b-1de4-4967-97a9-f5a9b15802f6
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: 42ca441c-21db-4cce-9dd6-74af65fdf470 # Body
+            fieldUid: 09609ea0-b7de-48a9-b460-66c52e396edf # Lyrischer Titel
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 7186c8d6-a29a-4ad1-b795-de5ab9e46205
+            uid: dca84457-a068-4914-a18d-d6c4dedefbc7
             userCondition: null
             warning: null
             width: 100
         name: Inhalt
-        uid: 193440b0-5b4a-42fc-a385-c9cacf4a2d0b
+        uid: 1d48fdf3-8cb2-4c35-9d8f-0d02bb0038c9
         userCondition: null
-handle: typ
-name: Typ
-siteSettings:
-  9590d88e-4c68-4ee2-bf34-09bbb3fc8833: # Armin & Artur
-    hasUrls: true
-    template: kategorie.twig
-    uriFormat: '{slug}'
-structure:
-  maxLevels: 1
-  uid: afb67b6d-f37f-409c-a902-5ded4757b2ba
+handle: klassiker
+hasTitleField: true
+name: Klassiker
+section: 14a2cc67-f120-47c2-9e90-c6bf26e83377 # Klassiker
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+sortOrder: 1
+titleFormat: '{section.name|raw}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

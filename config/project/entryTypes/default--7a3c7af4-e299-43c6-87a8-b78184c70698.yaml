@@ -12,6 +12,7 @@ fieldLayouts:
             disabled: false
             elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -32,6 +33,52 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: c0dde7a1-2b9b-43ef-ab51-42530a991aec
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: ea544490-5469-4ada-905e-2683e038aa74 # Bild
+            instructions: null
+            label: Titelbild
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 19756698-9f35-4a96-8e78-7b36a417b6eb
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 2bfb70f4-994d-4e48-93f2-f8654294d7e9 # Verfasser
+            instructions: null
+            label: 'Herausgeber / Verfasser'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 32edf34b-5de4-483c-af25-ad78b963996e
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: f8f886d0-d1ad-4923-afbc-c53e99605708 # Erscheinungsjahr
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 30261e06-2551-42e8-aeb1-dfbde084bf7e
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: fbaf07cc-cbe4-44ad-bd67-0ea73d11dba0
+            userCondition: null
+          -
+            elementCondition: null
             fieldUid: 2480e5ab-25e5-4372-9a26-e37a1d55bece # Geschichten
             instructions: null
             label: null
@@ -49,6 +96,9 @@ handle: default
 hasTitleField: true
 name: Standard
 section: 9ddbc4e0-4c02-4dda-ae0f-541f66f6d950 # Sammlungen
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

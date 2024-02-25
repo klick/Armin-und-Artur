@@ -1,35 +1,36 @@
 {% import '_macros.twig' as macros %}
 {% extends "_layout" %}
+{% set inCollection = craft.entries.sectionId(6).relatedTo(entry).one() %}
 
 {% block content %}
 
-<div class="content">
-
-	<article class="page geschichte">
-		<header class="header page-header">
-			<div class="grid">
-				<div class="contents">
-					<h1>{{ entry.title | widont }}</h1>
-					<p class="author"><i>von</i>&ensp;<span class="font-small-caps">{{ entry.verfasser.one().title ? entry.verfasser.one().title : 'Unbekannt' }}</span>{# <br> Lesezeit: {{ entry.readtime }} {{ entry.readtime > 1 ? 'Minuten' : 'Minute' }} #}</p>
+<div class="container">
+	<article class="story">
+		<header class="text-center mb-3 mb-md-5">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-5 fs-4">
+					<h1 class="display-4">{{ entry.title | widont }}</h1>
+					<p class="author"><i>von</i>&ensp;<span class="font-small-caps"><a href="{{ entry.verfasser.one().url }}" class="">{{ entry.verfasser.one().title ? entry.verfasser.one().title : 'Unbekannt' }}</a></span><span class="font-small-caps text-secondary d-block d-md-inline"><span class="d-none d-md-inline"> | </span>Lesezeit: {{ entry.readtime }} Minuten</span></p>
 				</div>
 			</div>
 		</header>
-		{# <section class="article-intro">
-			<div class="grid">
-				<div class="contents module__text">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolore culpa architecto facilis possimus sint laborum dolorum ex, ut harum consectetur ab labore doloremque temporibus earum libero amet tempora iure?</p>
-				</div>
-			</div>
-		</section> #}
 		<section class="article-body">
-			<div class="grid">
-				<div class="contents module__text">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-7 fs-4">
 					{{ entry.body | typogrify }}
 				</div>
 			</div>
 		</section>
+		<aside>
+			{% if inCollection %}
+				<div class="row justify-content-center mt-5">
+					<div class="col-11 col-md-9 col-lg-5 fs-4">
+						<p>Aus: <b>{{ inCollection.title }}</b><br><a href="{{ inCollection.url }}">Zur kompletten Sammlung &rarr;</a></p>
+					</div>
+				</div>
+			{% endif %}
+		</aside>
 	</article>
-	
 </div>
 
 {% endblock %}

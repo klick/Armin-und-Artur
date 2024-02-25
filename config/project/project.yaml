@@ -1,4 +1,4 @@
-dateModified: 1708790925
+dateModified: 1709551949
 elementSources:
   craft\elements\Entry:
     -
@@ -261,15 +261,19 @@ fs:
     url: '@web/bilder'
 meta:
   __names__:
+    0cb29916-8e38-4a34-9080-9abeaf29e4dc: 'Märchen unter 10 Minuten' # Märchen unter 10 Minuten
     2bfb70f4-994d-4e48-93f2-f8654294d7e9: Verfasser # Verfasser
     3bbde26d-60d2-468f-b648-991c3603e80c: Excerpt # Excerpt
     6e7f4ada-5896-4954-a687-b65570ccfd15: Readtime # Readtime
     7a3c7af4-e299-43c6-87a8-b78184c70698: Standard # Standard
+    7a858b5b-63e8-46b5-b58c-2d610aa94193: Sammlung # Sammlung
     7e9ba3cc-acd2-4baa-ad4a-a0c936316dec: Geschichten # Geschichten
     7f3606d2-88a5-4912-a779-e0a26737e261: Bild-Alttext # Bild-Alttext
     08cc6be7-aaba-4e69-9add-118341b6171b: Datenschutz # Datenschutz
     8e4dd4d0-be39-48db-b977-dc2bf7655579: Geschichte # Geschichte
     9ddbc4e0-4c02-4dda-ae0f-541f66f6d950: Sammlungen # Sammlungen
+    13c8564a-f8d2-469e-8154-599bf6ef3455: 'Märchen des Tages' # Märchen des Tages
+    14a2cc67-f120-47c2-9e90-c6bf26e83377: Klassiker # Klassiker
     19a8c7f5-af22-411d-b853-b7e733678b85: Bildunterschrift # Bildunterschrift
     34cd7edf-adb7-4148-93db-b18e5d721a71: Datenschutz # Datenschutz
     42ca441c-21db-4cce-9dd6-74af65fdf470: Body # Body
@@ -278,15 +282,18 @@ meta:
     619dd491-28e5-43a2-892b-5e7a6a713275: Standard # Standard
     892cd95a-b813-4d5d-a5e6-5e20e3db19a5: Home # Home
     2480e5ab-25e5-4372-9a26-e37a1d55bece: Geschichten # Geschichten
+    5380e350-b359-48a0-82ad-3903b3056fa3: 'Märchen unter 10 Minuten' # Märchen unter 10 Minuten
     6110af5f-6541-462e-9399-8ecbb64ba158: Kontakt # Kontakt
     7178f6c5-4d84-4be2-ae67-46508d1dbcc8: SEO # SEO
     7274ef7d-b972-4149-a0a6-42d17fa8a3f7: Geschichten # Geschichten
     9590d88e-4c68-4ee2-bf34-09bbb3fc8833: 'Armin & Artur' # Armin & Artur
+    09609ea0-b7de-48a9-b460-66c52e396edf: 'Lyrischer Titel' # Lyrischer Titel
     83262edd-7265-48b8-adcd-1a1cec0c51a8: 'Armin & Artur' # Armin & Artur
     991163cd-0f18-4991-8e36-4272130a111f: Impressum # Impressum
     a4115fcc-1941-4286-a95a-929dfa29b161: Intro # Intro
     aa7ac094-9175-46bf-a56b-eaaadd28eb16: Start # Start
     b498f081-a398-4f88-b9b7-25afbf7a44f9: 'Public Schema' # Public Schema
+    bc88ad51-fa04-4adb-a0f2-365b8a1b9179: Klassiker # Klassiker
     bc114695-97bc-44c6-a0de-c5152243cd6e: Kurzbeschreibung # Kurzbeschreibung
     c5ebf014-54d4-4484-b7aa-0329a1245008: Impressum # Impressum
     c30a509f-3a8c-4422-9e5a-5a19518cad94: Klassiker # Klassiker
@@ -297,6 +304,7 @@ meta:
     eafb163d-141a-4a25-8213-4922010ea059: Common # Common
     f8a6c0a3-3c3d-4d8d-8746-66529b735b79: Kontakt # Kontakt
     f8a87993-286a-442c-95f6-d708ba6fc31d: Start # Start
+    f8f886d0-d1ad-4923-afbc-c53e99605708: Erscheinungsjahr # Erscheinungsjahr
 plugins:
   assetrev:
     edition: standard
@@ -330,6 +338,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  redirect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.5
   reverserelations:
     edition: standard
     enabled: true

@@ -3,346 +3,44 @@
 body {
 	font-family: $base-font;
 	font-weight: 400;
-	font-size: 16px;
-	color: $text-color;
-	//-webkit-font-smoothing: antialiased;
+	//color: $body-color;
 }
 
-article.single-debate-post {
-	div.module__text p,
-	div.module__text ul {
-		font-family: $article-copy;
-	}
-	ul li {
-		list-style-type: disc;
-	}
-}
-
-h1, 
-*.as-h1,
-h1 span,
-*.as-h1 span {
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	hyphens: none;
+h1 {
 	text-wrap: balance;
 }
-h1, 
-h2, 
-*.as-h1 {
-	//font-family: 'UnitWeb', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	&.display {
-		//font-family: 'realHead', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		//font-weight: 700;
-		font-size: calc(2.4vw + 1.1rem);
-		line-height: 1.4em;
-	}
+.font-small-caps {
+    font-variant: all-small-caps;
+    letter-spacing: .8px;
+    font-family: Signifier Web,serif;
+    font-size: .9em;
 }
+article.story {
 
-h1, 
-h2, 
-h3, 
-p, 
-ul 
-li {
-	margin: 0;
 }
-
-b, 
-strong {
-	font-weight: 700;
-}
-
-p,
-h3 {
-	&:last-child, &:last-of-type {
-		margin-bottom: 0;
-	}
-}
-
-
-// 
-// FONT SIZES
-//
-
-
-h1, 
-*.as-h1,
-section.article-body div.module__text h2,
-section.article-body div.module__text h3,
-section.search-results h1  {
-	font-size: 36px;
-	line-height: 1.1em;
-	hyphens: auto;
-	font-weight: 700;
-}
-section.sub-section h1  {	
-	font-size: 20px;
-	line-height: 28px;
-}
-section.article-body div.module__text h3 {
-	font-size: 24px;
-	line-height: 26px;
-}
-section.article-body div.module__text h3,
-.as-h3,
-section.search-results h1 {
-	font-size: 26px;
-	line-height: 32px;
-}
-
-p, 
-blockquote, 
-ul,
-ol,
-li, 
-button, 
-form,
-*.as-h2,
-*.small-font h1 {
-	font-size: 22px;
-	line-height: 28px;
-	section.article-intro div.module__text & {
-
-	}
-	section.article-body div.module__text & {
-		font-size: 20px;
-    	line-height: 1.45em;
-		hyphens: auto;
-	}
-	&.display {
-		font-size: 36px;
-		line-height: 1.3em;
-	}
-}
-.overline,
-.overline * {
-	letter-spacing: .8px;
-}
-figcaption,
-small,
-.small-font,
-.small-font,
-form label,
-input::placeholder {
-	font-size: 14px;
-	line-height: 18px;
-	-moz-font-feature-settings: "salt";
-	-webkit-font-feature-settings: "salt";
-	font-feature-settings: "salt";
-}
-.small-font {
-	p, 
-	blockquote, 
-	ul,
-	ol,
-	li, {
-		font-size: 16px;
-	}
-}
-header.header-global * {
-	font-size: 1em;
-}
-footer.footer-global {
-	p, li {
-		font-size: 14px;
-		line-height: 14px;
-	}
-	
-}
-
-@include for-tablet-landscape-up() {
-	p, 
-	blockquote, 
-	ul,
-	ol,
-	li, 
-	button, 
-	form,
-	*.as-h2,
-	*.small-font h1 {
-		font-size: 22px;
-		line-height: 28px;
-		section.article-intro div.module__text & {
-			font-size: 24px;
-			line-height: 28px;
-		}
-		section.article-body div.module__text & {
-			font-size: 19px;
-			line-height: 26px;
-		}
-		&.display {
-			font-size: 36px;
-			line-height: 1.3em;
+article {
+	&.story {
+		section.article-body {
+			p {
+				text-align: justify;
+				margin-bottom:0 !important;
+				&:not(:first-child) {
+				    text-indent: 50px;
+				}
+			}
+			blockquote {
+				font-style: italic;
+				margin: 1.5rem 0 1.5rem 50px;
+			}
 		}
 	}
-	section.sub-section h1  {	
-		font-size: 22px;
-		line-height: 28px;
-	}
-}
-
-@include for-desktop-up() {
-	h1,  
-	*.as-h1 {
-		font-size: 54px;
-		line-height: 1.25em;
-		article.title-debate & {
-			font-size: 42px;
-			line-height: 42px;
+	&.generic {
+		h2 {
+			margin: 2rem 0 1rem 0;
 		}
-	}
-	p, 
-	blockquote, 
-	ul,
-	ol,
-	li, 
-	button, 
-	form,
-	*.as-h2,
-	select  {
-		font-size: 22px;
-		line-height: 1.45em;
-		section.article-intro div.module__text & {
-			font-size: 28px;
-			line-height: 38px;
-		}
-		section.article-body div.module__text & {
-			font-size: 22px;
-			line-height: 34px;
-		}
-		&.display {
-			font-size: 40px;
-		}
-	}
-	section.article-body div.module__text h2 {
-		font-size: 22px;
-			line-height: 30px;;
-	}
-	section.article-body div.module__text h3,
-	.as-h3,
-	section.search-results h1 {
-		font-size: 24px;
-		line-height: 32px;
-	}
-	.dim {
-		font-size: .9em;
-	}
-	.overline,
-	.overline *,
-	.over-line,
-	.over-line * {
-		font-size: 17px;
-	}
-	nav.main-nav ul li {
-		font-size: 18px;
-	}
-	nav.main-
-	figcaption,
-	small,
-	.small-font,
-	.small-font,
-	input[type="submit"],
-	input::placeholder {
-		font-size: 16px;
-		line-height: 24px;
-		letter-spacing: 0;
-	}
-	header.header-global * {
-		font-size: 18px;
-	}
-}
-@include for-big-desktop-up() {
-	p, 
-	blockquote, 
-	ul,
-	ol,
-	li, 
-	button, 
-	form,
-	*.as-h2,
-	select  {
-		section.article-body div.module__text & {
-			font-size: 24px;
-			line-height: 38px;
-		}
-		&.display {
-			font-size: 46px;
-			line-height: 1.5em;
-		}
-	}
-	section.article-body div.module__text h2 {
-		font-size: 24px;
-			line-height: 35px;
-	}
-}
-
-blockquote {
-	font-style: italic;
-}
-
-figcaption,
-input::placeholder,
-*.font-weight-medium {
-	font-weight: 600;
-}
-small {
-	display: block;
-	line-height: 1.45em;
-}
-small strong {
-	-webkit-font-smoothing: antialiased;
-}
-.upper, 
-form label,
-.page-header h1 {
-
-}
-.sc {
-	font-variant: small-caps;
-}
-.ln {
-	font-variant-numeric: lining-nums;
-}
-table {
-	font-variant-numeric: tabular-nums;
-}
-.body-text  {
-	p, h2 {
-		margin-bottom: 1em;
-	}
-	ol {
-		margin-bottom: 1em !important;
-		li {
-			margin-bottom: 1em !important;
+		h3, h4 {
+			font-weight: 700;
 		}
 	}
 }
-.dont-break-out {
-	/* These are technically the same, but use both */
-	overflow-wrap: break-word;
-	word-wrap: break-word;
-	-ms-word-break: break-all;
-	/* This is the dangerous one in WebKit, as it breaks things wherever */
-	word-break: break-all;
-	/* Instead use this non-standard one: */
-	word-break: break-word;
-}
-input::placeholder {
-	opacity: .5;
-}
-*.middle-grey {
-	color: $middle-grey;
-}
-*.upper {
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: 400;
-}
-*.font-small-caps {
-	font-variant: all-small-caps;
-	//font-size: 1.2em;
-	letter-spacing: .8px;
-	font-family: $base-font-sc;
-	font-size: .9em;
-}
+

@@ -1,0 +1,24 @@
+fieldLayouts:
+  455eac33-dc36-429d-9685-55ef45978ed1:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 2480e5ab-25e5-4372-9a26-e37a1d55bece # Geschichten
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6678e32e-ec01-4e0d-b71e-cfdf4d1fc770
+            userCondition: null
+            warning: null
+            width: 100
+        name: Geschichten
+        uid: 2b4c016c-0340-4904-997b-3c84147e2cfe
+        userCondition: null
+handle: storyOfTheDay
+name: 'Märchen des Tages'
+sortOrder: 1

@@ -28,6 +28,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "bootstrap": "^5.3.0",
     "gulp-multi-dest": "0.0.4",
     "tiny-slider": "^2.9.4"
   }

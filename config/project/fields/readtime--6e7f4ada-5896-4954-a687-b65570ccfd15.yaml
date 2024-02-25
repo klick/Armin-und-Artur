@@ -1,5 +1,5 @@
 columnSuffix: null
-contentColumnType: text
+contentColumnType: integer
 fieldGroup: 7274ef7d-b972-4149-a0a6-42d17fa8a3f7 # Geschichten
 handle: readtime
 instructions: null
@@ -7,7 +7,7 @@ name: Readtime
 searchable: false
 settings:
   allowSelect: false
-  columnType: text
+  columnType: integer
   decimals: 0
   displayType: textinput
   fieldTwig: '{{ readTime(entry.body, rate=179, minimum=5) }}'

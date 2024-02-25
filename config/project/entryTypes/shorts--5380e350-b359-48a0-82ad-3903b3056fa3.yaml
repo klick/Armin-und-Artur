@@ -1,0 +1,47 @@
+fieldLayouts:
+  496a1fbf-bad1-46c8-90d6-0bb2cf49b707:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: bdd3f5fb-16f8-40f0-888c-21929ea91cd7
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: d42c9b32-8d04-4855-9dc4-684942298e2d
+        userCondition: null
+handle: shorts
+hasTitleField: true
+name: 'Märchen unter 10 Minuten'
+section: 0cb29916-8e38-4a34-9080-9abeaf29e4dc # Märchen unter 10 Minuten
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+sortOrder: 1
+titleFormat: '{section.name|raw}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

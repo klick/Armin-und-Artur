@@ -7,9 +7,9 @@
 {% do phpTypographySettings.set_diacritic_language('de') %} #}
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.app.locale }}">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.app.locale }}" style="border:none">
 <head>
-	{# <title>{{ entry.title is defined ? entry.title ~ ' | ' : null }}Armin & Artur</title> #}
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="home" href="{{ siteUrl }}" />
@@ -21,19 +21,23 @@
 	<link rel="preload" href="/fonts/signifier/signifier-regular-italic.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="/fonts/signifier/signifier-bold.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="/fonts/signifier/signifier-bold-italic.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="theme-color" content="#ffffff">
 </head>
 
-<body class="">
+<body>
 
-	<div class="container">
+
+	<div class="site-wrapper">
 
 		<header class="header-global">
-			<div class="content">
-				<div class="header-bar">
-					<div class="site-name">
-						<p><a href="/"><span class="">Armin & Artur</span></a></p>
-					</div>
-				</div>
+			<div class="container my-4 my-lg-5 text-center">
+				<p><a href="/"><span class="text-dark font-small-caps">Armin & Artur</span></a></p>
 			</div>
 		</header>
 
@@ -44,23 +48,24 @@
 			{% endblock %}
 		</div>
 
-		<footer class="footer-global color-negative">
-			<div class="content">
-				<div class="footer-bar">
-					{# <div class="site-name">
-						<p>Armin & Artur</p>
-					</div> #}
-					<div class="links font-small-caps">
-						<ul>
-							{# <li><a href="kontakt">Kontakt</a></li> #}
-							<li><a href="impressum">Impressum</a></li>
-							<li><a href="datenschutz">Datenschutz</a></li>
-						</ul>
-					</div>	
-				</div>
+		<footer class="footer-global color-negative mt-5">
+			<div class="container text-center font-small-caps">
+				<ul class="list-unstyled">
+					<li class="d-inline"><small><a class="text-body-tertiary me-3" href="kontakt">Kontakt</a></small></li>
+					<li class="d-inline"><small><a class="text-body-tertiary me-3" href="impressum">Impressum</a></small></li>
+					<li class="d-inline"><small><a class="text-body-tertiary" href="datenschutz">Datenschutz</a></small></li>
+				</ul>
 			</div>
 		</footer>
+
 	</div>
+
+		
+
+		
+
+		
+
 
 
 {# {% do view.registerJsFile(rev('js/bundle.js')) %} #}

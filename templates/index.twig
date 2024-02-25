@@ -1,37 +1,82 @@
 {% import '_macros.twig' as macros %}
-{% set allEntries = craft.entries.section('geschichten').type('geschichte').with(['kategorie']).orderBy('title asc').all() %}
-{% set allEntriesByGroup = allEntries | group('title[:1]') %}
+{# {% set allEntries = craft.entries.section('geschichten').type('geschichte').with(['kategorie']).orderBy('title asc').all() %}
+{% set allEntriesByGroup = allEntries | group('title[:1]') %} #}
+{% set storyOfTheDay = storyOfTheDay.geschichten.with(['verfasser']).orderBy('RAND()').one() %}
+{% set collections = craft.entries.sectionId(6).all() %}
+{% set authors = craft.entries.sectionId(7).all() %}
 
 
 {% extends "_layout" %}
 
 {% block content %}
-<div class="content">
-<div style="text-align: center">
-<h1 style="font-weight:400;font-size:5em;margin-bottom:1em"><span style="color:#d32025">Deutsche M&auml;rchen</span><span style="display:block;font-size:.45em;line-height:1;font-style:italic">zum Lesen und Vorlesen</span></h1>
-</div>
-    <section class="sub-section tales-list">
-        <div class="grid">
-            <div class="list centered">
-            {% cache %}
-            {% for firstletter, entriesInGroup in allEntriesByGroup %}
-            <h3><span style="color:#d32025;font-size:1.4em">{{firstletter}}</span></h3>
-            <ul>
-            {% for entry in entriesInGroup %}
-                <li>
-                    <a href="{{ entry.url }}" style="display:block;padding: 6px 0">
-                        {{ entry.title|raw }} 
-                        {# <small style="font-size: 14px">{{ entry.body }} </small><br><a href="{{ entry.cpEditUrl }}">Edit</a> #}
-                        {# ({{ entry.readtime }} {{ entry.readtime > 1 ? 'Minuten' : 'Minute' }}) #}
-                    </a>
-                </li>
-            {% endfor %}
-            </ul><br><br>
-            {% endfor %}
-            {% endcache %}
-            </div>
-        </div>
-    </section>
-</div>
 
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <h1 class="display-6 text-center">
+        <span class="">Deutsche Märchen & Sagen</span><br>
+        <small class="d-block fs-5"><i>zum Lesen und Vorlesen</i></small>
+      </h1>
+      
+      <div class="row justify-content-center mt-5 mt-lg-5 mb-5">
+        <div class="col-11 col-lg-10">
+          {# {% cache for 1 day %} #}
+          <article class="story"> 
+            <header class="text-center">
+              {# <p class="font-small-caps text-secondary">Märchen des Tages</p> #}
+              <h1 class="display-4 fw-normal px-3 px-lg-5"><a class="text" href="{{ storyOfTheDay.url }}">{{ storyOfTheDay.title|raw }}</a></h1>
+              <p class="author"><i class="me-2">von</i> <span class="font-small-caps">{{ storyOfTheDay.verfasser.one().title }}</span><span class="font-small-caps text-secondary d-block d-md-inline"><span class="d-none d-md-inline"> | </span>Lesezeit: {{ storyOfTheDay.readtime }} Minuten</span></p>
+            </header>
+            <section class="article-body fs-4 text-justify">
+              {{ storyOfTheDay.body | chop(limit=1, allowedTags="<em>") | replace({'<p>':'<p class="text-justify m-0">'})  | typogrify }}
+              <div class="mt-3 text-center">
+                <small><a class="text-secondary" href="{{ storyOfTheDay.url }}">Weiterlesen &rarr;</a></small>
+              </div>
+            </section>
+          </article>   
+          {# {% endcache %} #}
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mt-md-6 text-center text-md-start">
+      <div class="mb-4 mb-md-3 mb-lg-4">
+        <p class="font-small-caps"><a href="{{ url('klassiker-die-schönsten-märchen') }}"><mark class="px-2 pt-1 pb-1 bg-primary text-white rounded-1">Die Klassiker &rarr;</mark></a></p>
+      </div>
+      {% cache %}
+      <div class="mb-4 mb-md-3 mb-lg-4">
+        <p class="font-small-caps m-0 fw-bold">Sammlungen</p>
+        <ul class="list-unstyled m-0 ms-md-3">
+        {% for entry in collections %}
+          <li><a href="{{ entry.url }}" class="color-base"><small>{{ entry.title|raw }}</small></a></li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endcache %}
+      {% cache for 1 day %}
+      <div class="mb-4 mb-md-3 mb-lg-4">
+        <p class="font-small-caps m-0 fw-bold">Unter 10 Minuten</p>
+        <ul class="list-unstyled m-0 ms-md-3">
+        {% set shorts = craft.entries.sectionId(1).readtime(["<= 10"]).orderBy('RAND()').limit(3) %}
+        {% for entry in shorts %}
+          <li><a href="{{ entry.url }}" class="color-base"><small>{{ entry.title|raw }}</small></a> <small class="text-secondary">({{ entry.readtime }}m)</small></li>
+        {% endfor %}
+        </ul>
+        <small class="ms-3 mt-2 d-block font-small-caps"><a href="{{ url('maerchen-unter-10-minuten') }}" class="color-base">Mehr &rarr;</a></small>
+      </div>
+      {% endcache %}
+      {% cache %}
+      <div class="mb-4 mb-md-3 mb-lg-4">
+        <p class="font-small-caps m-0 fw-bold">Verfasser</p>
+        <ul class="list-unstyled m-0 ms-md-3">
+        {% for entry in authors %}
+          <li><a href="{{ entry.url }}" class="color-base"><small>{{ entry.title|raw }}</small></a></li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endcache %}
+    </div>
+  </div>
+</div>
 {% endblock %}

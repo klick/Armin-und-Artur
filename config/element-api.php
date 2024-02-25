@@ -25,11 +25,10 @@ return [
             return [
                 'elementType' => Entry::class,
                 'cache' => false,
-                'elementsPerPage' => 300,
+                'elementsPerPage' => 500,
                 'paginate' => false,
                 'criteria' => [
                     'section' => 'geschichten',
-                    'relatedTo' => 2009,
                 ],
                 'transformer' => function(Entry $entry) {
                     // $imagerx = Craft::$app->plugins->getPlugin('imager-x');
@@ -61,6 +60,7 @@ return [
                         'titel' => $entry->title,
                         'verfasser' => $entry->verfasser->one() ? $entry->verfasser->one()->title : null,
                         'id' => $entry->id,
+                        'radtime' => $entry->readtime,
 
                         // 'Verfasser Alter' => $entry->writer->one()->age,
                         // 'Verfasser Geburtsjahr' => $entry->writer->one()->birth,

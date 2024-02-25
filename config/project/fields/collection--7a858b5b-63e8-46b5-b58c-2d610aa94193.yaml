@@ -1,23 +1,24 @@
 columnSuffix: null
 contentColumnType: string
 fieldGroup: eafb163d-141a-4a25-8213-4922010ea059 # Common
-handle: kategorie
+handle: collection
 instructions: null
-name: Kategorie
-searchable: true
+name: Sammlung
+searchable: false
 settings:
   allowSelfRelations: false
-  branchLimit: 1
+  branchLimit: null
   localizeRelations: false
-  maintainHierarchy: true
+  maintainHierarchy: false
   maxRelations: null
   minRelations: null
   selectionLabel: null
-  showSiteMenu: true
-  source: 'group:359d960b-bbd2-4552-9e48-5f69abc91382' # Typ
+  showSiteMenu: false
+  sources:
+    - 'section:9ddbc4e0-4c02-4dda-ae0f-541f66f6d950' # Sammlungen
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null
 translationKeyFormat: null
 translationMethod: site
-type: craft\fields\Categories
+type: craft\fields\Entries

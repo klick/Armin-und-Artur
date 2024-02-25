@@ -1,0 +1,40 @@
+{% extends "_layout" %}
+{% set allEntries = craft.entries.section('geschichten').relatedTo(entry).with(['kategorie']).orderBy('title asc').all() %}
+{% set allEntriesByGroup = allEntries | group('title[:1]') %}
+
+{% block content %}
+
+<div class="container">
+	<article class="story">
+		<header class="text-center mb-4">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-5 fs-4">
+					<h1 class="display-5">{{ entry.title | widont }}</h1>
+				</div>
+			</div>
+		</header>
+		<section class="article-body text-center">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-7">
+					{% cache %}
+		            {% for firstletter, entriesInGroup in allEntriesByGroup %}
+		            <h3 class="h5 fw-bold">{{firstletter}}</h3>
+		            <ul class="list-unstyled">
+		            {% for entry in entriesInGroup %}
+		                <li>
+		                    <a href="{{ entry.url }}" style="display:block;padding: 6px 0">
+		                        {{ entry.title|raw }} 
+		                        {# <small style="font-size: 14px">{{ entry.body }} </small><br><a href="{{ entry.cpEditUrl }}">Edit</a>
+		                        ({{ entry.readtime }} {{ entry.readtime > 1 ? 'Minuten' : 'Minute' }}) #}
+		                    </a>
+		                </li>
+		            {% endfor %}
+		            </ul><br><br>
+		            {% endfor %}
+		            {% endcache %}
+				</div>
+			</div>
+		</section>
+	</article>
+</div>
+{% endblock %}

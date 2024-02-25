@@ -2,43 +2,22 @@
 
 {% block content %}
 
-<div class="content">
-
-	<article class="page">
-		<header class="header page-header">
-			<div class="grid">
-				<div class="contents">
-					<h1>{{ entry.title }}</h1>
+<div class="container">
+	<article class="generic">
+		<header class="text-center">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-5 fs-4">
+					<h1 class="display-5">{{ entry.title | widont }}</h1>
 				</div>
 			</div>
 		</header>
-		<section class="article-intro">
-			<div class="grid">
-				<div class="contents module__text">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolore culpa architecto facilis possimus sint laborum dolorum ex, ut harum consectetur ab labore doloremque temporibus earum libero amet tempora iure?</p>
-				</div>
-			</div>
-		</section>
 		<section class="article-body">
-			<div class="grid">
-				<div class="contents module__text">
-					{% if entry.text is defined and entry.text is not empty %}
-					{{ entry.text }}
-					{% else %}
-					<p><em>Lorem ipsum dolor sit amet</em> consectetur adipisicing elit. Fugiat, dolorem laborum. Voluptate labore vel eaque laboriosam quod inventore consequuntur deserunt architecto quibusdam atque ipsam autem doloribus aliquid animi quisquam, et. Omnis laudantium impedit necessitatibus ea, officiis autem ipsum sapiente nisi commodi reiciendis praesentium aut culpa ad odit maiores recusandae repudiandae, hic. Magnam, cupiditate libero, doloremque delectus deserunt doloribus quasi dolor?</p>
-					<p>Eaque omnis, laborum amet ratione ipsum, repellat. Fugiat temporibus hic animi, reprehenderit voluptas iure optio aperiam expedita voluptatibus illum laboriosam recusandae saepe exercitationem repellendus ullam. Quam iusto, corporis dolor culpa.</p>
-					{% endif %}
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-7 fs-4">
+					{{ entry.body | typogrify }}
 				</div>
 			</div>
 		</section>
 	</article>
-	
-
-	
-
-
-
-
 </div>
-
 {% endblock %}

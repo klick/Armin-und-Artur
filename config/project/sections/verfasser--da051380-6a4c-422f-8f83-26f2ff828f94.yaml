@@ -8,5 +8,5 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: verfasser/_entry
-    uriFormat: 'verfasser/{slug}'
+    uriFormat: '{slug}'
 type: channel
