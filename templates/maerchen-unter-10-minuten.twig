@@ -16,17 +16,15 @@
 			<div class="row justify-content-center">
 				<div class="col-11 col-md-9 col-lg-7 fs-4">
 					{% cache %}
-					{% set shorts = craft.entries.sectionId(1).readtime(["<= 10"]).orderBy('title').all() %}
-					{% set allShortsByGroup = shorts | group('title[:1]') %}
-          {% for firstletter, entriesInGroup in allShortsByGroup %}
-          <h3 class="h5 fw-bold">{{firstletter}}</h3>
+					{% set shorts = craft.entries.sectionId(1).readtime(["<= 10"]).orderBy('readtime').all() %}
+					{% set allShortsByGroup = shorts | group('readtime') %}
+          {% for minutes, entriesInGroup in allShortsByGroup %}
+          <h3 class="h2 fw-bold mt-6 font-small-caps">~{{minutes}}MIN</h3>
           <ul class="list-unstyled">
           {% for entry in entriesInGroup %}
             <li>
-              <a href="{{ entry.url }}" style="display:block;padding: 6px 0">
-                {{ entry.title|raw }} 
-                {# <small style="font-size: 14px">{{ entry.body }} </small><br><a href="{{ entry.cpEditUrl }}">Edit</a>
-                ({{ entry.readtime }} {{ entry.readtime > 1 ? 'Minuten' : 'Minute' }}) #}
+              <a href="{{ entry.url }}" style="display:block;padding: 6px 0" class="">
+                <div>{{ entry.title|raw }}</div>
               </a>
             </li>
           {% endfor %}

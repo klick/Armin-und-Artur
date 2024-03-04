@@ -20,6 +20,61 @@ img {
         color: $primary !important;
     }
 }
+[data-bs-theme="dark"] {
+	.color-base {
+    color: #dee2e6 !important;
+	    &:hover {
+	        color: #e5797c !important;
+	    }
+	}
+}
+div.site-tools {
+	svg {
+		width: 25px;
+		height: 25px;
+		cursor: pointer;
+		path {
+			fill: $body-color;
+		}
+		[data-bs-theme="dark"] & {
+			path {
+				fill: #dee2e6 !important;
+			}
+		}
+	}
+}
+div.close {
+	cursor: pointer;
+}
+svg.close {
+	cursor: pointer;
+	path {
+			fill: $body-color;
+		}
+		[data-bs-theme="dark"] & {
+			path {
+				fill: #dee2e6 !important;
+			}
+		}
+}
+svg.color-mode-icon {
+	path {
+		fill: $body-color;
+		&.moon {
+			display: none;
+		}
+	}
+	[data-bs-theme="dark"] & {
+		path {
+			&.moon {
+				display: block;
+			}
+			&.sun {
+				display: none;
+			}
+		}
+	}
+}
 ul.arrowed {
 	li {
 		margin-left: 1em;

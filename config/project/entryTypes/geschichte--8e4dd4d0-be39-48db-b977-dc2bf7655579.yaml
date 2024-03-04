@@ -57,6 +57,63 @@ fieldLayouts:
             width: 25
           -
             elementCondition: null
+            fieldUid: 0cb827ea-5f8e-47dd-99f3-c5dcfe109904 # Schlagwörter
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5ff08c34-15a6-49a1-9964-f9dc52320f01
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 02ab3a5d-5422-48bc-8189-ae183eaa67a5 # Thema
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 640fd04a-eb2a-4592-9245-d737c47bb651
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
+            fieldUid: 829d7233-deb8-4544-bce0-f8761be6d04c # Klassifikation
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 85d9b9f3-8989-47d7-8aa6-acbc0a4f2def
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\elements\conditions\RelatedToConditionRule
+                  elementId: '2003'
+                  elementType: craft\elements\Entry
+                  uid: b1ced38d-8498-4a6e-b335-168d1a66fd09
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: 2b8dd1f0-4052-42e4-8538-cae0142ec6d5 # KHM Nummerierung
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4787a16a-526a-45a5-ab72-eb106a38369e
+            userCondition: null
+            warning: null
+            width: 25
+          -
+            elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule
             uid: 1f5bcf2f-931e-419e-a5fc-447ecf99fc3b
             userCondition: null
@@ -93,18 +150,6 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: ac493a10-fd56-4c77-8a86-ddca6dfff27a
-            userCondition: null
-            warning: null
-            width: 25
-          -
-            elementCondition: null
-            fieldUid: ec6155eb-66af-499d-bb3b-8508b2059918
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 1e0d99ad-ec8d-4487-8688-dd36e0c61d2a
             userCondition: null
             warning: null
             width: 25

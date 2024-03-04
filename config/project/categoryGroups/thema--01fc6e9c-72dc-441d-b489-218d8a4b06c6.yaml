@@ -1,0 +1,71 @@
+defaultPlacement: end
+fieldLayouts:
+  13af4071-aa50-4aa4-9a75-544865d1992a:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: e4e3b78b-3ec8-4a40-8ac4-67e1723fbbdd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: ea544490-5469-4ada-905e-2683e038aa74 # Bild
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 88db001d-c9a5-447b-9ea5-38ec9116fb4e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 42ca441c-21db-4cce-9dd6-74af65fdf470 # Body
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ffd1e65c-08e2-4822-9f43-3b287e159604
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: c6e694a7-1089-4e35-bdb1-a83ed6b4dcb4
+        userCondition: null
+handle: thema
+name: Thema
+siteSettings:
+  9590d88e-4c68-4ee2-bf34-09bbb3fc8833: # Armin & Artur
+    hasUrls: true
+    template: null
+    uriFormat: 'thema/{slug}'
+structure:
+  maxLevels: null
+  uid: 6439209c-1242-4509-87b3-dcc8d59c10a2

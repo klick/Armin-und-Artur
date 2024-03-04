@@ -2,11 +2,31 @@
 {% set allEntries = craft.entries.section('geschichten').relatedTo(entry).with(['kategorie']).orderBy('title').all() %}
 {% set allEntriesByGroup = allEntries | group('title[:1]') %}
 
+
+
 {% block content %}
 
 <div class="container">
 	<article class="story">
 		<header class="text-center mb-4">
+		{% if entry.bild|length %}
+			<div class="row justify-content-center m-3">
+				<div class="col-6 col-md-6 col-lg-2">
+					{% set profileImg = entry.bild.one() %}
+					{% set profileImgTransforms = {
+					  '(min-width: 1px)': {
+					      width: 200,
+					      height: 200,
+					      format: 'webp',
+					  }
+					} %}
+					{%- set profileImgAttributes = {alt: profileImg.imgAlttext, title: profileImg.title, class: 'rounded-circle', loading:'lazy' } -%}
+					<figure class="m-0">
+						{{ craft.images.pictureMedia(profileImg, profileImgTransforms, null, profileImgAttributes) }}
+					</figure>
+				</div>
+			</div>
+			{% endif %}
 			<div class="row justify-content-center">
 				<div class="col-11 col-md-9 col-lg-5 fs-4">
 					<h1 class="display-5">{{ entry.title | widont }}</h1>

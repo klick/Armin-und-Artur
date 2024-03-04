@@ -1,0 +1,23 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: eafb163d-141a-4a25-8213-4922010ea059 # Common
+handle: tags
+instructions: null
+name: Schlagwörter
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showSiteMenu: true
+  source: 'taggroup:706dd587-cd73-45b9-bfd0-fb3cd5604640' # Thema
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Tags

@@ -1,0 +1,38 @@
+{% extends "_layout" %}
+
+
+{% set searchQuery = craft.app.request.getParam('suchbegriff') %}
+{% set entries = craft.entries()
+  .search(searchQuery)
+  .orderBy('score')
+  .all() %}
+
+{% do seomatic.meta.seoTitle(entries|length ~ " Treffer für die Suche nach „" ~ searchQuery ~ '“') %}
+{% do seomatic.meta.seoDescription(entries|length ~ " Treffer für die Suche nach „" ~ searchQuery ~ '“ | Deutsche Märchen zum Lesen und Vorlesen') %}
+
+{% block content %}
+
+<div class="container">
+<div class="row justify-content-center">
+	<div class="col-11 col-md-9 col-lg-6 fs-4">
+	<h1 class="mb-4">{{ entries|length }} Einträge für die Suche nach „{{ searchQuery }}“</h1>
+	{% if entries|length %}
+		<ul class="list-unstyled">
+		{% for entry in entries %}
+      <li>
+        <a href="{{ entry.url }}" style="display:inline-block;padding: 6px 0">
+          <span class="text-secondary">☞</span>&ensp;{{ entry.title|raw }} 
+          {# <small style="font-size: 14px">{{ entry.body }} </small><br><a href="{{ entry.cpEditUrl }}">Edit</a>
+          ({{ entry.readtime }} {{ entry.readtime > 1 ? 'Minuten' : 'Minute' }}) #}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+    {% else %}
+  <p>Keine Ergebnisse für „{{ searchQuery }}“</p>
+{% endif %}
+	</div>
+</div>
+	
+</div>
+{% endblock %}

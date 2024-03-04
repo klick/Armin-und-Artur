@@ -11,6 +11,13 @@
             "type": "toggle"
           }
         },
+        "Spoken": {
+          "args": {
+            "tag": "span",
+            "class": "spoken",
+            "type": "toggle"
+          }
+        },
         "marked": {
           "args": "mark"
         },

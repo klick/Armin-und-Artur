@@ -12,11 +12,11 @@
 				</div>
 			</div>
 		</header>
-		<section class="article-body text-center">
+		<section class="article-body">
 			<div class="row justify-content-center">
 				<div class="col-11 col-md-9 col-lg-7 fs-4">
 					{% cache %}
-						{% set classics = craft.entries.sectionId(1).klassiker(1).all() %}
+						{% set classics = craft.entries.sectionId(1).klassiker(1).orderBy('title asc').all() %}
 						{% set allClassicsByGroup = classics | group('title[:1]') %}
             {% for firstletter, entriesInGroup in allClassicsByGroup %}
             <h3 class="h5 fw-bold">{{firstletter}}</h3>

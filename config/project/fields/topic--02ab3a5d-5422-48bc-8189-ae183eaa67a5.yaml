@@ -1,0 +1,23 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: eafb163d-141a-4a25-8213-4922010ea059 # Common
+handle: topic
+instructions: null
+name: Thema
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showSiteMenu: true
+  source: 'group:01fc6e9c-72dc-441d-b489-218d8a4b06c6' # Thema
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

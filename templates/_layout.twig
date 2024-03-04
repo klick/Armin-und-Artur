@@ -5,12 +5,19 @@
 {# {% set phpTypographySettings = getPhpTypographySettings() %}
 {% do phpTypographySettings.set_hyphenation_language('de') %}
 {% do phpTypographySettings.set_diacritic_language('de') %} #}
+{% if getCookie('aatheme') %}
+	{% set theme = getCookie('aatheme') %}
+
+{% else %}
+  {% set theme = 'light' %}
+{% endif %}
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.app.locale }}" style="border:none">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.app.locale }}" style="border:none" class="border-0">
 <head>
 
 	<meta charset="UTF-8">
+	<meta name="color-scheme" content="dark light">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="home" href="{{ siteUrl }}" />
 	{% hook 'seomaticRender' %}
@@ -27,19 +34,51 @@
 	<link rel="manifest" href="/site.webmanifest">
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
 	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="theme-color" content="#ffffff">
+	<meta name="theme-color" content="{{ theme == 'light' ? '#F9F4E6' : '#212529' }}">
 </head>
 
-<body>
-
+<body data-bs-theme="{{ theme }}" style="border: none;">
 
 	<div class="site-wrapper">
 
 		<header class="header-global">
-			<div class="container my-4 my-lg-5 text-center">
-				<p><a href="/"><span class="text-dark font-small-caps">Armin & Artur</span></a></p>
+			<div class="container my-4 my-lg-5">
+				<div class="row justify-content-center">
+					<div class="col-11 col-md-12">
+						<div class="headerbar d-flex justify-content-between align-items-center">
+							<div class="site-name">
+								<p class="m-0"><a href="/"><span class="color-base font-small-caps">Armin & Artur</span></a></p>
+							</div>
+							<div class="search-form d-none d-md-block flex-grow-1 flex-md-grow-0 ms-auto me-md-3">
+								<form action="{{ url('suche') }}" class="">
+									<div class="d-flex align-items-center">
+										<input class="form-control p-1 ps-2 flex-grow-1 me-2" type="search" name="suchbegriff" aria-label="Search" placeholder="Suchbegriff + Enter">
+										<div class="close d-md-none">
+											/
+										</div>
+										<div class="close d-md-none">
+											x
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="site-tools d-md-flex">
+								<svg class="search-icon me-1 d-md-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								  <g style="" transform="matrix(0.8426949977874756, 0, 0, 0.8426949977874756, 1.8449569940567017, 1.8449560403823995)">
+								    <path d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z"/>
+								  </g>
+								</svg>
+								<svg class="color-mode-icon {{ theme }}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								  <path class="sun" d="M 6.693 3.969 C 6.44 3.548 6.738 3.011 7.229 3.002 C 7.464 2.998 7.682 3.124 7.797 3.329 L 8.618 4.746 C 8.868 5.171 8.564 5.708 8.07 5.711 C 7.841 5.713 7.629 5.593 7.513 5.395 L 6.693 3.969 Z M 11.797 6.078 C 16.198 6.082 18.945 10.848 16.742 14.658 C 14.538 18.468 9.037 18.464 6.839 14.651 C 5.548 12.409 5.922 9.58 7.751 7.751 C 8.823 6.677 10.278 6.075 11.796 6.077 L 11.797 6.078 Z M 11.288 2.474 C 11.263 1.981 11.781 1.646 12.22 1.871 C 12.444 1.986 12.581 2.222 12.568 2.474 L 12.568 4.107 C 12.593 4.599 12.075 4.934 11.636 4.709 C 11.411 4.595 11.275 4.359 11.288 4.107 L 11.288 2.474 Z M 16.023 3.464 C 16.243 3.025 16.855 2.988 17.126 3.398 C 17.266 3.61 17.266 3.884 17.128 4.097 L 16.307 5.518 C 16.073 5.95 15.459 5.966 15.203 5.547 C 15.078 5.343 15.078 5.087 15.202 4.882 L 16.023 3.462 L 16.023 3.464 Z M 19.623 6.693 C 20.048 6.447 20.58 6.754 20.581 7.245 C 20.581 7.473 20.459 7.684 20.262 7.799 L 18.842 8.62 C 18.417 8.87 17.88 8.565 17.877 8.072 C 17.875 7.843 17.995 7.631 18.193 7.515 L 19.623 6.693 Z M 21.125 11.289 C 21.618 11.265 21.953 11.782 21.728 12.222 C 21.613 12.446 21.377 12.583 21.125 12.57 L 19.485 12.57 C 18.992 12.595 18.657 12.077 18.882 11.637 C 18.997 11.413 19.233 11.277 19.485 11.289 L 21.125 11.289 Z M 20.127 16.025 C 20.563 16.251 20.591 16.864 20.178 17.128 C 19.969 17.262 19.702 17.263 19.493 17.13 L 18.071 16.309 C 17.634 16.086 17.602 15.473 18.014 15.206 C 18.223 15.07 18.492 15.069 18.702 15.202 L 20.122 16.023 L 20.127 16.025 Z M 16.899 19.623 C 17.146 20.048 16.839 20.58 16.347 20.581 C 16.119 20.581 15.908 20.46 15.794 20.262 L 14.97 18.842 C 14.72 18.417 15.024 17.88 15.518 17.877 C 15.747 17.875 15.959 17.996 16.075 18.193 L 16.896 19.615 L 16.899 19.623 Z M 12.303 21.125 C 12.328 21.618 11.81 21.953 11.371 21.728 C 11.147 21.613 11.01 21.377 11.023 21.125 L 11.023 19.485 C 10.998 18.992 11.516 18.657 11.956 18.882 C 12.18 18.997 12.316 19.233 12.303 19.485 L 12.303 21.125 Z M 7.568 20.127 C 7.305 20.542 6.692 20.517 6.464 20.082 C 6.368 19.898 6.367 19.678 6.463 19.493 L 7.284 18.071 C 7.499 17.63 8.111 17.586 8.386 17.993 C 8.531 18.207 8.532 18.487 8.389 18.702 L 7.568 20.122 L 7.568 20.127 Z M 3.968 16.899 C 3.543 17.146 3.011 16.839 3.011 16.348 C 3.01 16.12 3.132 15.909 3.329 15.794 L 4.746 14.97 C 5.172 14.72 5.71 15.026 5.713 15.52 C 5.714 15.75 5.593 15.962 5.395 16.078 L 3.973 16.899 L 3.968 16.899 Z M 2.474 12.304 C 1.981 12.328 1.646 11.81 1.871 11.371 C 1.986 11.147 2.222 11.01 2.474 11.023 L 4.106 11.023 C 4.599 10.998 4.934 11.516 4.709 11.956 C 4.594 12.18 4.358 12.316 4.106 12.304 L 2.474 12.304 Z M 3.464 7.568 C 3.025 7.348 2.988 6.736 3.398 6.466 C 3.61 6.326 3.884 6.325 4.097 6.463 L 5.518 7.284 C 5.95 7.519 5.966 8.132 5.547 8.388 C 5.343 8.513 5.086 8.514 4.882 8.389 L 3.464 7.568 Z" transform="matrix(1, 0, 0, 1, 0, 1.4210854715202004e-14)"/>
+								  <path class="moon" d="M 18.214 16.413 C 13.476 18.387 8.377 14.491 9.037 9.4 C 9.343 7.038 10.886 5.018 13.086 4.102 C 13.294 4.002 13.595 3.893 13.804 3.792 C 12.166 3.367 10.431 3.51 8.885 4.202 C 3.039 6.548 1.925 14.343 6.879 18.233 C 9.261 20.102 12.481 20.504 15.249 19.277 C 16.92 18.607 18.301 17.371 19.15 15.785 C 18.864 16.03 18.549 16.241 18.214 16.413 Z" transform="matrix(1, 0, 0, 1, 0, 1.4210854715202004e-14)"/>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</header>
+		
 
 		<div class="main-content">
 			{% block content %}
@@ -67,8 +106,50 @@
 		
 
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {# {% do view.registerJsFile(rev('js/bundle.js')) %} #}
+
+{% if currentUser == null %}
+<script>(function() {
+var tag = document.createElement('script');
+tag.src = "https://plausible.io/js/plausible.js";
+tag.defer = true;
+tag.setAttribute("data-domain", "arminundartur.de");
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+})();
+</script>
+{% endif %}
+
+{%- js -%}
+	$(document).ready(function(){
+
+  $(document).on('click', '.color-mode-icon.light', function(e) {
+    $('body').attr('data-bs-theme', 'dark');
+    $(this).addClass('dark').removeClass('light');
+    document.cookie = "aatheme=dark; max-age=" + 30*24*60*60;
+    $("meta[name='theme-color']").attr("content", "#212529");
+  });
+  $(document).on('click', '.color-mode-icon.dark', function(e) {
+    $('body').attr('data-bs-theme', 'light');
+    $(this).addClass('light').removeClass('dark');
+    document.cookie = "aatheme=light; max-age=" + 30*24*60*60;
+    $("meta[name='theme-color']").attr("content", "#F9F4E6");
+  });
+  $(document).on('click', '.search-icon', function(e) {
+    $('div.site-name').addClass('d-none d-md-block');
+    $('div.site-tools').addClass('d-none d-md-flex');
+    $('div.search-form').removeClass('d-none').addClass('d-md-block');
+  });
+  $(document).on('click', 'div.close', function(e) {
+  	$('div.search-form').removeClass('d-md-block').addClass('d-none');
+  	$('div.site-name').removeClass('d-none d-md-block');
+    $('div.site-tools').removeClass('d-none d-md-flex');
+  });
+	
+});
+{%- endjs -%}
+
 
 </body>
 </html>

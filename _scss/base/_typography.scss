@@ -24,9 +24,13 @@ article {
 			p {
 				text-align: justify;
 				margin-bottom:0 !important;
-				&:not(:first-child) {
-				    text-indent: 50px;
+				@include media-breakpoint-down(md) {
+					font-size: .93em !important;
 				}
+				text-indent: 50px;
+				// &:not(:first-child) {
+				//     text-indent: 50px;
+				// }
 			}
 			blockquote {
 				font-style: italic;

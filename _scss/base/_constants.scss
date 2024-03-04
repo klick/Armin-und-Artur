@@ -33,6 +33,8 @@ $theme-colors: (
   "dark":       $dark
 );
 
+$body-bg: #F9F4E6;
+
 $spacers: map-merge(
     $spacers, (
         6: $spacer * 6,

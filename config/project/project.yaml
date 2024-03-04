@@ -1,4 +1,4 @@
-dateModified: 1709551949
+dateModified: 1710070958
 elementSources:
   craft\elements\Entry:
     -
@@ -261,7 +261,11 @@ fs:
     url: '@web/bilder'
 meta:
   __names__:
+    0cb827ea-5f8e-47dd-99f3-c5dcfe109904: Schlagwörter # Schlagwörter
     0cb29916-8e38-4a34-9080-9abeaf29e4dc: 'Märchen unter 10 Minuten' # Märchen unter 10 Minuten
+    01fc6e9c-72dc-441d-b489-218d8a4b06c6: Thema # Thema
+    02ab3a5d-5422-48bc-8189-ae183eaa67a5: Thema # Thema
+    2b8dd1f0-4052-42e4-8538-cae0142ec6d5: 'KHM Nummerierung' # KHM Nummerierung
     2bfb70f4-994d-4e48-93f2-f8654294d7e9: Verfasser # Verfasser
     3bbde26d-60d2-468f-b648-991c3603e80c: Excerpt # Excerpt
     6e7f4ada-5896-4954-a687-b65570ccfd15: Readtime # Readtime
@@ -278,8 +282,11 @@ meta:
     34cd7edf-adb7-4148-93db-b18e5d721a71: Datenschutz # Datenschutz
     42ca441c-21db-4cce-9dd6-74af65fdf470: Body # Body
     052c597a-1661-44ad-af6a-c27c5cdfa355: Bilder # Bilder
+    094fd7f3-8e76-4a20-9392-9f066c39a615: 'MJ Prompt' # MJ Prompt
     359d960b-bbd2-4552-9e48-5f69abc91382: Typ # Typ
     619dd491-28e5-43a2-892b-5e7a6a713275: Standard # Standard
+    706dd587-cd73-45b9-bfd0-fb3cd5604640: Thema # Thema
+    829d7233-deb8-4544-bce0-f8761be6d04c: Klassifikation # Klassifikation
     892cd95a-b813-4d5d-a5e6-5e20e3db19a5: Home # Home
     2480e5ab-25e5-4372-9a26-e37a1d55bece: Geschichten # Geschichten
     5380e350-b359-48a0-82ad-3903b3056fa3: 'Märchen unter 10 Minuten' # Märchen unter 10 Minuten
@@ -314,6 +321,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.1.0
+  cookies:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   element-api:
     edition: standard
     enabled: true
@@ -322,6 +333,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 5.1.0.0
+  image-toolbox:
+    edition: lite
+    enabled: true
+    schemaVersion: 1.0.0
   logs:
     edition: standard
     enabled: true
@@ -355,6 +370,10 @@ plugins:
     enabled: true
     licenseKey: 2XM83J1QNBYWNT37HNOUWCVW
     schemaVersion: 3.0.12
+  tag-manager:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   venveo-bulk-edit:
     edition: standard
     enabled: true

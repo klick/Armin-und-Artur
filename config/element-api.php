@@ -29,6 +29,7 @@ return [
                 'paginate' => false,
                 'criteria' => [
                     'section' => 'geschichten',
+                    'relatedTo' => 2015,
                 ],
                 'transformer' => function(Entry $entry) {
                     // $imagerx = Craft::$app->plugins->getPlugin('imager-x');
@@ -61,6 +62,7 @@ return [
                         'verfasser' => $entry->verfasser->one() ? $entry->verfasser->one()->title : null,
                         'id' => $entry->id,
                         'radtime' => $entry->readtime,
+                        'kategorie' => $entry->kategorie->one()->title,
 
                         // 'Verfasser Alter' => $entry->writer->one()->age,
                         // 'Verfasser Geburtsjahr' => $entry->writer->one()->birth,

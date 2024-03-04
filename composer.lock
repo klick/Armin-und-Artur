@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1bea90ae94b1b013d4f4f16191412722",
+    "content-hash": "cf2377319ef6661f576f6b316453eb3f",
     "packages": [
         {
             "name": "besteadfast/craft-preparse-field",
@@ -1172,6 +1172,59 @@
             "time": "2023-09-25T17:28:37+00:00"
         },
         {
+            "name": "craftsnippets/craft-image-toolbox",
+            "version": "2.2.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craft-snippets/Craft-image-toolbox/zipball/d686eab63772064aa692955efe119118189eda79",
+                "reference": "d686eab63772064aa692955efe119118189eda79",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^4.0.0"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Image toolbox",
+                "handle": "image-toolbox",
+                "developer": "Piotr Pogorzelski",
+                "developerUrl": "http://craftsnippets.com/",
+                "documentationUrl": "http://craftsnippets.com/docs/image-toolbox/",
+                "changelogUrl": "https://github.com/craft-snippets/Craft-image-toolbox/blob/master/CHANGELOG.md",
+                "components": {
+                    "imageToolboxService": "craftsnippets\\imagetoolbox\\services\\ImageToolboxService"
+                },
+                "class": "craftsnippets\\imagetoolbox\\ImageToolbox"
+            },
+            "autoload": {
+                "psr-4": {
+                    "craftsnippets\\imagetoolbox\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Piotr Pogorzelski",
+                    "homepage": "http://craftsnippets.com/"
+                }
+            ],
+            "description": "Image toolbox",
+            "keywords": [
+                "cms",
+                "craft",
+                "craft-plugin",
+                "craftcms",
+                "image toolbox"
+            ],
+            "support": {
+                "docs": "http://craftsnippets.com/docs/image-toolbox/",
+                "issues": "https://github.com/craft-snippets/Craft-image-toolbox/issues"
+            },
+            "time": "2023-07-18T19:29:36+00:00"
+        },
+        {
             "name": "creocoder/yii2-nested-sets",
             "version": "0.9.0",
             "dist": {
@@ -1676,6 +1729,53 @@
                 "parser"
             ],
             "time": "2019-12-30T23:20:37+00:00"
+        },
+        {
+            "name": "ether/tags",
+            "version": "2.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ethercreative/tags/zipball/39cbaf0a14315c5ad08dfa63073d093651602d46",
+                "reference": "39cbaf0a14315c5ad08dfa63073d093651602d46",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^4.0"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Tags",
+                "handle": "tag-manager",
+                "changelogUrl": "https://raw.githubusercontent.com/ethercreative/tags/master/CHANGELOG.md",
+                "class": "ether\\tagManager\\TagManager"
+            },
+            "autoload": {
+                "psr-4": {
+                    "ether\\tagManager\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Ether Creative",
+                    "homepage": "https://ethercreative.co.uk"
+                }
+            ],
+            "description": "A tag manager for Craft 3",
+            "keywords": [
+                "cms",
+                "craft",
+                "craft-plugin",
+                "craftcms",
+                "tags"
+            ],
+            "support": {
+                "docs": "https://github.com/ethercreative/tags/blob/master/README.md",
+                "issues": "https://github.com/ethercreative/tags/issues"
+            },
+            "time": "2022-10-31T11:45:03+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -2812,6 +2912,53 @@
                 "twig"
             ],
             "time": "2024-01-30T03:18:54+00:00"
+        },
+        {
+            "name": "nystudio107/craft-cookies",
+            "version": "4.0.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nystudio107/craft-cookies/zipball/24a5b5aa5cbd057deaba6731a30fcabd1dab0cac",
+                "reference": "24a5b5aa5cbd057deaba6731a30fcabd1dab0cac",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^4.0.0"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "class": "nystudio107\\cookies\\Cookies",
+                "handle": "cookies",
+                "name": "Cookies"
+            },
+            "autoload": {
+                "psr-4": {
+                    "nystudio107\\cookies\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "nystudio107",
+                    "homepage": "https://nystudio107.com/"
+                }
+            ],
+            "description": "A simple plugin for setting and getting cookies from within Craft CMS templates.",
+            "keywords": [
+                "cms",
+                "cookies",
+                "craft",
+                "craft-plugin",
+                "craftcms"
+            ],
+            "support": {
+                "docs": "https://nystudio107.com/docs/cookies/",
+                "issues": "https://nystudio107.com/plugins/cookies/support",
+                "source": "https://github.com/nystudio107/craft-cookies"
+            },
+            "time": "2024-02-13T03:37:31+00:00"
         },
         {
             "name": "nystudio107/craft-plugin-vite",

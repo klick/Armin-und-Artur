@@ -28,3 +28,16 @@
 	</figcaption>
 	{% endif %}
 {% endmacro %}
+
+{% macro byLine(entry, authorLink = true) %}
+	<p class="author mb-1 lh-1">
+		<i>von</i>&thinsp;<span class="font-small-caps">
+		{% if authorLink == true %}
+			<a href="{{ entry.verfasser.one().url }}" class="lh-1 d-inline-block">{{ entry.verfasser.one().title ? entry.verfasser.one().title : 'Unbekannt' }}</a>
+		{% else %}
+			<span class="lh-1 d-inline-block">{{ entry.verfasser.one().title ? entry.verfasser.one().title : 'Unbekannt' }}</span>
+		{% endif %}
+		</span>
+	</p>
+	<p class="m-0 lh-1"><span class="font-small-caps text-secondary d-block d-md-inline"><span class="d-none d-md-inline"></span>~{{ entry.readtime }} Min</span></p>
+{% endmacro %}
