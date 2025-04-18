@@ -17,4 +17,4 @@ settings:
   textareaRows: 5
 translationKeyFormat: null
 translationMethod: none
-type: besteadfast\preparsefield\fields\PreparseFieldType
+type: jalendport\preparse\fields\PreparseFieldType

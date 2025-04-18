@@ -1,4 +1,4 @@
-dateModified: 1710070958
+dateModified: 1744963194
 elementSources:
   craft\elements\Entry:
     -
@@ -320,7 +320,7 @@ plugins:
   blitz-recommendations:
     edition: standard
     enabled: true
-    schemaVersion: 2.1.0
+    schemaVersion: 2.2.0
   cookies:
     edition: standard
     enabled: true
@@ -332,7 +332,7 @@ plugins:
   feed-me:
     edition: standard
     enabled: true
-    schemaVersion: 5.1.0.0
+    schemaVersion: 5.1.1
   image-toolbox:
     edition: lite
     enabled: true
@@ -344,7 +344,7 @@ plugins:
   preparse-field:
     edition: standard
     enabled: true
-    schemaVersion: 1.0.5
+    schemaVersion: 1.1.0
   redactor:
     edition: standard
     enabled: true
@@ -370,6 +370,53 @@ plugins:
     enabled: true
     licenseKey: 2XM83J1QNBYWNT37HNOUWCVW
     schemaVersion: 3.0.12
+    settings:
+      addHrefLang: true
+      addPaginatedHreflang: true
+      addXDefaultHrefLang: true
+      alwaysIncludeCanonicalUrls: false
+      cpTitlePrefix: '⚙ '
+      cspNonce: ''
+      cspScriptSrcPolicies:
+        -
+          __assoc__:
+            -
+              - policy
+              - '''self'''
+      devModeCpTitlePrefix: '&#x1f6a7;⚙ '
+      devModeTitlePrefix: '&#x1f6a7; '
+      displayAnalysisSidebar: true
+      displayPreviewSidebar: true
+      enableDebugToolbarPanel: true
+      enableJsonLdEndpoint: false
+      enableMetaContainerEndpoint: false
+      enableSeoFileLinkEndpoint: false
+      environment: live
+      excludeNonCanonicalUrls: false
+      generatorEnabled: true
+      headersEnabled: true
+      includeHomepageInBreadcrumbs: true
+      lowercaseCanonicalUrl: true
+      manuallySetEnvironment: false
+      maxDescriptionLength: 155
+      maxTitleLength: 70
+      metaCacheDuration: 0
+      pluginName: SEOmatic
+      regenerateSitemapsAutomatically: true
+      renderEnabled: true
+      separatorChar: '|'
+      sidebarDisplayPreviewTypes:
+        - google
+        - twitter
+        - facebook
+        - pinterest
+      siteGroupsSeparate: true
+      siteUrlOverride: ''
+      sitemapsEnabled: true
+      socialMediaPreviewTarget: true
+      submitSitemaps: true
+      truncateDescriptionTags: true
+      truncateTitleTags: true
   tag-manager:
     edition: standard
     enabled: true
@@ -387,7 +434,7 @@ system:
   live: true
   name: 'Armin & Artur'
   retryDuration: null
-  schemaVersion: 4.5.3.0
+  schemaVersion: 4.15.0.0
   timeZone: Europe/Berlin
 users:
   allowPublicRegistration: false
