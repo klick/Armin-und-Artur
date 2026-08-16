@@ -27,10 +27,7 @@
             <header class="text-center mb-3 mb-md-4">
               {# <p class="font-small-caps text-secondary">Märchen des Tages</p> #}
               <h1 class="display-4 fw-normal px-3 px-lg-5"><a class="text" href="{{ storyOfTheDay.url }}">{{ storyOfTheDay.title|raw }}</a></h1>
-              <p class="author mb-1 lh-1">
-                <i>von</i>&thinsp;<span class="font-small-caps"><span class="lh-1 d-inline-block">{{ storyOfTheDay.verfasser.one().title ? storyOfTheDay.verfasser.one().title : 'Unbekannt' }}</span></span>
-              </p>
-              <p class="m-0 lh-1"><span class="font-small-caps text-secondary d-block d-md-inline">~{{ storyOfTheDay.readtime }} Min</span></p>
+              {{ macros.byLine(storyOfTheDay, false) }}
             </header>
             <section class="article-body fs-4 text-justify">
               {{ storyOfTheDay.body | chop(limit=1, allowedTags="<em>") | replace({'<p>':'<p class="text-justify m-0">'})  | typogrify }}
