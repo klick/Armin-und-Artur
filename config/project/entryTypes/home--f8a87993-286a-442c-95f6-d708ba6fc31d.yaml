@@ -67,7 +67,6 @@ fieldLayouts:
 handle: home
 hasTitleField: true
 name: Start
-section: aa7ac094-9175-46bf-a56b-eaaadd28eb16 # Start
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site

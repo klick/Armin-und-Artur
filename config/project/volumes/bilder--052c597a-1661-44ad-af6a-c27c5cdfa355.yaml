@@ -93,5 +93,5 @@ name: Bilder
 sortOrder: 1
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-transformFs: ''
+transformFs: null
 transformSubpath: ''

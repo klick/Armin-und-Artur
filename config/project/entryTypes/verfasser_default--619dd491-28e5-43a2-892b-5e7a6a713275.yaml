@@ -58,10 +58,9 @@ fieldLayouts:
         name: Inhalt
         uid: be5fe866-5726-4453-91f8-dafd2462ca3b
         userCondition: null
-handle: default
+handle: verfasser_default
 hasTitleField: true
 name: Standard
-section: da051380-6a4c-422f-8f83-26f2ff828f94 # Verfasser
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site

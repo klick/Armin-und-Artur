@@ -1,6 +1,5 @@
 columnSuffix: null
 contentColumnType: text
-fieldGroup: 892cd95a-b813-4d5d-a5e6-5e20e3db19a5 # Home
 handle: intro
 instructions: null
 name: Intro
@@ -8,14 +7,18 @@ searchable: false
 settings:
   availableTransforms: '*'
   availableVolumes: '*'
+  characterLimit: null
   ckeConfig: b58ec1a2-59e9-4b66-99c9-497736aa70fd # Default
   columnType: text
-  defaultTransform: ''
-  enableSourceEditingForNonAdmins: false
+  defaultTransform: null
   purifierConfig: null
   purifyHtml: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  wordLimit: null
 translationKeyFormat: null
 translationMethod: none
 type: craft\ckeditor\Field

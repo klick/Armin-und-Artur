@@ -95,7 +95,6 @@ fieldLayouts:
 handle: default
 hasTitleField: true
 name: Standard
-section: 9ddbc4e0-4c02-4dda-ae0f-541f66f6d950 # Sammlungen
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site

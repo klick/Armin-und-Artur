@@ -37,7 +37,6 @@ fieldLayouts:
 handle: shorts
 hasTitleField: true
 name: 'Märchen unter 10 Minuten'
-section: 0cb29916-8e38-4a34-9080-9abeaf29e4dc # Märchen unter 10 Minuten
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site

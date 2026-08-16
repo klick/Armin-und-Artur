@@ -1,9 +1,8 @@
 {% import '_macros.twig' as macros %}
 {% extends "_layout" %}
-{% set inCollection = craft.entries.sectionId(6).relatedTo(entry).one() %}
+{% set inCollection = craft.entries().section('sammlungen').relatedTo(entry).one() %}
 
 {% set minutes = entry.readtime %}
-
 {% set hours = minutes // 60 %}
 {% set remainingMinutes = minutes % 60 %}
 
@@ -11,8 +10,6 @@
 {% do mainEntity.setAttributes({
    'timeRequired': "PT" ~ hours ~ "H" ~ remainingMinutes ~ "M",
 }) %}
-
-
 
 {% block content %}
 

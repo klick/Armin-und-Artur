@@ -67,7 +67,6 @@ fieldLayouts:
 handle: impressum
 hasTitleField: false
 name: Impressum
-section: c5ebf014-54d4-4484-b7aa-0329a1245008 # Impressum
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site
