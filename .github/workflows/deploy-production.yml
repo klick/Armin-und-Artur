@@ -1,0 +1,80 @@
+name: Deploy production
+
+on:
+  push:
+    branches:
+      - main
+
+# This workflow does not need a repository token. It deploys by SSH only.
+permissions: {}
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy main to Hetzner
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.HETZNER_SSH_PRIVATE_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 "$HOME/.ssh"
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$HOME/.ssh/id_ed25519"
+          chmod 600 "$HOME/.ssh/id_ed25519"
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+
+      - name: Fast-forward and deploy on Hetzner
+        env:
+          HETZNER_HOST: ${{ secrets.HETZNER_HOST }}
+          HETZNER_USER: ${{ secrets.HETZNER_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          ssh \
+            -i "$HOME/.ssh/id_ed25519" \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            -o UserKnownHostsFile="$HOME/.ssh/known_hosts" \
+            "${HETZNER_USER}@${HETZNER_HOST}" \
+            'bash -se --' "$DEPLOY_PATH" <<'REMOTE'
+          set -euo pipefail
+
+          deploy_path="$1"
+          test -d "$deploy_path/.git" || {
+            echo "Refusing to deploy: DEPLOY_PATH is not a Git checkout." >&2
+            exit 1
+          }
+
+          cd "$deploy_path"
+          test "$(git branch --show-current)" = "main" || {
+            echo "Refusing to deploy: server checkout is not on main." >&2
+            exit 1
+          }
+          git diff --quiet && git diff --cached --quiet || {
+            echo "Refusing to deploy: server checkout has uncommitted changes." >&2
+            exit 1
+          }
+
+          git fetch --prune origin main
+          git merge-base --is-ancestor HEAD origin/main || {
+            echo "Refusing to deploy: local main has diverged from origin/main." >&2
+            exit 1
+          }
+          git merge --ff-only origin/main
+
+          composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+          php craft up --interactive=0
+          php craft clear-caches/all --interactive=0
+          REMOTE
+
+      - name: Remove ephemeral SSH key
+        if: always()
+        run: rm -f "$HOME/.ssh/id_ed25519" "$HOME/.ssh/known_hosts"
