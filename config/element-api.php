@@ -95,6 +95,24 @@ return [
                 },
             ];
         },
+        'api/geschichten-alle.json' => function() {
+            return [
+                'elementType' => Entry::class,
+                'cache' => false,
+                'elementsPerPage' => 0,
+                'paginate' => false,
+                'criteria' => [
+                    'section' => 'geschichten',
+                ],
+                'transformer' => function(Entry $entry) {
+                    return [
+                        'title' => $entry->title,
+                        'id' => $entry->id,
+                        'verfasser' => $entry->verfasser->one() ? $entry->verfasser->one()->title : null,
+                    ];
+                },
+            ];
+        },
         'api/verfasser.json' => function() {
             return [
                 'elementType' => Entry::class,

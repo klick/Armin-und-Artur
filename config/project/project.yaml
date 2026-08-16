@@ -1,4 +1,4 @@
-dateModified: 1744963194
+dateModified: 1786906970
 elementSources:
   craft\elements\Entry:
     -
@@ -279,6 +279,7 @@ meta:
     13c8564a-f8d2-469e-8154-599bf6ef3455: 'Märchen des Tages' # Märchen des Tages
     14a2cc67-f120-47c2-9e90-c6bf26e83377: Klassiker # Klassiker
     19a8c7f5-af22-411d-b853-b7e733678b85: Bildunterschrift # Bildunterschrift
+    34b9b5bc-97a7-4c31-94bd-558ab37a8862: Example # Example
     34cd7edf-adb7-4148-93db-b18e5d721a71: Datenschutz # Datenschutz
     42ca441c-21db-4cce-9dd6-74af65fdf470: Body # Body
     052c597a-1661-44ad-af6a-c27c5cdfa355: Bilder # Bilder
@@ -299,6 +300,7 @@ meta:
     991163cd-0f18-4991-8e36-4272130a111f: Impressum # Impressum
     a4115fcc-1941-4286-a95a-929dfa29b161: Intro # Intro
     aa7ac094-9175-46bf-a56b-eaaadd28eb16: Start # Start
+    b58ec1a2-59e9-4b66-99c9-497736aa70fd: Default # Default
     b498f081-a398-4f88-b9b7-25afbf7a44f9: 'Public Schema' # Public Schema
     bc88ad51-fa04-4adb-a0f2-365b8a1b9179: Klassiker # Klassiker
     bc114695-97bc-44c6-a0de-c5152243cd6e: Kurzbeschreibung # Kurzbeschreibung
@@ -317,10 +319,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
-  blitz-recommendations:
+  ckeditor:
     edition: standard
     enabled: true
-    schemaVersion: 2.2.0
+    schemaVersion: 3.0.0.0
   cookies:
     edition: standard
     enabled: true
@@ -332,7 +334,7 @@ plugins:
   feed-me:
     edition: standard
     enabled: true
-    schemaVersion: 5.1.1
+    schemaVersion: 5.14.0
   image-toolbox:
     edition: lite
     enabled: true
@@ -345,14 +347,6 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.1.0
-  redactor:
-    edition: standard
-    enabled: true
-    schemaVersion: 2.3.0
-  redactor-custom-styles:
-    edition: standard
-    enabled: true
-    schemaVersion: 1.0.0
   redirect:
     edition: standard
     enabled: true
@@ -369,7 +363,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: 2XM83J1QNBYWNT37HNOUWCVW
-    schemaVersion: 3.0.12
+    schemaVersion: 3.0.13
     settings:
       addHrefLang: true
       addPaginatedHreflang: true
@@ -417,10 +411,6 @@ plugins:
       submitSitemaps: true
       truncateDescriptionTags: true
       truncateTitleTags: true
-  tag-manager:
-    edition: standard
-    enabled: true
-    schemaVersion: 1.0.0
   venveo-bulk-edit:
     edition: standard
     enabled: true
@@ -434,7 +424,7 @@ system:
   live: true
   name: 'Armin & Artur'
   retryDuration: null
-  schemaVersion: 4.15.0.0
+  schemaVersion: 4.17.0.3
   timeZone: Europe/Berlin
 users:
   allowPublicRegistration: false
