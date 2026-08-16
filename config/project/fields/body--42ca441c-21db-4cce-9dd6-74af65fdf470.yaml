@@ -1,6 +1,5 @@
 columnSuffix: null
 contentColumnType: mediumtext
-fieldGroup: 7274ef7d-b972-4149-a0a6-42d17fa8a3f7 # Geschichten
 handle: body
 instructions: null
 name: Body
@@ -8,14 +7,18 @@ searchable: true
 settings:
   availableTransforms: '*'
   availableVolumes: '*'
+  characterLimit: null
   ckeConfig: 34b9b5bc-97a7-4c31-94bd-558ab37a8862 # Example
   columnType: mediumtext
-  defaultTransform: ''
-  enableSourceEditingForNonAdmins: false
+  defaultTransform: null
   purifierConfig: null
   purifyHtml: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  wordLimit: null
 translationKeyFormat: null
 translationMethod: none
 type: craft\ckeditor\Field

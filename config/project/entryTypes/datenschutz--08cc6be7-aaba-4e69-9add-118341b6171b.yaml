@@ -67,7 +67,6 @@ fieldLayouts:
 handle: datenschutz
 hasTitleField: false
 name: Datenschutz
-section: 34cd7edf-adb7-4148-93db-b18e5d721a71 # Datenschutz
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site

@@ -235,7 +235,6 @@ fieldLayouts:
 handle: geschichte
 hasTitleField: true
 name: Geschichte
-section: 7e9ba3cc-acd2-4baa-ad4a-a0c936316dec # Geschichten
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site

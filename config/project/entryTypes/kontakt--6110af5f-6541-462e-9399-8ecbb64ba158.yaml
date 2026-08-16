@@ -67,7 +67,6 @@ fieldLayouts:
 handle: kontakt
 hasTitleField: false
 name: Kontakt
-section: f8a6c0a3-3c3d-4d8d-8746-66529b735b79 # Kontakt
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site

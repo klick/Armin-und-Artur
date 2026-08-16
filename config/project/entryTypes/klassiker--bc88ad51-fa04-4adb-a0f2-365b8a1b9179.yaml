@@ -49,7 +49,6 @@ fieldLayouts:
 handle: klassiker
 hasTitleField: true
 name: Klassiker
-section: 14a2cc67-f120-47c2-9e90-c6bf26e83377 # Klassiker
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site

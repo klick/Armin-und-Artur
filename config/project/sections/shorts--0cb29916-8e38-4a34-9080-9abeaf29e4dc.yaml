@@ -1,7 +1,16 @@
 defaultPlacement: end
 enableVersioning: true
+entryTypes:
+  -
+    uid: 5380e350-b359-48a0-82ad-3903b3056fa3 # Märchen unter 10 Minuten
 handle: shorts
+maxAuthors: 1
+minAuthors: 1
 name: 'Märchen unter 10 Minuten'
+previewTargets:
+  -
+    label: 'Primary entry page'
+    urlFormat: '{url}'
 propagationMethod: all
 siteSettings:
   9590d88e-4c68-4ee2-bf34-09bbb3fc8833: # Armin & Artur
