@@ -25,4 +25,12 @@ foreach ([
     }
 }
 
+$storiesSource = file_get_contents($projectRoot . '/modules/storyapi/controllers/StoriesController.php');
+if (
+    !is_string($storiesSource)
+    || preg_match('/if\s*\(!\$stories->isX402Enabled\(\)\)\s*\{\s*throw new ServiceUnavailableHttpException/s', $storiesSource) !== 1
+) {
+    throw new RuntimeException('Disabling x402 must never expose a protected artefact without payment.');
+}
+
 echo "Story API controller inheritance checks passed\n";

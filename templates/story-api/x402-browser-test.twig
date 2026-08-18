@@ -1,16 +1,21 @@
 {% extends '_layout' %}
 
 {% block content %}
+  {% set isMainnet = expectedPayment.network == 'eip155:8453' %}
   <main class="container my-5" id="x402-browser-test"
     data-endpoint="{{ endpoint }}"
     data-expected-payment="{{ expectedPayment|json_encode|e('html_attr') }}">
     <article class="col-12 col-lg-8 mx-auto">
       <p class="text-uppercase small text-muted mb-2">Nur lokale Entwicklungsumgebung</p>
-      <h1 class="display-5 mb-3">x402 Browser-Test: Rotkäppchen</h1>
+      <h1 class="display-5 mb-3">x402 {{ isMainnet ? 'Mainnet' : 'Testnet' }}-Test: Rotkäppchen</h1>
       <p>Dieser Test verbindet ausschließlich eine vorhandene Browser-Wallet. Er fragt nie nach Seed Phrase oder Private Key und erzeugt keine Zahlung vor dem letzten, ausdrücklich beschrifteten Klick.</p>
 
-      <div class="alert alert-warning" role="alert">
-        Ausschließlich für Base Sepolia und Test-USDC. Nicht in Produktion verfügbar.
+      <div class="alert {{ isMainnet ? 'alert-danger' : 'alert-warning' }}" role="alert">
+        {% if isMainnet %}
+          Base Mainnet: Der letzte Klick autorisiert eine echte Zahlung von 0,01 USDC. Nicht klicken, bevor Empfänger und Betrag geprüft sind.
+        {% else %}
+          Ausschließlich für Base Sepolia und Test-USDC. Nicht in Produktion verfügbar.
+        {% endif %}
       </div>
 
       <section class="card mb-3" aria-labelledby="challenge-heading">
@@ -45,8 +50,8 @@
       <section class="card mb-3" aria-labelledby="sign-heading">
         <div class="card-body">
           <h2 class="h4" id="sign-heading">3. Signieren und einmalig abrufen</h2>
-          <p>Der folgende Klick erstellt eine auf 60 Sekunden begrenzte EIP-3009-Zahlungsautorisierung über exakt 0,01 Test-USDC an den oben angezeigten Empfänger. MetaMask zeigt die Signaturanfrage an.</p>
-          <button class="btn btn-danger" type="button" data-action="sign-and-fetch" disabled>0,01 Test-USDC signieren und Rotkäppchen abrufen</button>
+          <p>Der folgende Klick erstellt eine auf 60 Sekunden begrenzte EIP-3009-Zahlungsautorisierung über exakt 0,01 {{ isMainnet ? 'USDC (echtes Geld)' : 'Test-USDC' }} an den oben angezeigten Empfänger. MetaMask zeigt die Signaturanfrage an.</p>
+          <button class="btn btn-danger" type="button" data-action="sign-and-fetch" disabled>0,01 {{ isMainnet ? 'USDC (ECHT)' : 'Test-USDC' }} signieren und Rotkäppchen abrufen</button>
         </div>
       </section>
 

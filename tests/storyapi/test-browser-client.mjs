@@ -4,10 +4,12 @@ import { privateKeyToAccount } from 'viem/accounts';
 import { recoverTypedDataAddress } from 'viem';
 import {
     BASE_SEPOLIA,
+    BASE_MAINNET,
     createEip3009TypedData,
     createPaymentSignature,
     decodeChallenge,
     encodePayment,
+    getBaseNetwork,
     isExpectedChain,
     selectAndValidateRequirement,
 } from '../../_js/story-api-x402-browser-core.mjs';
@@ -44,6 +46,26 @@ expectThrow(() => selectAndValidateRequirement({ ...validPaymentRequired, accept
 expectThrow(() => selectAndValidateRequirement({ ...validPaymentRequired, accepts: [{ ...validRequirement, payTo: '0x3333333333333333333333333333333333333333' }] }, validRequirement), /Sicherheitsstopp/);
 assert.equal(isExpectedChain(BASE_SEPOLIA.chainIdHex), true);
 assert.equal(isExpectedChain('0x1'), false, 'Wrong network must never enable signing.');
+assert.equal(isExpectedChain(BASE_MAINNET.chainIdHex, BASE_MAINNET.network), true, 'Base mainnet must be accepted only when explicitly expected.');
+assert.equal(isExpectedChain(BASE_SEPOLIA.chainIdHex, BASE_MAINNET.network), false, 'Testnet must never satisfy a mainnet challenge.');
+assert.equal(getBaseNetwork(BASE_MAINNET.network).asset, BASE_MAINNET.asset);
+
+const mainnetRequirement = {
+    ...validRequirement,
+    network: BASE_MAINNET.network,
+    asset: BASE_MAINNET.asset,
+};
+const mainnetRequired = {
+    ...validPaymentRequired,
+    accepts: [mainnetRequirement],
+};
+const selectedMainnet = selectAndValidateRequirement(mainnetRequired, mainnetRequirement);
+const mainnetTypedData = createEip3009TypedData(selectedMainnet, account, 1_700_000_000, `0x${'cd'.repeat(32)}`);
+assert.equal(mainnetTypedData.domain.chainId, 8453, 'Mainnet authorization must use Base chain ID 8453.');
+expectThrow(
+    () => selectAndValidateRequirement(mainnetRequired, { ...mainnetRequirement, asset: BASE_SEPOLIA.asset }),
+    /Sicherheitsstopp/,
+);
 
 const selected = selectAndValidateRequirement(validPaymentRequired, validRequirement);
 const typedData = createEip3009TypedData(selected, account, 1_700_000_000, `0x${'ab'.repeat(32)}`);

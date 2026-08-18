@@ -29,7 +29,7 @@ class StoriesController extends Controller
         $artifact = $stories->getArtifact($id);
 
         if (!$stories->isX402Enabled()) {
-            return $this->asJson($artifact);
+            throw new ServiceUnavailableHttpException('Story API payments are disabled; protected artefacts remain closed.');
         }
 
         $resourceUrl = UrlHelper::siteUrl("api/v1/stories/{$id}/reading.json");

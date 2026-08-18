@@ -35,13 +35,14 @@ short narration, sustained dialogue between animal characters, and a larger
 cast with several scene changes. All retain the published text; their
 normalisations are declared inside each artefact.
 
-## x402 testnet configuration
+## x402 configuration
 
-The paid endpoint defaults to **enabled**, but returns `503` until a real
-recipient wallet is configured. This prevents accidental public release and
-never substitutes a made-up wallet address.
-Only an explicit `STORY_API_X402_ENABLED=false` disables the gate; missing,
-empty, or invalid values fail closed.
+The protected endpoint is available only when `STORY_API_X402_ENABLED=true`.
+Missing, empty, false, or invalid values return `503`; they never expose the
+artefact without payment. A missing recipient or invalid network/asset pair
+also returns `503` before an agent can sign an authorization.
+
+### Base Sepolia testnet
 
 For a local Base Sepolia test, add only to an untracked local environment file:
 
@@ -113,8 +114,8 @@ An x402 buyer:
 4. retries with `PAYMENT-SIGNATURE` and, after settlement, receives the reading
    artefact plus `PAYMENT-RESPONSE`.
 
-This pilot does not enable or advertise a mainnet purchase path. Mainnet would
-require a separate, explicit environment configuration and deployment review.
+This pilot does not enable or advertise a mainnet purchase path. Mainnet uses
+the separate configuration and deployment review below.
 The human-operated browser page below remains a local `DEV_MODE` diagnostic and
 is not part of the public sandbox interface.
 
@@ -160,6 +161,45 @@ dedicated Base Sepolia recipient wallet, and the selected MetaMask account has
 test USDC and enough test ETH for the facilitator settlement path. Do not use a
 production wallet. The final MetaMask signing and payment are intentionally
 not exercised by automated tests.
+
+## Base mainnet activation
+
+Base mainnet uses real, dollar-backed Circle USDC. It is deliberately protected
+by two independent switches and a fixed initial price cap:
+
+```dotenv
+STORY_API_X402_ENABLED=true
+STORY_API_X402_MAINNET_ENABLED=true
+STORY_API_X402_NETWORK=eip155:8453
+STORY_API_X402_ASSET=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913
+STORY_API_X402_PAY_TO=0xYOUR_CONFIRMED_RECEIVER
+STORY_API_X402_PRICE_ATOMIC=10000
+STORY_API_X402_FACILITATOR_URL=https://api.cdp.coinbase.com/platform/v2/x402
+CDP_API_KEY_ID=YOUR_SECRET_API_KEY_ID
+CDP_API_KEY_SECRET=BASE64_ED25519_SECRET
+```
+
+For the first mainnet pilot, `10000` atomic units (0.01 USDC) is the only
+accepted price. Raising it requires a reviewed code change. Mainnet also
+requires the exact Circle Base-USDC contract and the authenticated CDP
+facilitator; the anonymous x402.org facilitator is rejected.
+
+Create a dedicated CDP **Secret API Key** using the recommended Ed25519
+algorithm. Store the ID and secret only in the server environment, never in Git,
+browser JavaScript, logs, or chat. The PHP service creates a fresh request-bound
+JWT for each `/verify` and `/settle` call; tokens expire after 120 seconds. A CDP
+wallet secret is not required because the facilitator settles the buyer's
+signed EIP-3009 authorization and sends USDC directly to `payTo`.
+
+The production key is IP-restricted to Hetzner's fixed IPv4 address. Because
+the host also has IPv6 connectivity, CDP facilitator requests deliberately use
+IPv4; otherwise Coinbase rejects the valid key with HTTP 401 before payment
+verification.
+
+The browser page remains a local `DEV_MODE` diagnostic. It accepts only the
+hard-coded Base Sepolia and Base mainnet profiles. In mainnet mode it shows a
+red real-money warning, the receiver, network, asset, and exact 0.01-USDC
+amount, and still requires a separate explicit human wallet signature.
 
 ## Local checks
 
