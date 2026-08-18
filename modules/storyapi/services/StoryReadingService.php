@@ -92,7 +92,13 @@ class StoryReadingService extends Component
 
     public function isX402Enabled(): bool
     {
-        return filter_var(App::env('STORY_API_X402_ENABLED'), FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAILURE) ?? true;
+        $configured = App::env('STORY_API_X402_ENABLED');
+
+        if ($configured === null || $configured === '') {
+            return true;
+        }
+
+        return filter_var($configured, FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAILURE) ?? true;
     }
 
     public function x402PaymentRequired(string $resourceUrl): array

@@ -40,6 +40,8 @@ normalisations are declared inside each artefact.
 The paid endpoint defaults to **enabled**, but returns `503` until a real
 recipient wallet is configured. This prevents accidental public release and
 never substitutes a made-up wallet address.
+Only an explicit `STORY_API_X402_ENABLED=false` disables the gate; missing,
+empty, or invalid values fail closed.
 
 For a local Base Sepolia test, add only to an untracked local environment file:
 

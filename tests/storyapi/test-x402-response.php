@@ -25,12 +25,25 @@ function expectInvalidArgument(callable $callback, string $message): void
     throw new RuntimeException($message);
 }
 
+putenv('STORY_API_X402_ENABLED');
+unset($_SERVER['STORY_API_X402_ENABLED']);
+$service = new StoryReadingService();
+expect($service->isX402Enabled(), 'x402 must default to enabled when no environment value is configured');
+
+putenv('STORY_API_X402_ENABLED=invalid');
+expect($service->isX402Enabled(), 'invalid x402 configuration must fail closed');
+
+putenv('STORY_API_X402_ENABLED=false');
+expect(!$service->isX402Enabled(), 'only an explicit false value may disable x402');
+
+putenv('STORY_API_X402_ENABLED=true');
+expect($service->isX402Enabled(), 'an explicit true value must enable x402');
+
 putenv('STORY_API_X402_NETWORK=eip155:84532');
 putenv('STORY_API_X402_ASSET=0x036CbD53842c5426634e7929541eC2318f3dCF7e');
 putenv('STORY_API_X402_PAY_TO=0x1111111111111111111111111111111111111111');
 putenv('STORY_API_X402_PRICE_ATOMIC=10000');
 
-$service = new StoryReadingService();
 $required = $service->x402PaymentRequired('https://example.test/api/v1/stories/rotkaeppchen/reading.json');
 
 expect(($required['x402Version'] ?? null) === 2, 'x402 v2 is required');
