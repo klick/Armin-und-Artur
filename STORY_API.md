@@ -68,6 +68,46 @@ official server middleware packages currently target JavaScript and Python,
 not Craft/PHP. Verification and settlement remain delegated to the official
 facilitator endpoint.
 
+## Local browser payment test
+
+In Craft `DEV_MODE` only, a human-operated Base Sepolia test page is available
+at `GET /__story-api/x402-browser-test`. It is not registered outside dev mode;
+the controller repeats the same check. It is deliberately not linked from the
+site.
+
+The page has three explicit steps: load the unsigned `402` challenge, connect
+and select an injected MetaMask account, then click a final button to sign and
+retry the request. It never asks for, receives, or stores a private key or seed
+phrase. Before enabling that final click it checks the challenge against the
+local configuration and fixed pilot limits:
+
+- Base Sepolia (`eip155:84532`)
+- official Base Sepolia USDC (`0x036CbD53842c5426634e7929541eC2318f3dCF7e`)
+- exactly `10000` atomic units (0.01 test USDC)
+- the configured recipient address and a maximum 60-second authorization
+
+The browser code uses the official `@x402/core/http` codecs for the protocol
+headers. Current `@x402/evm` exposes an `address` + `signTypedData` signer
+interface but no injected EIP-1193/MetaMask adapter, so this local page uses a
+small transparent adapter for the standard EIP-3009
+`transferWithAuthorization` typed-data request. It does not send a transaction
+itself: the signed authorization is sent once to the same-origin Craft endpoint,
+which delegates verification and settlement to the configured facilitator.
+
+Build and test the local page with:
+
+```bash
+npm install
+npm run build:story-api-browser-test
+npm run test:story-api-browser
+```
+
+For the manual test, ensure the untracked local DDEV environment has a valid
+dedicated Base Sepolia recipient wallet, and the selected MetaMask account has
+test USDC and enough test ETH for the facilitator settlement path. Do not use a
+production wallet. The final MetaMask signing and payment are intentionally
+not exercised by automated tests.
+
 ## Local checks
 
 ```bash

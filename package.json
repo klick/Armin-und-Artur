@@ -3,8 +3,14 @@
   "version": "0.0.1",
   "description": "BGETEM",
   "author": "Marcus Scheller",
+  "scripts": {
+    "build:story-api-browser-test": "esbuild _js/story-api-x402-browser-test.js --bundle --format=esm --target=es2020 --outfile=web/js/story-api-x402-browser-test.js",
+    "test:story-api-browser": "node tests/storyapi/test-browser-client.mjs"
+  },
   "devDependencies": {
+    "@x402/core": "2.22.0",
     "coffee-script": "1.10.x",
+    "esbuild": "0.25.10",
     "gulp": "^4.0.0",
     "gulp-combine-media-queries": "^0.2.0",
     "gulp-combine-mq": "^0.4.0",

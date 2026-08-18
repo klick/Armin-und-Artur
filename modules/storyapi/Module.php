@@ -17,8 +17,16 @@ class Module extends \yii\base\Module
     {
         Craft::setAlias('@storyapi', __DIR__);
 
-        if (!Craft::$app->getRequest()->getIsConsoleRequest()) {
+        // Yii otherwise derives @modules/storyapi/controllers from the
+        // namespace, but @modules is not an alias in this project. Keep web
+        // controllers out of the console command registry and use concrete
+        // directories for both application modes.
+        if (Craft::$app->getRequest()->getIsConsoleRequest()) {
+            $this->controllerNamespace = 'modules\\storyapi\\console\\controllers';
+            $this->setControllerPath(__DIR__ . '/console/controllers');
+        } else {
             $this->controllerNamespace = 'modules\\storyapi\\controllers';
+            $this->setControllerPath(__DIR__ . '/controllers');
         }
 
         parent::init();
