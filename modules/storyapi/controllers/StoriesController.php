@@ -13,7 +13,7 @@ use yii\web\Response;
 class StoriesController extends Controller
 {
     protected array|bool|int $allowAnonymous = ['schema', 'reading'];
-    public bool $enableCsrfValidation = false;
+    public $enableCsrfValidation = false;
 
     public function actionSchema(): Response
     {
