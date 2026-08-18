@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arminundartur.de/schemas/story-reading-1.2.schema.json",
+  "title": "Armin & Artur Canonical Story Reading Format",
+  "description": "Vendor-neutral editorial source for original story text and reading direction. Provider-specific payloads are derived from this document.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "story",
+    "readingPolicy",
+    "formatArchitecture",
+    "cast",
+    "scenes",
+    "speakerResolution",
+    "originalText"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional reference to this JSON Schema."
+    },
+    "schemaVersion": {
+      "const": "1.2",
+      "description": "Version of this canonical contract."
+    },
+    "story": { "$ref": "#/$defs/story" },
+    "cms": {
+      "description": "Optional internal CMS reference. It supports synchronization but is not the public story identity.",
+      "$ref": "#/$defs/cmsReference"
+    },
+    "readingPolicy": { "$ref": "#/$defs/readingPolicy" },
+    "formatArchitecture": { "$ref": "#/$defs/formatArchitecture" },
+    "cast": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/$defs/castMember" }
+    },
+    "scenes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/scene" }
+    },
+    "speakerResolution": { "$ref": "#/$defs/speakerResolution" },
+    "providerNotes": {
+      "type": "object",
+      "description": "Non-authoritative notes for renderers. They must not alter the original text.",
+      "additionalProperties": true
+    },
+    "originalText": { "$ref": "#/$defs/originalText" }
+  },
+  "$defs": {
+    "story": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "language", "sourceUrl", "sourceOfTruth", "textPolicy"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "language": { "type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z]{2})?$" },
+        "sourceUrl": { "type": "string", "pattern": "^https?://" },
+        "sourceOfTruth": { "type": "string", "minLength": 1 },
+        "textPolicy": { "const": "read_original_verbatim" }
+      }
+    },
+    "cmsReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "siteHandle", "entryId", "entryUid", "sectionId"],
+      "properties": {
+        "system": { "const": "craft" },
+        "siteHandle": { "type": "string", "minLength": 1 },
+        "entryId": { "type": "integer", "minimum": 1 },
+        "entryUid": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "sectionId": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "readingPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "preserveWording",
+        "preservePunctuation",
+        "directionsAreSpoken",
+        "defaultPace",
+        "fallbackSpeaker",
+        "noAddedSoundEffects",
+        "noModernisation"
+      ],
+      "properties": {
+        "preserveWording": { "const": true },
+        "preservePunctuation": { "const": true },
+        "directionsAreSpoken": { "const": false },
+        "defaultPace": { "type": "number", "minimum": 0.5, "maximum": 1.5 },
+        "fallbackSpeaker": { "type": "string", "minLength": 1 },
+        "noAddedSoundEffects": { "const": true },
+        "noModernisation": { "const": true }
+      }
+    },
+    "formatArchitecture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "principle", "content", "renderTargets"],
+      "properties": {
+        "role": { "const": "canonical_story_direction_format" },
+        "principle": { "type": "string", "minLength": 1 },
+        "content": { "type": "string", "minLength": 1 },
+        "renderTargets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["purpose", "mapping"],
+            "properties": {
+              "purpose": { "type": "string", "minLength": 1 },
+              "mapping": { "type": "object", "additionalProperties": { "type": "string" } },
+              "limitation": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "castMember": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "voiceProfile", "delivery"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "voiceProfile": { "type": "string", "minLength": 1 },
+        "delivery": { "type": "string", "minLength": 1 }
+      }
+    },
+    "scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "anchor", "title", "speakers", "direction"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^s[0-9]{2,}$" },
+        "anchor": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "speakers": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "direction": { "type": "string", "minLength": 1 }
+      }
+    },
+    "speakerResolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directSpeech", "unnamedQuotedSpeech", "creatures", "narration"],
+      "properties": {
+        "directSpeech": { "type": "string", "minLength": 1 },
+        "unnamedQuotedSpeech": { "type": "string", "minLength": 1 },
+        "creatures": { "type": "string", "minLength": 1 },
+        "narration": { "type": "string", "minLength": 1 }
+      }
+    },
+    "originalText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "source", "typographyNormalisation", "paragraphs"],
+      "properties": {
+        "format": { "const": "paragraphs" },
+        "source": { "type": "string", "minLength": 1 },
+        "typographyNormalisation": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "paragraphs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

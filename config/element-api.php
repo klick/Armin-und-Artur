@@ -113,6 +113,44 @@ return [
                 },
             ];
         },
+        // The free discovery catalogue. Full reading artefacts are deliberately
+        // not exposed here; they are delivered by the x402-aware Story API.
+        'api/v1/stories.json' => function() {
+            return [
+                'elementType' => Entry::class,
+                'cache' => false,
+                'elementsPerPage' => 0,
+                'paginate' => false,
+                'criteria' => [
+                    'section' => 'geschichten',
+                ],
+                'transformer' => function(Entry $entry) {
+                    /** @var \modules\storyapi\Module|null $storyApi */
+                    $storyApi = \Craft::$app->getModule('story-api');
+                    $reading = $storyApi?->getStories()->getCatalogItemByEntryId((int)$entry->id);
+
+                    return [
+                        'id' => $entry->id,
+                        'title' => $entry->title,
+                        'url' => $entry->url,
+                        'author' => $entry->verfasser->one()?->title,
+                        'readtimeMinutes' => $entry->readtime,
+                        'reading' => $reading ? [
+                            'available' => true,
+                            'storyId' => $reading['id'],
+                            'schemaVersion' => $reading['schemaVersion'],
+                            'schemaUrl' => $reading['schemaUrl'],
+                            'access' => $reading['access'],
+                            'environment' => $reading['environment'],
+                            'payment' => $reading['payment'],
+                            'url' => $reading['readingUrl'],
+                        ] : [
+                            'available' => false,
+                        ],
+                    ];
+                },
+            ];
+        },
         'api/verfasser.json' => function() {
             return [
                 'elementType' => Entry::class,
@@ -308,4 +346,4 @@ return [
             ];
         },
     ]
-]; 
+];
