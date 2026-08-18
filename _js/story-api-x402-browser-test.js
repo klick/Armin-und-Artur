@@ -49,7 +49,7 @@ async function loadChallenge(state, controls, endpoint, expected) {
         state.paymentRequired = paymentRequired;
         state.requirement = requirement;
         showPreview(controls, requirement);
-        setResult(controls, 'Anforderung geprüft. Verbinde jetzt ausdrücklich das Testkäuferkonto.');
+        setResult(controls, 'Die erste HTTP-402-Antwort ist erwartbar und geprüft. Verbinde jetzt ausdrücklich das Testkäuferkonto.');
     } catch (error) {
         state.paymentRequired = null;
         state.requirement = null;
@@ -135,7 +135,8 @@ async function signAndFetch(state, controls, endpoint) {
         });
         const body = await response.json();
         if (!response.ok) {
-            throw new Error(`Abruf nach Signatur fehlgeschlagen (HTTP ${response.status}): ${body.error || body.message || 'unbekannter Fehler'}`);
+            const reason = body.error || body.message || 'unbekannter Fehler';
+            throw new Error(`Die erwartete erste 402-Anforderung war erfolgreich. Die signierte Wiederholung wurde mit HTTP ${response.status} abgelehnt: ${reason}`);
         }
 
         const paymentResponse = decodePaymentResponse(response.headers.get('PAYMENT-RESPONSE'));

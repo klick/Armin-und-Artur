@@ -13,6 +13,16 @@ export const BASE_SEPOLIA = {
 };
 
 const AUTHORIZATION_TYPES = {
+    // eth_signTypedData_v4 requires this explicit domain type. viem adds the
+    // same four fields internally before the official ExactEvmScheme asks a
+    // wallet to sign. Without it, MetaMask serializes an empty domain and the
+    // facilitator correctly rejects the signature.
+    EIP712Domain: [
+        { name: 'name', type: 'string' },
+        { name: 'version', type: 'string' },
+        { name: 'chainId', type: 'uint256' },
+        { name: 'verifyingContract', type: 'address' },
+    ],
     TransferWithAuthorization: [
         { name: 'from', type: 'address' },
         { name: 'to', type: 'address' },

@@ -93,6 +93,9 @@ small transparent adapter for the standard EIP-3009
 `transferWithAuthorization` typed-data request. It does not send a transaction
 itself: the signed authorization is sent once to the same-origin Craft endpoint,
 which delegates verification and settlement to the configured facilitator.
+The adapter includes the explicit `EIP712Domain` type required by MetaMask's
+`eth_signTypedData_v4`; it mirrors viem's domain fields (`name`, `version`,
+`chainId`, `verifyingContract`) used by the official `ExactEvmScheme`.
 
 Build and test the local page with:
 

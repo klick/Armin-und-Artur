@@ -4205,6 +4205,16 @@ var BASE_SEPOLIA = {
   priceAtomic: "10000"
 };
 var AUTHORIZATION_TYPES = {
+  // eth_signTypedData_v4 requires this explicit domain type. viem adds the
+  // same four fields internally before the official ExactEvmScheme asks a
+  // wallet to sign. Without it, MetaMask serializes an empty domain and the
+  // facilitator correctly rejects the signature.
+  EIP712Domain: [
+    { name: "name", type: "string" },
+    { name: "version", type: "string" },
+    { name: "chainId", type: "uint256" },
+    { name: "verifyingContract", type: "address" }
+  ],
   TransferWithAuthorization: [
     { name: "from", type: "address" },
     { name: "to", type: "address" },
@@ -4348,7 +4358,7 @@ async function loadChallenge(state, controls, endpoint, expected) {
     state.paymentRequired = paymentRequired;
     state.requirement = requirement;
     showPreview(controls, requirement);
-    setResult(controls, "Anforderung gepr\xFCft. Verbinde jetzt ausdr\xFCcklich das Testk\xE4uferkonto.");
+    setResult(controls, "Die erste HTTP-402-Antwort ist erwartbar und gepr\xFCft. Verbinde jetzt ausdr\xFCcklich das Testk\xE4uferkonto.");
   } catch (error) {
     state.paymentRequired = null;
     state.requirement = null;
@@ -4426,7 +4436,8 @@ async function signAndFetch(state, controls, endpoint) {
     });
     const body = await response.json();
     if (!response.ok) {
-      throw new Error(`Abruf nach Signatur fehlgeschlagen (HTTP ${response.status}): ${body.error || body.message || "unbekannter Fehler"}`);
+      const reason = body.error || body.message || "unbekannter Fehler";
+      throw new Error(`Die erwartete erste 402-Anforderung war erfolgreich. Die signierte Wiederholung wurde mit HTTP ${response.status} abgelehnt: ${reason}`);
     }
     const paymentResponse = decodePaymentResponse(response.headers.get("PAYMENT-RESPONSE"));
     controls.paymentResponseContent.textContent = JSON.stringify(paymentResponse, null, 2);
