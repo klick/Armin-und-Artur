@@ -4202,8 +4202,25 @@ var BASE_SEPOLIA = {
   chainIdHex: "0x14a34",
   network: "eip155:84532",
   asset: "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
-  priceAtomic: "10000"
+  priceAtomic: "10000",
+  chainName: "Base Sepolia",
+  rpcUrl: "https://sepolia.base.org",
+  explorerUrl: "https://sepolia.basescan.org"
 };
+var BASE_MAINNET = {
+  chainId: 8453,
+  chainIdHex: "0x2105",
+  network: "eip155:8453",
+  asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  priceAtomic: "10000",
+  chainName: "Base",
+  rpcUrl: "https://mainnet.base.org",
+  explorerUrl: "https://basescan.org"
+};
+var BASE_NETWORKS = /* @__PURE__ */ new Map([
+  [BASE_SEPOLIA.network, BASE_SEPOLIA],
+  [BASE_MAINNET.network, BASE_MAINNET]
+]);
 var AUTHORIZATION_TYPES = {
   // eth_signTypedData_v4 requires this explicit domain type. viem adds the
   // same four fields internally before the official ExactEvmScheme asks a
@@ -4239,10 +4256,11 @@ function selectAndValidateRequirement(paymentRequired, expected) {
     throw new Error("Die Zahlungsanforderung enth\xE4lt keine unterst\xFCtzte exact-Option.");
   }
   const expectedPayTo = expected && expected.payTo;
+  const expectedNetwork = getBaseNetwork(expected && expected.network);
   if (!isAddress(expectedPayTo)) {
     throw new Error("Die lokale Testseite hat keinen sicheren Empf\xE4nger konfiguriert.");
   }
-  if (requirement.network !== BASE_SEPOLIA.network || requirement.asset?.toLowerCase() !== BASE_SEPOLIA.asset.toLowerCase() || requirement.amount !== BASE_SEPOLIA.priceAtomic || !addressesEqual(requirement.payTo, expectedPayTo) || expected.network !== BASE_SEPOLIA.network || expected.asset?.toLowerCase() !== BASE_SEPOLIA.asset.toLowerCase() || expected.amount !== BASE_SEPOLIA.priceAtomic || requirement.extra?.name !== "USDC" || requirement.extra?.version !== "2" || expected.extra?.name !== "USDC" || expected.extra?.version !== "2") {
+  if (requirement.network !== expectedNetwork.network || requirement.asset?.toLowerCase() !== expectedNetwork.asset.toLowerCase() || requirement.amount !== expectedNetwork.priceAtomic || !addressesEqual(requirement.payTo, expectedPayTo) || expected.asset?.toLowerCase() !== expectedNetwork.asset.toLowerCase() || expected.amount !== expectedNetwork.priceAtomic || requirement.extra?.name !== "USDC" || requirement.extra?.version !== "2" || expected.extra?.name !== "USDC" || expected.extra?.version !== "2") {
     throw new Error("Sicherheitsstopp: Netzwerk, Asset, Preis oder Empf\xE4nger weichen von der lokalen Pilot-Konfiguration ab.");
   }
   if (!paymentRequired.resource || typeof paymentRequired.resource.url !== "string") {
@@ -4260,11 +4278,12 @@ function createEip3009TypedData(requirement, account, nowSeconds, nonce) {
   if (!isAddress(account) || !/^0x[0-9a-fA-F]{64}$/.test(nonce)) {
     throw new Error("Konto oder EIP-3009-Nonce ist ung\xFCltig.");
   }
+  const network = getBaseNetwork(requirement.network);
   return {
     domain: {
       name: requirement.extra.name,
       version: requirement.extra.version,
-      chainId: BASE_SEPOLIA.chainId,
+      chainId: network.chainId,
       verifyingContract: requirement.asset
     },
     types: AUTHORIZATION_TYPES,
@@ -4304,8 +4323,15 @@ function encodePayment(payload) {
 function decodePaymentResponse(header) {
   return header ? decodePaymentResponseHeader(header) : null;
 }
-function isExpectedChain(chainId) {
-  return chainId === BASE_SEPOLIA.chainIdHex;
+function isExpectedChain(chainId, network = BASE_SEPOLIA.network) {
+  return chainId === getBaseNetwork(network).chainIdHex;
+}
+function getBaseNetwork(network) {
+  const configuration = BASE_NETWORKS.get(network);
+  if (!configuration) {
+    throw new Error("Sicherheitsstopp: Dieses Netzwerk wird vom Browser-Test nicht unterst\xFCtzt.");
+  }
+  return configuration;
 }
 function randomNonce() {
   const bytes = new Uint8Array(32);
@@ -4338,7 +4364,7 @@ if (root) {
     unlockedJson: root.querySelector("[data-unlocked-json]"),
     unlockedJsonContent: root.querySelector("[data-unlocked-json-content]")
   };
-  const state = { paymentRequired: null, requirement: null, chainId: null };
+  const state = { paymentRequired: null, requirement: null, chainId: null, expectedNetwork: expected.network };
   controls.load.addEventListener("click", () => loadChallenge(state, controls, endpoint, expected));
   controls.connect.addEventListener("click", () => connectWallet(state, controls));
   controls.switchNetwork.addEventListener("click", () => switchNetwork(state, controls));
@@ -4357,6 +4383,7 @@ async function loadChallenge(state, controls, endpoint, expected) {
     const requirement = selectAndValidateRequirement(paymentRequired, expected);
     state.paymentRequired = paymentRequired;
     state.requirement = requirement;
+    state.expectedNetwork = requirement.network;
     showPreview(controls, requirement);
     setResult(controls, "Die erste HTTP-402-Antwort ist erwartbar und gepr\xFCft. Verbinde jetzt ausdr\xFCcklich das Testk\xE4uferkonto.");
   } catch (error) {
@@ -4392,8 +4419,9 @@ async function connectWallet(state, controls) {
 async function switchNetwork(state, controls) {
   const provider = walletProvider();
   if (!provider) return;
+  const network = getBaseNetwork(state.expectedNetwork);
   try {
-    await provider.request({ method: "wallet_switchEthereumChain", params: [{ chainId: BASE_SEPOLIA.chainIdHex }] });
+    await provider.request({ method: "wallet_switchEthereumChain", params: [{ chainId: network.chainIdHex }] });
   } catch (error) {
     if (error.code !== 4902) {
       setResult(controls, `Netzwerkwechsel fehlgeschlagen: ${error.message}`, true);
@@ -4402,11 +4430,11 @@ async function switchNetwork(state, controls) {
     await provider.request({
       method: "wallet_addEthereumChain",
       params: [{
-        chainId: BASE_SEPOLIA.chainIdHex,
-        chainName: "Base Sepolia",
+        chainId: network.chainIdHex,
+        chainName: network.chainName,
         nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
-        rpcUrls: ["https://sepolia.base.org"],
-        blockExplorerUrls: ["https://sepolia.basescan.org"]
+        rpcUrls: [network.rpcUrl],
+        blockExplorerUrls: [network.explorerUrl]
       }]
     });
   }
@@ -4420,8 +4448,8 @@ async function signAndFetch(state, controls, endpoint) {
   if (!provider || !state.paymentRequired || !state.requirement || !account) return;
   state.chainId = await provider.request({ method: "eth_chainId" });
   updatePayControl(state, controls);
-  if (!isExpectedChain(state.chainId)) {
-    setResult(controls, "Sicherheitsstopp: MetaMask ist nicht auf Base Sepolia. Es wurde nichts signiert.", true);
+  if (!isExpectedChain(state.chainId, state.requirement.network)) {
+    setResult(controls, "Sicherheitsstopp: MetaMask ist nicht auf dem geforderten Base-Netzwerk. Es wurde nichts signiert.", true);
     return;
   }
   controls.sign.disabled = true;
@@ -4462,19 +4490,21 @@ function populateAccounts(controls, accounts) {
   controls.accounts.disabled = false;
 }
 function renderChainStatus(state, controls) {
-  const correct = isExpectedChain(state.chainId);
+  const network = getBaseNetwork(state.expectedNetwork);
+  const correct = isExpectedChain(state.chainId, state.expectedNetwork);
   controls.switchNetwork.disabled = correct;
-  controls.walletStatus.textContent = correct ? "Base Sepolia ist aktiv." : `Aktives Netzwerk: ${state.chainId || "unbekannt"}. Vor dem Signieren zu Base Sepolia wechseln.`;
+  controls.walletStatus.textContent = correct ? `${network.chainName} ist aktiv.` : `Aktives Netzwerk: ${state.chainId || "unbekannt"}. Vor dem Signieren zu ${network.chainName} wechseln.`;
 }
 function showPreview(controls, requirement) {
   controls.preview.querySelector('[data-field="network"]').textContent = requirement.network;
   controls.preview.querySelector('[data-field="asset"]').textContent = requirement.asset;
   controls.preview.querySelector('[data-field="payTo"]').textContent = requirement.payTo;
-  controls.preview.querySelector('[data-field="amount"]').textContent = `${requirement.amount} atomic = 0,01 Test-USDC`;
+  const realPayment = requirement.network === "eip155:8453";
+  controls.preview.querySelector('[data-field="amount"]').textContent = `${requirement.amount} atomic = 0,01 ${realPayment ? "USDC (echtes Geld)" : "Test-USDC"}`;
   controls.preview.hidden = false;
 }
 function updatePayControl(state, controls) {
-  controls.sign.disabled = !(state.paymentRequired && state.requirement && controls.accounts.value && isExpectedChain(state.chainId));
+  controls.sign.disabled = !(state.paymentRequired && state.requirement && controls.accounts.value && isExpectedChain(state.chainId, state.expectedNetwork));
 }
 function setResult(controls, message, isError = false) {
   controls.result.textContent = message;

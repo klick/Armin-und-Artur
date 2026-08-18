@@ -10,7 +10,26 @@ export const BASE_SEPOLIA = {
     network: 'eip155:84532',
     asset: '0x036CbD53842c5426634e7929541eC2318f3dCF7e',
     priceAtomic: '10000',
+    chainName: 'Base Sepolia',
+    rpcUrl: 'https://sepolia.base.org',
+    explorerUrl: 'https://sepolia.basescan.org',
 };
+
+export const BASE_MAINNET = {
+    chainId: 8453,
+    chainIdHex: '0x2105',
+    network: 'eip155:8453',
+    asset: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',
+    priceAtomic: '10000',
+    chainName: 'Base',
+    rpcUrl: 'https://mainnet.base.org',
+    explorerUrl: 'https://basescan.org',
+};
+
+const BASE_NETWORKS = new Map([
+    [BASE_SEPOLIA.network, BASE_SEPOLIA],
+    [BASE_MAINNET.network, BASE_MAINNET],
+]);
 
 const AUTHORIZATION_TYPES = {
     // eth_signTypedData_v4 requires this explicit domain type. viem adds the
@@ -52,18 +71,18 @@ export function selectAndValidateRequirement(paymentRequired, expected) {
     }
 
     const expectedPayTo = expected && expected.payTo;
+    const expectedNetwork = getBaseNetwork(expected && expected.network);
     if (!isAddress(expectedPayTo)) {
         throw new Error('Die lokale Testseite hat keinen sicheren Empfänger konfiguriert.');
     }
 
     if (
-        requirement.network !== BASE_SEPOLIA.network ||
-        requirement.asset?.toLowerCase() !== BASE_SEPOLIA.asset.toLowerCase() ||
-        requirement.amount !== BASE_SEPOLIA.priceAtomic ||
+        requirement.network !== expectedNetwork.network ||
+        requirement.asset?.toLowerCase() !== expectedNetwork.asset.toLowerCase() ||
+        requirement.amount !== expectedNetwork.priceAtomic ||
         !addressesEqual(requirement.payTo, expectedPayTo) ||
-        expected.network !== BASE_SEPOLIA.network ||
-        expected.asset?.toLowerCase() !== BASE_SEPOLIA.asset.toLowerCase() ||
-        expected.amount !== BASE_SEPOLIA.priceAtomic ||
+        expected.asset?.toLowerCase() !== expectedNetwork.asset.toLowerCase() ||
+        expected.amount !== expectedNetwork.priceAtomic ||
         requirement.extra?.name !== 'USDC' ||
         requirement.extra?.version !== '2' ||
         expected.extra?.name !== 'USDC' ||
@@ -92,11 +111,13 @@ export function createEip3009TypedData(requirement, account, nowSeconds, nonce) 
         throw new Error('Konto oder EIP-3009-Nonce ist ungültig.');
     }
 
+    const network = getBaseNetwork(requirement.network);
+
     return {
         domain: {
             name: requirement.extra.name,
             version: requirement.extra.version,
-            chainId: BASE_SEPOLIA.chainId,
+            chainId: network.chainId,
             verifyingContract: requirement.asset,
         },
         types: AUTHORIZATION_TYPES,
@@ -142,8 +163,17 @@ export function decodePaymentResponse(header) {
     return header ? decodePaymentResponseHeader(header) : null;
 }
 
-export function isExpectedChain(chainId) {
-    return chainId === BASE_SEPOLIA.chainIdHex;
+export function isExpectedChain(chainId, network = BASE_SEPOLIA.network) {
+    return chainId === getBaseNetwork(network).chainIdHex;
+}
+
+export function getBaseNetwork(network) {
+    const configuration = BASE_NETWORKS.get(network);
+    if (!configuration) {
+        throw new Error('Sicherheitsstopp: Dieses Netzwerk wird vom Browser-Test nicht unterstützt.');
+    }
+
+    return configuration;
 }
 
 export function randomNonce() {

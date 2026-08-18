@@ -24,6 +24,9 @@ class StoryReadingService extends Component
     private const BASE_SEPOLIA_NETWORK = 'eip155:84532';
     private const BASE_SEPOLIA_USDC_ASSET = '0x036CbD53842c5426634e7929541eC2318f3dCF7e';
     private const BASE_MAINNET_NETWORK = 'eip155:8453';
+    private const BASE_MAINNET_USDC_ASSET = '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913';
+    private const CDP_FACILITATOR_URL = 'https://api.cdp.coinbase.com/platform/v2/x402';
+    private const MAINNET_PILOT_PRICE_ATOMIC = '10000';
     private ?array $catalog = null;
     private ?array $catalogByEntryId = null;
 
@@ -106,11 +109,7 @@ class StoryReadingService extends Component
     {
         $configured = App::env('STORY_API_X402_ENABLED');
 
-        if ($configured === null || $configured === '') {
-            return true;
-        }
-
-        return filter_var($configured, FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAILURE) ?? true;
+        return filter_var($configured, FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAILURE) === true;
     }
 
     /**
@@ -144,6 +143,7 @@ class StoryReadingService extends Component
         }
 
         $parameters = $this->paymentParameters();
+        $this->assertPaymentConfiguration($parameters);
 
         return [
             'x402Version' => self::X402_VERSION,
@@ -194,7 +194,7 @@ class StoryReadingService extends Component
      */
     public function verifyAndSettle(array $paymentPayload, array $requirements): array
     {
-        $facilitatorUrl = rtrim((string)(App::env('STORY_API_X402_FACILITATOR_URL') ?: 'https://x402.org/facilitator'), '/');
+        $facilitatorUrl = $this->facilitatorUrl();
         if (!filter_var($facilitatorUrl, FILTER_VALIDATE_URL)) {
             throw new \RuntimeException('STORY_API_X402_FACILITATOR_URL must be a valid URL.');
         }
@@ -225,14 +225,30 @@ class StoryReadingService extends Component
         }
 
         $body = Json::encode($payload);
-        curl_setopt_array($curl, [
+        $headers = ['Content-Type: application/json', 'Accept: application/json'];
+        $isCdpFacilitator = str_starts_with($url, self::CDP_FACILITATOR_URL . '/');
+        if ($isCdpFacilitator) {
+            $keyId = trim((string)App::env('CDP_API_KEY_ID'));
+            $keySecret = trim((string)App::env('CDP_API_KEY_SECRET'));
+            $jwt = (new CdpJwtFactory())->create($keyId, $keySecret, 'POST', $url);
+            $headers[] = 'Authorization: Bearer ' . $jwt;
+        }
+
+        $curlOptions = [
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => $body,
-            CURLOPT_HTTPHEADER => ['Content-Type: application/json', 'Accept: application/json'],
+            CURLOPT_HTTPHEADER => $headers,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CONNECTTIMEOUT => 5,
             CURLOPT_TIMEOUT => 15,
-        ]);
+        ];
+        if ($isCdpFacilitator) {
+            // This project's CDP key is restricted to the server's fixed IPv4
+            // address. Hetzner also offers IPv6, so automatic resolution would
+            // intermittently fail Coinbase's allowlist with HTTP 401.
+            $curlOptions[CURLOPT_IPRESOLVE] = CURL_IPRESOLVE_V4;
+        }
+        curl_setopt_array($curl, $curlOptions);
         $response = curl_exec($curl);
         $status = curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
         $error = curl_error($curl);
@@ -265,7 +281,52 @@ class StoryReadingService extends Component
             throw new \RuntimeException('Story API x402 network, asset, or price configuration is invalid.');
         }
 
+        $expectedAsset = match ($network) {
+            self::BASE_SEPOLIA_NETWORK => self::BASE_SEPOLIA_USDC_ASSET,
+            self::BASE_MAINNET_NETWORK => self::BASE_MAINNET_USDC_ASSET,
+            default => throw new \RuntimeException('Only Base Sepolia and Base mainnet are supported by the Story API.'),
+        };
+        if (strcasecmp($asset, $expectedAsset) !== 0) {
+            throw new \RuntimeException('The configured USDC asset does not match the selected Base network.');
+        }
+
         return compact('network', 'asset', 'amount');
+    }
+
+    private function assertPaymentConfiguration(array $parameters): void
+    {
+        if ($parameters['network'] !== self::BASE_MAINNET_NETWORK) {
+            return;
+        }
+
+        if (filter_var(App::env('STORY_API_X402_MAINNET_ENABLED'), FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAILURE) !== true) {
+            throw new \RuntimeException('STORY_API_X402_MAINNET_ENABLED must be explicitly true before real payments are advertised.');
+        }
+        if ($parameters['amount'] !== self::MAINNET_PILOT_PRICE_ATOMIC) {
+            throw new \RuntimeException('The initial mainnet pilot is capped at exactly 0.01 USDC per request.');
+        }
+        if ($this->facilitatorUrl() !== self::CDP_FACILITATOR_URL) {
+            throw new \RuntimeException('Base mainnet requires the official authenticated CDP facilitator.');
+        }
+
+        // Validate the credentials without retaining a JWT. This prevents an
+        // agent from signing a real authorization that the server cannot settle.
+        (new CdpJwtFactory())->create(
+            trim((string)App::env('CDP_API_KEY_ID')),
+            trim((string)App::env('CDP_API_KEY_SECRET')),
+            'POST',
+            self::CDP_FACILITATOR_URL . '/verify',
+        );
+    }
+
+    private function facilitatorUrl(): string
+    {
+        $facilitatorUrl = rtrim((string)(App::env('STORY_API_X402_FACILITATOR_URL') ?: 'https://x402.org/facilitator'), '/');
+        if (!filter_var($facilitatorUrl, FILTER_VALIDATE_URL)) {
+            throw new \RuntimeException('STORY_API_X402_FACILITATOR_URL must be a valid URL.');
+        }
+
+        return $facilitatorUrl;
     }
 
     private function classifyNetwork(string $network): string
