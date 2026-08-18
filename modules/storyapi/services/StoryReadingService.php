@@ -17,6 +17,13 @@ use yii\web\NotFoundHttpException;
 class StoryReadingService extends Component
 {
     private const ID_PATTERN = '/^[a-z0-9]+(?:-[a-z0-9]+)*$/';
+    private const X402_VERSION = 2;
+    private const X402_SCHEME = 'exact';
+    private const PILOT_CURRENCY = 'USDC';
+    private const PILOT_CURRENCY_DECIMALS = 6;
+    private const BASE_SEPOLIA_NETWORK = 'eip155:84532';
+    private const BASE_SEPOLIA_USDC_ASSET = '0x036CbD53842c5426634e7929541eC2318f3dCF7e';
+    private const BASE_MAINNET_NETWORK = 'eip155:8453';
     private ?array $catalog = null;
     private ?array $catalogByEntryId = null;
 
@@ -50,6 +57,8 @@ class StoryReadingService extends Component
 
         $items = [];
         $itemsByEntryId = [];
+        $paymentDiscovery = $this->getPaymentDiscoveryMetadata();
+        $schemaUrl = UrlHelper::siteUrl('api/v1/story-reading.schema.json');
         foreach (glob($this->artifactDirectory() . DIRECTORY_SEPARATOR . '*.reading.json') ?: [] as $path) {
             $artifact = $this->decodeFile($path);
             $story = $artifact['story'] ?? [];
@@ -64,8 +73,11 @@ class StoryReadingService extends Component
                 'language' => $story['language'],
                 'sourceUrl' => $story['sourceUrl'],
                 'schemaVersion' => $artifact['schemaVersion'] ?? null,
+                'schemaUrl' => $schemaUrl,
                 'readingUrl' => UrlHelper::siteUrl("api/v1/stories/{$id}/reading.json"),
                 'access' => 'x402',
+                'environment' => $paymentDiscovery['environment'],
+                'payment' => $paymentDiscovery['payment'],
             ];
             $entryId = $artifact['cms']['entryId'] ?? null;
             if (is_int($entryId) && $entryId > 0) {
@@ -101,6 +113,29 @@ class StoryReadingService extends Component
         return filter_var($configured, FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAILURE) ?? true;
     }
 
+    /**
+     * Public, non-secret payment metadata used by the free discovery catalogue.
+     * The recipient remains in the endpoint's standard 402 challenge.
+     */
+    public function getPaymentDiscoveryMetadata(): array
+    {
+        $parameters = $this->paymentParameters();
+
+        return [
+            'environment' => $this->classifyNetwork($parameters['network']),
+            'payment' => [
+                'protocol' => 'x402',
+                'version' => self::X402_VERSION,
+                'scheme' => self::X402_SCHEME,
+                'network' => $parameters['network'],
+                'asset' => $parameters['asset'],
+                'amount' => $parameters['amount'],
+                'currency' => self::PILOT_CURRENCY,
+                'decimals' => self::PILOT_CURRENCY_DECIMALS,
+            ],
+        ];
+    }
+
     public function x402PaymentRequired(string $resourceUrl): array
     {
         $payTo = trim((string)App::env('STORY_API_X402_PAY_TO'));
@@ -108,16 +143,10 @@ class StoryReadingService extends Component
             throw new \RuntimeException('STORY_API_X402_PAY_TO must be a valid EVM address before the paid endpoint can be enabled.');
         }
 
-        $network = trim((string)(App::env('STORY_API_X402_NETWORK') ?: 'eip155:84532'));
-        $asset = trim((string)(App::env('STORY_API_X402_ASSET') ?: '0x036CbD53842c5426634e7929541eC2318f3dCF7e'));
-        $amount = trim((string)(App::env('STORY_API_X402_PRICE_ATOMIC') ?: '10000'));
-
-        if (!preg_match('/^eip155:[0-9]+$/', $network) || !preg_match('/^0x[a-fA-F0-9]{40}$/', $asset) || !preg_match('/^[0-9]+$/', $amount)) {
-            throw new \RuntimeException('Story API x402 network, asset, or price configuration is invalid.');
-        }
+        $parameters = $this->paymentParameters();
 
         return [
-            'x402Version' => 2,
+            'x402Version' => self::X402_VERSION,
             'error' => 'PAYMENT-SIGNATURE header is required',
             'resource' => [
                 'url' => $resourceUrl,
@@ -125,14 +154,14 @@ class StoryReadingService extends Component
                 'mimeType' => 'application/json',
             ],
             'accepts' => [[
-                'scheme' => 'exact',
-                'network' => $network,
-                'amount' => $amount,
-                'asset' => $asset,
+                'scheme' => self::X402_SCHEME,
+                'network' => $parameters['network'],
+                'amount' => $parameters['amount'],
+                'asset' => $parameters['asset'],
                 'payTo' => $payTo,
                 'maxTimeoutSeconds' => 60,
                 'extra' => [
-                    'name' => 'USDC',
+                    'name' => self::PILOT_CURRENCY,
                     'version' => '2',
                 ],
             ]],
@@ -224,6 +253,28 @@ class StoryReadingService extends Component
         }
 
         return $decoded;
+    }
+
+    private function paymentParameters(): array
+    {
+        $network = trim((string)(App::env('STORY_API_X402_NETWORK') ?: self::BASE_SEPOLIA_NETWORK));
+        $asset = trim((string)(App::env('STORY_API_X402_ASSET') ?: self::BASE_SEPOLIA_USDC_ASSET));
+        $amount = trim((string)(App::env('STORY_API_X402_PRICE_ATOMIC') ?: '10000'));
+
+        if (!preg_match('/^eip155:[0-9]+$/', $network) || !preg_match('/^0x[a-fA-F0-9]{40}$/', $asset) || !preg_match('/^[0-9]+$/', $amount)) {
+            throw new \RuntimeException('Story API x402 network, asset, or price configuration is invalid.');
+        }
+
+        return compact('network', 'asset', 'amount');
+    }
+
+    private function classifyNetwork(string $network): string
+    {
+        return match ($network) {
+            self::BASE_SEPOLIA_NETWORK => 'testnet',
+            self::BASE_MAINNET_NETWORK => 'mainnet',
+            default => 'unknown',
+        };
     }
 
     private function artifactDirectory(): string

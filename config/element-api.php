@@ -139,7 +139,10 @@ return [
                             'available' => true,
                             'storyId' => $reading['id'],
                             'schemaVersion' => $reading['schemaVersion'],
+                            'schemaUrl' => $reading['schemaUrl'],
                             'access' => $reading['access'],
+                            'environment' => $reading['environment'],
+                            'payment' => $reading['payment'],
                             'url' => $reading['readingUrl'],
                         ] : [
                             'available' => false,

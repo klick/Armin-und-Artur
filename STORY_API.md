@@ -8,7 +8,7 @@ reading artefacts with [x402 v2](https://www.x402.org/).
 
 | Endpoint | Access | Purpose |
 | --- | --- | --- |
-| `GET /api/v1/stories.json` | free | Craft entry catalogue with an `reading.available` flag |
+| `GET /api/v1/stories.json` | free | Craft entry catalogue with reading availability, schema and payment discovery metadata |
 | `GET /api/v1/story-reading.schema.json` | free | JSON Schema contract for canonical reading artefacts |
 | `GET /api/v1/stories/{story-id}/reading.json` | x402 | Full canonical story text, cast and reading direction |
 
@@ -67,6 +67,56 @@ The implementation follows the x402 v2 HTTP contract directly because the
 official server middleware packages currently target JavaScript and Python,
 not Craft/PHP. Verification and settlement remain delegated to the official
 facilitator endpoint.
+
+### Public Base Sepolia sandbox
+
+The first public pilot is a **testnet sandbox**, not a sale for money. Its free
+catalogue lets agents discover the complete payment parameters before they
+request an artefact. A story with a reading artefact exposes metadata shaped
+like this:
+
+```json
+{
+  "reading": {
+    "available": true,
+    "storyId": "rotkaeppchen",
+    "schemaVersion": "1.2",
+    "schemaUrl": "https://arminundartur.de/api/v1/story-reading.schema.json",
+    "access": "x402",
+    "environment": "testnet",
+    "payment": {
+      "protocol": "x402",
+      "version": 2,
+      "scheme": "exact",
+      "network": "eip155:84532",
+      "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+      "amount": "10000",
+      "currency": "USDC",
+      "decimals": 6
+    },
+    "url": "https://arminundartur.de/api/v1/stories/rotkaeppchen/reading.json"
+  }
+}
+```
+
+`amount` is expressed in atomic token units; with six decimals, `10000` is
+0.01 test USDC. Base Sepolia test USDC and test ETH have no monetary value.
+The recipient address is intentionally supplied by the standard endpoint
+challenge rather than duplicated in the catalogue.
+
+An x402 buyer:
+
+1. reads the free catalogue and follows `reading.url`;
+2. receives HTTP `402` and decodes `PAYMENT-REQUIRED`;
+3. checks that challenge against the catalogue, then signs the Base Sepolia
+   EIP-3009 authorization with test USDC;
+4. retries with `PAYMENT-SIGNATURE` and, after settlement, receives the reading
+   artefact plus `PAYMENT-RESPONSE`.
+
+This pilot does not enable or advertise a mainnet purchase path. Mainnet would
+require a separate, explicit environment configuration and deployment review.
+The human-operated browser page below remains a local `DEV_MODE` diagnostic and
+is not part of the public sandbox interface.
 
 ## Local browser payment test
 
