@@ -18,12 +18,22 @@ handling; Element API has no payment middleware layer.
 
 ## Current pilot artefacts
 
-- `rotkaeppchen`
-- `maerchen-von-einem-der-auszog-das-fuerchten-zu-lernen`
+- `rotkaeppchen` — dialogue-led folk tale
+- `maerchen-von-einem-der-auszog-das-fuerchten-zu-lernen` — longer
+  multi-character folktale
+- `der-suesse-brei` — short, narrator-led tale
+- `der-wolf-und-die-sieben-jungen-geisslein` — medium-length animal-dialogue
+  tale
+- `die-gaensemagd` — longer multi-character tale
 
 They live under `resources/story-reading/`, outside the public web root. Every
 artefact is the vendor-neutral source from which future SSML, ElevenLabs, or
 other provider payloads are derived.
+
+The three additional pilot items deliberately cover different editorial shapes:
+short narration, sustained dialogue between animal characters, and a larger
+cast with several scene changes. All retain the published text; their
+normalisations are declared inside each artefact.
 
 ## x402 testnet configuration
 

@@ -1,0 +1,143 @@
+{
+    "$schema": "https:\/\/arminundartur.de\/schemas\/story-reading-1.2.schema.json",
+    "schemaVersion": "1.2",
+    "story": {
+        "id": "der-suesse-brei",
+        "title": "Der süsse Brei",
+        "language": "de",
+        "sourceUrl": "https:\/\/arminundartur.de\/der-s%C3%BCsse-brei",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 257,
+        "entryUid": "ca5a0d87-7d7f-4db0-92b4-b9267785065f",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "voice@name or provider voice mapping",
+                    "pronunciation": "phoneme or external PLS lexicon"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "Text to Dialogue request",
+                "mapping": {
+                    "speaker": "voice_id",
+                    "spokenSegment": "inputs[].text",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                }
+            },
+            "geminiTts": {
+                "purpose": "provider-specific multi-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "speaker voice configuration",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "adult_male_warm",
+            "delivery": "ruhig und märchenhaft; beim überkochenden Brei zunehmend dringlich, aber verständlich"
+        },
+        "girl": {
+            "label": "Mädchen",
+            "voiceProfile": "young_female",
+            "delivery": "freundlich, bescheiden und am Ende entschlossen"
+        },
+        "mother": {
+            "label": "Mutter",
+            "voiceProfile": "adult_female",
+            "delivery": "zunächst erleichtert, später verwirrt und überfordert"
+        },
+        "old_woman": {
+            "label": "Alte Frau",
+            "voiceProfile": "older_female",
+            "delivery": "freundlich, wissend und ruhig"
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war einmal ein armes, frommes Mädchen",
+            "title": "Das Töpfchen",
+            "speakers": [
+                "narrator",
+                "girl",
+                "old_woman"
+            ],
+            "direction": "Still und warm beginnen. Die beiden Worte für das Töpfchen klar und als einfache Merksätze sprechen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Das Mädchen brachte den Topf",
+            "title": "Ende der Not",
+            "speakers": [
+                "narrator",
+                "girl",
+                "mother"
+            ],
+            "direction": "Die Erleichterung unaufgeregt erzählen; keine zusätzliche Fröhlichkeit hinzufügen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Auf eine Zeit war das Mädchen ausgegangen",
+            "title": "Der überkochende Brei",
+            "speakers": [
+                "narrator",
+                "mother",
+                "girl"
+            ],
+            "direction": "Mit jeder Ausdehnung des Breis das Tempo nur leicht erhöhen. Der Schlusssatz wieder gelassen und trocken sprechen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Use the explicitly named speaker in the surrounding original sentence.",
+        "unnamedQuotedSpeech": "Use narrator unless the surrounding original sentence makes the speaker unambiguous.",
+        "creatures": "No creature has direct speech in this story.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "pilot_reviewed",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy."
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war einmal ein armes, frommes Mädchen, das lebte mit seiner Mutter allein, und sie hatten nichts mehr zu essen. Da ging das Kind hinaus in den Wald, und begegnete ihm da eine alte Frau, die wusste seinen Jammer schon und schenkte ihm ein Töpfchen, zu dem sollt es sagen: „Töpfchen, koche,“ so kochte es guten, süssen Hirsebrei, und wenn es sagte: „Töpfchen, steh,“ so hörte es wieder auf zu kochen.",
+            "Das Mädchen brachte den Topf seiner Mutter heim, und nun waren sie ihrer Armut und ihres Hungers ledig und assen süssen Brei, sooft sie wollten.",
+            "Auf eine Zeit war das Mädchen ausgegangen, da sprach die Mutter: „Töpfchen, koche,“ da kocht es, und sie isst sich satt; nun will sie, dass das Töpfchen wieder aufhören soll, aber sie weiss das Wort nicht. Also kocht es fort, und der Brei steigt über den Rand hinaus und kocht immerzu, die Küche und das ganze Haus voll und das zweite Haus und dann die Strasse, als wollt’s die ganze Welt satt machen, und ist die grösste Not, und kein Mensch weiss sich da zu helfen. Endlich, wie nur noch ein einziges Haus übrig ist, da kommt das Kind heim und spricht nur: „Töpfchen, steh,“ da steht es und hört auf zu kochen, und wer wieder in die Stadt wollte, der musste sich durchessen."
+        ]
+    }
+}
