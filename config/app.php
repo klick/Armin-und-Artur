@@ -24,4 +24,8 @@ use craft\helpers\App;
 
 return [
     'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
+    'modules' => [
+        'story-api' => modules\storyapi\Module::class,
+    ],
+    'bootstrap' => ['story-api'],
 ];

@@ -9,4 +9,7 @@
  * https://craftcms.com/docs/4.x/routing.html
  */
 
-return [];
+return [
+    'api/v1/story-reading.schema.json' => 'story-api/stories/schema',
+    'api/v1/stories/<id:[a-z0-9]+(?:-[a-z0-9]+)*>/reading.json' => 'story-api/stories/reading',
+];
