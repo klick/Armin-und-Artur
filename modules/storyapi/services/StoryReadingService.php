@@ -17,6 +17,8 @@ use yii\web\NotFoundHttpException;
 class StoryReadingService extends Component
 {
     private const ID_PATTERN = '/^[a-z0-9]+(?:-[a-z0-9]+)*$/';
+    private ?array $catalog = null;
+    private ?array $catalogByEntryId = null;
 
     public function getSchema(): array
     {
@@ -42,7 +44,12 @@ class StoryReadingService extends Component
 
     public function getCatalog(): array
     {
+        if ($this->catalog !== null) {
+            return $this->catalog;
+        }
+
         $items = [];
+        $itemsByEntryId = [];
         foreach (glob($this->artifactDirectory() . DIRECTORY_SEPARATOR . '*.reading.json') ?: [] as $path) {
             $artifact = $this->decodeFile($path);
             $story = $artifact['story'] ?? [];
@@ -51,7 +58,7 @@ class StoryReadingService extends Component
             }
 
             $id = $this->validateId((string)$story['id']);
-            $items[] = [
+            $item = [
                 'id' => $id,
                 'title' => $story['title'],
                 'language' => $story['language'],
@@ -60,23 +67,27 @@ class StoryReadingService extends Component
                 'readingUrl' => UrlHelper::siteUrl("api/v1/stories/{$id}/reading.json"),
                 'access' => 'x402',
             ];
+            $entryId = $artifact['cms']['entryId'] ?? null;
+            if (is_int($entryId) && $entryId > 0) {
+                $item['entryId'] = $entryId;
+                $itemsByEntryId[$entryId] = $item;
+            }
+            $items[] = $item;
         }
 
         usort($items, static fn(array $a, array $b): int => strnatcasecmp($a['title'], $b['title']));
 
-        return $items;
+        $this->catalog = $items;
+        $this->catalogByEntryId = $itemsByEntryId;
+
+        return $this->catalog;
     }
 
     public function getCatalogItemByEntryId(int $entryId): ?array
     {
-        foreach ($this->getCatalog() as $item) {
-            $artifact = $this->getArtifact($item['id']);
-            if (($artifact['cms']['entryId'] ?? null) === $entryId) {
-                return $item;
-            }
-        }
+        $this->getCatalog();
 
-        return null;
+        return $this->catalogByEntryId[$entryId] ?? null;
     }
 
     public function isX402Enabled(): bool

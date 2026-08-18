@@ -5,6 +5,25 @@ declare(strict_types=1);
 require dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 use modules\storyapi\services\StoryReadingService;
+use yii\base\InvalidArgumentException;
+
+function expect(bool $condition, string $message): void
+{
+    if (!$condition) {
+        throw new RuntimeException($message);
+    }
+}
+
+function expectInvalidArgument(callable $callback, string $message): void
+{
+    try {
+        $callback();
+    } catch (InvalidArgumentException) {
+        return;
+    }
+
+    throw new RuntimeException($message);
+}
 
 putenv('STORY_API_X402_NETWORK=eip155:84532');
 putenv('STORY_API_X402_ASSET=0x036CbD53842c5426634e7929541eC2318f3dCF7e');
@@ -14,16 +33,16 @@ putenv('STORY_API_X402_PRICE_ATOMIC=10000');
 $service = new StoryReadingService();
 $required = $service->x402PaymentRequired('https://example.test/api/v1/stories/rotkaeppchen/reading.json');
 
-assert(($required['x402Version'] ?? null) === 2);
-assert(($required['resource']['mimeType'] ?? null) === 'application/json');
-assert(($required['accepts'][0]['scheme'] ?? null) === 'exact');
-assert(($required['accepts'][0]['network'] ?? null) === 'eip155:84532');
-assert(($required['accepts'][0]['amount'] ?? null) === '10000');
-assert(($required['accepts'][0]['payTo'] ?? null) === '0x1111111111111111111111111111111111111111');
+expect(($required['x402Version'] ?? null) === 2, 'x402 v2 is required');
+expect(($required['resource']['mimeType'] ?? null) === 'application/json', 'JSON resource type is required');
+expect(($required['accepts'][0]['scheme'] ?? null) === 'exact', 'exact payment scheme is required');
+expect(($required['accepts'][0]['network'] ?? null) === 'eip155:84532', 'Base Sepolia network is required');
+expect(($required['accepts'][0]['amount'] ?? null) === '10000', 'atomic price is required');
+expect(($required['accepts'][0]['payTo'] ?? null) === '0x1111111111111111111111111111111111111111', 'recipient address is required');
 
 // The HTTP controller puts this identical JSON object in PAYMENT-REQUIRED.
 $header = base64_encode(json_encode($required, JSON_THROW_ON_ERROR));
-assert(json_decode(base64_decode($header, true), true, 512, JSON_THROW_ON_ERROR) === $required);
+expect(json_decode(base64_decode($header, true), true, 512, JSON_THROW_ON_ERROR) === $required, 'PAYMENT-REQUIRED must round-trip as Base64 JSON');
 
 $paymentPayload = [
     'x402Version' => 2,
@@ -31,6 +50,8 @@ $paymentPayload = [
     'accepted' => $required['accepts'][0],
     'payload' => ['signature' => '0xdeadbeef'],
 ];
-assert($service->decodePaymentSignature(base64_encode(json_encode($paymentPayload, JSON_THROW_ON_ERROR))) === $paymentPayload);
+expect($service->decodePaymentSignature(base64_encode(json_encode($paymentPayload, JSON_THROW_ON_ERROR))) === $paymentPayload, 'PAYMENT-SIGNATURE must decode to its v2 payload');
+expectInvalidArgument(static fn() => $service->decodePaymentSignature('!'), 'Invalid Base64 must be rejected');
+expectInvalidArgument(static fn() => $service->decodePaymentSignature(base64_encode(json_encode(['x402Version' => 1], JSON_THROW_ON_ERROR))), 'Non-v2 payloads must be rejected');
 
 echo "x402 v2 payment-required contract checks passed\n";
