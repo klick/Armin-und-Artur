@@ -1,0 +1,95 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {
+      "id": "aschenputtel",
+      "entryId": 35,
+      "entryUid": "0fc27475-e582-47fa-bf4a-95afc2af2ae2",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/aschenputtel",
+      "language": "de"
+    },
+    {
+      "id": "der-froschkoenig-oder-der-eiserne-heinrich",
+      "entryId": 63,
+      "entryUid": "5ef2ee07-0431-482c-83da-5dbd80895f73",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/der-froschk%C3%B6nig-oder-der-eiserne-heinrich",
+      "language": "de"
+    },
+    {
+      "id": "die-bremer-stadtmusikanten",
+      "entryId": 147,
+      "entryUid": "bc9b3e2a-1921-46e3-b00f-6973e75b46ed",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-bremer-stadtmusikanten",
+      "language": "de"
+    },
+    {
+      "id": "dornroeschen",
+      "entryId": 93,
+      "entryUid": "9fa5dbe2-a396-4182-86b6-60be2f053cd4",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/dornr%C3%B6schen",
+      "language": "de"
+    },
+    {
+      "id": "frau-holle",
+      "entryId": 151,
+      "entryUid": "bd0ca85e-dff4-425f-b114-f9c463d71789",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/frau-holle",
+      "language": "de"
+    },
+    {
+      "id": "haensel-und-gretel",
+      "entryId": 45,
+      "entryUid": "c87171bc-f640-48c3-9554-84339b3168ce",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/h%C3%A4nsel-und-gretel",
+      "language": "de"
+    },
+    {
+      "id": "rapunzel",
+      "entryId": 49,
+      "entryUid": "a4edf2d5-7cc1-4074-817f-b753e4b4946a",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/rapunzel",
+      "language": "de"
+    },
+    {
+      "id": "rumpelstilzchen",
+      "entryId": 125,
+      "entryUid": "7e352137-21ce-420c-8de2-c8c0e8b58229",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/rumpelstilzchen",
+      "language": "de"
+    },
+    {
+      "id": "schneewittchen",
+      "entryId": 89,
+      "entryUid": "15e40cfe-ee3d-4e41-8a7c-f7224ee434d5",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/schneewittchen",
+      "language": "de"
+    },
+    {
+      "id": "tischchen-deck-dich-goldesel-und-knueppel-aus-dem-sack",
+      "entryId": 107,
+      "entryUid": "869affbd-0232-4a38-86de-a5deb1c6b234",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/tischchen-deck-dich-goldesel-und-kn%C3%BCppel-aus-dem-sack",
+      "language": "de"
+    }
+  ]
+}

@@ -22,7 +22,9 @@ voice profiles, scenes, stage directions, reading policy and renderer guidance).
 The `story-api` Craft module owns schema/artifact delivery and x402 protocol
 handling; Element API has no payment middleware layer.
 
-## Current pilot artefacts
+## Current reading artefacts
+
+The original five-item pilot contains:
 
 - `rotkaeppchen` — dialogue-led folk tale
 - `maerchen-von-einem-der-auszog-das-fuerchten-zu-lernen` — longer
@@ -32,14 +34,29 @@ handling; Element API has no payment middleware layer.
   tale
 - `die-gaensemagd` — longer multi-character tale
 
+The first ten-item batch adds:
+
+- `aschenputtel`
+- `haensel-und-gretel`
+- `rapunzel`
+- `der-froschkoenig-oder-der-eiserne-heinrich`
+- `schneewittchen`
+- `dornroeschen`
+- `tischchen-deck-dich-goldesel-und-knueppel-aus-dem-sack`
+- `rumpelstilzchen`
+- `die-bremer-stadtmusikanten`
+- `frau-holle`
+
 They live under `resources/story-reading/`, outside the public web root. Every
 artefact is the vendor-neutral source from which future SSML, ElevenLabs, or
 other provider payloads are derived.
 
-The three additional pilot items deliberately cover different editorial shapes:
-short narration, sustained dialogue between animal characters, and a larger
-cast with several scene changes. All retain the published text; their
-normalisations are declared inside each artefact.
+Together, the artefacts cover short narration, sustained dialogue, ensemble
+casts, verse-like speech and longer scene structures. All retain the published
+text; their normalisations are declared inside each artefact. The ten-item
+batch is machine-validated and independently cross-reviewed, while its
+`providerNotes.editorialStatus` deliberately remains
+`machine_validated_pending_editorial_review` until human editorial sign-off.
 
 ## Agent discovery and public-data boundary
 
@@ -249,7 +266,11 @@ test USDC and an x402-capable client.
 
 ## Batch production after the pilot
 
-Do not generate the whole catalogue before this pilot has been exercised by a
-real agent. After that, create artefacts in small batches (20–30): extract the
-published original, generate editorial directions, validate against the
-contract, and sample-review before marking the reading artefact available.
+Create artefacts in reviewable batches: extract the current published Craft
+source, add editorial directions, validate against the contract and exact
+source snapshot, then cross-review before making them available. The first
+ten-item batch and its manifest are the reference implementation.
+
+See `scripts/story-reading/README.md` for the reproducible DDEV export and
+validation commands. The generated scaffold is intentionally not publishable:
+cast, scenes, speaker resolution and delivery always require editorial work.

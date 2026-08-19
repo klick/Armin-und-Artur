@@ -16,6 +16,7 @@ $service = file_get_contents($root . '/modules/storyapi/services/StoryReadingSer
 $routes = file_get_contents($root . '/config/routes.php');
 check(is_string($controller) && str_contains($controller, "['schema', 'openapi', 'story', 'reading']"), 'All public Story API controller actions must allow anonymous GET access');
 check(is_string($routes) && str_contains($routes, "'api/openapi.json' => 'story-api/stories/openapi'"), 'OpenAPI must have a public Craft route');
+check(is_string($routes) && str_contains($routes, "'schemas/story-reading-1.2.schema.json' => 'story-api/stories/schema'"), 'The canonical JSON Schema ID must resolve publicly');
 check(is_string($routes) && str_contains($routes, "'api/v1/stories/<id:[a-z0-9]+(?:-[a-z0-9]+)*>.json' => 'story-api/stories/story'"), 'Free detail endpoint must have a public Craft route');
 check(is_string($service) && str_contains($service, 'public function getOpenApiDocument(): array'), 'Service must provide the OpenAPI contract');
 
