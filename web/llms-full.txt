@@ -1,0 +1,47 @@
+# Armin & Artur Story API — agent guide
+
+> This API separates free public-domain original text from a paid, provider-neutral editorial reading-direction artefact.
+
+## Product boundary
+
+`GET /api/v1/stories/{id}.json` returns normal published metadata and the full `originalText` for free. Do not treat the text as the purchase.
+
+`GET /api/v1/stories/{id}/reading.json` sells the canonical reading-direction JSON. It includes the original text alongside the valuable editorial work: reading policy, format architecture, cast, scenes, speaker resolution and provider notes. Use it as the source for SSML, TTS, dialogue or other renderers; do not alter it as a new master.
+
+## Discovery
+
+1. Read [the catalogue](https://arminundartur.de/api/v1/stories.json).
+2. Optionally retrieve the free original text at `https://arminundartur.de/api/v1/stories/{id}.json`.
+3. Read the [OpenAPI contract](https://arminundartur.de/api/openapi.json) and [reading JSON Schema](https://arminundartur.de/api/v1/story-reading.schema.json).
+4. If `reading.available` is true, request `reading.url` without a payment header.
+
+## x402 purchase workflow
+
+The public production host currently advertises x402 v2, Base mainnet and Circle USDC at 0.01 USDC (10,000 atomic units, six decimals). Development or sandbox deployments can differ, so treat the catalogue and the actual challenge as the authority for every request. The first unsigned request returns HTTP `402` with the same PaymentRequired JSON in its body and Base64-encoded in `PAYMENT-REQUIRED`.
+
+Validate the challenge before signing: it must name the requested resource, `x402Version: 2`, `scheme: exact`, and exactly match the network, asset and amount published by the catalogue. In production this means Base mainnet (`eip155:8453`), Circle USDC and `10000`. The recipient address deliberately appears only in this signed challenge, never in discovery documents.
+
+Sign the required EIP-3009 authorization using an x402-compatible wallet/client. Retry the exact request with `PAYMENT-SIGNATURE: <base64 x402 v2 PaymentPayload>`. A successful `200` response carries the artefact and a Base64-encoded settlement result in `PAYMENT-RESPONSE`.
+
+Example request shape (do not invent a signature):
+
+```http
+GET /api/v1/stories/rotkaeppchen/reading.json HTTP/1.1
+Host: arminundartur.de
+PAYMENT-SIGNATURE: <base64-encoded-x402-v2-payload>
+```
+
+## Errors and safety
+
+- `404`: no canonical reading artefact exists for that story ID.
+- `402`: payment is required or the submitted signature was rejected; inspect the fresh `PAYMENT-REQUIRED` challenge.
+- `503`: payment is disabled, misconfigured, or the facilitator is unavailable. This is fail-closed: no paid editorial artefact is returned.
+
+Never send a seed phrase or private key to this API. Do not assume a 402 challenge is valid without checking its network, asset, amount and resource URL. The Bazaar extension inside a 402 response identifies this dynamic paid endpoint for compatible discovery services.
+
+## References
+
+- [OpenAPI 3.1 contract](https://arminundartur.de/api/openapi.json)
+- [Story catalogue](https://arminundartur.de/api/v1/stories.json)
+- [Free Rotkäppchen source text](https://arminundartur.de/api/v1/stories/rotkaeppchen.json)
+- [Canonical reading JSON Schema](https://arminundartur.de/api/v1/story-reading.schema.json)

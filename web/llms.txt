@@ -1,0 +1,16 @@
+# Armin & Artur Story API
+
+> Free public-domain German story text and a paid x402 API for the canonical editorial reading-direction JSON used to produce high-quality read-aloud experiences.
+
+The product is not the story text. Original text is free; the paid artefact supplies the editorial layer: cast, speaker resolution, voice profiles, scenes, stage directions, reading policy and provider-rendering guidance.
+
+## Start here
+
+- [Agent workflow](https://arminundartur.de/llms-full.txt): Purchase flow, safeguards, response semantics and examples.
+- [OpenAPI 3.1 contract](https://arminundartur.de/api/openapi.json): Machine-readable routes and HTTP headers.
+- [Story catalogue](https://arminundartur.de/api/v1/stories.json): Published stories and paid-reading availability.
+- [Reading artefact schema](https://arminundartur.de/api/v1/story-reading.schema.json): JSON Schema for the paid editorial artefact.
+
+## Payment
+
+- [x402 v2](https://www.x402.org/): Request a reading endpoint, inspect its `402` response, sign the payment requirement, then retry with `PAYMENT-SIGNATURE`.
