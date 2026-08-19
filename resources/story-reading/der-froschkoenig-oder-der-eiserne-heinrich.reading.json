@@ -1,0 +1,174 @@
+{
+  "$schema": "https://arminundartur.de/schemas/story-reading-1.2.schema.json",
+  "schemaVersion": "1.2",
+  "story": {
+    "id": "der-froschkoenig-oder-der-eiserne-heinrich",
+    "title": "Der Froschkönig oder der eiserne Heinrich",
+    "language": "de",
+    "sourceUrl": "https://arminundartur.de/der-froschk%C3%B6nig-oder-der-eiserne-heinrich",
+    "sourceOfTruth": "published_html",
+    "textPolicy": "read_original_verbatim"
+  },
+  "cms": {
+    "system": "craft",
+    "siteHandle": "default",
+    "entryId": 63,
+    "entryUid": "5ef2ee07-0431-482c-83da-5dbd80895f73",
+    "sectionId": 1
+  },
+  "readingPolicy": {
+    "preserveWording": true,
+    "preservePunctuation": true,
+    "directionsAreSpoken": false,
+    "defaultPace": 0.84,
+    "fallbackSpeaker": "narrator",
+    "noAddedSoundEffects": true,
+    "noModernisation": true
+  },
+  "formatArchitecture": {
+    "role": "canonical_story_direction_format",
+    "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+    "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+    "renderTargets": {
+      "ssml": {
+        "purpose": "portable speech-synthesis markup",
+        "mapping": {
+          "delivery.pace": "prosody@rate",
+          "delivery.pauseAfterMs": "break@time",
+          "speaker": "voice@name or provider voice mapping",
+          "pronunciation": "phoneme or external PLS lexicon"
+        },
+        "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+      },
+      "elevenLabs": {
+        "purpose": "Text to Dialogue request",
+        "mapping": {
+          "speaker": "voice_id",
+          "spokenSegment": "inputs[].text",
+          "delivery": "optional in-text audio tags in the generated provider payload"
+        }
+      },
+      "geminiTts": {
+        "purpose": "provider-specific multi-speaker prompt and voice configuration",
+        "mapping": {
+          "cast": "speaker voice configuration",
+          "scenes": "director instructions in the generated prompt"
+        }
+      }
+    }
+  },
+  "cast": {
+    "narrator": {
+      "label": "Erzähler",
+      "voiceProfile": "adult_male_warm",
+      "delivery": "klar, ruhig und leicht feierlich; das Wunder sachlich erzählen und Dialoge deutlich staffeln"
+    },
+    "princess": {
+      "label": "Königstochter",
+      "voiceProfile": "young_female",
+      "delivery": "anfangs bekümmert und ungeduldig, später widerwillig und heftig; stets verständlich und nicht schrill"
+    },
+    "frog_prince": {
+      "label": "Frosch und Königssohn",
+      "voiceProfile": "young_adult_male",
+      "delivery": "als Frosch ruhig, beharrlich und leicht resonant; nach der Erlösung warm und natürlich mit derselben erkennbaren Stimme"
+    },
+    "king": {
+      "label": "König",
+      "voiceProfile": "older_male",
+      "delivery": "ruhig, väterlich und bestimmt; seine Mahnungen ohne Zornesausbruch sprechen"
+    },
+    "heinrich": {
+      "label": "Treuer Heinrich",
+      "voiceProfile": "adult_male_resonant",
+      "delivery": "treu, erleichtert und feierlich; die Verszeilen klar und mit zurückgehaltener Freude"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "anchor": "In den alten Zeiten, wo das Wünschen noch geholfen hat",
+      "title": "Die goldene Kugel",
+      "speakers": [
+        "narrator"
+      ],
+      "direction": "Ruhig und klassisch eröffnen. Wald, Brunnen und Kugel anschaulich, aber ohne zusätzliche Geräusche oder Effekte schildern."
+    },
+    {
+      "id": "s02",
+      "anchor": "Nun trug es sich einmal zu, dass die goldene Kugel",
+      "title": "Das Versprechen am Brunnen",
+      "speakers": [
+        "narrator",
+        "princess",
+        "frog_prince"
+      ],
+      "direction": "Die Königstochter aufgelöst, den Frosch ruhig und beharrlich sprechen. Das Versprechen klar staffeln und die anschliessende Flucht knapp erzählen."
+    },
+    {
+      "id": "s03",
+      "anchor": "Am andern Tage, als sie mit dem König",
+      "title": "Der Frosch im Schloss",
+      "speakers": [
+        "narrator",
+        "princess",
+        "frog_prince",
+        "king"
+      ],
+      "direction": "Das wiederkehrende Klopfen und den Vers nur durch Sprache und Pausen markieren. Der König bleibt bestimmt; den steigenden Widerwillen der Königstochter kontrolliert steigern."
+    },
+    {
+      "id": "s04",
+      "anchor": "Als er aber herabfiel, war er kein Frosch",
+      "title": "Die Erlösung",
+      "speakers": [
+        "narrator"
+      ],
+      "direction": "Die Verwandlung ruhig und staunend erzählen, ohne neue Worte oder Klänge hinzuzufügen. Den Übergang zur gemeinsamen Reise warm und klar führen."
+    },
+    {
+      "id": "s05",
+      "anchor": "Und als sie ein Stück Wegs gefahren waren",
+      "title": "Die eisernen Bande",
+      "speakers": [
+        "narrator",
+        "frog_prince",
+        "heinrich"
+      ],
+      "direction": "Das Krachen ausschliesslich als erzählten Bestandteil des Originaltexts behandeln. Frage und Antwort deutlich trennen; Heinrichs Erleichterung feierlich, aber schlicht sprechen."
+    }
+  ],
+  "speakerResolution": {
+    "directSpeech": "Use princess, king, heinrich or frog_prince whenever the surrounding sentence explicitly identifies that speaker.",
+    "unnamedQuotedSpeech": "In the final verse, “Heinrich, der Wagen bricht!” uses frog_prince and the answer beginning “Nein, Herr” uses heinrich. All earlier alternating dialogue at the well and table follows the explicitly named turns.",
+    "creatures": "The speaking frog and the restored prince are one continuous role, frog_prince. Do not change the role ID or create a second voice after the transformation.",
+    "narration": "All narrative prose and unspoken thoughts use narrator."
+  },
+  "providerNotes": {
+    "editorialStatus": "machine_validated_pending_editorial_review",
+    "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy."
+  },
+  "originalText": {
+    "format": "paragraphs",
+    "source": "published_html",
+    "typographyNormalisation": [
+      "soft_hyphen_removed",
+      "zero_width_space_removed",
+      "nonbreaking_space_normalised",
+      "inline_whitespace_normalised",
+      "line_breaks_in_verse_normalised_to_spaces"
+    ],
+    "paragraphs": [
+      "In den alten Zeiten, wo das Wünschen noch geholfen hat, lebte ein König, dessen Töchter waren alle schön; aber die jüngste war so schön, dass die Sonne selber, die doch so vieles gesehen hat, sich verwunderte, sooft sie ihr ins Gesicht schien. Nahe bei dem Schlosse des Königs lag ein grosser dunkler Wald, und in dem Walde unter einer alten Linde war ein Brunnen; wenn nun der Tag recht heiss war, so ging das Königskind hinaus in den Wald und setzte sich an den Rand des kühlen Brunnens – und wenn sie Langeweile hatte, so nahm sie eine goldene Kugel, warf sie in die Höhe und fing sie wieder; und das war ihr liebstes Spielwerk.",
+      "Nun trug es sich einmal zu, dass die goldene Kugel der Königstochter nicht in ihr Händchen fiel, das sie in die Höhe gehalten hatte, sondern vorbei auf die Erde schlug und geradezu ins Wasser hineinrollte. Die Königstochter folgte ihr mit den Augen nach, aber die Kugel verschwand, und der Brunnen war tief, so tief, dass man keinen Grund sah. Da fing sie an zu weinen und weinte immer lauter und konnte sich gar nicht trösten. Und wie sie so klagte, rief ihr jemand zu: „Was hast du vor, Königstochter, du schreist ja, dass sich ein Stein erbarmen möchte.“ Sie sah sich um, woher die Stimme käme, da erblickte sie einen Frosch, der seinen dicken, hässlichen Kopf aus dem Wasser streckte. „Ach, du bist’s, alter Wasserpatscher,“ sagte sie, „ich weine über meine goldene Kugel, die mir in den Brunnen hinabgefallen ist.“ – „Sei still und weine nicht,“ antwortete der Frosch, „ich kann wohl Rat schaffen, aber was gibst du mir, wenn ich dein Spielwerk wieder heraufhole?“ – „Was du haben willst, lieber Frosch,“ sagte sie; „meine Kleider, meine Perlen und Edelsteine, auch noch die goldene Krone, die ich trage.“ Der Frosch antwortete: „Deine Kleider, deine Perlen und Edelsteine und deine goldene Krone, die mag ich nicht: aber wenn du mich liebhaben willst, und ich soll dein Geselle und Spielkamerad sein, an deinem Tischlein neben dir sitzen, von deinem goldenen Tellerlein essen, aus deinem Becherlein trinken, in deinem Bettlein schlafen: wenn du mir das versprichst, so will ich hinuntersteigen und dir die goldene Kugel wieder heraufholen.“ – „Ach ja,“ sagte sie, „ich verspreche dir alles, was du willst, wenn du mir nur die Kugel wieder bringst.“ Sie dachte aber: Was der einfältige Frosch schwätzt! Der sitzt im Wasser bei seinesgleichen und quakt und kann keines Menschen Geselle sein.",
+      "Der Frosch, als er die Zusage erhalten hatte, tauchte seinen Kopf unter, sank hinab, und über ein Weilchen kam er wieder heraufgerudert, hatte die Kugel im Maul und warf sie ins Gras. Die Königstochter war voll Freude, als sie ihr schönes Spielwerk wieder erblickte, hob es auf und sprang damit fort. „Warte, warte,“ rief der Frosch, „nimm mich mit, ich kann nicht so laufen wie du!“ Aber was half es ihm, dass er ihr sein Quak, Quak so laut nachschrie, als er konnte! Sie hörte nicht darauf, eilte nach Hause und hatte bald den armen Frosch vergessen, der wieder in seinen Brunnen hinabsteigen musste.",
+      "Am andern Tage, als sie mit dem König und allen Hofleuten sich zur Tafel gesetzt hatte und von ihrem goldenen Tellerlein ass, da kam, plitsch platsch, plitsch platsch, etwas die Marmortreppe heraufgekrochen, und als es oben angelangt war, klopfte es an die Tür und rief: „Königstochter, jüngste, mach mir auf!“ Sie lief und wollte sehen, wer draussen wäre, als sie aber aufmachte, so sass der Frosch davor. Da warf sie die Tür hastig zu, setzte sich wieder an den Tisch, und es war ihr ganz angst. Der König sah wohl, dass ihr das Herz gewaltig klopfte, und sprach: „Mein Kind, was fürchtest du dich, steht etwa ein Riese vor der Tür und will dich holen?“ – „Ach nein,“ antwortete sie, „es ist kein Riese, sondern ein garstiger Frosch.“ – „Was will der Frosch von dir?“ – „Ach, lieber Vater, als ich gestern im Wald bei dem Brunnen sass und spielte, da fiel meine goldene Kugel ins Wasser. Und weil ich so weinte, hat sie der Frosch wieder heraufgeholt, und weil er es durchaus verlangte, so versprach ich ihm, er sollte mein Geselle werden; ich dachte aber nimmermehr, dass er aus seinem Wasser herauskönnte. Nun ist er draussen und will zu mir herein.“ Und schon klopfte es zum zweitenmal und rief:",
+      "„Königstochter, jüngste, Mach mir auf, Weisst du nicht, was gestern Du zu mir gesagt Bei dem kühlen Wasserbrunnen? Königstochter, jüngste, Mach mir auf!“",
+      "Da sagte der König: „Was du versprochen hast, das musst du auch halten; geh nur und mach ihm auf.“ Sie ging und öffnete die Türe, da hüpfte der Frosch herein, ihr immer auf dem Fusse nach, bis zu ihrem Stuhl. Da sass er und rief: „Heb mich herauf zu dir.“ Sie zauderte, bis es endlich der König befahl. Als der Frosch erst auf dem Stuhl war, wollte er auf den Tisch, und als er da sass, sprach er: „Nun schieb mir dein goldenes Tellerlein näher, damit wir zusammen essen.“ Das tat sie zwar, aber man sah wohl, dass sie’s nicht gerne tat. Der Frosch liess sich’s gut schmecken, aber ihr blieb fast jedes Bisslein im Halse. Endlich sprach er: „Ich habe mich sattgegessen und bin müde; nun trag mich in dein Kämmerlein und mach dein seiden Bettlein zurecht, da wollen wir uns schlafen legen.“ Die Königstochter fing an zu weinen und fürchtete sich vor dem kalten Frosch, den sie nicht anzurühren getraute und der nun in ihrem schönen, reinen Bettlein schlafen sollte. Der König aber ward zornig und sprach: „Wer dir geholfen hat, als du in der Not warst, den sollst du hernach nicht verachten.“ Da packte sie ihn mit zwei Fingern, trug ihn hinauf und setzte ihn in eine Ecke. Als sie aber im Bett lag, kam er gekrochen und sprach: „Ich bin müde, ich will schlafen so gut wie du: heb mich herauf, oder ich sag’s deinem Vater.“ Da ward sie erst bitterböse, holte ihn herauf und warf ihn aus allen Kräften wider die Wand: „Nun wirst du Ruhe haben, du garstiger Frosch.“",
+      "Als er aber herabfiel, war er kein Frosch, sondern ein Königssohn mit schönen und freundlichen Augen. Der war nun nach ihres Vaters Willen ihr lieber Geselle und Gemahl. Da erzählte er ihr, er wäre von einer bösen Hexe verwünscht worden, und niemand hätte ihn aus dem Brunnen erlösen können als sie allein, und morgen wollten sie zusammen in sein Reich gehen. Dann schliefen sie ein, und am andern Morgen, als die Sonne sie aufweckte, kam ein Wagen herangefahren, mit acht weissen Pferden bespannt, die hatten weisse Straussfedern auf dem Kopf und gingen in goldenen Ketten, und hinten stand der Diener des jungen Königs, das war der treue Heinrich. Der treue Heinrich hatte sich so betrübt, als sein Herr war in einen Frosch verwandelt worden, dass er drei eiserne Bande hatte um sein Herz legen lassen, damit es ihm nicht vor Weh und Traurigkeit zerspränge. Der Wagen aber sollte den jungen König in sein Reich abholen; der treue Heinrich hob beide hinein, stellte sich wieder hinten auf und war voller Freude über die Erlösung.",
+      "Und als sie ein Stück Wegs gefahren waren, hörte der Königssohn, dass es hinter ihm krachte, als wäre etwas zerbrochen. Da drehte er sich um und rief:",
+      "„Heinrich, der Wagen bricht!“ „Nein, Herr, der Wagen nicht, Es ist ein Band von meinem Herzen, Das da lag in grossen Schmerzen, Als Ihr in dem Brunnen sasst, Als Ihr eine Fretsche (Frosch) wast (wart).“",
+      "Noch einmal und noch einmal krachte es auf dem Weg, und der Königssohn meinte immer, der Wagen bräche, und es waren doch nur die Bande, die vom Herzen des treuen Heinrich absprangen, weil sein Herr erlöst und glücklich war."
+    ]
+  }
+}
