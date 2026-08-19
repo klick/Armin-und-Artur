@@ -122,6 +122,18 @@ expect(($required['accepts'][0]['network'] ?? null) === ($discovery['payment']['
 expect(($required['accepts'][0]['asset'] ?? null) === ($discovery['payment']['asset'] ?? null), 'challenge and catalogue assets must match');
 expect(($required['accepts'][0]['amount'] ?? null) === ($discovery['payment']['amount'] ?? null), 'challenge and catalogue amounts must match');
 
+$bazaar = $required['extensions']['bazaar'] ?? null;
+expect(is_array($bazaar), 'x402 v2 challenge must include Bazaar discovery metadata');
+expect(($bazaar['routeTemplate'] ?? null) === '/api/v1/stories/:id/reading.json', 'Bazaar route template must canonicalise the dynamic story route');
+expect(($bazaar['info']['input']['type'] ?? null) === 'http', 'Bazaar input must identify the HTTP transport');
+expect(($bazaar['info']['input']['method'] ?? null) === 'GET', 'Bazaar input must identify GET');
+expect(($bazaar['info']['input']['pathParams']['id'] ?? null) === 'rotkaeppchen', 'Bazaar input must contain the concrete dynamic route parameter');
+expect(($bazaar['info']['output']['type'] ?? null) === 'json', 'Bazaar must describe JSON output');
+expect(($bazaar['info']['output']['format'] ?? null) === 'https://example.test/api/v1/story-reading.schema.json', 'Bazaar must reference the canonical output schema');
+expect(($bazaar['schema']['$schema'] ?? null) === 'https://json-schema.org/draft/2020-12/schema', 'Bazaar schema must use Draft 2020-12');
+expect(($bazaar['schema']['properties']['input']['properties']['method']['const'] ?? null) === 'GET', 'Bazaar schema must validate its GET input');
+expect(!str_contains(json_encode($bazaar, JSON_THROW_ON_ERROR), 'readingPolicy'), 'Bazaar examples must not contain paid editorial content');
+
 // The HTTP controller puts this identical JSON object in PAYMENT-REQUIRED.
 $header = base64_encode(json_encode($required, JSON_THROW_ON_ERROR));
 expect(json_decode(base64_decode($header, true), true, 512, JSON_THROW_ON_ERROR) === $required, 'PAYMENT-REQUIRED must round-trip as Base64 JSON');

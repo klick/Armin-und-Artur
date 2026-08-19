@@ -52,6 +52,82 @@ class StoryReadingService extends Component
         return $artifact;
     }
 
+    /**
+     * Returns only public-domain source material and basic metadata.  This
+     * explicit whitelist is a security boundary: never derive this response by
+     * unsetting paid keys from the complete editorial artefact.
+     */
+    public function getPublicStory(string $id): array
+    {
+        $artifact = $this->getArtifact($id);
+        $story = $artifact['story'] ?? [];
+        $originalText = $artifact['originalText'] ?? [];
+
+        if (!is_array($story) || !is_array($originalText)) {
+            throw new \RuntimeException("Invalid public story data for {$id}");
+        }
+
+        return [
+            'id' => $story['id'] ?? $id,
+            'title' => $story['title'] ?? null,
+            'language' => $story['language'] ?? null,
+            'sourceUrl' => $story['sourceUrl'] ?? null,
+            'textPolicy' => $story['textPolicy'] ?? null,
+            'originalText' => [
+                'format' => $originalText['format'] ?? null,
+                'source' => $originalText['source'] ?? null,
+                'paragraphs' => $originalText['paragraphs'] ?? [],
+            ],
+        ];
+    }
+
+    public function getOpenApiDocument(): array
+    {
+        $siteUrl = rtrim(UrlHelper::siteUrl(), '/');
+        $paymentDiscovery = $this->getPaymentDiscoveryMetadata();
+        $payment = $paymentDiscovery['payment'];
+        $paymentDescription = sprintf(
+            'This deployment advertises %s on %s (%s), amount %s atomic units with %d decimals. Validate these values against the catalogue and the actual 402 challenge before signing. Missing or invalid payment configuration fails closed with 503.',
+            $payment['currency'],
+            $paymentDiscovery['environment'],
+            $payment['network'],
+            $payment['amount'],
+            $payment['decimals'],
+        );
+        $storyId = ['name' => 'id', 'in' => 'path', 'required' => true, 'schema' => ['type' => 'string', 'pattern' => '^[a-z0-9]+(?:-[a-z0-9]+)*$']];
+        // OpenAPI response headers use Header Objects, not Parameter Objects:
+        // their name is the key in this map and `in` is therefore forbidden.
+        $paymentRequiredHeader = ['required' => true, 'schema' => ['type' => 'string'], 'description' => 'Base64-encoded x402 v2 PaymentRequired JSON.'];
+
+        return [
+            'openapi' => '3.1.1',
+            'info' => [
+                'title' => 'Armin & Artur Story API',
+                'version' => '1.0.0',
+                'description' => 'Public-domain story text is free. The paid product is the editorial reading-direction JSON: cast, speaker resolution, voice profiles, scenes, directions and rendering guidance.',
+            ],
+            'servers' => [['url' => $siteUrl]],
+            // Every route supports an anonymous discovery request. The paid
+            // route negotiates x402 through response/request headers rather
+            // than a conventional OpenAPI authentication scheme.
+            'security' => [],
+            'paths' => [
+                '/api/v1/stories.json' => ['get' => ['operationId' => 'listStories', 'summary' => 'List published stories and reading availability', 'responses' => ['200' => ['description' => 'Story catalogue']]]],
+                '/api/v1/stories/{id}.json' => ['get' => ['operationId' => 'getPublicStory', 'summary' => 'Get public-domain original story text without editorial direction', 'parameters' => [$storyId], 'responses' => ['200' => ['description' => 'Public story', 'content' => ['application/json' => ['schema' => ['$ref' => '#/components/schemas/PublicStory']]]], '404' => ['description' => 'Story not found']]]],
+                '/api/v1/story-reading.schema.json' => ['get' => ['operationId' => 'getReadingSchema', 'summary' => 'Get the canonical reading-direction JSON Schema', 'responses' => ['200' => ['description' => 'JSON Schema', 'content' => ['application/schema+json' => ['schema' => ['type' => 'object']]]]]]],
+                '/api/v1/stories/{id}/reading.json' => ['get' => ['operationId' => 'buyStoryReading', 'summary' => 'Buy the canonical reading-direction JSON with x402 v2', 'description' => $paymentDescription, 'parameters' => [$storyId, ['name' => 'PAYMENT-SIGNATURE', 'in' => 'header', 'required' => false, 'schema' => ['type' => 'string'], 'description' => 'Base64-encoded x402 v2 payment payload.']], 'responses' => [
+                    '200' => ['description' => 'Paid editorial reading-direction artefact', 'headers' => ['PAYMENT-RESPONSE' => ['required' => true, 'schema' => ['type' => 'string'], 'description' => 'Base64-encoded x402 settlement response.']], 'content' => ['application/json' => ['schema' => ['$ref' => $siteUrl . '/api/v1/story-reading.schema.json']]]],
+                    '402' => ['description' => 'x402 payment required', 'headers' => ['PAYMENT-REQUIRED' => $paymentRequiredHeader], 'content' => ['application/json' => ['schema' => ['$ref' => '#/components/schemas/PaymentRequired']]]],
+                    '503' => ['description' => 'Payments are disabled, misconfigured, or facilitator is unavailable; no artefact is returned.'],
+                ]]],
+            ],
+            'components' => ['schemas' => [
+                'PublicStory' => ['type' => 'object', 'required' => ['id', 'title', 'language', 'sourceUrl', 'originalText'], 'properties' => ['id' => ['type' => 'string'], 'title' => ['type' => 'string'], 'language' => ['type' => 'string'], 'sourceUrl' => ['type' => 'string', 'format' => 'uri'], 'textPolicy' => ['type' => 'string'], 'originalText' => ['type' => 'object', 'required' => ['format', 'source', 'paragraphs'], 'properties' => ['format' => ['type' => 'string'], 'source' => ['type' => 'string'], 'paragraphs' => ['type' => 'array', 'items' => ['type' => 'string']]]]]],
+                'PaymentRequired' => ['type' => 'object', 'required' => ['x402Version', 'resource', 'accepts'], 'properties' => ['x402Version' => ['const' => 2], 'resource' => ['type' => 'object'], 'accepts' => ['type' => 'array', 'items' => ['type' => 'object']], 'extensions' => ['type' => 'object']]],
+            ]],
+        ];
+    }
+
     public function getCatalog(): array
     {
         if ($this->catalog !== null) {
@@ -150,7 +226,7 @@ class StoryReadingService extends Component
             'error' => 'PAYMENT-SIGNATURE header is required',
             'resource' => [
                 'url' => $resourceUrl,
-                'description' => 'Canonical story-reading JSON',
+                'description' => 'Canonical editorial reading-direction JSON for public-domain stories (categories: story, education; tags: storytelling, read-aloud, narration, voice-direction).',
                 'mimeType' => 'application/json',
             ],
             'accepts' => [[
@@ -165,6 +241,38 @@ class StoryReadingService extends Component
                     'version' => '2',
                 ],
             ]],
+            'extensions' => [
+                'bazaar' => $this->bazaarMetadata($resourceUrl),
+            ],
+        ];
+    }
+
+    private function bazaarMetadata(string $resourceUrl): array
+    {
+        $schemaUrl = preg_replace(
+            '#/api/v1/stories/[^/]+/reading\\.json$#',
+            '/api/v1/story-reading.schema.json',
+            $resourceUrl,
+        );
+        if (!is_string($schemaUrl)) {
+            throw new \RuntimeException('Could not derive the public reading schema URL.');
+        }
+
+        return [
+            'routeTemplate' => '/api/v1/stories/:id/reading.json',
+            'info' => [
+                'input' => ['type' => 'http', 'method' => 'GET', 'pathParams' => ['id' => basename(dirname($resourceUrl))]],
+                'output' => ['type' => 'json', 'format' => $schemaUrl, 'example' => ['schemaVersion' => '1.2', 'story' => ['id' => 'rotkaeppchen', 'title' => 'Rotkäppchen'], 'originalText' => ['format' => 'paragraphs'], 'editorialDirectionIncluded' => true]],
+            ],
+            'schema' => [
+                '$schema' => 'https://json-schema.org/draft/2020-12/schema',
+                'type' => 'object',
+                'properties' => [
+                    'input' => ['type' => 'object', 'properties' => ['type' => ['const' => 'http'], 'method' => ['const' => 'GET'], 'pathParams' => ['type' => 'object', 'properties' => ['id' => ['type' => 'string']], 'required' => ['id']]], 'required' => ['type', 'method', 'pathParams'], 'additionalProperties' => false],
+                    'output' => ['type' => 'object', 'properties' => ['type' => ['const' => 'json'], 'example' => ['type' => 'object']], 'required' => ['type']],
+                ],
+                'required' => ['input', 'output'],
+            ],
         ];
     }
 

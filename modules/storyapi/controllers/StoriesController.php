@@ -12,7 +12,7 @@ use yii\web\Response;
 
 class StoriesController extends Controller
 {
-    protected array|bool|int $allowAnonymous = ['schema', 'reading'];
+    protected array|bool|int $allowAnonymous = ['schema', 'openapi', 'story', 'reading'];
     public $enableCsrfValidation = false;
 
     public function actionSchema(): Response
@@ -21,6 +21,19 @@ class StoriesController extends Controller
         $response->headers->set('Content-Type', 'application/schema+json; charset=UTF-8');
 
         return $response;
+    }
+
+    public function actionOpenapi(): Response
+    {
+        $response = $this->asJson($this->stories()->getOpenApiDocument());
+        $response->headers->set('Content-Type', 'application/vnd.oai.openapi+json;version=3.1; charset=UTF-8');
+
+        return $response;
+    }
+
+    public function actionStory(string $id): Response
+    {
+        return $this->asJson($this->stories()->getPublicStory($id));
     }
 
     public function actionReading(string $id): Response

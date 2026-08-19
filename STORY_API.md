@@ -1,16 +1,22 @@
 # Story API pilot
 
 This is the first vertical slice of the Armin & Artur agent-facing reading
-service. It exposes a free discovery layer and protects the complete canonical
-reading artefacts with [x402 v2](https://www.x402.org/).
+service. It exposes public-domain source text freely and protects the canonical
+editorial **reading-direction** artefacts with [x402 v2](https://www.x402.org/).
+The paid product is not the fairy-tale text: it is the editorial layer that
+turns it into a dependable read-aloud production (cast, speaker resolution,
+voice profiles, scenes, stage directions, reading policy and renderer guidance).
 
 ## Endpoints
 
 | Endpoint | Access | Purpose |
 | --- | --- | --- |
 | `GET /api/v1/stories.json` | free | Craft entry catalogue with reading availability, schema and payment discovery metadata |
+| `GET /api/v1/stories/{story-id}.json` | free | Basic published metadata and complete public-domain `originalText`, explicitly without editorial enrichment |
 | `GET /api/v1/story-reading.schema.json` | free | JSON Schema contract for canonical reading artefacts |
-| `GET /api/v1/stories/{story-id}/reading.json` | x402 | Full canonical story text, cast and reading direction |
+| `GET /api/v1/stories/{story-id}/reading.json` | x402 | Canonical editorial reading-direction JSON; it also carries the original text |
+| `GET /api/openapi.json` | free | OpenAPI 3.1 contract for every Story API endpoint and x402 response headers |
+| `GET /llms.txt` / `GET /llms-full.txt` | free | Concise LLM index and detailed agent workflow |
 
 `config/element-api.php` owns the free catalogue because it is entry-oriented.
 The `story-api` Craft module owns schema/artifact delivery and x402 protocol
@@ -34,6 +40,26 @@ The three additional pilot items deliberately cover different editorial shapes:
 short narration, sustained dialogue between animal characters, and a larger
 cast with several scene changes. All retain the published text; their
 normalisations are declared inside each artefact.
+
+## Agent discovery and public-data boundary
+
+`/llms.txt` is the short LLM-facing entry point. It links to `/llms-full.txt`,
+the OpenAPI contract, the catalogue and the JSON Schema. `/api/openapi.json`
+is served by Craft instead of a static webroot copy so its route documentation
+remains alongside the API implementation.
+
+For an available story, `GET /api/v1/stories/{id}.json` returns only an
+explicit allowlist: identifier, basic story metadata and `originalText`. It
+never derives a public response by removing fields from the paid artefact, and
+never returns `readingPolicy`, `formatArchitecture`, `cast`, `scenes`,
+`speakerResolution` or `providerNotes`.
+
+The first unsigned request to a paid endpoint is also a discovery surface. Its
+x402 v2 `402` response contains the Bazaar extension at `extensions.bazaar`.
+It declares the dynamic GET route, concrete `id` input and JSON output using a
+Draft 2020-12 schema. The resource description classifies it for story and
+education discovery; no paid editorial content or recipient address is placed
+in Bazaar metadata.
 
 ## x402 configuration
 
