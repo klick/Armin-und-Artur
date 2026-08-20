@@ -64,6 +64,25 @@ paths must survive a code deployment, especially:
 
 Do not put secrets or uploaded assets into Git to make a deployment work.
 
+## Testing hostname
+
+`testing.arminundartur.de` is an Nginx alias for the active production
+checkout. It deliberately uses the same document root as production and is
+not a separate release or database. Its versioned server configuration lives
+in [`ops/nginx/testing.arminundartur.de.conf`](ops/nginx/testing.arminundartur.de.conf).
+
+The alias must always return this response header, including for static files
+and error responses:
+
+```text
+X-Robots-Tag: none
+```
+
+Its PHP location hides the application-provided `X-Robots-Tag` before Nginx
+adds the testing-only value. This prevents contradictory `all` and `none`
+headers while leaving the production hostname unchanged. Validate every
+change with `nginx -t` before a graceful reload.
+
 ## Server repository
 
 The active production directory is a normal Git working checkout on `main`.
