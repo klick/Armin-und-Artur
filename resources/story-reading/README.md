@@ -190,19 +190,29 @@ structured field is introduced in a future schema version rather than ad hoc.
 
 ## Artefact inventory
 
-There are currently 15 complete schema-valid artefacts:
+There are currently 25 complete schema-valid artefacts:
 
 | Story ID | Editorial status |
 | --- | --- |
+| [`allerleirauh`](allerleirauh.reading.json) | machine validated; human review pending |
 | [`aschenputtel`](aschenputtel.reading.json) | machine validated; human review pending |
+| [`bruederchen-und-schwesterchen`](bruederchen-und-schwesterchen.reading.json) | machine validated; human review pending |
+| [`das-tapfere-schneiderlein`](das-tapfere-schneiderlein.reading.json) | machine validated; human review pending |
 | [`der-froschkoenig-oder-der-eiserne-heinrich`](der-froschkoenig-oder-der-eiserne-heinrich.reading.json) | machine validated; human review pending |
+| [`der-gestiefelte-kater`](der-gestiefelte-kater.reading.json) | machine validated; human review pending |
+| [`der-goldene-vogel`](der-goldene-vogel.reading.json) | machine validated; human review pending |
 | [`der-suesse-brei`](der-suesse-brei.reading.json) | pilot reviewed |
+| [`der-teufel-mit-den-drei-goldenen-haaren`](der-teufel-mit-den-drei-goldenen-haaren.reading.json) | machine validated; human review pending |
 | [`der-wolf-und-die-sieben-jungen-geisslein`](der-wolf-und-die-sieben-jungen-geisslein.reading.json) | pilot reviewed |
 | [`die-bremer-stadtmusikanten`](die-bremer-stadtmusikanten.reading.json) | machine validated; human review pending |
 | [`die-gaensemagd`](die-gaensemagd.reading.json) | pilot reviewed |
+| [`die-sieben-raben`](die-sieben-raben.reading.json) | machine validated; human review pending |
+| [`die-sterntaler`](die-sterntaler.reading.json) | machine validated; human review pending |
+| [`die-zwoelf-brueder`](die-zwoelf-brueder.reading.json) | machine validated; human review pending |
 | [`dornroeschen`](dornroeschen.reading.json) | machine validated; human review pending |
 | [`frau-holle`](frau-holle.reading.json) | machine validated; human review pending |
 | [`haensel-und-gretel`](haensel-und-gretel.reading.json) | machine validated; human review pending |
+| [`jorinde-und-joringel`](jorinde-und-joringel.reading.json) | machine validated; human review pending |
 | [`maerchen-von-einem-der-auszog-das-fuerchten-zu-lernen`](maerchen-von-einem-der-auszog-das-fuerchten-zu-lernen.reading.json) | legacy example; editorial review pending |
 | [`rapunzel`](rapunzel.reading.json) | machine validated; human review pending |
 | [`rotkaeppchen`](rotkaeppchen.reading.json) | legacy example; editorial review pending |

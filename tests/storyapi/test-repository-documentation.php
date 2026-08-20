@@ -53,7 +53,18 @@ foreach ([
 }
 
 $artefacts = glob($root . '/resources/story-reading/*.reading.json');
-expectDocumentation(is_array($artefacts) && count($artefacts) === 15, 'Repository documentation expects exactly 15 current reading artefacts');
+expectDocumentation(is_array($artefacts), 'Unable to enumerate current reading artefacts');
+$artefactCount = count($artefacts);
+expectDocumentation(
+    preg_match('/([0-9]+) complete reading artefacts conform/', $readme, $readmeCount) === 1
+        && (int) $readmeCount[1] === $artefactCount,
+    'Root README artefact count must match the repository',
+);
+expectDocumentation(
+    preg_match('/There are currently ([0-9]+) complete schema-valid artefacts/', $format, $formatCount) === 1
+        && (int) $formatCount[1] === $artefactCount,
+    'Format guide artefact count must match the repository',
+);
 foreach ($artefacts as $artefactPath) {
     $id = basename($artefactPath, '.reading.json');
     expectDocumentation(str_contains($format, "`{$id}`"), "Format guide must inventory {$id}");

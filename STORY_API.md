@@ -48,15 +48,28 @@ The first ten-item batch adds:
 - `die-bremer-stadtmusikanten`
 - `frau-holle`
 
+The second ten-item batch adds:
+
+- `das-tapfere-schneiderlein`
+- `bruederchen-und-schwesterchen`
+- `die-zwoelf-brueder`
+- `der-goldene-vogel`
+- `der-teufel-mit-den-drei-goldenen-haaren`
+- `die-sieben-raben`
+- `allerleirauh`
+- `jorinde-und-joringel`
+- `die-sterntaler`
+- `der-gestiefelte-kater`
+
 They live under `resources/story-reading/`, outside the public web root. Every
 artefact is the vendor-neutral source from which future SSML, ElevenLabs, or
 other provider payloads are derived.
 
-Together, the 15 artefacts cover short narration, sustained dialogue, large
+Together, the 25 artefacts cover short narration, sustained dialogue, large
 character sets, verse-like speech and longer scene structures, all directed as
 single-narrator audiobook readings. All retain the published
-text; their normalisations are declared inside each artefact. The ten-item
-batch is machine-validated and independently cross-reviewed, while its
+text; their normalisations are declared inside each artefact. Both ten-item
+batches are machine-validated and cross-checked, while their
 `providerNotes.editorialStatus` deliberately remains
 `machine_validated_pending_editorial_review` until human editorial sign-off.
 

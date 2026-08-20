@@ -143,5 +143,11 @@ unlink($temporaryManifest);
 $scaffold = StoryReadingBatch::scaffold($source);
 assertBatch(($scaffold['_scaffold']['status'] ?? null) === 'requires_editorial_annotation', 'Scaffold must be visibly non-publishable');
 assertBatch(($scaffold['artifact']['scenes'] ?? null) === [], 'Scaffold must not invent editorial scenes');
+$encodedScaffold = json_encode($scaffold, JSON_THROW_ON_ERROR);
+$decodedScaffold = json_decode($encodedScaffold, false, flags: JSON_THROW_ON_ERROR);
+assertBatch(
+    is_object($decodedScaffold->artifact->formatArchitecture->renderTargets ?? null),
+    'Scaffold renderTargets must serialize as a JSON object required by schema 1.3',
+);
 
 echo "Story reading batch extraction and semantic QA checks passed\n";

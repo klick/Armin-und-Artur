@@ -169,7 +169,7 @@ final class StoryReadingBatch
                     'role' => 'canonical_story_direction_format',
                     'principle' => 'This JSON is the single editorial source. Provider payloads are derived from it.',
                     'content' => 'Original text and editorially reviewed speaker, scene and delivery direction.',
-                    'renderTargets' => [],
+                    'renderTargets' => (object) [],
                 ],
                 'cast' => [
                     'narrator' => [

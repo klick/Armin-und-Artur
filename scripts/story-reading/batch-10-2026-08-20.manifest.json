@@ -1,0 +1,95 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {
+      "id": "das-tapfere-schneiderlein",
+      "entryId": 37,
+      "entryUid": "dbf6d01b-c6ab-4619-8064-13526a4a5bc1",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/das-tapfere-schneiderlein",
+      "language": "de"
+    },
+    {
+      "id": "bruederchen-und-schwesterchen",
+      "entryId": 51,
+      "entryUid": "acaef9ac-675c-4901-8cc7-9eabaad5bc51",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/br%C3%BCderchen-und-schwesterchen",
+      "language": "de"
+    },
+    {
+      "id": "die-zwoelf-brueder",
+      "entryId": 53,
+      "entryUid": "50e6701d-eeb0-4886-b5e6-b431c34e393e",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-zw%C3%B6lf-br%C3%BCder",
+      "language": "de"
+    },
+    {
+      "id": "der-goldene-vogel",
+      "entryId": 83,
+      "entryUid": "8b6f3f80-a428-4b5b-b043-03b02a170a57",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/der-goldene-vogel",
+      "language": "de"
+    },
+    {
+      "id": "der-teufel-mit-den-drei-goldenen-haaren",
+      "entryId": 115,
+      "entryUid": "91417bed-4b0a-4d34-a62a-3a4c34446164",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/der-teufel-mit-den-drei-goldenen-haaren",
+      "language": "de"
+    },
+    {
+      "id": "die-sieben-raben",
+      "entryId": 149,
+      "entryUid": "0fae866f-e2b4-480b-98c0-88758105942a",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-sieben-raben",
+      "language": "de"
+    },
+    {
+      "id": "allerleirauh",
+      "entryId": 177,
+      "entryUid": "af514cc6-9013-43d3-ab4c-ee829175f506",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/allerleirauh",
+      "language": "de"
+    },
+    {
+      "id": "jorinde-und-joringel",
+      "entryId": 205,
+      "entryUid": "605722cf-bcd3-4cd0-a7bc-64d2d6289e0c",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/jorinde-und-joringel",
+      "language": "de"
+    },
+    {
+      "id": "die-sterntaler",
+      "entryId": 309,
+      "entryUid": "372945b0-8eae-4bbd-b7b3-85c8c648d70f",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-sterntaler",
+      "language": "de"
+    },
+    {
+      "id": "der-gestiefelte-kater",
+      "entryId": 449,
+      "entryUid": "b75fc0cc-10eb-4b72-999f-b06ddd37a78e",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/der-gestiefelte-kater",
+      "language": "de"
+    }
+  ]
+}
