@@ -1,4 +1,5 @@
 /.env
+/.ddev/.env.web
 /.idea
 /vendor
 .DS_Store

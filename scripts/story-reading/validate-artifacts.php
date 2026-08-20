@@ -32,7 +32,7 @@ try {
             validateJsonSchema($schemaPath, $artifactPath);
         }
         StoryReadingBatch::validateArtifact($selection, $source, $artifact, $artifactPath);
-        fwrite(STDOUT, "valid {$id}: JSON Schema " . ($semanticOnly ? 'skipped' : '1.2') . ", source fidelity and editorial references\n");
+        fwrite(STDOUT, "valid {$id}: JSON Schema " . ($semanticOnly ? 'skipped' : StoryReadingBatch::READING_SCHEMA_VERSION) . ", source fidelity and editorial references\n");
     }
 } catch (Throwable $exception) {
     fwrite(STDERR, $exception->getMessage() . "\n");

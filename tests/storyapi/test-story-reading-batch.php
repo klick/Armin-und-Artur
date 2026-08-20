@@ -83,7 +83,7 @@ $source['integrity'] = ['protectedPayloadSha256' => hash('sha256', StoryReadingB
 
 $artifact = [
     '$schema' => './story-reading.schema.json',
-    'schemaVersion' => '1.2',
+    'schemaVersion' => '1.3',
     'story' => $story,
     'cms' => $cms,
     'readingPolicy' => ['fallbackSpeaker' => 'narrator'],

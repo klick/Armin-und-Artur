@@ -9,7 +9,7 @@ The product is not the story text. Original text is free; the paid artefact supp
 - [Agent workflow](https://arminundartur.de/llms-full.txt): Purchase flow, safeguards, response semantics and examples.
 - [OpenAPI 3.1 contract](https://arminundartur.de/api/openapi.json): Machine-readable routes and HTTP headers.
 - [Story catalogue](https://arminundartur.de/api/v1/stories.json): Published stories and paid-reading availability.
-- [Reading artefact schema](https://arminundartur.de/api/v1/story-reading.schema.json): JSON Schema for the paid editorial artefact.
+- [Reading artefact schema](https://arminundartur.de/schemas/story-reading-1.3.schema.json): Canonical JSON Schema for the paid editorial artefact.
 
 ## Payment
 

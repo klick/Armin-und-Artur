@@ -14,7 +14,7 @@ use craft\helpers\App;
 $routes = [
     'api/openapi.json' => 'story-api/stories/openapi',
     'api/v1/story-reading.schema.json' => 'story-api/stories/schema',
-    'schemas/story-reading-1.2.schema.json' => 'story-api/stories/schema',
+    'schemas/story-reading-1.3.schema.json' => 'story-api/stories/schema',
     'api/v1/stories/<id:[a-z0-9]+(?:-[a-z0-9]+)*>.json' => 'story-api/stories/story',
     'api/v1/stories/<id:[a-z0-9]+(?:-[a-z0-9]+)*>/reading.json' => 'story-api/stories/reading',
 ];
