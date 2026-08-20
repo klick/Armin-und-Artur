@@ -1,0 +1,95 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {
+      "id": "von-dem-fischer-und-seiner-frau",
+      "entryId": 39,
+      "entryUid": "b1b50876-dc98-44a5-80ce-955bea80d3cf",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/von-dem-fischer-und-seiner-frau",
+      "language": "de"
+    },
+    {
+      "id": "die-weisse-schlange",
+      "entryId": 41,
+      "entryUid": "e6972d35-33ff-47bc-b589-178156c6dda7",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-weisse-schlange",
+      "language": "de"
+    },
+    {
+      "id": "die-drei-maennlein-im-walde",
+      "entryId": 47,
+      "entryUid": "1c66d257-15be-4515-8b53-82403c9ed2fe",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-drei-m%C3%A4nnlein-im-walde",
+      "language": "de"
+    },
+    {
+      "id": "marienkind",
+      "entryId": 61,
+      "entryUid": "3a2fe475-f937-4ce5-a2fe-f799f3193e78",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/marienkind",
+      "language": "de"
+    },
+    {
+      "id": "strohhalm-kohle-und-bohne",
+      "entryId": 65,
+      "entryUid": "5afe7421-9cf0-4856-8501-55b9371a53fd",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/strohhalm-kohle-und-bohne",
+      "language": "de"
+    },
+    {
+      "id": "katze-und-maus-in-gesellschaft",
+      "entryId": 75,
+      "entryUid": "15133cc3-152d-4caa-8a4f-19b92c3eca4d",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/katze-und-maus-in-gesellschaft",
+      "language": "de"
+    },
+    {
+      "id": "daumesdick",
+      "entryId": 105,
+      "entryUid": "0b76c77e-2e40-428a-883e-20c163ca61fc",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/daumesdick",
+      "language": "de"
+    },
+    {
+      "id": "die-kluge-else",
+      "entryId": 109,
+      "entryUid": "f180000c-afd2-4594-93cb-3e4ee359eeb6",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-kluge-else",
+      "language": "de"
+    },
+    {
+      "id": "frau-trude",
+      "entryId": 119,
+      "entryUid": "e5db2ddd-abd8-431c-84d2-ef21e43f9ef9",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/frau-trude",
+      "language": "de"
+    },
+    {
+      "id": "der-alte-sultan",
+      "entryId": 129,
+      "entryUid": "f42afe4f-6487-488c-a4de-da13a0662010",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/der-alte-sultan",
+      "language": "de"
+    }
+  ]
+}

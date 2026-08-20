@@ -11,6 +11,25 @@ final class StoryReadingBatch
 {
     public const FORMAT_VERSION = 1;
     public const READING_SCHEMA_VERSION = '1.3';
+    public const FAIRY_TALE_CONTENT_PROFILE = 'fairy_tale';
+    public const ELEVENLABS_FAIRY_TALE_PRESET = [
+        'presetVersion' => 1,
+        'modelId' => 'eleven_v3',
+        'stability' => 0.5,
+        'voiceSelection' => [
+            'testedDisplayName' => 'Grandpa - Familiar & Warm',
+            'intent' => 'elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly',
+            'voiceIdPolicy' => 'Resolve and configure the current provider voice_id outside the canonical artefact.',
+        ],
+        'promptPrefix' => '[very slowly] [warm, grandfatherly storytelling]',
+        'dialogueTagPolicy' => 'Derive concise delivery tags from cast and scene direction. Never alter originalText.',
+        'referenceTest' => [
+            'storyId' => 'rotkaeppchen',
+            'paragraphIndex' => 0,
+            'observedDurationSeconds' => 67,
+            'editorialResult' => 'approved',
+        ],
+    ];
     public const TYPOGRAPHY_NORMALISATIONS = [
         'soft_hyphen_removed',
         'zero_width_space_removed',
@@ -255,6 +274,16 @@ final class StoryReadingBatch
         }
         if (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/', (string)($artifact['cms']['entryUid'] ?? '')) !== 1) {
             throw new RuntimeException("{$id}: cms.entryUid must be a lowercase UUID.");
+        }
+
+        $contentProfile = $artifact['providerNotes']['contentProfile'] ?? null;
+        $fairyTalePreset = $artifact['providerNotes']['elevenLabs']['fairyTalePreset'] ?? null;
+        if ($contentProfile === self::FAIRY_TALE_CONTENT_PROFILE) {
+            if ($fairyTalePreset !== self::ELEVENLABS_FAIRY_TALE_PRESET) {
+                throw new RuntimeException("{$id}: fairy_tale artefacts must carry the approved ElevenLabs fairyTalePreset.");
+            }
+        } elseif ($fairyTalePreset !== null) {
+            throw new RuntimeException("{$id}: the ElevenLabs fairyTalePreset is restricted to fairy_tale artefacts.");
         }
 
         $paragraphs = $artifact['originalText']['paragraphs'] ?? null;

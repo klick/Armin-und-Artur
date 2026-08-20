@@ -1,0 +1,95 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {
+      "id": "das-kleine-maedchen-mit-den-schwefelhoelzern",
+      "entryId": 33,
+      "entryUid": "baf6bb9a-9502-4051-8db7-c291825532b3",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/das-kleine-m%C3%A4dchen-mit-den-schwefelh%C3%B6lzern",
+      "language": "de"
+    },
+    {
+      "id": "die-drei-spinnerinnen",
+      "entryId": 67,
+      "entryUid": "d01367e5-2c84-4d31-9e7e-ed7cd4ca2e46",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-drei-spinnerinnen",
+      "language": "de"
+    },
+    {
+      "id": "die-wichtelmaenner",
+      "entryId": 135,
+      "entryUid": "df45be89-98b5-4eca-85de-fc60681d197a",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-wichtelm%C3%A4nner",
+      "language": "de"
+    },
+    {
+      "id": "koenig-drosselbart",
+      "entryId": 91,
+      "entryUid": "dd415928-4057-4f2f-9738-d3ab88a72506",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/k%C3%B6nig-drosselbart",
+      "language": "de"
+    },
+    {
+      "id": "die-goldene-gans",
+      "entryId": 179,
+      "entryUid": "ead0013d-6bed-490d-a2f8-90b99adf02a0",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-goldene-gans",
+      "language": "de"
+    },
+    {
+      "id": "der-hase-und-der-igel",
+      "entryId": 365,
+      "entryUid": "fe780624-7fa7-4a27-95a3-615264146972",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/der-hase-und-der-igel",
+      "language": "de"
+    },
+    {
+      "id": "die-prinzessin-auf-der-erbse",
+      "entryId": 481,
+      "entryUid": "9a2ebd6a-bb02-4668-b2c4-8055f61002c0",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/die-prinzessin-auf-der-erbse",
+      "language": "de"
+    },
+    {
+      "id": "des-kaisers-neue-kleider",
+      "entryId": 549,
+      "entryUid": "98436101-9ff6-450e-a3a5-ab6f417f774b",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/des-kaisers-neue-kleider",
+      "language": "de"
+    },
+    {
+      "id": "schneeweisschen-und-rosenrot",
+      "entryId": 381,
+      "entryUid": "d10afaf6-906d-4994-aa01-db6e9073382b",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/schneeweisschen-und-rosenrot",
+      "language": "de"
+    },
+    {
+      "id": "hans-im-glueck",
+      "entryId": 169,
+      "entryUid": "25aa54b2-fd5a-495c-8a91-ec7e1a13e915",
+      "sectionId": 1,
+      "siteHandle": "default",
+      "sourceUrl": "https://arminundartur.de/hans-im-gl%C3%BCck",
+      "language": "de"
+    }
+  ]
+}

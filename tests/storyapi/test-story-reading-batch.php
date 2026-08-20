@@ -99,6 +99,29 @@ $artifact = [
 ];
 StoryReadingBatch::validateArtifact($manifestStory, $source, $artifact, '/tmp/test-maerchen.reading.json');
 
+$fairyTaleArtifact = $artifact;
+$fairyTaleArtifact['providerNotes'] = [
+    'contentProfile' => StoryReadingBatch::FAIRY_TALE_CONTENT_PROFILE,
+    'elevenLabs' => [
+        'fairyTalePreset' => StoryReadingBatch::ELEVENLABS_FAIRY_TALE_PRESET,
+    ],
+];
+StoryReadingBatch::validateArtifact($manifestStory, $source, $fairyTaleArtifact, '/tmp/test-maerchen.reading.json');
+
+$wrongFairyTalePreset = $fairyTaleArtifact;
+$wrongFairyTalePreset['providerNotes']['elevenLabs']['fairyTalePreset']['modelId'] = 'eleven_multilingual_v2';
+expectBatchFailure(
+    static fn() => StoryReadingBatch::validateArtifact($manifestStory, $source, $wrongFairyTalePreset, '/tmp/test-maerchen.reading.json'),
+    'must carry the approved ElevenLabs fairyTalePreset',
+);
+
+$outOfScopePreset = $fairyTaleArtifact;
+$outOfScopePreset['providerNotes']['contentProfile'] = 'historical_nonfiction';
+expectBatchFailure(
+    static fn() => StoryReadingBatch::validateArtifact($manifestStory, $source, $outOfScopePreset, '/tmp/test-maerchen.reading.json'),
+    'restricted to fairy_tale artefacts',
+);
+
 $changedText = $artifact;
 $changedText['originalText']['paragraphs'][0] = 'Es war einmal!';
 expectBatchFailure(
@@ -149,5 +172,23 @@ assertBatch(
     is_object($decodedScaffold->artifact->formatArchitecture->renderTargets ?? null),
     'Scaffold renderTargets must serialize as a JSON object required by schema 1.3',
 );
+
+$repositoryArtefacts = glob(dirname(__DIR__, 2) . '/resources/story-reading/*.reading.json') ?: [];
+assertBatch($repositoryArtefacts !== [], 'Repository must contain reading artefacts');
+foreach ($repositoryArtefacts as $repositoryArtefactPath) {
+    $repositoryArtefact = StoryReadingBatch::readJson($repositoryArtefactPath);
+    if (($repositoryArtefact['cms']['sectionId'] ?? null) !== 1) {
+        continue;
+    }
+    $repositoryId = (string)($repositoryArtefact['story']['id'] ?? basename($repositoryArtefactPath));
+    assertBatch(
+        ($repositoryArtefact['providerNotes']['contentProfile'] ?? null) === StoryReadingBatch::FAIRY_TALE_CONTENT_PROFILE,
+        "{$repositoryId}: current fairy-tale collection must declare contentProfile fairy_tale",
+    );
+    assertBatch(
+        ($repositoryArtefact['providerNotes']['elevenLabs']['fairyTalePreset'] ?? null) === StoryReadingBatch::ELEVENLABS_FAIRY_TALE_PRESET,
+        "{$repositoryId}: current fairy-tale collection must carry the approved ElevenLabs preset",
+    );
+}
 
 echo "Story reading batch extraction and semantic QA checks passed\n";

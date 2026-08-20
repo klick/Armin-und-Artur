@@ -3,6 +3,7 @@
 namespace modules\storyapi;
 
 use Craft;
+use modules\storyapi\services\StoryPreviewService;
 use modules\storyapi\services\StoryReadingService;
 use nystudio107\seomatic\events\RegisterSitemapUrlsEvent;
 use nystudio107\seomatic\models\SitemapCustomTemplate;
@@ -36,6 +37,7 @@ class Module extends \yii\base\Module
 
         $this->setComponents([
             'stories' => StoryReadingService::class,
+            'preview' => StoryPreviewService::class,
         ]);
 
         Event::on(
@@ -51,6 +53,14 @@ class Module extends \yii\base\Module
         $stories = $this->get('stories');
 
         return $stories;
+    }
+
+    public function getPreview(): StoryPreviewService
+    {
+        /** @var StoryPreviewService $preview */
+        $preview = $this->get('preview');
+
+        return $preview;
     }
 
     /**

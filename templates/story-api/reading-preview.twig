@@ -1,0 +1,69 @@
+{% extends '_layout' %}
+
+{% block content %}
+  <main class="container my-5" id="story-reading-preview"
+    data-stories="{{ stories|json_encode|e('html_attr') }}">
+    <article class="col-12 col-lg-8 mx-auto">
+      <p class="text-uppercase small text-muted mb-2">Nur lokale Entwicklungsumgebung</p>
+      <h1 class="display-5 mb-3">Märchen-Vorlese-Preview</h1>
+      <p>Eine Szene, eine durchgehende Erzählerstimme. Figuren werden nur durch die Regie derselben Stimme angedeutet; es gibt keine Sprecherwechsel.</p>
+
+      {% if not configuration.configured %}
+        <div class="alert alert-warning" role="alert">
+          Noch nicht renderbereit. Ergänze <code>ELEVENLABS_API_KEY</code> und
+          <code>STORY_PREVIEW_ELEVENLABS_VOICE_ID</code> in der lokalen
+          <code>.env</code>. Geheimnisse werden nie an den Browser gesendet.
+        </div>
+      {% endif %}
+
+      <form action="{{ renderEndpoint }}" method="post" data-preview-form>
+        <input type="hidden" name="{{ csrfParam }}" value="{{ csrfToken }}">
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="mb-3">
+              <label class="form-label" for="preview-story">Märchen</label>
+              <select class="form-select" id="preview-story" name="storyId" data-story required></select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="preview-scene">Szene</label>
+              <select class="form-select" id="preview-scene" name="sceneId" data-scene required></select>
+            </div>
+            <div class="mb-0">
+              <label class="form-label" for="preview-voice">Erzählerstimme</label>
+              <input class="form-control" id="preview-voice" value="{{ configuration.voiceName }}" readonly>
+              <div class="form-text">Diese eine Stimme liest den gesamten Ausschnitt mit <code>{{ configuration.modelId }}</code>.</div>
+            </div>
+          </div>
+        </div>
+
+        <section class="card mb-3" aria-live="polite">
+          <div class="card-body">
+            <h2 class="h5">Vorschauumfang</h2>
+            <p class="mb-2" data-scene-direction>–</p>
+            <dl class="row mb-0">
+              <dt class="col-sm-5">Originalszene</dt><dd class="col-sm-7" data-original-characters>–</dd>
+              <dt class="col-sm-5">Gerenderter Ausschnitt</dt><dd class="col-sm-7" data-preview-characters>–</dd>
+            </dl>
+          </div>
+        </section>
+
+        <div class="alert alert-danger" role="alert">
+          Der folgende Klick ruft ElevenLabs auf und verbraucht Credits entsprechend der angezeigten Zeichenzahl.
+        </div>
+        <button class="btn btn-danger" type="submit" data-render-button{% if not configuration.configured %} disabled{% endif %}>
+          Kostenpflichtige Vorschau erzeugen
+        </button>
+      </form>
+
+      <section class="card mt-4" aria-live="polite">
+        <div class="card-body">
+          <h2 class="h4">Ergebnis</h2>
+          <p data-result-status>Noch keine Vorschau erzeugt.</p>
+          <audio class="w-100" controls data-audio hidden></audio>
+        </div>
+      </section>
+    </article>
+  </main>
+  <script src="/js/story-reading-preview.js" defer></script>
+{% endblock %}

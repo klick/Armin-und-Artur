@@ -170,6 +170,38 @@ These mappings are guidance for an adapter. They do not permit an adapter to
 rewrite `originalText`. `providerNotes` is deliberately flexible but always
 non-authoritative and must never be spoken as story content.
 
+### ElevenLabs fairy-tale reference profile
+
+The current fairy-tale collection carries
+`providerNotes.contentProfile: fairy_tale` and an optional-provider preset at
+`providerNotes.elevenLabs.fairyTalePreset`. This preset is deliberately not a
+global Story Reading Format default: historical prose, essays, legends, or
+other future text types must not inherit it automatically.
+
+The approved reference uses `eleven_v3`, stability `0.5`, and the tested
+library voice display name `Grandpa - Familiar & Warm`. Its portable selection
+intent is an elderly male voice that is warm, familiar, calm, relaxed,
+unhurried, slightly gravelly, soft, and friendly. The display name is evidence
+of the listening test, not a stable API identity. Deployments resolve and store
+the current `voice_id` outside the canonical artefact.
+
+The tested provider prompt begins with
+`[very slowly] [warm, grandfatherly storytelling]`. An adapter may derive
+short, local dialogue tags from `cast` and `scenes`, but those tags exist only
+in the generated ElevenLabs request. They are never inserted into
+`originalText`, spoken as directions, or applied to non-fairy-tale artefacts.
+
+The reference test used the first Rotkäppchen paragraph and produced a
+67-second reading that received human approval. This is a collection-level
+calibration reference, not a promise that every paragraph or voice-library
+revision will have the same duration.
+
+In local Craft `DEV_MODE`, `/__story-api/reading-preview` applies this preset
+to one selected scene and one configured narrator voice. It is a listening and
+editorial QA tool, not part of the public or paid agent API. Provider
+credentials stay on the server, and each explicit render click consumes
+ElevenLabs credits.
+
 ## Pronunciation notes
 
 Observed mispronunciations are recorded as `providerNotes.pronunciations`: a
@@ -190,14 +222,19 @@ structured field is introduced in a future schema version rather than ad hoc.
 
 ## Artefact inventory
 
-There are currently 25 complete schema-valid artefacts:
+There are currently 45 complete schema-valid artefacts:
 
 | Story ID | Editorial status |
 | --- | --- |
 | [`allerleirauh`](allerleirauh.reading.json) | machine validated; human review pending |
 | [`aschenputtel`](aschenputtel.reading.json) | machine validated; human review pending |
 | [`bruederchen-und-schwesterchen`](bruederchen-und-schwesterchen.reading.json) | machine validated; human review pending |
+| [`das-kleine-maedchen-mit-den-schwefelhoelzern`](das-kleine-maedchen-mit-den-schwefelhoelzern.reading.json) | machine validated; human review pending |
 | [`das-tapfere-schneiderlein`](das-tapfere-schneiderlein.reading.json) | machine validated; human review pending |
+| [`daumesdick`](daumesdick.reading.json) | machine validated; human review pending |
+| [`des-kaisers-neue-kleider`](des-kaisers-neue-kleider.reading.json) | machine validated; human review pending |
+| [`der-hase-und-der-igel`](der-hase-und-der-igel.reading.json) | machine validated; human review pending |
+| [`der-alte-sultan`](der-alte-sultan.reading.json) | machine validated; human review pending |
 | [`der-froschkoenig-oder-der-eiserne-heinrich`](der-froschkoenig-oder-der-eiserne-heinrich.reading.json) | machine validated; human review pending |
 | [`der-gestiefelte-kater`](der-gestiefelte-kater.reading.json) | machine validated; human review pending |
 | [`der-goldene-vogel`](der-goldene-vogel.reading.json) | machine validated; human review pending |
@@ -205,20 +242,35 @@ There are currently 25 complete schema-valid artefacts:
 | [`der-teufel-mit-den-drei-goldenen-haaren`](der-teufel-mit-den-drei-goldenen-haaren.reading.json) | machine validated; human review pending |
 | [`der-wolf-und-die-sieben-jungen-geisslein`](der-wolf-und-die-sieben-jungen-geisslein.reading.json) | pilot reviewed |
 | [`die-bremer-stadtmusikanten`](die-bremer-stadtmusikanten.reading.json) | machine validated; human review pending |
+| [`die-drei-maennlein-im-walde`](die-drei-maennlein-im-walde.reading.json) | machine validated; human review pending |
+| [`die-kluge-else`](die-kluge-else.reading.json) | machine validated; human review pending |
+| [`die-drei-spinnerinnen`](die-drei-spinnerinnen.reading.json) | machine validated; human review pending |
 | [`die-gaensemagd`](die-gaensemagd.reading.json) | pilot reviewed |
+| [`die-goldene-gans`](die-goldene-gans.reading.json) | machine validated; human review pending |
+| [`die-prinzessin-auf-der-erbse`](die-prinzessin-auf-der-erbse.reading.json) | machine validated; human review pending |
 | [`die-sieben-raben`](die-sieben-raben.reading.json) | machine validated; human review pending |
 | [`die-sterntaler`](die-sterntaler.reading.json) | machine validated; human review pending |
 | [`die-zwoelf-brueder`](die-zwoelf-brueder.reading.json) | machine validated; human review pending |
+| [`die-wichtelmaenner`](die-wichtelmaenner.reading.json) | machine validated; human review pending |
 | [`dornroeschen`](dornroeschen.reading.json) | machine validated; human review pending |
 | [`frau-holle`](frau-holle.reading.json) | machine validated; human review pending |
+| [`frau-trude`](frau-trude.reading.json) | machine validated; human review pending |
 | [`haensel-und-gretel`](haensel-und-gretel.reading.json) | machine validated; human review pending |
+| [`hans-im-glueck`](hans-im-glueck.reading.json) | machine validated; human review pending |
 | [`jorinde-und-joringel`](jorinde-und-joringel.reading.json) | machine validated; human review pending |
+| [`katze-und-maus-in-gesellschaft`](katze-und-maus-in-gesellschaft.reading.json) | machine validated; human review pending |
+| [`koenig-drosselbart`](koenig-drosselbart.reading.json) | machine validated; human review pending |
 | [`maerchen-von-einem-der-auszog-das-fuerchten-zu-lernen`](maerchen-von-einem-der-auszog-das-fuerchten-zu-lernen.reading.json) | legacy example; editorial review pending |
+| [`marienkind`](marienkind.reading.json) | machine validated; human review pending |
 | [`rapunzel`](rapunzel.reading.json) | machine validated; human review pending |
 | [`rotkaeppchen`](rotkaeppchen.reading.json) | legacy example; editorial review pending |
 | [`rumpelstilzchen`](rumpelstilzchen.reading.json) | machine validated; human review pending |
 | [`schneewittchen`](schneewittchen.reading.json) | machine validated; human review pending |
+| [`schneeweisschen-und-rosenrot`](schneeweisschen-und-rosenrot.reading.json) | machine validated; human review pending |
 | [`tischchen-deck-dich-goldesel-und-knueppel-aus-dem-sack`](tischchen-deck-dich-goldesel-und-knueppel-aus-dem-sack.reading.json) | machine validated; human review pending |
+| [`strohhalm-kohle-und-bohne`](strohhalm-kohle-und-bohne.reading.json) | machine validated; human review pending |
+| [`von-dem-fischer-und-seiner-frau`](von-dem-fischer-und-seiner-frau.reading.json) | machine validated; human review pending |
+| [`die-weisse-schlange`](die-weisse-schlange.reading.json) | machine validated; human review pending |
 
 Schema validity and exact source fidelity are technical guarantees. They are
 not substitutes for editorial sign-off. Consumers that need reviewed material

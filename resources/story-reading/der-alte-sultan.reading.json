@@ -1,0 +1,191 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "der-alte-sultan",
+        "title": "Der alte Sultan",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/der-alte-sultan",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 129,
+        "entryUid": "f42afe4f-6487-488c-a4de-da13a0662010",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, ruhig und mit leichter Tierfabel-Färbung."
+        },
+        "farmer": {
+            "label": "Bauer",
+            "voiceProfile": "adult_male_hard",
+            "delivery": "Zunächst hart, später dankbar und beschämt."
+        },
+        "farmer_wife": {
+            "label": "Bäuerin",
+            "voiceProfile": "adult_female_practical",
+            "delivery": "Direkt und schlicht."
+        },
+        "sultan": {
+            "label": "Alter Sultan",
+            "voiceProfile": "old_dog_loyal",
+            "delivery": "Treue, Müdigkeit und später Entschlossenheit als sanfte Färbung."
+        },
+        "wolf": {
+            "label": "Wolf",
+            "voiceProfile": "deep_cunning",
+            "delivery": "Schlau und beleidigt, nicht übertrieben bedrohlich."
+        },
+        "cat": {
+            "label": "Katze",
+            "voiceProfile": "old_cat_limping",
+            "delivery": "Tapfer, knapp und etwas komisch."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es hatte ein Bauer einen treuen Hund, der Sultan hiess, der war alt geworden und hatte alle Zähn",
+            "title": "Der alte Hund",
+            "speakers": [
+                "narrator",
+                "farmer",
+                "farmer_wife",
+                "sultan"
+            ],
+            "direction": "Die Gefahr ruhig und ernst erzählen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Der arme Hund, der nicht weit davon in der Sonne ausgestreckt lag, hatte alles mit angehört und ",
+            "title": "Der Plan des Wolfs",
+            "speakers": [
+                "narrator",
+                "sultan",
+                "wolf"
+            ],
+            "direction": "Die Freundschaft der Tiere klar und leise gestalten."
+        },
+        {
+            "id": "s03",
+            "anchor": "Der Anschlag gefiel dem Hund, und wie er ausgedacht war, so ward er auch ausgeführt. Der Vater s",
+            "title": "Sultan rettet das Kind",
+            "speakers": [
+                "narrator",
+                "farmer",
+                "sultan",
+                "wolf"
+            ],
+            "direction": "Die Rettung freudig, ohne Hektik lesen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Am andern Morgen schickte der Wolf das Schwein und liess den Hund hinaus in den Wald fordern, da",
+            "title": "Der Streit im Wald",
+            "speakers": [
+                "narrator",
+                "sultan",
+                "wolf",
+                "cat"
+            ],
+            "direction": "Der Schluss hat leichte Komik; die Versöhnung bleibt freundlich."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Bauer, Bäuerin, Sultan, Wolf oder Katze. Tierfiguren bleiben Charakterfärbungen einer einzigen Erzählerstimme.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es hatte ein Bauer einen treuen Hund, der Sultan hiess, der war alt geworden und hatte alle Zähne verloren, so dass er nichts mehr fest packen konnte. Zu einer Zeit stand der Bauer mit seiner Frau vor der Haustüre und sprach: „Den alten Sultan schiess ich morgen tot, der ist zu nichts mehr nütze.“ Die Frau, die Mitleid mit dem treuen Tiere hatte, antwortete: „Da er uns so lange Jahre gedient hat und ehrlich bei uns gehalten, so könnten wir ihm wohl das Gnadenbrot geben.“ – „Ei was,“ sagte der Mann, „du bist nicht recht gescheit; er hat keinen Zahn mehr im Maul, und kein Dieb fürchtet sich vor ihm, er kann jetzt abgehen. Hat er uns gedient, so hat er sein gutes Fressen dafür gekriegt.“",
+            "Der arme Hund, der nicht weit davon in der Sonne ausgestreckt lag, hatte alles mit angehört und war traurig, dass morgen sein letzter Tag sein sollte. Er hatte einen guten Freund, das war der Wolf, zu dem schlich er abends hinaus in den Wald und klagte über das Schicksal, das ihm bevorstände. „Höre, Gevatter,“ sagte der Wolf, „sei guten Mutes, ich will dir aus deiner Not helfen. Ich habe etwas ausgedacht. Morgen in aller Frühe geht dein Herr mit seiner Frau ins Heu, und sie nehmen ihr kleines Kind mit, weil niemand im Hause zurückbleibt. Sie pflegen das Kind während der Arbeit hinter die Hecke in den Schatten zu legen. Lege dich daneben, gleich als wolltest du es bewachen. Ich will dann aus dem Walde herauskommen und das Kind rauben, du musst mir eifrig nachspringen, als wolltest du mir es wieder abjagen. Ich lasse es fallen, und du bringst es den Eltern wieder zurück, die glauben dann, du hättest es gerettet, und sind viel zu dankbar, als dass sie dir ein Leid antun sollten; im Gegenteil, du kommst in völlige Gnade, und sie werden es dir an nichts mehr fehlen lassen.“",
+            "Der Anschlag gefiel dem Hund, und wie er ausgedacht war, so ward er auch ausgeführt. Der Vater schrie, als er den Wolf mit seinem Kinde durchs Feld laufen sah; als es aber der alte Sultan zurückbrachte, da war er froh, streichelte ihn und sagte: „Dir soll kein Härchen gekrümmt werden, du sollst das Gnadenbrot essen, solange du lebst.“ Zu seiner Frau aber sprach er: „Geh gleich heim und koche dem alten Sultan einen Weckbrei, den braucht er nicht zu beissen, und bring das Kopfkissen aus meinem Bette, das schenk ich ihm zu seinem Lager.“ Von nun an hatte es der alte Sultan so gut, als er sich’s nur wünschen konnte. Bald hernach besuchte ihn der Wolf und freute sich, dass alles so wohl gelungen war. „Aber, Gevatter,“ sagte er, „du wirst doch ein Auge zudrücken, wenn ich bei Gelegenheit deinem Herrn ein fettes Schaf weghole. Es wird einem heutzutage schwer, sich durchzuschlagen.“ – „Darauf rechne nicht,“ antwortete der Hund, „meinem Herrn bleibe ich treu, das darf ich nicht zugeben!“ Der Wolf meinte, das wäre nicht im Ernste gesprochen, kam in der Nacht herangeschlichen und wollte sich das Schaf holen. Aber der Bauer, dem der treue Sultan das Vorhaben des Wolfes verraten hatte, passte ihm auf und kämmte ihm mit dem Dreschflegel garstig die Haare. Der Wolf musste ausreissen, schrie aber dem Hund zu: „Wart, du schlechter Geselle, dafür sollst du büssen!“",
+            "Am andern Morgen schickte der Wolf das Schwein und liess den Hund hinaus in den Wald fordern, da wollten sie ihre Sache ausmachen. Der alte Sultan konnte keinen Beistand finden als eine Katze, die nur drei Beine hatte, und als sie zusammen hinausgingen, humpelte die arme Katze daher und streckte zugleich vor Schmerz den Schwanz in die Höhe. Der Wolf und sein Beistand waren schon an Ort und Stelle, als sie aber ihren Gegner daherkommen sahen, meinten sie, er führte einen Säbel mit sich, weil sie den aufgerichteten Schwanz der Katze dafür ansahen. Und wenn das arme Tier so auf drei Beinen hüpfte, dachten sie nichts anders, als es höbe jedesmal einen Stein auf, wollte damit auf sie werfen. Da ward ihnen beiden angst: Das wilde Schwein verkroch sich ins Laub, und der Wolf sprang auf einen Baum. Der Hund und die Katze, als sie herankamen, wunderten sich, dass sich niemand sehen liess. Das wilde Schwein aber hatte sich im Laub nicht ganz verstecken können, sondern die Ohren ragten noch heraus. Während die Katze sich bedächtig umschaute, zwinste das Schwein mit den Ohren; die Katze, welche meinte, es regte sich da eine Maus, sprang darauf zu und biss herzhaft hinein. Da erhob sich das Schwein mit grossem Geschrei, lief fort und rief: „Dort auf dem Baum, da sitzt der Schuldige.“ Der Hund und die Katze schauten hinauf und erblickten den Wolf, der schämte sich, dass er sich so furchtsam gezeigt hatte, und nahm von dem Hund den Frieden an."
+        ]
+    }
+}

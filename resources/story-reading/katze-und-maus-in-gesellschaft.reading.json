@@ -1,0 +1,198 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "katze-und-maus-in-gesellschaft",
+        "title": "Katze und Maus in Gesellschaft",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/katze-und-maus-in-gesellschaft",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 75,
+        "entryUid": "15133cc3-152d-4caa-8a4f-19b92c3eca4d",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Ruhig, klar und mit feiner Ironie; nicht verniedlichen."
+        },
+        "cat": {
+            "label": "Katze",
+            "voiceProfile": "adult_female_sly",
+            "delivery": "Schmeichelnd, ausweichend und zunehmend unverhüllt."
+        },
+        "mouse": {
+            "label": "Maus",
+            "voiceProfile": "small_trusting",
+            "delivery": "Gutgläubig, freundlich und später erschrocken."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Eine Katze hatte Bekanntschaft mit einer Maus gemacht und ihr soviel von grosser Liebe und Freun",
+            "title": "Die Freundschaft",
+            "speakers": [
+                "narrator",
+                "cat",
+                "mouse"
+            ],
+            "direction": "Das falsche Vertrauen nüchtern etablieren."
+        },
+        {
+            "id": "s02",
+            "anchor": "Der gute Rat wurde also befolgt und ein Töpfchen mit Fett angekauft. Sie wussten aber nicht, woh",
+            "title": "Der Fettopf",
+            "speakers": [
+                "narrator",
+                "cat",
+                "mouse"
+            ],
+            "direction": "Die heimliche Vorsorge sachlich erzählen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Aber es dauerte nicht lange, so trug die Katze Gelüste danach und sprach zur Maus: „Was ich dir ",
+            "title": "Erster Gevatterschaftsbesuch",
+            "speakers": [
+                "narrator",
+                "cat",
+                "mouse"
+            ],
+            "direction": "Die Ausreden mit leichter Ironie, aber ohne moderne Pointe sprechen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Der Katze wässerte das Maul bald wieder nach der Leckerei. „Aller guten Dinge sind drei,“ sprach",
+            "title": "Zum dritten Mal",
+            "speakers": [
+                "narrator",
+                "cat",
+                "mouse"
+            ],
+            "direction": "Die Wiederholung klar staffeln."
+        },
+        {
+            "id": "s05",
+            "anchor": "Von nun an wollte niemand mehr die Katze zum Gevatter bitten. Als aber der Winter herangekommen ",
+            "title": "Der leere Vorrat",
+            "speakers": [
+                "narrator",
+                "cat",
+                "mouse"
+            ],
+            "direction": "Die Enthüllung langsam und ernst werden lassen."
+        },
+        {
+            "id": "s06",
+            "anchor": "„Ganz aus,“ hatte die arme Maus schon auf der Zunge. Kaum war es heraus, tat die Katze einen Sat",
+            "title": "Das Ende der Maus",
+            "speakers": [
+                "narrator",
+                "cat",
+                "mouse"
+            ],
+            "direction": "Knapper Schluss ohne zusätzliche Dramatisierung."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Alle wörtlichen Reden sind Katze oder Maus zugeordnet. Der abschließende Erzählerkommentar bleibt narrator.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Eine Katze hatte Bekanntschaft mit einer Maus gemacht und ihr soviel von grosser Liebe und Freundschaft vorgesagt, die sie zu ihr trüge, dass die Maus endlich einwilligte, mit ihr zusammen in einem Haus zu wohnen und gemeinschaftliche Wirtschaft zu führen. „Aber für den Winter müssen wir Vorsorge tragen, sonst leiden wir Hunger,“ sagte die Katze. „Du, Mäuschen, kannst dich nicht überallhin wagen und gerätst mir am Ende in eine Falle.“",
+            "Der gute Rat wurde also befolgt und ein Töpfchen mit Fett angekauft. Sie wussten aber nicht, wohin sie es stellen sollten. Endlich, nach langer Überlegung, sprach die Katze: „Ich weiss keinen Ort, wo es besser aufgehoben wäre, als die Kirche; da getraut sich niemand etwas wegzunehmen. Wir stellen es unter den Altar und rühren es nicht eher an, als bis wir es nötig haben.“ Das Töpfchen wurde also in Sicherheit gebracht.",
+            "Aber es dauerte nicht lange, so trug die Katze Gelüste danach und sprach zur Maus: „Was ich dir sagen wollte, Mäuschen, ich bin von meiner Base zum Gevatter gebeten. Sie hat ein Söhnchen zur Welt gebracht, weiss mit braunen Flecken, das soll ich über die Taufe halten. Lass mich heute ausgehen und besorge du das Haus allein!“ – „Ja, ja,“ antwortete die Maus, „geh in Gottes Namen! Wenn du was Gutes isst, so denk an mich! Von dem süssen roten Festwein tränk ich auch gern ein Tröpfchen!“ Es war aber alles nicht wahr. Die Katze hatte keine Base und war nicht zum Gevatter gebeten. Sie ging geradewegs nach der Kirche, schlich zu dem Fettöpfchen und leckte die fette Haut ab. Dann machte sie einen Spaziergang auf den Dächern der Stadt, streckte sich hernach in der Sonne aus und wischte sich den Bart, sooft sie an das Fettöpfchen dachte. Erst als es Abend war, kam sie wieder nach Hause. „Nun, da bist du ja wieder!“ sagte die Maus. „Du hast gewiss einen lustigen Tag gehabt.“ – „Es ging an,“ antwortete die Katze. „Was hat denn das Kind für einen Namen bekommen?“ fragte die Maus. „Hautab,“ sagte die Katze ganz trocken. „Hautab,“ rief die Maus, „das ist ja ein seltsamer Name! Ist der in eurer Familie gebräuchlich?“ – „Was ist da weiter!“ sagte die Katze. „Er ist nicht schlechter als Bröseldieb, wie deine Paten heissen.“",
+            "Nicht lange danach überkam die Katze wieder ein Gelüste. Sie sprach zur Maus: „Du musst mir den Gefallen tun und nochmals das Hauswesen allein besorgen; ich bin zum zweitenmal zum Gevatter gebeten, und da das Kind einen weissen Ring um den Hals hat, so kann ich’s nicht abschlagen.“ Die gute Maus willigte ein, die Katze aber schlich hinter der Stadtmauer zu der Kirche und frass den Fettopf halb aus. „Es schmeckt nichts besser,“ sagte sie, „als was man selber isst,“ und war mit ihrem Tagewerk ganz zufrieden. Als sie heimkam, fragte die Maus: „Wie ist denn dieses Kind getauft worden?“ – „Halbaus,“ antwortete die Katze. „Halbaus! Was du sagst! Den Namen habe ich mein Lebtag noch nicht gehört. Ich wette, der steht nicht im Kalender.“",
+            "Der Katze wässerte das Maul bald wieder nach der Leckerei. „Aller guten Dinge sind drei,“ sprach sie zu der Maus. „Ich soll wieder Gevatter stehen. Das Kind ist ganz schwarz und hat bloss weisse Pfoten, sonst kein weisses Haar am ganzen Leib. Das trifft sich alle paar Jahre nur einmal. Du lässest mich doch ausgehen?“ – „Hautab, Halbaus,“ antwortete die Maus, „es sind seltsame Namen, die machen mich nachdenklich.“ – „Da sitzest du daheim in deinem dunkelgrauen Flausrock und deinem langen Haarzopf,“ sprach die Katze, „und fängst Grillen. Das kommt davon, wenn man bei Tag nicht ausgeht!“ Die Maus räumte während der Abwesenheit der Katze auf und brachte das Haus in Ordnung; die naschhafte Katze aber frass den Fettopf rein aus. „Wenn erst alles aufgezehrt ist, so hat man Ruhe,“ sagte sie zu sich selbst und kam satt und dick erst in der Nacht nach Hause. Die Maus fragte gleich nach dem Namen, den das dritte Kind bekommen habe. „Er wird dir wohl auch nicht gefallen,“ sagte die Katze; „er heisst Ganzaus.“ – „Ganzaus!“ rief die Maus. „das ist der allerbedenklichste Name, gedruckt ist er mir noch nicht vorgekommen. Ganzaus! Was soll das bedeuten?“ Sie schüttelte den Kopf, rollte sich zusammen und legte sich schlafen.",
+            "Von nun an wollte niemand mehr die Katze zum Gevatter bitten. Als aber der Winter herangekommen und draussen nichts mehr zu finden war, gedachte die Maus ihres Vorrats und sprach: „Komm, Katze, wir wollen zu unserm Fettopf gehen, den wir uns aufgespart haben! Der wird uns schmecken.“ – „Jawohl,“ erwiderte die Katze, „der wird dir schmecken, als wenn du deine feine Zunge zum Fenster hinausstreckst.“ Sie machten sich auf den Weg, und als sie anlangten, stand zwar der Fettopf noch an seinem Platz, war aber leer. „Ach,“ sagte die Maus, „jetzt merke ich, was geschehen ist! jetzt kommt’s an den Tag. Du bist mir eine wahre Freundin! Aufgefressen hast du alles, während du behauptetest, Gevatter zu stehen: erst Haut ab, dann halb aus, dann…“ – „Willst du schweigen!“ rief die Katze. „Noch ein Wort, und ich fresse dich auf!“",
+            "„Ganz aus,“ hatte die arme Maus schon auf der Zunge. Kaum war es heraus, tat die Katze einen Satz nach ihr, packte sie und schlang sie hinunter. Siehst du, so geht’s in der Welt."
+        ]
+    }
+}

@@ -7,6 +7,7 @@ $projectRoot = dirname(__DIR__, 2);
 require $projectRoot . '/vendor/autoload.php';
 require_once $projectRoot . '/modules/storyapi/controllers/StoriesController.php';
 require_once $projectRoot . '/modules/storyapi/controllers/BrowserTestController.php';
+require_once $projectRoot . '/modules/storyapi/controllers/PreviewController.php';
 
 foreach ([
     \modules\storyapi\controllers\StoriesController::class,
@@ -22,6 +23,19 @@ foreach ([
     $defaults = $controller->getDefaultProperties();
     if (($defaults['enableCsrfValidation'] ?? null) !== false) {
         throw new RuntimeException("{$controllerClass}: CSRF validation must be disabled for read-only Story API controllers.");
+    }
+}
+
+$previewController = new ReflectionClass(\modules\storyapi\controllers\PreviewController::class);
+expectPreviewController(
+    $previewController->getProperty('enableCsrfValidation')->getDeclaringClass()->getName() === yii\web\Controller::class,
+    'PreviewController must inherit Yii CSRF validation instead of disabling it.',
+);
+
+function expectPreviewController(bool $condition, string $message): void
+{
+    if (!$condition) {
+        throw new RuntimeException($message);
     }
 }
 
