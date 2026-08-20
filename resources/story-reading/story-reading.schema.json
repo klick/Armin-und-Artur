@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://arminundartur.de/schemas/story-reading-1.2.schema.json",
+  "$id": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
   "title": "Armin & Artur Canonical Story Reading Format",
-  "description": "Vendor-neutral editorial source for original story text and reading direction. Provider-specific payloads are derived from this document.",
+  "description": "Vendor-neutral editorial source for original story text and reading direction of a single-narrator audiobook production. Provider-specific payloads are derived from this document.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -21,36 +21,54 @@
       "description": "Optional reference to this JSON Schema."
     },
     "schemaVersion": {
-      "const": "1.2",
+      "const": "1.3",
       "description": "Version of this canonical contract."
     },
-    "story": { "$ref": "#/$defs/story" },
+    "story": {
+      "description": "Stable public story identity, published source and verbatim-text policy.",
+      "$ref": "#/$defs/story"
+    },
     "cms": {
       "description": "Optional internal CMS reference. It supports synchronization but is not the public story identity.",
       "$ref": "#/$defs/cmsReference"
     },
-    "readingPolicy": { "$ref": "#/$defs/readingPolicy" },
-    "formatArchitecture": { "$ref": "#/$defs/formatArchitecture" },
+    "readingPolicy": {
+      "description": "Global non-negotiable rules every derived reading must honor.",
+      "$ref": "#/$defs/readingPolicy"
+    },
+    "formatArchitecture": {
+      "description": "Declares this document as the provider-neutral master and describes derived render targets.",
+      "$ref": "#/$defs/formatArchitecture"
+    },
     "cast": {
       "type": "object",
+      "description": "Stable provider-neutral speaker IDs describing the characterisations the single narrator applies. This is delivery guidance for one voice, not a multi-voice casting list.",
       "minProperties": 1,
       "additionalProperties": { "$ref": "#/$defs/castMember" }
     },
     "scenes": {
       "type": "array",
+      "description": "Ordered editorial scene starts. Anchors and speaker references receive additional semantic validation.",
       "items": { "$ref": "#/$defs/scene" }
     },
-    "speakerResolution": { "$ref": "#/$defs/speakerResolution" },
+    "speakerResolution": {
+      "description": "Rules for resolving speech roles from an unannotated original text.",
+      "$ref": "#/$defs/speakerResolution"
+    },
     "providerNotes": {
       "type": "object",
       "description": "Non-authoritative notes for renderers. They must not alter the original text.",
       "additionalProperties": true
     },
-    "originalText": { "$ref": "#/$defs/originalText" }
+    "originalText": {
+      "description": "Complete published source text in reading order; editorial directions never belong here.",
+      "$ref": "#/$defs/originalText"
+    }
   },
   "$defs": {
     "story": {
       "type": "object",
+      "description": "Public identity of the canonical story artefact. The id is independent of the Craft slug.",
       "additionalProperties": false,
       "required": ["id", "title", "language", "sourceUrl", "sourceOfTruth", "textPolicy"],
       "properties": {
@@ -64,6 +82,7 @@
     },
     "cmsReference": {
       "type": "object",
+      "description": "Internal Craft synchronization aid. sectionId is used because section handles can change.",
       "additionalProperties": false,
       "required": ["system", "siteHandle", "entryId", "entryUid", "sectionId"],
       "properties": {
@@ -79,11 +98,13 @@
     },
     "readingPolicy": {
       "type": "object",
+      "description": "Mandatory fidelity and delivery invariants for every renderer.",
       "additionalProperties": false,
       "required": [
         "preserveWording",
         "preservePunctuation",
         "directionsAreSpoken",
+        "productionStyle",
         "defaultPace",
         "fallbackSpeaker",
         "noAddedSoundEffects",
@@ -93,6 +114,10 @@
         "preserveWording": { "const": true },
         "preservePunctuation": { "const": true },
         "directionsAreSpoken": { "const": false },
+        "productionStyle": {
+          "const": "single_narrator_audiobook",
+          "description": "One narrator performs the entire reading and suggests characters through delivery and register, never through separate voices, dialogue casting or added staging."
+        },
         "defaultPace": { "type": "number", "minimum": 0.5, "maximum": 1.5 },
         "fallbackSpeaker": { "type": "string", "minLength": 1 },
         "noAddedSoundEffects": { "const": true },
@@ -101,6 +126,7 @@
     },
     "formatArchitecture": {
       "type": "object",
+      "description": "Provider-neutral architecture plus non-authoritative mappings to derived output formats.",
       "additionalProperties": false,
       "required": ["role", "principle", "content", "renderTargets"],
       "properties": {
@@ -123,6 +149,7 @@
     },
     "castMember": {
       "type": "object",
+      "description": "A stable character or narrator role, rendered as a colouring of the single narrator's voice. voiceProfile is a register hint, never a provider voice ID or a separate voice assignment.",
       "additionalProperties": false,
       "required": ["label", "voiceProfile", "delivery"],
       "properties": {
@@ -133,6 +160,7 @@
     },
     "scene": {
       "type": "object",
+      "description": "A scene-start anchor, participant list and silent direction; not a turn-by-turn transcript.",
       "additionalProperties": false,
       "required": ["id", "anchor", "title", "speakers", "direction"],
       "properties": {
@@ -150,6 +178,7 @@
     },
     "speakerResolution": {
       "type": "object",
+      "description": "Editorial rules for assigning direct and indirect speech without changing the source text.",
       "additionalProperties": false,
       "required": ["directSpeech", "unnamedQuotedSpeech", "creatures", "narration"],
       "properties": {
@@ -161,6 +190,7 @@
     },
     "originalText": {
       "type": "object",
+      "description": "Complete verbatim published text after only the explicitly declared typography normalisations.",
       "additionalProperties": false,
       "required": ["format", "source", "typographyNormalisation", "paragraphs"],
       "properties": {

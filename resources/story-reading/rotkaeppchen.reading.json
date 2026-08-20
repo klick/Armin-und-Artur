@@ -1,6 +1,6 @@
 {
-  "$schema": "./story-reading.schema.json",
-  "schemaVersion": "1.2",
+  "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+  "schemaVersion": "1.3",
   "story": {
     "id": "rotkaeppchen",
     "title": "Rotkäppchen",
@@ -20,6 +20,7 @@
     "preserveWording": true,
     "preservePunctuation": true,
     "directionsAreSpoken": false,
+    "productionStyle": "single_narrator_audiobook",
     "defaultPace": 0.84,
     "fallbackSpeaker": "narrator",
     "noAddedSoundEffects": true,
@@ -35,23 +36,24 @@
         "mapping": {
           "delivery.pace": "prosody@rate",
           "delivery.pauseAfterMs": "break@time",
-          "speaker": "voice@name or provider voice mapping",
-          "pronunciation": "phoneme or external PLS lexicon"
+          "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+          "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
         },
         "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
       },
       "elevenLabs": {
-        "purpose": "Text to Dialogue request",
+        "purpose": "single-voice Text to Speech requests",
         "mapping": {
-          "speaker": "voice_id",
-          "spokenSegment": "inputs[].text",
+          "speaker": "one narrator voice_id configured for the entire production",
+          "spokenSegment": "consecutive originalText chunks in reading order",
           "delivery": "optional in-text audio tags in the generated provider payload"
-        }
+        },
+        "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
       },
       "geminiTts": {
-        "purpose": "provider-specific multi-speaker prompt and voice configuration",
+        "purpose": "provider-specific single-speaker prompt and voice configuration",
         "mapping": {
-          "cast": "speaker voice configuration",
+          "cast": "delivery directives describing how the one narrator colours each character",
           "scenes": "director instructions in the generated prompt"
         }
       }
@@ -165,10 +167,11 @@
     "narration": "All narrative prose uses narrator."
   },
   "providerNotes": {
+    "editorialStatus": "legacy_example_pending_editorial_review",
+    "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
     "elevenLabs": {
-      "rendering": "Split at direct-speech turns; assign one configured voice_id per turn.",
+      "rendering": "Render every segment with the single configured narrator voice_id; character colouring comes from delivery, never from voice switching.",
       "limits": {
-        "maxUniqueVoicesPerRequest": 6,
         "recommendedMaxCharactersPerRequest": 2000
       },
       "audioTags": "Optional delivery tags belong only in the provider request, never in source text or this canonical reading metadata."
@@ -180,7 +183,9 @@
     "typographyNormalisation": [
       "soft_hyphen_removed",
       "zero_width_space_removed",
-      "nonbreaking_space_normalised"
+      "nonbreaking_space_normalised",
+      "inline_whitespace_normalised",
+      "line_breaks_in_verse_normalised_to_spaces"
     ],
     "paragraphs": [
       "Es war einmal ein kleines süsses Mädchen, das hatte jedermann lieb, der sie nur ansah, am allerliebsten aber ihre Grossmutter, die wusste gar nicht, was sie alles dem Kinde geben sollte. Einmal schenkte sie ihm ein Käppchen von rotem Samt, und weil ihm das so wohl stand, und es nichts anders mehr tragen wollte, hiess es nur das Rotkäppchen. Eines Tages sprach seine Mutter zu ihm: „Komm, Rotkäppchen, da hast du ein Stück Kuchen und eine Flasche Wein, bring das der Grossmutter hinaus; sie ist krank und schwach und wird sich daran laben. Mach dich auf, bevor es heiss wird, und wenn du hinauskommst, so geh hübsch sittsam und lauf nicht vom Wege ab, sonst fällst du und zerbrichst das Glas, und die Grossmutter hat nichts. Und wenn du in ihre Stube kommst, so vergiss nicht guten Morgen zu sagen und guck nicht erst in allen Ecken herum!“",
@@ -189,7 +194,7 @@
       "Rotkäppchen aber, war nach den Blumen herumgelaufen, und als es so viel zusammen hatte, dass es keine mehr tragen konnte, fiel ihm die Grossmutter wieder ein, und es machte sich auf den Weg zu ihr. Es wunderte sich, dass die Tür aufstand, und wie es in die Stube trat, so kam es ihm so seltsam darin vor, dass es dachte: Ei, du mein Gott, wie ängstlich wird mir’s heute zumut, und bin sonst so gerne bei der Grossmutter! Es rief: „Guten Morgen,“ bekam aber keine Antwort. Darauf ging es zum Bett und zog die Vorhänge zurück. Da lag die Grossmutter und hatte die Haube tief ins Gesicht gesetzt und sah so wunderlich aus. „Ei, Grossmutter, was hast du für grosse Ohren!“ – „Dass ich dich besser hören kann!“ – „Ei, Grossmutter, was hast du für grosse Augen!“ – „Dass ich dich besser sehen kann!“ – „Ei, Grossmutter, was hast du für grosse Hände!“ – „Dass ich dich besser packen kann!“ – „Aber, Grossmutter, was hast du für ein entsetzlich grosses Maul!“ – „Dass ich dich besser fressen kann!“ Kaum hatte der Wolf das gesagt, so tat er einen Satz aus dem Bette und verschlang das arme Rotkäppchen.",
       "Wie der Wolf seinen Appetit gestillt hatte, legte er sich wieder ins Bett, schlief ein und fing an, überlaut zu schnarchen. Der Jäger ging eben an dem Haus vorbei und dachte: Wie die alte Frau schnarcht! Du musst doch sehen, ob ihr etwas fehlt. Da trat er in die Stube, und wie er vor das Bette kam, so sah er, dass der Wolf darin lag. „Finde ich dich hier, du alter Sünder,“ sagte er, „ich habe dich lange gesucht.“ Nun wollte er seine Büchse anlegen, da fiel ihm ein, der Wolf könnte die Grossmutter gefressen haben und sie wäre noch zu retten, schoss nicht, sondern nahm eine Schere und fing an, dem schlafenden Wolf den Bauch aufzuschneiden. Wie er ein paar Schnitte getan hatte, da sah er das rote Käppchen leuchten, und noch ein paar Schnitte, da sprang das Mädchen heraus und rief: „Ach, wie war ich erschrocken, wie war’s so dunkel in dem Wolf seinem Leib!“ Und dann kam die alte Grossmutter auch noch lebendig heraus und konnte kaum atmen. Rotkäppchen aber holte geschwind grosse Steine, damit füllten sie dem Wolf den Leib, und wie er aufwachte, wollte er fortspringen, aber die Steine waren so schwer, dass er gleich niedersank und sich totfiel.",
       "Da waren alle drei vergnügt. Der Jäger zog dem Wolf den Pelz ab und ging damit heim, die Grossmutter ass den Kuchen und trank den Wein, den Rotkäppchen gebracht hatte, und erholte sich wieder; Rotkäppchen aber dachte: Du willst dein Lebtag nicht wieder allein vom Wege ab in den Wald laufen, wenn dir’s die Mutter verboten hat.",
-      "Es wird auch erzählt, dass einmal, als Rotkäppchen der alten Grossmutter wieder Gebackenes brachte, ein anderer Wolf es angesprochen und vom Wege habe ableiten wollen. Rotkäppchen aber hütete sich und ging geradefort seines Wegs und sagte der Grossmutter, dass es dem Wolf begegnet wäre, der ihm guten Tag gewünscht, aber so bös aus den Augen geguckt hätte: „Wenn’s nicht auf offener Strasse gewesen wäre, er hätte mich gefressen.“ – „Komm,“ sagte die Grossmutter, „wir wollen die Türe verschliessen, dass er nicht hereinkann.“ Bald danach klopfte der Wolf an und rief: „Mach auf, Grossmutter, ich bin das Rotkäppchen, ich bring dir Gebackenes.“ Sie schwiegen aber und machten die Türe nicht auf. Da schlich der Graukopf etlichemal um das Haus, sprang endlich aufs Dach und wollte warten, bis Rotkäppchen abends nach Hause ginge, dann wollte er ihm nachschleichen und wollt’s in der Dunkelheit fressen. Aber die Grossmutter merkte, was er im Sinne hatte. Nun stand vor dem Haus ein grosser Steintrog, Da sprach sie zu dem Kind: „Nimm den Eimer, Rotkäppchen, gestern hab ich Würste gekocht, da trag das Wasser, worin sie gekocht sind, in den Trog!“ Rotkäppchen trug so lange, bis der grosse, grosse Trog ganz voll war. Da stieg der Geruch von den Würsten dem Wolf in die Nase. Er schnupperte und guckte hinab, endlich machte er den Hals so lang, dass er sich nicht mehr halten konnte, und anfing zu rutschen; so rutschte er vom Dach herab, gerade in den grossen Trog hinein und ertrank. Rotkäppchen aber ging fröhlich nach Haus, und von nun an tat ihm niemand mehr etwas zuleide."
+      "Es wird auch erzählt, dass einmal, als Rotkäppchen der alten Grossmutter wieder Gebackenes brachte, ein anderer Wolf es angesprochen und vom Wege habe ableiten wollen. Rotkäppchen aber hütete sich und ging geradefort seines Wegs und sagte der Grossmutter, dass es dem Wolf begegnet wäre, der ihm guten Tag gewünscht, aber so bös aus den Augen geguckt hätte: „Wenn’s nicht auf offener Strasse gewesen wäre, er hätte mich gefressen.“ – „Komm,“ sagte die Grossmutter, „wir wollen die Türe verschliessen, dass er nicht hereinkann.“ Bald danach klopfte der Wolf an und rief: „Mach auf, Grossmutter, ich bin das Rotkäppchen, ich bring dir Gebackenes.“ Sie schwiegen aber und machten die Türe nicht auf. Da schlich der Graukopf etlichemal um das Haus, sprang endlich aufs Dach und wollte warten, bis Rotkäppchen abends nach Hause ginge, dann wollte er ihm nachschleichen und wollt’s in der Dunkelheit fressen. Aber die Grossmutter merkte, was er im Sinne hatte. Nun stand vor dem Haus ein grosser Steintrog, da sprach sie zu dem Kind: „Nimm den Eimer, Rotkäppchen, gestern hab ich Würste gekocht, da trag das Wasser, worin sie gekocht sind, in den Trog!“ Rotkäppchen trug so lange, bis der grosse, grosse Trog ganz voll war. Da stieg der Geruch von den Würsten dem Wolf in die Nase. Er schnupperte und guckte hinab, endlich machte er den Hals so lang, dass er sich nicht mehr halten konnte, und anfing zu rutschen; so rutschte er vom Dach herab, gerade in den grossen Trog hinein und ertrank. Rotkäppchen aber ging fröhlich nach Haus, und von nun an tat ihm niemand mehr etwas zuleide."
     ]
   }
 }

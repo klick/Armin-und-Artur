@@ -1,6 +1,6 @@
 {
-    "$schema": "https://arminundartur.de/schemas/story-reading-1.2.schema.json",
-    "schemaVersion": "1.2",
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
     "story": {
         "id": "frau-holle",
         "title": "Frau Holle",
@@ -20,6 +20,7 @@
         "preserveWording": true,
         "preservePunctuation": true,
         "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
         "defaultPace": 0.84,
         "fallbackSpeaker": "narrator",
         "noAddedSoundEffects": true,
@@ -35,23 +36,24 @@
                 "mapping": {
                     "delivery.pace": "prosody@rate",
                     "delivery.pauseAfterMs": "break@time",
-                    "speaker": "voice@name or provider voice mapping",
-                    "pronunciation": "phoneme or external PLS lexicon"
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
                 },
                 "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
             },
             "elevenLabs": {
-                "purpose": "Text to Dialogue request",
+                "purpose": "single-voice Text to Speech requests",
                 "mapping": {
-                    "speaker": "voice_id",
-                    "spokenSegment": "inputs[].text",
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
                     "delivery": "optional in-text audio tags in the generated provider payload"
-                }
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
             },
             "geminiTts": {
-                "purpose": "provider-specific multi-speaker prompt and voice configuration",
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
                 "mapping": {
-                    "cast": "speaker voice configuration",
+                    "cast": "delivery directives describing how the one narrator colours each character",
                     "scenes": "director instructions in the generated prompt"
                 }
             }

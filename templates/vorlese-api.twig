@@ -1,0 +1,137 @@
+{% extends "_layout" %}
+
+{% set storyApi = craft.app.getModule('story-api') %}
+{% set storyService = storyApi ? storyApi.getStories() : null %}
+{% set readings = storyService ? storyService.getCatalog() : [] %}
+{% set paymentsEnabled = storyService ? storyService.isX402Enabled() : false %}
+{% set sampleReading = readings|first %}
+{% set payment = sampleReading ? sampleReading.payment : null %}
+{% set price = paymentsEnabled and payment ? payment.amount / (10 ** payment.decimals) : null %}
+{% set networkNames = {'eip155:8453': 'Base Mainnet', 'eip155:84532': 'Base Sepolia'} %}
+{% set networkName = payment ? (networkNames[payment.network] ?? payment.network) : null %}
+{% set currencyName = payment and sampleReading.environment == 'testnet' ? 'Test-' ~ payment.currency : (payment ? payment.currency : null) %}
+
+{% do seomatic.meta.seoTitle('Vorlese-API für Sprach-Apps und KI-Agenten') %}
+{% do seomatic.meta.seoDescription('Strukturierte Vorlese-Regie für deutsche Märchen: Rollen, Stimmprofile, Szenen und Sprecherzuordnung als anbieterunabhängiges JSON.') %}
+
+{% block content %}
+
+<div class="container">
+	<article class="generic">
+		<header class="text-center mb-5">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-7">
+					<p class="font-small-caps text-secondary mb-3">Vorlese-API</p>
+					<h1 class="display-4 mb-4">Märchen für Stimmen</h1>
+					<p class="fs-4 mb-0">Die Texte dieser Sammlung können frei gelesen und weiterverarbeitet werden. Für ausgewählte Märchen gibt es zusätzlich eine strukturierte Vorlese-Regie: ein anbieterunabhängiges JSON für Anwendungen, die aus Text eine sorgfältig geführte Lesung machen sollen.</p>
+				</div>
+			</div>
+		</header>
+
+		<section class="article-body mb-5" aria-labelledby="mehr-als-text">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-7 fs-4">
+					<h2 class="h3" id="mehr-als-text">Mehr als ein Text</h2>
+					<p>Wer ein Märchen vorlesen lässt, braucht mehr als Wörter: eine erkennbare Erzählerstimme, verlässliche Sprecherwechsel, Szenen, Pausen und eine ruhige Linie durch den Text. Unsere Vorlese-JSONs fassen diese Entscheidungen in einem strukturierten Format zusammen.</p>
+					<p>Jede Datei enthält den vollständigen Originaltext sowie Besetzung, Stimmprofile, Szenengrenzen, stille Regieanweisungen, Sprecherzuordnung, Leseregeln und Hinweise für die Ausgabe. Das Format ist nicht an einen einzelnen Sprach- oder Audioanbieter gebunden.</p>
+
+					<h2 class="h3 mt-5">Für Voice-, Audio- und TTS-Anwendungen</h2>
+					<p>Die Vorlese-Regie richtet sich an Entwickler von Voice Apps, TTS-Pipelines, Hörbuch-Prototypen sowie Lern- und Erzählanwendungen. Anbieterspezifische Ausgabeformate können daraus abgeleitet werden; das kanonische JSON bleibt die gemeinsame redaktionelle Quelle.</p>
+					<ul>
+						<li>Sprecher und Rollen verlässlich zuordnen</li>
+						<li>lange Texte in nachvollziehbare Szenen gliedern</li>
+						<li>Stimmcharakter und Leselinie konsistent halten</li>
+						<li>anbieterabhängige Formate aus einer Quelle erzeugen</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="mb-5" aria-labelledby="abruf">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-7 fs-4">
+					<h2 class="h3" id="abruf">Frei lesen. Vorlese-Regie abrufen.</h2>
+					<p>Die Märchentexte selbst sind gemeinfrei. Sie bleiben auf dieser Website und über die freie API ohne Bezahlung zugänglich. Kostenpflichtig ist ausschließlich der Abruf der redaktionellen Ebene, die den Text für eine geführte Vorleseproduktion vorbereitet.</p>
+					{% if paymentsEnabled %}
+						<p>Der Abruf eines Vorlese-JSONs wird über x402 bezahlt. {% if price %}Im Pilotbetrieb beträgt der angegebene Preis pro erfolgreichem Abruf {{ price|number_format(2, ',', '.') }} {{ currencyName }}{% if networkName %} auf {{ networkName }}{% endif %}. {% endif %}Es gibt kein Abonnement und kein Benutzerkonto; jeder erfolgreiche Abruf wird einzeln berechnet. Maßgeblich sind stets die Angaben im aktuellen Katalog und in der jeweiligen 402-Antwort.</p>
+						<p class="fs-6 text-secondary">Für den bezahlten Abruf ist ein x402-fähiger Client oder eine passende Wallet erforderlich.</p>
+					{% else %}
+						<p>Der Abruf wird über x402 bereitgestellt. Der Kauf ist auf dieser Instanz derzeit nicht freigeschaltet; die freien Texte und die technische Dokumentation bleiben verfügbar.</p>
+					{% endif %}
+				</div>
+			</div>
+		</section>
+
+		<section class="mb-5" aria-labelledby="verfuegbare-maerchen">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-10 col-lg-8">
+					<header class="text-center mb-4">
+						<h2 class="h2 mb-2" id="verfuegbare-maerchen">Verfügbare Märchen</h2>
+						{% if readings %}
+							<p class="text-secondary mb-0">Derzeit liegen {{ readings|length }} Vorlese-JSONs vor. Neue Titel erscheinen automatisch in dieser Liste.</p>
+						{% endif %}
+					</header>
+
+					{% if readings %}
+						<ol class="list-unstyled border-top mb-0">
+							{% for reading in readings %}
+								{% set readingPrice = reading.payment.amount / (10 ** reading.payment.decimals) %}
+								{% set readingCurrency = reading.environment == 'testnet' ? 'Test-' ~ reading.payment.currency : reading.payment.currency %}
+								<li class="py-3 border-bottom" data-reading-id="{{ reading.id }}">
+									<div class="d-md-flex justify-content-between align-items-baseline">
+										<h3 class="h5 mb-2 mb-md-0 me-md-4">{{ reading.title|widont }}</h3>
+										{% if paymentsEnabled %}
+											<small class="text-secondary text-nowrap">{{ readingPrice|number_format(2, ',', '.') }} {{ readingCurrency }}</small>
+										{% else %}
+											<small class="text-secondary text-nowrap">Format {{ reading.schemaVersion }}</small>
+										{% endif %}
+									</div>
+									<p class="mb-0 mt-2">
+										<small class="font-small-caps">
+											<a class="me-3" href="{{ reading.sourceUrl }}">Märchen lesen &rarr;</a>
+											<a class="me-3" href="{{ url('api/v1/stories/' ~ reading.id ~ '.json') }}">Originaltext als JSON &rarr;</a>
+											{% if paymentsEnabled %}
+												<a href="{{ reading.readingUrl }}">Vorlese-JSON über x402 anfordern &rarr;</a>
+											{% endif %}
+										</small>
+									</p>
+								</li>
+							{% endfor %}
+						</ol>
+					{% else %}
+						<p class="text-center">Der Katalog ist momentan nicht verfügbar. Bitte versuchen Sie es später erneut.</p>
+					{% endif %}
+				</div>
+			</div>
+		</section>
+
+		<section class="mb-5" aria-labelledby="schnittstellen">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-7 fs-4">
+					<h2 class="h3" id="schnittstellen">Technische Zugänge</h2>
+					<p>Der freie Katalog ist der beste Einstieg. Er nennt verfügbare Märchen, Endpunkte und die jeweils aktuellen Zahlungsparameter. OpenAPI und JSON-Schema beschreiben den vollständigen Vertrag; die Agenten-Hinweise führen durch Auffinden und Abruf.</p>
+					<ul class="list-unstyled font-small-caps fs-6">
+						<li class="mb-2"><a href="{{ url('api/v1/stories.json') }}">Aktuellen Märchenkatalog öffnen &rarr;</a></li>
+						<li class="mb-2"><a href="{{ url('api/openapi.json') }}">OpenAPI-Vertrag öffnen &rarr;</a></li>
+						<li class="mb-2"><a href="{{ url('api/v1/story-reading.schema.json') }}">JSON-Schema öffnen &rarr;</a></li>
+						<li><a href="{{ url('llms-full.txt') }}">Abrufanleitung für KI-Agenten &rarr;</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<aside class="mb-5">
+			<div class="row justify-content-center">
+				<div class="col-11 col-md-9 col-lg-7">
+					<div class="border-top border-bottom py-4">
+						<h2 class="h5">Pilotbetrieb</h2>
+						<p class="mb-2">Die Schnittstelle und das Story Reading Format werden derzeit praktisch erprobt. Einige Vorlese-Artefakte sind bereits redaktionell geprüft; weitere warten noch auf ihre abschließende redaktionelle Prüfung. Bitte berücksichtigen Sie diesen Stand vor einem produktiven Einsatz.</p>
+						<p class="mb-0 text-secondary"><small>Ein bezahlter API-Abruf erzeugt derzeit kein dauerhaftes Downloadkonto und kein Abrufpaket. Zahlungsparameter können sich nach dem Pilotbetrieb ändern.</small></p>
+					</div>
+				</div>
+			</div>
+		</aside>
+	</article>
+</div>
+
+{% endblock %}

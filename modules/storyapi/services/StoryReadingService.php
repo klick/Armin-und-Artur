@@ -262,7 +262,7 @@ class StoryReadingService extends Component
             'routeTemplate' => '/api/v1/stories/:id/reading.json',
             'info' => [
                 'input' => ['type' => 'http', 'method' => 'GET', 'pathParams' => ['id' => basename(dirname($resourceUrl))]],
-                'output' => ['type' => 'json', 'format' => $schemaUrl, 'example' => ['schemaVersion' => '1.2', 'story' => ['id' => 'rotkaeppchen', 'title' => 'Rotkäppchen'], 'originalText' => ['format' => 'paragraphs'], 'editorialDirectionIncluded' => true]],
+                'output' => ['type' => 'json', 'format' => $schemaUrl, 'example' => ['schemaVersion' => '1.3', 'story' => ['id' => 'rotkaeppchen', 'title' => 'Rotkäppchen'], 'originalText' => ['format' => 'paragraphs'], 'editorialDirectionIncluded' => true]],
             ],
             'schema' => [
                 '$schema' => 'https://json-schema.org/draft/2020-12/schema',

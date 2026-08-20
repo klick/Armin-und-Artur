@@ -1,4 +1,4 @@
-# Story API pilot
+# Story API and x402
 
 This is the first vertical slice of the Armin & Artur agent-facing reading
 service. It exposes public-domain source text freely and protects the canonical
@@ -14,6 +14,7 @@ voice profiles, scenes, stage directions, reading policy and renderer guidance).
 | `GET /api/v1/stories.json` | free | Craft entry catalogue with reading availability, schema and payment discovery metadata |
 | `GET /api/v1/stories/{story-id}.json` | free | Basic published metadata and complete public-domain `originalText`, explicitly without editorial enrichment |
 | `GET /api/v1/story-reading.schema.json` | free | JSON Schema contract for canonical reading artefacts |
+| `GET /schemas/story-reading-1.3.schema.json` | free | Canonical schema URL used by the contract `$id` |
 | `GET /api/v1/stories/{story-id}/reading.json` | x402 | Canonical editorial reading-direction JSON; it also carries the original text |
 | `GET /api/openapi.json` | free | OpenAPI 3.1 contract for every Story API endpoint and x402 response headers |
 | `GET /llms.txt` / `GET /llms-full.txt` | free | Concise LLM index and detailed agent workflow |
@@ -51,8 +52,9 @@ They live under `resources/story-reading/`, outside the public web root. Every
 artefact is the vendor-neutral source from which future SSML, ElevenLabs, or
 other provider payloads are derived.
 
-Together, the artefacts cover short narration, sustained dialogue, ensemble
-casts, verse-like speech and longer scene structures. All retain the published
+Together, the 15 artefacts cover short narration, sustained dialogue, large
+character sets, verse-like speech and longer scene structures, all directed as
+single-narrator audiobook readings. All retain the published
 text; their normalisations are declared inside each artefact. The ten-item
 batch is machine-validated and independently cross-reviewed, while its
 `providerNotes.editorialStatus` deliberately remains
@@ -78,14 +80,88 @@ Draft 2020-12 schema. The resource description classifies it for story and
 education discovery; no paid editorial content or recipient address is placed
 in Bazaar metadata.
 
-## x402 configuration
+The complete field contract and current artefact inventory are documented in
+[`resources/story-reading/README.md`](resources/story-reading/README.md).
+
+## x402 behavior
 
 The protected endpoint is available only when `STORY_API_X402_ENABLED=true`.
 Missing, empty, false, or invalid values return `503`; they never expose the
 artefact without payment. A missing recipient or invalid network/asset pair
 also returns `503` before an agent can sign an authorization.
 
-### Base Sepolia testnet
+The current implementation is pay per successful request. It does not create
+accounts, packages, entitlements, or permanent download tokens. A buyer signs
+an EIP-3009 authorization for a fresh x402 v2 challenge; the configured
+facilitator verifies and settles it. The Craft server never stores a buyer or
+recipient private payment key.
+
+Response behavior is deliberately fail-closed:
+
+- `404`: no canonical reading artefact exists for the requested story ID;
+- `402`: payment is missing or rejected; inspect the fresh
+  `PAYMENT-REQUIRED` challenge;
+- `503`: payments are disabled, misconfigured, or the facilitator is
+  unavailable; and
+- `200`: settlement succeeded, with the artefact in the body and settlement
+  data in `PAYMENT-RESPONSE`.
+
+The retry request carries `PAYMENT-SIGNATURE`, a Base64-encoded x402 v2
+PaymentPayload. Every successful invocation is verified and settled again.
+
+## Production purchase flow
+
+Production currently advertises x402 v2, the `exact` scheme, Base mainnet
+(`eip155:8453`), Circle USDC with six decimals, and a pilot price of `10000`
+atomic units (0.01 USDC). Deployment values remain configuration-driven: an
+agent must treat the catalogue and its fresh `402` challenge as authoritative
+instead of hard-coding this paragraph.
+
+For an available story, the free catalogue returns metadata shaped like this:
+
+```json
+{
+  "reading": {
+    "available": true,
+    "storyId": "rotkaeppchen",
+    "schemaVersion": "1.3",
+    "schemaUrl": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "access": "x402",
+    "environment": "mainnet",
+    "payment": {
+      "protocol": "x402",
+      "version": 2,
+      "scheme": "exact",
+      "network": "eip155:8453",
+      "amount": "10000",
+      "currency": "USDC",
+      "decimals": 6
+    },
+    "url": "https://arminundartur.de/api/v1/stories/rotkaeppchen/reading.json"
+  }
+}
+```
+
+The live catalogue also publishes the token contract in `payment.asset`. The
+recipient address is intentionally absent from the catalogue, OpenAPI, LLM
+files, and Bazaar metadata. It appears only in the standard endpoint
+challenge.
+
+An x402 buyer:
+
+1. reads the free catalogue and follows `reading.url`;
+2. receives HTTP `402` and decodes `PAYMENT-REQUIRED`;
+3. validates resource, protocol version, scheme, network, asset, amount, and
+   recipient before signing;
+4. signs the EIP-3009 authorization with an x402-compatible wallet/client; and
+5. retries the same request with `PAYMENT-SIGNATURE`, then verifies the
+   `PAYMENT-RESPONSE` settlement data on success.
+
+The unsigned `402` response also contains the Bazaar discovery extension. It
+describes the dynamic GET route and compact output shape, but it never contains
+the paid editorial artefact.
+
+## Base Sepolia local test
 
 For a local Base Sepolia test, add only to an untracked local environment file:
 
@@ -111,56 +187,6 @@ The implementation follows the x402 v2 HTTP contract directly because the
 official server middleware packages currently target JavaScript and Python,
 not Craft/PHP. Verification and settlement remain delegated to the official
 facilitator endpoint.
-
-### Public Base Sepolia sandbox
-
-The first public pilot is a **testnet sandbox**, not a sale for money. Its free
-catalogue lets agents discover the complete payment parameters before they
-request an artefact. A story with a reading artefact exposes metadata shaped
-like this:
-
-```json
-{
-  "reading": {
-    "available": true,
-    "storyId": "rotkaeppchen",
-    "schemaVersion": "1.2",
-    "schemaUrl": "https://arminundartur.de/api/v1/story-reading.schema.json",
-    "access": "x402",
-    "environment": "testnet",
-    "payment": {
-      "protocol": "x402",
-      "version": 2,
-      "scheme": "exact",
-      "network": "eip155:84532",
-      "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
-      "amount": "10000",
-      "currency": "USDC",
-      "decimals": 6
-    },
-    "url": "https://arminundartur.de/api/v1/stories/rotkaeppchen/reading.json"
-  }
-}
-```
-
-`amount` is expressed in atomic token units; with six decimals, `10000` is
-0.01 test USDC. Base Sepolia test USDC and test ETH have no monetary value.
-The recipient address is intentionally supplied by the standard endpoint
-challenge rather than duplicated in the catalogue.
-
-An x402 buyer:
-
-1. reads the free catalogue and follows `reading.url`;
-2. receives HTTP `402` and decodes `PAYMENT-REQUIRED`;
-3. checks that challenge against the catalogue, then signs the Base Sepolia
-   EIP-3009 authorization with test USDC;
-4. retries with `PAYMENT-SIGNATURE` and, after settlement, receives the reading
-   artefact plus `PAYMENT-RESPONSE`.
-
-This pilot does not enable or advertise a mainnet purchase path. Mainnet uses
-the separate configuration and deployment review below.
-The human-operated browser page below remains a local `DEV_MODE` diagnostic and
-is not part of the public sandbox interface.
 
 ## Local browser payment test
 
@@ -205,7 +231,7 @@ test USDC and enough test ETH for the facilitator settlement path. Do not use a
 production wallet. The final MetaMask signing and payment are intentionally
 not exercised by automated tests.
 
-## Base mainnet activation
+## Base mainnet configuration
 
 Base mainnet uses real, dollar-backed Circle USDC. It is deliberately protected
 by two independent switches and a fixed initial price cap:
@@ -222,7 +248,7 @@ CDP_API_KEY_ID=YOUR_SECRET_API_KEY_ID
 CDP_API_KEY_SECRET=BASE64_ED25519_SECRET
 ```
 
-For the first mainnet pilot, `10000` atomic units (0.01 USDC) is the only
+For the mainnet pilot, `10000` atomic units (0.01 USDC) is the only
 accepted price. Raising it requires a reviewed code change. Mainnet also
 requires the exact Circle Base-USDC contract and the authenticated CDP
 facilitator; the anonymous x402.org facilitator is rejected.
@@ -271,6 +297,6 @@ source, add editorial directions, validate against the contract and exact
 source snapshot, then cross-review before making them available. The first
 ten-item batch and its manifest are the reference implementation.
 
-See `scripts/story-reading/README.md` for the reproducible DDEV export and
+See [`scripts/story-reading/README.md`](scripts/story-reading/README.md) for the reproducible DDEV export and
 validation commands. The generated scaffold is intentionally not publishable:
 cast, scenes, speaker resolution and delivery always require editorial work.

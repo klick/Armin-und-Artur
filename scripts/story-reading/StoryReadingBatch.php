@@ -10,7 +10,7 @@ declare(strict_types=1);
 final class StoryReadingBatch
 {
     public const FORMAT_VERSION = 1;
-    public const READING_SCHEMA_VERSION = '1.2';
+    public const READING_SCHEMA_VERSION = '1.3';
     public const TYPOGRAPHY_NORMALISATIONS = [
         'soft_hyphen_removed',
         'zero_width_space_removed',
@@ -159,6 +159,7 @@ final class StoryReadingBatch
                     'preserveWording' => true,
                     'preservePunctuation' => true,
                     'directionsAreSpoken' => false,
+                    'productionStyle' => 'single_narrator_audiobook',
                     'defaultPace' => 0.9,
                     'fallbackSpeaker' => 'narrator',
                     'noAddedSoundEffects' => true,
