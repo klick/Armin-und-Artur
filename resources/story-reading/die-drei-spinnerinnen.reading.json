@@ -1,0 +1,240 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-drei-spinnerinnen",
+        "title": "Die drei Spinnerinnen",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-drei-spinnerinnen",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 67,
+        "entryUid": "d01367e5-2c84-4d31-9e7e-ed7cd4ca2e46",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "ruhig, märchenhaft und mit trockenem Humor"
+        },
+        "girl_bride": {
+            "label": "Mädchen und spätere Braut",
+            "voiceProfile": "young_female_quick",
+            "delivery": "anfangs bedrückt, dann erleichtert und selbstbewusst"
+        },
+        "mother": {
+            "label": "Mutter",
+            "voiceProfile": "adult_female_impatient",
+            "delivery": "ungeduldig, beschämt und ausweichend"
+        },
+        "queen": {
+            "label": "Königin",
+            "voiceProfile": "older_female_regal",
+            "delivery": "bestimmt, arbeitsam und wohlwollend"
+        },
+        "flat_foot_spinner": {
+            "label": "Spinnerin mit dem breiten Fuss",
+            "voiceProfile": "older_female_earthy",
+            "delivery": "direkt, praktisch und trocken"
+        },
+        "lip_spinner": {
+            "label": "Spinnerin mit der grossen Unterlippe",
+            "voiceProfile": "older_female_low",
+            "delivery": "ruhig, knapp und trocken"
+        },
+        "thumb_spinner": {
+            "label": "Spinnerin mit dem breiten Daumen",
+            "voiceProfile": "older_female_bright",
+            "delivery": "geschäftig, klar und trocken"
+        },
+        "prince": {
+            "label": "Königssohn und Bräutigam",
+            "voiceProfile": "young_male_noble",
+            "delivery": "freundlich, neugierig und zuletzt entschieden"
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war ein Mädchen faul und wollte nicht spinnen",
+            "title": "Die Behauptung der Mutter",
+            "speakers": [
+                "narrator",
+                "girl_bride",
+                "mother",
+                "queen"
+            ],
+            "direction": "Lebhaft, aber nicht hastig beginnen. Die Notlüge der Mutter trocken und die Begeisterung der Königin ernst spielen."
+        },
+        {
+            "id": "s02",
+            "anchor": "„Nun spinn mir diesen Flachs,“",
+            "title": "Drei Kammern voll Flachs",
+            "speakers": [
+                "narrator",
+                "girl_bride",
+                "queen"
+            ],
+            "direction": "Die unmögliche Aufgabe klar setzen; das Weinen des Mädchens zurückhaltend erzählen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Als das Mädchen wieder allein war",
+            "title": "Das Angebot der Spinnerinnen",
+            "speakers": [
+                "narrator",
+                "girl_bride",
+                "flat_foot_spinner",
+                "lip_spinner",
+                "thumb_spinner"
+            ],
+            "direction": "Die drei Frauen deutlich unterscheidbar, aber nicht verspottend färben. Das Versprechen exakt und ruhig sprechen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Da liess es die drei seltsamen Weiber herein",
+            "title": "Die Arbeit ist vollbracht",
+            "speakers": [
+                "narrator",
+                "girl_bride",
+                "queen",
+                "flat_foot_spinner",
+                "lip_spinner",
+                "thumb_spinner"
+            ],
+            "direction": "Das Spinnen rhythmisch und zügig erzählen; den Abschiedssatz gemeinsam und deutlich sprechen."
+        },
+        {
+            "id": "s05",
+            "anchor": "Als das Mädchen der Königin die leeren Kammern",
+            "title": "Die Hochzeit",
+            "speakers": [
+                "narrator",
+                "girl_bride",
+                "queen",
+                "prince"
+            ],
+            "direction": "Leicht und festlich werden. Die Bitte um die drei Basen aufrichtig sprechen."
+        },
+        {
+            "id": "s06",
+            "anchor": "Als nun das Fest anhub",
+            "title": "Die drei Antworten",
+            "speakers": [
+                "narrator",
+                "girl_bride",
+                "prince",
+                "flat_foot_spinner",
+                "lip_spinner",
+                "thumb_spinner"
+            ],
+            "direction": "Die drei Frage-Antwort-Paare mit gleichmässigen kleinen Pausen gliedern. Die Pointe trocken ausklingen lassen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Use the explicitly named speaker in the surrounding original sentence.",
+        "unnamedQuotedSpeech": "Use narrator unless the surrounding original sentence makes the speaker unambiguous.",
+        "creatures": "No creature has direct speech. When all three spinners speak together, colour the line as a restrained older-female trio while retaining their stable roles.",
+        "narration": "All narrative prose, reported speech and unspoken thoughts use narrator unless a scene direction explicitly assigns a stable cast role."
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war ein Mädchen faul und wollte nicht spinnen, und die Mutter mochte sagen, was sie wollte, sie konnte es nicht dazu bringen. Endlich überkam die Mutter einmal Zorn und Ungeduld, dass sie ihm Schläge gab, worüber es laut zu weinen anfing. Nun fuhr gerade die Königin vorbei, und als sie das Weinen hörte, liess sie anhalten, trat in das Haus und fragte die Mutter, warum sie ihre Tochter schlüge, dass man draussen auf der Strasse das Schreien hörte. Da schämte sich die Frau, dass sie die Faulheit ihrer Tochter offenbaren sollte, und sprach: „Ich kann sie nicht vom Spinnen abbringen, sie will immer und ewig spinnen, und ich bin arm und kann den Flachs nicht herbeischaffen.“ Da antwortete die Königin: „Ich höre nichts lieber als spinnen und bin nicht vergnügter, als wenn die Räder schnurren. Gebt mir Eure Tochter mit ins Schloss, ich habe Flachs genug, da soll sie spinnen, soviel sie Lust hat.“ Die Mutter war’s von Herzen gerne zufrieden, und die Königin nahm das Mädchen mit.",
+            "Als sie ins Schloss gekommen waren, führte sie es hinauf zu drei Kammern, die lagen von unten bis oben voll vom schönsten Flachs.",
+            "„Nun spinn mir diesen Flachs,“ sprach sie, „und wenn du es fertigbringst, so sollst du meinen ältesten Sohn zum Gemahl haben; bist du gleich arm, so acht ich nicht darauf, dein unverdrossner Fleiss ist Ausstattung genug.“ Das Mädchen erschrak innerlich, denn es konnte den Flachs nicht spinnen, und wär’s dreihundert Jahre alt geworden und hätte jeden Tag vom Morgen bis Abend dabeigesessen. Als es nun allein war, fing es an zu weinen und sass so drei Tage, ohne die Hand zu rühren. Am dritten Tage kam die Königin, und als sie sah, dass noch nichts gesponnen war, verwunderte sie sich, aber das Mädchen entschuldigte sich damit, dass es vor grosser Betrübnis über die Entfernung aus seiner Mutter Haus noch nicht hätte anfangen können. Das liess sich die Königin gefallen, sagte aber beim Weggehen: „Morgen musst du mir anfangen zu arbeiten.“",
+            "Als das Mädchen wieder allein war, wusste es sich nicht mehr zu raten und zu helfen und trat in seiner Betrübnis vor das Fenster. Da sah es drei Weiber herkommen, davon hatte die erste einen breiten Plattfuss, die zweite hatte eine so grosse Unterlippe, dass sie über das Kinn herunterhing, und die dritte hatte einen breiten Daumen. Die blieben vor dem Fenster stehen, schauten hinauf und fragten das Mädchen, was ihm fehlte. Es klagte ihnen seine Not, da trugen sie ihm ihre Hilfe an und sprachen: „Willst du uns zur Hochzeit einladen, dich unser nicht schämen und uns deine Basen heissen, auch an deinen Tisch setzen, so wollen wir dir den Flachs wegspinnen, und das in kurzer Zeit.“",
+            "„Von Herzen gern,“ antwortete es, „kommt nur herein und fangt gleich die Arbeit an.“",
+            "Da liess es die drei seltsamen Weiber herein und machte in der ersten Kammer eine Lücke, wo sie sich hinsetzten und ihr Spinnen anhuben. Die eine zog den Faden und trat das Rad, die andere netzte den Faden, die dritte drehte ihn und schlug mit dem Finger auf den Tisch, und sooft sie schlug, fiel eine Zahl Garn zur Erde, und das war aufs feinste gesponnen. Vor der Königin verbarg sie die drei Spinnerinnen und zeigte ihr, sooft sie kam, die Menge des gesponnenen Garns, dass diese des Lobes kein Ende fand. Als die erste Kammer leer war, ging’s an die zweite, endlich an die dritte, und die war auch bald aufgeräumt. Nun nahmen die drei Weiber Abschied und sagten zum Mädchen: „Vergiss nicht, was du uns versprochen hast, es wird dein Glück sein.“",
+            "Als das Mädchen der Königin die leeren Kammern und den grossen Haufen Garn zeigte, richtete sie die Hochzeit aus, und der Bräutigam freute sich, dass er eine so geschickte und fleissige Frau bekäme, und lobte sie gewaltig.",
+            "„Ich habe drei Basen,“ sprach das Mädchen, „und da sie mir viel Gutes getan haben, so wollte ich sie nicht gern in meinem Glück vergessen. Erlaubt doch, dass ich sie zu der Hochzeit einlade und dass sie mit an dem Tisch sitzen.“ Die Königin und der Bräutigam sprachen: „Warum sollen wir das nicht erlauben?“",
+            "Als nun das Fest anhub, traten die drei Jungfern in wunderlicher Tracht herein, und die Braut sprach: „Seid willkommen, liebe Basen.“",
+            "„Ach,“ sagte der Bräutigam, „wie kommst du zu der garstigen Freundschaft?“ Darauf ging er zu der einen mit dem breiten Plattfuss und fragte: „Wovon habt Ihr einen solchen breiten Fuss?“",
+            "„Vom Treten,“ antwortete sie, „vom Treten.“ Da ging der Bräutigam zur zweiten und sprach: „Wovon habt Ihr nur die herunterhängende Lippe?“",
+            "„Vom Lecken,“ antwortete sie, „vom Lecken.“",
+            "Da fragte er die dritte: „Wovon habt Ihr den breiten Daumen?“",
+            "„Vom Fadendrehen,“ antwortete sie, „vom Fadendrehen.“ Da erschrak der Königssohn und sprach: „So soll mir nun und nimmermehr meine schöne Braut ein Spinnrad anrühren.“ Damit war sie das böse Flachsspinnen los."
+        ]
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,219 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-kluge-else",
+        "title": "Die kluge Else",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-kluge-else",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 109,
+        "entryUid": "f180000c-afd2-4594-93cb-3e4ee359eeb6",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Trocken, freundlich und ohne Spott erzählen."
+        },
+        "else": {
+            "label": "Kluge Else",
+            "voiceProfile": "young_female_anxious",
+            "delivery": "Ernsthaft, gedanklich rasch und aufrichtig verwirrt."
+        },
+        "father": {
+            "label": "Vater",
+            "voiceProfile": "adult_male_plain",
+            "delivery": "Schlicht und gutmütig."
+        },
+        "mother": {
+            "label": "Mutter",
+            "voiceProfile": "adult_female_practical",
+            "delivery": "Alltäglich und bestimmt."
+        },
+        "hans": {
+            "label": "Hans",
+            "voiceProfile": "young_adult_male_plain",
+            "delivery": "Praktisch, geduldig und später ratlos."
+        },
+        "maid": {
+            "label": "Magd",
+            "voiceProfile": "young_female_plain",
+            "delivery": "Kurz und verwundert."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war ein Mann, der hatte eine Tochter, die hiess die kluge Else. Als sie nun erwachsen war, sp",
+            "title": "Hans wirbt um Else",
+            "speakers": [
+                "narrator",
+                "father",
+                "mother",
+                "else",
+                "hans"
+            ],
+            "direction": "Klar und schlicht eröffnen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Als sie nun zu Tisch sassen und gegessen hatten, sprach die Mutter: „Else, geh in den Keller und",
+            "title": "Das Bier im Keller",
+            "speakers": [
+                "narrator",
+                "mother",
+                "else"
+            ],
+            "direction": "Elses Gedankengang ernst nehmen, ohne ihn zu kommentieren."
+        },
+        {
+            "id": "s03",
+            "anchor": "Die oben warteten auf den Trank, aber die kluge Else kam immer nicht. Da sprach die Frau zur Mag",
+            "title": "Das Wehklagen",
+            "speakers": [
+                "narrator",
+                "else",
+                "maid"
+            ],
+            "direction": "Die Wiederholung rhythmisch, aber nicht überdreht lesen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Der Bräutigam blieb lange oben allein, da niemand wiederkommen wollte, dachte er: „Sie werden un",
+            "title": "Hans im Keller",
+            "speakers": [
+                "narrator",
+                "hans",
+                "else",
+                "father",
+                "mother",
+                "maid"
+            ],
+            "direction": "Die Szene trocken und übersichtlich halten."
+        },
+        {
+            "id": "s05",
+            "anchor": "Als sie den Hans eine Weile hatte, sprach er: „Frau, ich will ausgehen, arbeiten und uns Geld ve",
+            "title": "Elses Arbeit im Feld",
+            "speakers": [
+                "narrator",
+                "hans",
+                "else"
+            ],
+            "direction": "Den Wechsel zur Eheepisode klar markieren."
+        },
+        {
+            "id": "s06",
+            "anchor": "Da eilte Hans geschwind heim und holte ein Vogelgarn mit kleinen Schellen und hängte es um sie h",
+            "title": "Die Schellen",
+            "speakers": [
+                "narrator",
+                "hans",
+                "else"
+            ],
+            "direction": "Zum Schluss kurz, freundlich und ohne moderne Wertung ausklingen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt den benannten Familienmitgliedern, Hans oder der Magd. Die erzählerische Frageform bleibt narrator.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war ein Mann, der hatte eine Tochter, die hiess die kluge Else. Als sie nun erwachsen war, sprach der Vater: „Wir wollen sie heiraten lassen.“ – „Ja,“ sagte die Mutter, „wenn nur einer käme, der sie haben wollte!“ Endlich kam von weither einer, der hiess Hans und hielt um sie an; er machte aber die Bedingung, dass die kluge Else auch recht gescheit wäre. „O,“ sprach der Vater, „die hat Zwirn im Kopf,“ und die Mutter sagte: „Ach, die sieht den Wind auf der Gasse laufen und hört die Fliegen husten.“ – „Ja,“ sprach der Hans, „wenn sie nicht recht gescheit ist, so nehme ich sie nicht.“",
+            "Als sie nun zu Tisch sassen und gegessen hatten, sprach die Mutter: „Else, geh in den Keller und hol Bier!“ Da nahm die kluge Else den Krug von der Wand, ging in den Keller und klappte unterwegs brav mit dem Deckel, damit ihr die Zeit ja nicht lang würde. Als sie unten war, holte sie ein Stühlchen und stellte es vors Fass, damit sie sich nicht zu bücken brauchte und ihrem Rücken etwa nicht wehe täte und unverhofften Schaden nähme. Dann stellte sie die Kanne vor sich und drehte den Hahn auf, und während der Zeit, dass das Bier hineinlief, wollte sie doch ihre Augen nicht müssig lassen, sah oben an die Wand hinauf und erblickte nach vielem Hin- und Herschauen eine Kreuzhacke gerade über sich, welche die Maurer da aus Versehen hatten stecken lassen. Da fing die kluge Else an zu weinen und sprach: „Wenn ich den Hans kriege, und wir kriegen ein Kind, und das ist gross, und wir schicken das Kind in den Keller, dass es hier soll Bier zapfen, so fällt ihm die Kreuzhacke auf den Kopf und schlägt’s tot.“ Da sass sie und weinte und schrie aus Leibeskräften über das bevorstehende Unglück.",
+            "Die oben warteten auf den Trank, aber die kluge Else kam immer nicht. Da sprach die Frau zur Magd: „Geh doch hinunter in den Keller und sieh, wo die Else bleibt!“ Die Magd ging und fand sie vor dem Fasse sitzend und laut schreiend. „Else, was weinst du?“ fragte die Magd. „Ach,“ antwortete sie, „soll ich nicht weinen? Wenn ich den Hans kriege, und wir kriegen ein Kind, und das ist gross, und soll hier Trinken zapfen, so fällt ihm vielleicht die Kreuzhacke auf den Kopf und schlägt es tot.“ Da sprach die Magd: „Was haben wir für eine kluge Else!“ setzte sich zu ihr und fing auch an, über das Unglück zu weinen. Über eine Weile, als die Magd nicht wiederkam, und die droben durstig nach dem Trank waren, sprach der Mann zum Knecht: „Geh doch hinunter in den Keller und sieh, wo die Else und die Magd bleibt!“ Der Knecht ging hinab, da sass die kluge Else und die Magd, und weinten beide zusammen. Da fragte er: „Was weint ihr denn?“ -„Ach,“ sprach die Else, „soll ich nicht weinen? Wenn ich den Hans kriege, und wir kriegen ein Kind, und das ist gross, und soll hier Trinken zapfen, so fällt ihm die Kreuzhacke auf den Kopf und schlägt’s tot.“ Da sprach der Knecht: „Was haben wir für eine kluge Else!“ setzte sich zu ihr und fing auch an laut zu heulen.",
+            "Oben warteten sie auf den Knecht, als er aber immer nicht kam, sprach der Mann zur Frau: „Geh doch hinunter in den Keller und sieh, wo die Else bleibt!“ Die Frau ging hinab und fand alle drei in Wehklagen und fragte nach der Ursache; da erzählte ihr die Else auch, dass ihr zukünftiges Kind wohl würde von der Kreuzhacke totgeschlagen werden, wenn es erst gross wäre und Bier zapfen sollte und die Kreuzhacke fiele herab. Da sprach die Mutter gleichfalls: „Ach, was haben wir für eine kluge Else!“ setzte sich hin und weinte mit.",
+            "Der Mann oben wartete noch ein Weilchen, als aber seine Frau nicht wiederkam und sein Durst immer stärker ward, sprach er: „Ich muss nun selber in den Keller gehn und sehen, wo die Else bleibt.“ Als er aber in den Keller kam und alle da beieinander sassen und weinten und er die Ursache hörte, dass das Kind der Else schuldig wäre, das sie vielleicht einmal zur Welt brächte und von der Kreuzhacke könnte totgeschlagen werden, wenn es gerade zur Zeit, wo sie herabfiele, darunter sässe, Bier zu zapfen, da rief er: „Was für eine kluge Else!“ setzte sich und weinte auch mit.",
+            "Der Bräutigam blieb lange oben allein, da niemand wiederkommen wollte, dachte er: „Sie werden unten auf dich warten, du musst auch hingehen und sehen, was sie vorhaben.“ Als er hinabkam, sassen da fünfe und schrien und jammerten ganz erbärmlich, einer immer besser als der andere. „Was für ein Unglück ist denn geschehen?“ fragte er. „Ach, lieber Hans,“ sprach die Else, „wenn wir einander heiraten und haben ein Kind, und es ist gross, und wir schicken’s vielleicht hierher, Trinken zu zapfen, da kann ihm ja die Kreuzhacke, die da oben ist stecken geblieben, wenn sie herabfallen sollte, den Kopf zerschlagen, dass es liegen bleibt; sollen wir da nicht weinen?“ – „Nun,“ sprach Hans, „mehr Verstand ist für meinen Haushalt nicht nötig; weil du so eine kluge Else bist, so will ich dich haben,“ packte sie bei der Hand und nahm sie mit hinauf und hielt Hochzeit mit ihr.",
+            "Als sie den Hans eine Weile hatte, sprach er: „Frau, ich will ausgehen, arbeiten und uns Geld verdienen, geh du ins Feld, und schneid das Korn, dass wir Brot haben.“ – „Ja, mein lieber Hans, das will ich tun.“ Nachdem der Hans fort war, kochte sie sich einen guten Brei und nahm ihn mit ins Feld. Als sie vor den Acker kam, sprach sie zu sich selbst: „Was tu ich? Schneid ich ehr, oder ess ich ehr? Hei, ich will erst essen.“ Nun ass sie ihren Topf mit Brei aus, und als sie dick satt war, sprach sie wieder: „Was tu ich? Schneid ich ehr, oder schlaf ich ehr? Hei, ich will erst schlafen.“ Da legte sie sich ins Korn und schlief ein. Der Hans war längst zu Haus, aber die Else wollte nicht kommen, da sprach er: „Was hab ich für eine kluge Else, die ist so fleissig, dass sie nicht einmal nach Haus kommt und isst.“ Als sie aber noch immer ausblieb und es Abend ward, ging der Hans hinaus und wollte sehen, was sie geschnitten hätte. Aber es war nichts geschnitten, sondern sie lag im Korn und schlief.",
+            "Da eilte Hans geschwind heim und holte ein Vogelgarn mit kleinen Schellen und hängte es um sie herum; und sie schlief noch immer fort. Dann lief er heim, schloss die Haustüre zu und setzte sich auf seinen Stuhl und arbeitete. Endlich, als es schon ganz dunkel war, erwachte die kluge Else, und als sie aufstand, rappelte es um sie herum, und die Schellen klingelten bei jedem Schritte, den sie tat. Da erschrak sie, ward irre, ob sie auch wirklich die kluge Else wäre und sprach: „Bin ich’s oder bin ich’s nicht?“ Sie wusste aber nicht, was sie darauf antworten sollte und stand eine Zeitlang zweifelhaft. Endlich dachte sie: Ich will nach Hause gehen und fragen, ob ich’s bin, oder ob ich’s nicht bin, die werden’s ja wissen. Sie lief vor ihre Haustüre, aber die war verschlossen. Da klopfte sie an das Fenster und rief: „Hans, ist die Else drinnen?“ – „Ja,“ antwortete der Hans, „sie ist drinnen.“ Da erschrak sie und sprach: „Ach Gott, dann bin ich’s nicht,“ und ging vor eine andere Tür; als aber die Leute das Klingeln der Schellen hörten, wollten sie nicht aufmachen, und sie konnte nirgends unterkommen. Da lief sie fort zum Dorf hinaus, und niemand hat sie wieder gesehen."
+        ]
+    }
+}

@@ -14,7 +14,7 @@ high-quality read-aloud production.
 
 - Craft CMS serves the website and all API routes.
 - The complete original text is available through the free API.
-- 25 complete reading artefacts conform to Story Reading Format 1.3.
+- 45 complete reading artefacts conform to Story Reading Format 1.3.
 - Paid artefacts use x402 v2 with an exact per-request USDC payment.
 - Production currently advertises Base mainnet and a pilot price of 0.01 USDC.
 - A fresh `402` challenge and the catalogue are authoritative for payment
@@ -23,7 +23,7 @@ high-quality read-aloud production.
   canonical JSON. They are not maintained as competing source documents.
 
 Editorial status is intentionally explicit: three artefacts are marked
-`pilot_reviewed`, twenty are machine-validated and awaiting human editorial
+`pilot_reviewed`, forty are machine-validated and awaiting human editorial
 sign-off, and two earlier examples are marked as legacy examples awaiting
 editorial review.
 
@@ -99,6 +99,7 @@ php tests/storyapi/test-x402-response.php
 php tests/storyapi/test-controller-compatibility.php
 php tests/storyapi/test-public-discovery-contract.php
 php tests/storyapi/test-story-reading-batch.php
+php tests/storyapi/test-story-preview.php
 php tests/storyapi/test-repository-documentation.php
 
 npx --yes ajv-cli@5 validate --spec=draft2020 \
@@ -106,8 +107,9 @@ npx --yes ajv-cli@5 validate --spec=draft2020 \
   -d 'resources/story-reading/*.reading.json'
 ```
 
-See [Story API and x402](STORY_API.md) for the opt-in Base Sepolia browser
-test. It is available only in Craft `DEV_MODE` and never signs automatically.
+See [Story API and x402](STORY_API.md) for the local single-narrator previewer
+and the opt-in Base Sepolia browser test. Both are available only in Craft
+`DEV_MODE`; neither exposes server credentials to browser JavaScript.
 
 ## Delivery flow
 

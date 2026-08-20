@@ -32,6 +32,8 @@ $routes = [
 // mode. It is a human-operated Base Sepolia test aid, not an API product.
 if (filter_var(App::env('DEV_MODE'), FILTER_VALIDATE_BOOL)) {
     $routes['__story-api/x402-browser-test'] = 'story-api/browser-test/index';
+    $routes['__story-api/reading-preview/render'] = 'story-api/preview/render';
+    $routes['__story-api/reading-preview'] = 'story-api/preview/index';
 }
 
 return $routes;

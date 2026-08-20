@@ -62,6 +62,13 @@ Do not publish a scaffold. Its status explicitly says
 `requires_editorial_annotation`, and it is missing the judgment that is the
 paid product.
 
+Scaffolds remain genre-neutral. When an editor publishes an artefact from the
+current fairy-tale collection, add `providerNotes.contentProfile: fairy_tale`
+and the approved `providerNotes.elevenLabs.fairyTalePreset` documented in the
+[format guide](../../resources/story-reading/README.md). Do not add that preset
+to historical prose or other non-fairy-tale material. The semantic validator
+enforces both the approved preset values and this scope boundary.
+
 ## 2. Validate finished artefacts
 
 ```bash
@@ -84,6 +91,12 @@ used to approve publishable artefacts because it skips JSON Schema validation.
 ```bash
 php tests/storyapi/test-story-reading-batch.php
 ```
+
+The fourth ten-item collection is pinned in
+`batch-10-2026-08-20-3.manifest.json`. Its generated sources and scaffolds use
+`storage/runtime/story-reading-batch-2026-08-20-3/`; both remain ignored and
+must be regenerated from Craft when the published source changes. Earlier
+batch manifests remain tracked as reproducible provenance for their artefacts.
 
 Only `scripts/story-reading/` is intentionally tracked; unrelated local files
 below `scripts/` remain ignored.

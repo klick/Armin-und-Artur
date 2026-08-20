@@ -1,0 +1,196 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-prinzessin-auf-der-erbse",
+        "title": "Die Prinzessin auf der Erbse",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-prinzessin-auf-der-erbse",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 481,
+        "entryUid": "9a2ebd6a-bb02-4668-b2c4-8055f61002c0",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "knapp, warm und mit feinem trockenem Humor"
+        },
+        "prince": {
+            "label": "Prinz",
+            "voiceProfile": "young_male_noble",
+            "delivery": "ernsthaft, suchend und später erleichtert"
+        },
+        "old_king": {
+            "label": "Alter König",
+            "voiceProfile": "older_male_kind",
+            "delivery": "höflich, ruhig und gastfreundlich"
+        },
+        "old_queen": {
+            "label": "Alte Königin",
+            "voiceProfile": "older_female_shrewd",
+            "delivery": "aufmerksam, prüfend und vollkommen gelassen"
+        },
+        "princess": {
+            "label": "Prinzessin",
+            "voiceProfile": "young_female_noble",
+            "delivery": "erschöpft, empfindsam und aufrichtig"
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war einmal ein Prinz",
+            "title": "Die Suche nach einer wirklichen Prinzessin",
+            "speakers": [
+                "narrator",
+                "prince"
+            ],
+            "direction": "Schlicht und leicht nachdenklich beginnen. Die erfolglose Suche nicht ausdehnen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Eines Abends gab es ein fürchterliches Unwetter",
+            "title": "Die Prinzessin im Unwetter",
+            "speakers": [
+                "narrator",
+                "old_king",
+                "princess"
+            ],
+            "direction": "Das Wetter kraftvoll, aber kurz erzählen. Die Ankunft der Prinzessin ruhig und respektvoll behandeln."
+        },
+        {
+            "id": "s03",
+            "anchor": "Draußen stand eine Prinzessin.",
+            "title": "Die Probe mit der Erbse",
+            "speakers": [
+                "narrator",
+                "old_queen",
+                "princess"
+            ],
+            "direction": "Die unausgesprochene Absicht der Königin als Narration belassen. Die gestapelten Betten mit trockenem Humor lesen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Oh, entsetzlich schlecht! sagte die Prinzessin.",
+            "title": "Die Antwort der Prinzessin",
+            "speakers": [
+                "narrator",
+                "princess",
+                "old_queen",
+                "prince"
+            ],
+            "direction": "Die Klage der Prinzessin ernst sprechen; die Schlussfolgerung knapp und märchenhaft tragen."
+        },
+        {
+            "id": "s05",
+            "anchor": "Deshalb nahm sie der Prinz zur Frau",
+            "title": "Die Erbse im Museum",
+            "speakers": [
+                "narrator",
+                "prince",
+                "princess"
+            ],
+            "direction": "Sehr kurz, hell und trocken enden; den letzten Satz als Augenzwinkern, nicht als Regieanweisung lesen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Use the explicitly named speaker in the surrounding original sentence.",
+        "unnamedQuotedSpeech": "Use narrator unless the surrounding original sentence makes the speaker unambiguous.",
+        "creatures": "No creature has direct speech. The queen’s unspoken plan remains narrator.",
+        "narration": "All narrative prose, reported speech and unspoken thoughts use narrator unless a scene direction explicitly assigns a stable cast role."
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war einmal ein Prinz, der wollte eine Prinzessin heiraten; aber es sollte eine richtige Prinzessin sein. Da reiste er in der ganzen Welt umher, um eine zu finden, aber überall stimmt etwas nicht. Prinzessinnen gab es genug, aber ob es richtige Prinzessinnen waren, konnte er nicht recht feststellen. Immer war etwas an ihnen, das nicht so ganz richtig war. So kam er denn wieder heim und war sehr betrübt, denn er wollte so gern eine wirkliche Prinzessin haben.",
+            "Eines Abends gab es ein fürchterliches Unwetter; es blitzte und donnerte, der Regen strömte herab, es war ganz entsetzlich! Da klopfte es an das Stadttor, und der alte König ging hin, um aufzumachen.",
+            "Draußen stand eine Prinzessin. Aber, mein Gott, wie sah sie aus von dem Regen und dem schlimmen Wetter! Das Wasser lief ihr nur so von den Haaren und den Kleidern herunter, und es lief in die Spitzen ihrer Schuhe hinein und an den Absätzen wieder heraus, und dabei sagte sie, dass sie eine wirkliche Prinzessin sei. Das werden wir schon herausfinden, dachte die alte Königin. Aber sie sagte nichts, ging in das Schlafgemach, nahm das ganze Bettzeug ab und legte eine Erbse auf den Boden des Bettes. Jetzt nahm sie zwanzig Matratzen, legte sie auf die Erbse, und dann noch zwanzig Eiderdaunenbetter oben auf die Matratzen. Dort sollte nun die Prinzessin in der Nacht liegen. Am Morgen fragte man sie, wie sie geschlafen habe.",
+            "Oh, entsetzlich schlecht! sagte die Prinzessin. Ich habe fast die ganze Nacht kein Auge zugetan! Gott wie, was wohl im Bett gewesen ist! Ich habe auf etwas Hartem gelegen, so dass ich völlig braun und blau am ganzen Körper bin! Es ist ganz entsetzlich! Nun konnten sie sehen, dass es eine richtige Prinzessin war, weil sie durch die zwanzig Matratzen und die zwanzig Eiderdaunenbetten hindurch die Erbse gespürt hatte. So empfindlich konnte niemand sein außer einer wirklichen Prinzessin.",
+            "Deshalb nahm sie der Prinz zur Frau, denn jetzt wusste er, dass er eine richtige Prinzessin hatte, und die Erbse kam in die Kunstkammer, wo sie noch heute zu sehen ist, falls sie niemand weggenommen hat.",
+            "Sie, das war eine richtige Geschichte!"
+        ]
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    }
+}

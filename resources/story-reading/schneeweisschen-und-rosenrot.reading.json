@@ -1,0 +1,237 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "schneeweisschen-und-rosenrot",
+        "title": "Schneeweisschen und Rosenrot",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/schneeweisschen-und-rosenrot",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 381,
+        "entryUid": "d10afaf6-906d-4994-aa01-db6e9073382b",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "warm, ruhig und naturverbunden; Bedrohungen klar, aber nicht genüsslich erzählen"
+        },
+        "mother": {
+            "label": "Mutter",
+            "voiceProfile": "older_female_kind",
+            "delivery": "fürsorglich, gelassen und gastfreundlich"
+        },
+        "snow_white": {
+            "label": "Schneeweisschen",
+            "voiceProfile": "young_female_gentle",
+            "delivery": "still, besonnen und hilfsbereit"
+        },
+        "rose_red": {
+            "label": "Rosenrot",
+            "voiceProfile": "young_female_lively",
+            "delivery": "offen, lebhaft und mutig"
+        },
+        "bear_prince": {
+            "label": "Bär und erlöster Königssohn",
+            "voiceProfile": "young_male_warm_low",
+            "delivery": "als Bär tief und freundlich, als Prinz warm und klar; dieselbe Figur beibehalten"
+        },
+        "dwarf": {
+            "label": "Zwerg",
+            "voiceProfile": "older_male_shrill",
+            "delivery": "undankbar, gereizt und kreischend; Beleidigungen nicht zusätzlich verstärken"
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Eine arme Witwe, die lebte einsam in einem Hüttchen",
+            "title": "Die Schwestern und die Rosenbäumchen",
+            "speakers": [
+                "narrator",
+                "mother",
+                "snow_white",
+                "rose_red"
+            ],
+            "direction": "Warm und weit beginnen. Die enge Verbundenheit der Schwestern ruhig und natürlich sprechen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Eines Abends, als sie so vertraulich beisammensassen",
+            "title": "Der Bär am Herd",
+            "speakers": [
+                "narrator",
+                "mother",
+                "snow_white",
+                "rose_red",
+                "bear_prince"
+            ],
+            "direction": "Das Klopfen kurz spannend setzen, dann rasch in Wärme und Vertrauen übergehen. Den Vers des Bären rhythmisch sprechen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Als das Frühjahr herangekommen",
+            "title": "Abschied des Bären",
+            "speakers": [
+                "narrator",
+                "snow_white",
+                "bear_prince"
+            ],
+            "direction": "Sanft und etwas traurig lesen; den Goldschimmer nur leicht hervorheben."
+        },
+        {
+            "id": "s04",
+            "anchor": "Nach einiger Zeit schickte die Mutter die Kinder",
+            "title": "Der Bart im Baum",
+            "speakers": [
+                "narrator",
+                "snow_white",
+                "rose_red",
+                "dwarf"
+            ],
+            "direction": "Die Rettung übersichtlich, den Zwerg scharf, aber nicht grotesk sprechen."
+        },
+        {
+            "id": "s05",
+            "anchor": "Einige Zeit danach wollten Schneeweisschen und Rosenrot",
+            "title": "Der Bart an der Angelschnur",
+            "speakers": [
+                "narrator",
+                "snow_white",
+                "rose_red",
+                "dwarf"
+            ],
+            "direction": "Als Wiederholung erkennen lassen. Das steigende Schimpfen des Zwergs quellgetreu halten."
+        },
+        {
+            "id": "s06",
+            "anchor": "Es trug sich zu, dass bald hernach",
+            "title": "Adler, Edelsteine und der Bär",
+            "speakers": [
+                "narrator",
+                "snow_white",
+                "rose_red",
+                "dwarf",
+                "bear_prince"
+            ],
+            "direction": "Die Folge der Ereignisse klar gliedern. Den Tod des Zwergs kurz und ohne Ausmalung erzählen."
+        },
+        {
+            "id": "s07",
+            "anchor": "Die Mädchen waren fortgesprungen",
+            "title": "Erlösung und Hochzeit",
+            "speakers": [
+                "narrator",
+                "snow_white",
+                "rose_red",
+                "bear_prince",
+                "mother"
+            ],
+            "direction": "Die vertraute Stimme des Bären warm erkennen lassen. Erlösung und Schluss ruhig und hell ausklingen lassen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Use the explicitly named speaker in the surrounding original sentence.",
+        "unnamedQuotedSpeech": "Use narrator unless the surrounding original sentence makes the speaker unambiguous.",
+        "creatures": "The speaking bear and restored prince always use bear_prince. Other animals and the silent guardian child remain narrator.",
+        "narration": "All narrative prose, reported speech and unspoken thoughts use narrator unless a scene direction explicitly assigns a stable cast role."
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Eine arme Witwe, die lebte einsam in einem Hüttchen, und vor dem Hüttchen war ein Garten, darin standen zwei Rosenbäumchen, davon trug das eine weisse, das andere rote Rosen; und sie hatte zwei Kinder, die glichen den beiden Rosenbäumchen, und das eine hiess Schneeweisschen, das andere Rosenrot. Sie waren aber so fromm und gut, so arbeitsam und unverdrossen, als je zwei Kinder auf der Welt gewesen sind: Schneeweisschen war nur stiller und sanfter als Rosenrot. Rosenrot sprang lieber in den Wiesen und Feldern umher, suchte Blumen und fing Sommervögel; Schneeweisschen aber sass daheim bei der Mutter, half ihr im Hauswesen oder las ihr vor, wenn nichts zu tun war. Die beiden Kinder hatten einander so lieb, dass sie sich immer an den Händen fassten, sooft sie zusammen ausgingen; und wenn Schneeweisschen sagte: „Wir wollen uns nicht verlassen,“ so antwortete Rosenrot: „Solange wir leben, nicht,“ und die Mutter setzte hinzu: „Was das eine hat, soll’s mit dem andern teilen.“ Oft liefen sie im Walde allein umher und sammelten rote Beeren, aber kein Tier tat ihnen etwas zuleid, sondern sie kamen vertraulich herbei: das Häschen frass ein Kohlblatt aus ihren Händen, das Reh graste an ihrer Seite, der Hirsch sprang ganz lustig vorbei, und die Vögel blieben auf den Ästen sitzen und sangen, was sie nur wussten. Kein Unfall traf sie – wenn sie sich im Walde verspätet hatten und die Nacht sie überfiel, so legten sie sich nebeneinander auf das Moos und schliefen, bis der Morgen kam, und die Mutter wusste das und hatte ihrentwegen keine Sorge. Einmal, als sie im Walde übernachtet hatten und das Morgenrot sie aufweckte, da sahen sie ein schönes Kind in einem weissen, glänzenden Kleidchen neben ihrem Lager sitzen. Es stand auf und blickte sie ganz freundlich an, sprach aber nichts und ging in den Wald hinein. Und als sie sich umsahen, so hatten sie ganz nahe bei einem Abgrunde geschlafen und wären gewiss hineingefallen, wenn sie in der Dunkelheit noch ein paar Schritte weitergegangen wären. Die Mutter aber sagte ihnen, das müsste der Engel gewesen sein, der gute Kinder bewache.",
+            "Schneeweisschen und Rosenrot hielten das Hüttchen der Mutter so reinlich, dass es eine Freude war hineinzuschauen. Im Sommer besorgte Rosenrot das Haus und stellte der Mutter jeden Morgen, ehe sie aufwachte, einen Blumenstrauss vors Bett, darin war von jedem Bäumchen eine Rose. Im Winter zündete Schneeweisschen das Feuer an und hing den Kessel an den Feuerhaken, und der Kessel war von Messing, glänzte aber wie Gold, so rein war er gescheuert. Abends, wenn die Flocken fielen, sagte die Mutter: „Geh, Schneeweisschen, und schieb den Riegel vor,“ und dann setzten sie sich an den Herd, und die Mutter nahm die Brille und las aus einem grossen Buche vor und die beiden Mädchen hörten zu, sassen und spannen; neben ihnen lag ein Lämmchen auf dem Boden, und hinter ihnen auf einer Stange sass ein weisses Täubchen und hatte seinen Kopf unter den Flügel gesteckt.",
+            "Eines Abends, als sie so vertraulich beisammensassen, klopfte jemand an die Türe, als wollte er eingelassen sein. Die Mutter sprach: „Geschwind, Rosenrot, mach auf, es wird ein Wanderer sein, der Obdach sucht.“ Rosenrot ging und schob den Riegel weg und dachte, es wäre ein armer Mann, aber der war es nicht, es war ein Bär, der seinen dicken schwarzen Kopf zur Türe hereinstreckte. Rosenrot schrie laut und sprang zurück: das Lämmchen blökte, das Täubchen flatterte auf, und Schneeweisschen versteckte sich hinter der Mutter Bett. Der Bär aber fing an zu sprechen und sagte: „Fürchtet euch nicht, ich tue euch nichts zuleid, ich bin halb erfroren und will mich nur ein wenig bei euch wärmen.“ – „Du armer Bär,“ sprach die Mutter, „leg dich ans Feuer und gib nur acht, dass dir dein Pelz nicht brennt.“ Dann rief sie: „Schneeweisschen, Rosenrot, kommt hervor, der Bär tut euch nichts, er meint’s ehrlich.“ Da kamen sie beide heran, und nach und nach näherten sich auch das Lämmchen und Täubchen und hatten keine Furcht vor ihm. Der Bär sprach: „Ihr Kinder, klopft mir den Schnee ein wenig aus dem Pelzwerk,“ und sie holten den Besen und kehrten dem Bär das Fell rein; er aber streckte sich ans Feuer und brummte ganz vergnügt und behaglich. Nicht lange, so wurden sie ganz vertraut und trieben Mutwillen mit dem unbeholfenen Gast. Sie zausten ihm das Fell mit den Händen, setzten ihre Füsschen auf seinen Rücken und walgerten ihn hin und her, oder sie nahmen eine Haselrute und schlugen auf ihn los, und wenn er brummte, so lachten sie. Der Bär liess sich’s aber gerne gefallen, nur wenn sie’s gar zu arg machten, rief er: „Lasst mich am Leben, ihr Kinder.",
+            "Schneeweisschen, Rosenrot, schlägst dir den Freier tot.“",
+            "Als Schlafenszeit war und die andern zu Bett gingen, sagte die Mutter zu dem Bär: „Du kannst in Gottes Namen da am Herde liegenbleiben, so bist du vor der Kälte und dem bösen Wetter geschützt.“ Sobald der Tag graute, liessen ihn die beiden Kinder hinaus, und er trabte über den Schnee in den Wald hinein. Von nun an kam der Bär jeden Abend zu der bestimmten Stunde, legte sich an den Herd und erlaubte den Kindern, Kurzweil mit ihm zu treiben, soviel sie wollten; und sie waren so gewöhnt an ihn, dass die Türe nicht eher zugeriegelt ward, als bis der schwarze Gesell angelangt war.",
+            "Als das Frühjahr herangekommen und draussen alles grün war, sagte der Bär eines Morgens zu Schneeweisschen: „Nun muss ich fort und darf den ganzen Sommer nicht wiederkommen.“ – „Wo gehst du denn hin, lieber Bär?“ fragte Schneeweisschen. „Ich muss in den Wald und meine Schätze vor den bösen Zwergen hüten: im Winter, wenn die Erde hartgefroren ist, müssen sie wohl unten bleiben und können sich nicht durcharbeiten, aber jetzt, wenn die Sonne die Erde aufgetaut und erwärmt hat, da brechen sie durch, steigen herauf, suchen und stehlen; was einmal in ihren Händen ist und in ihren Höhlen liegt, das kommt so leicht nicht wieder an des Tages Licht.“ Schneeweisschen war ganz traurig über den Abschied, und als es ihm die Türe aufriegelte und der Bär sich hinausdrängte, blieb er an dem Türhaken hängen, und ein Stück seiner Haut riss auf, und da war es Schneeweisschen, als hätte es Gold durchschimmern gesehen; aber es war seiner Sache nicht gewiss. Der Bär lief eilig fort und war bald hinter den Bäumen verschwunden.",
+            "Nach einiger Zeit schickte die Mutter die Kinder in den Wald, Reisig zu sammeln. Da fanden sie draussen einen grossen Baum, der lag gefällt auf dem Boden, und an dem Stamme sprang zwischen dem Gras etwas auf und ab, sie konnten aber nicht unterscheiden, was es war. Als sie näher kamen, sahen sie einen Zwerg mit einem alten, verwelkten Gesicht und einem ellenlangen, schneeweissen Bart. Das Ende des Bartes war in eine Spalte des Baums eingeklemmt, und der Kleine sprang hin und her wie ein Hündchen an einem Seil und wusste nicht, wie er sich helfen sollte. Er glotzte die Mädchen mit seinen roten feurigen Augen an und schrie. „Was steht ihr da! Könnt ihr nicht herbeigehen und mir Beistand leisten?“ – „Was hast du angefangen, kleines Männchen?“ fragte Rosenrot. „Dumme, neugierige Gans,“ antwortete der Zwerg, „den Baum habe ich mir spalten wollen, um kleines Holz in der Küche zu haben; bei den dicken Klötzen verbrennt gleich das bisschen Speise, das unsereiner braucht, der nicht so viel hinunterschlingt als ihr grobes, gieriges Volk. Ich hatte den Keil schon glücklich hineingetrieben, und es wäre alles nach Wunsch gegangen, aber das verwünschte Holz war zu glatt und sprang unversehens heraus, und der Baum fuhr so geschwind zusammen, dass ich meinen schönen weissen Bart nicht mehr herausziehen konnte; nun steckt er drin, und ich kann nicht fort. Da lachen die albernen glatten Milchgesichter! Pfui, was seid ihr garstig!“ Die Kinder gaben sich alle Mühe, aber sie konnten den Bart nicht herausziehen, er steckte zu fest. „Ich will laufen und Leute herbeiholen,“ sagte Rosenrot. „Wahnsinnige Schafsköpfe,“ schnarrte der Zwerg, „wer wird gleich Leute herbeirufen, ihr seid mir schon um zwei zu viel; fällt euch nicht Besseres ein?“ – „Sei nur nicht ungeduldig,“ sagte Schneeweisschen, „ich will schon Rat schaffen,“ holte sein Scherchen aus der Tasche und schnitt das Ende des Bartes ab. Sobald der Zwerg sich frei fühlte, griff er nach einem Sack, der zwischen den Wurzeln des Baums steckte und mit Gold gefüllt war, hob ihn heraus und brummte vor sich hin: „Ungehobeltes Volk, schneidet mir ein Stück von meinem stolzen Barte ab! Lohn’s euch der Guckuck!“ Damit schwang er seinen Sack auf den Rücken und ging fort, ohne die Kinder nur noch einmal anzusehen.",
+            "Einige Zeit danach wollten Schneeweisschen und Rosenrot ein Gericht Fische angeln. Als sie nahe bei dem Bach waren, sahen sie, dass etwas wie eine grosse Heuschrecke nach dem Wasser zuhüpfte, als wollte es hineinspringen. Sie liefen heran und erkannten den Zwerg. „Wo willst du hin?“ sagte Rosenrot, „du willst doch nicht ins Wasser?“ – „Solch ein Narr bin ich nicht,“ schrie der Zwerg, „seht ihr nicht, der verwünschte Fisch will mich hineinziehen?“ Der Kleine hatte dagesessen und geangelt, und unglücklicherweise hatte der Wind seinen Bart mit der Angelschnur verflochten; als gleich darauf ein grosser Fisch anbiss, fehlten dem schwachen Geschöpf die Kräfte, ihn herauszuziehen: der Fisch behielt die Oberhand und riss den Zwerg zu sich hin. Zwar hielt er sich an allen Halmen und Binsen, aber das half nicht viel, er musste den Bewegungen des Fisches folgen und war in beständiger Gefahr, ins Wasser gezogen zu werden. Die Mädchen kamen zu rechter Zeit, hielten ihn fest und versuchten, den Bart von der Schnur loszumachen, aber vergebens, Bart und Schnur waren fest ineinander verwirrt. Es blieb nichts übrig, als das Scherchen hervorzuholen und den Bart abzuschneiden, wobei ein kleiner Teil desselben verlorenging. Als der Zwerg das sah, schrie er sie an: „Ist das Manier, ihr Lorche, einem das Gesicht zu schänden? Nicht genug, dass ihr mir den Bart unten abgestutzt habt, jetzt schneidet ihr mir den besten Teil davon ab: ich darf mich vor den Meinigen gar nicht sehen lassen. Dass ihr laufen müsstet und die Schuhsohlen verloren hättet!“ Dann holte er einen Sack Perlen, der im Schilfe lag, und ohne ein Wort weiter zu sagen, schleppte er ihn fort und verschwand hinter einem Stein.",
+            "Es trug sich zu, dass bald hernach die Mutter die beiden Mädchen nach der Stadt schickte, Zwirn, Nadeln, Schnüre und Bänder einzukaufen. Der Weg führte sie über eine Heide, auf der hier und da mächtige Felsenstücke zerstreut lagen. Da sahen sie einen grossen Vogel in der Luft schweben, der langsam über ihnen kreiste, sich immer tiefer herabsenkte und endlich nicht weit bei einem Felsen niederstiess. Gleich darauf hörten sie einen durchdringenden, jämmerlichen Schrei. Sie liefen herzu und sahen mit Schrecken, dass der Adler ihren alten Bekannten, den Zwerg, gepackt hatte und ihn forttragen wollte. Die mitleidigen Kinder hielten gleich das Männchen fest und zerrten sich so lange mit dem Adler herum, bis er seine Beute fahrenliess. Als der Zwerg sich von dem ersten Schrecken erholt hatte, schrie er mit einer kreischenden Stimme: „Konntet ihr nicht säuberlicher mit mir umgehen? Gerissen habt ihr an meinem dünnen Röckchen, dass es überall zerfetzt und durchlöchert ist, unbeholfenes und läppisches Gesindel, das ihr seid!“ Dann nahm er einen Sack mit Edelsteinen und schlüpfte wieder unter den Felsen in seine Höhle. Die Mädchen waren an seinen Undank schon gewöhnt, setzten ihren Weg fort und verrichteten ihr Geschäft in der Stadt. Als sie beim Heimweg wieder auf die Heide kamen, überraschten sie den Zwerg, der auf einem reinlichen Plätzchen seinen Sack mit Edelsteinen ausgeschüttet und nicht gedacht hatte, dass so spät noch jemand daherkommen würde. Die Abendsonne schien über die glänzenden Steine, sie schimmerten und leuchteten so prächtig in allen Farben, dass die Kinder stehenblieben und sie betrachteten. „Was steht ihr da und habt Maulaffen feil!“ schrie der Zwerg, und sein aschgraues Gesicht ward zinnoberrot vor Zorn. Er wollte mit seinen Scheltworten fortfahren, als sich ein lautes Brummen hören liess und ein schwarzer Bär aus dem Walde herbeitrabte. Erschrocken sprang der Zwerg auf, aber er konnte nicht mehr zu seinem Schlupfwinkel gelangen, der Bär war schon in seiner Nähe. Da rief er in Herzensangst: „Lieber Herr Bär, verschont mich, ich will Euch alle meine Schätze geben, sehet, die schönen Edelsteine, die da liegen. Schenkt mir das Leben, was habt Ihr an mir kleinen, schmächtigen Kerl? Ihr spürt mich nicht zwischen den Zähnen; da, die beiden gottlosen Mädchen packt, das sind für Euch zarte Bissen, fett wie junge Wachteln, die fresst in Gottes Namen.“ Der Bär kümmerte sich um seine Worte nicht, gab dem boshaften Geschöpf einen einzigen Schlag mit der Tatze, und es regte sich nicht mehr.",
+            "Die Mädchen waren fortgesprungen, aber der Bär rief ihnen nach: „Schneeweisschen und Rosenrot, fürchtet euch nicht, wartet, ich will mit euch gehen.“ Da erkannten sie seine Stimme und blieben stehen, und als der Bär bei ihnen war, fiel plötzlich die Bärenhaut ab, und er stand da als ein schöner Mann und war ganz in Gold gekleidet. „Ich bin eines Königs Sohn,“ sprach er, „und war von dem gottlosen Zwerg, der mir meine Schätze gestohlen hatte, verwünscht, als ein wilder Bär in dem Walde zu laufen, bis ich durch seinen Tod erlöst würde. Jetzt hat er seine wohlverdiente Strafe empfangen.“",
+            "Schneeweisschen ward mit ihm vermählt und Rosenrot mit seinem Bruder, und sie teilten die grossen Schätze miteinander, die der Zwerg in seiner Höhle zusammengetragen hatte. Die alte Mutter lebte noch lange Jahre ruhig und glücklich bei ihren Kindern. Die zwei Rosenbäumchen aber nahm sie mit, und sie standen vor ihrem Fenster und trugen jedes Jahr die schönsten Rosen, weiss und rot."
+        ]
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    }
+}

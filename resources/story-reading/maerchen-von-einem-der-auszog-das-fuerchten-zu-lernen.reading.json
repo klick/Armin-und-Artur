@@ -276,13 +276,32 @@
   },
   "providerNotes": {
     "editorialStatus": "legacy_example_pending_editorial_review",
+    "contentProfile": "fairy_tale",
     "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
     "elevenLabs": {
       "rendering": "Render every segment with the single configured narrator voice_id; character colouring comes from delivery, never from voice switching.",
       "limits": {
         "recommendedMaxCharactersPerRequest": 2000
       },
-      "audioTags": "Optional delivery tags belong only in the provider request, never in source text or this canonical reading metadata."
+      "audioTags": "Optional delivery tags belong only in the provider request, never in source text or this canonical reading metadata.",
+      "fairyTalePreset": {
+        "presetVersion": 1,
+        "modelId": "eleven_v3",
+        "stability": 0.5,
+        "voiceSelection": {
+          "testedDisplayName": "Grandpa - Familiar & Warm",
+          "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+          "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+        },
+        "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+        "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+        "referenceTest": {
+          "storyId": "rotkaeppchen",
+          "paragraphIndex": 0,
+          "observedDurationSeconds": 67,
+          "editorialResult": "approved"
+        }
+      }
     }
   },
   "originalText": {

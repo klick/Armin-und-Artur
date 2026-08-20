@@ -1,0 +1,280 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-goldene-gans",
+        "title": "Die goldene Gans",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-goldene-gans",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 179,
+        "entryUid": "ead0013d-6bed-490d-a2f8-90b99adf02a0",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "heiter, klar und gemächlich; Wiederholungen rhythmisch gliedern"
+        },
+        "dummling": {
+            "label": "Dummling",
+            "voiceProfile": "young_male_open",
+            "delivery": "freundlich, schlicht und unbeirrbar"
+        },
+        "father": {
+            "label": "Vater",
+            "voiceProfile": "older_male_dismissive",
+            "delivery": "skeptisch, knapp und herablassend"
+        },
+        "older_brothers": {
+            "label": "Die beiden älteren Brüder",
+            "voiceProfile": "young_male_group_proud",
+            "delivery": "abweisend, selbstsicher und ungeduldig"
+        },
+        "grey_man": {
+            "label": "Graues Männlein",
+            "voiceProfile": "older_male_gentle",
+            "delivery": "höflich, ruhig und dankbar"
+        },
+        "inn_daughters": {
+            "label": "Drei Wirtstöchter",
+            "voiceProfile": "young_female_group",
+            "delivery": "neugierig, gierig und zunehmend erschrocken"
+        },
+        "priest": {
+            "label": "Pfarrer",
+            "voiceProfile": "older_male_scolding",
+            "delivery": "entrüstet, würdevoll und dann überrascht"
+        },
+        "sexton": {
+            "label": "Küster",
+            "voiceProfile": "adult_male_hurried",
+            "delivery": "pflichtbewusst und verwundert"
+        },
+        "farmers": {
+            "label": "Zwei Bauern",
+            "voiceProfile": "adult_male_pair",
+            "delivery": "hilfsbereit und verdutzt"
+        },
+        "princess": {
+            "label": "Königstochter",
+            "voiceProfile": "young_female_reserved",
+            "delivery": "zunächst ernst, dann ungebremst heiter"
+        },
+        "king": {
+            "label": "König",
+            "voiceProfile": "older_male_reluctant",
+            "delivery": "förmlich, missbilligend und ausweichend"
+        },
+        "thirsty_man": {
+            "label": "Durstiger Mann",
+            "voiceProfile": "adult_male_weary",
+            "delivery": "betrübt, durstig und später tatkräftig"
+        },
+        "hungry_man": {
+            "label": "Hungriger Mann",
+            "voiceProfile": "adult_male_hollow",
+            "delivery": "grämlich, hungrig und später tatkräftig"
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war ein Mann, der hatte drei Söhne",
+            "title": "Die beiden älteren Brüder",
+            "speakers": [
+                "narrator",
+                "older_brothers",
+                "grey_man"
+            ],
+            "direction": "Die beiden Begegnungen als klares Wiederholungsmuster lesen. Den alten Mann freundlich, die Brüder kurz abweisend färben."
+        },
+        {
+            "id": "s02",
+            "anchor": "Da sagte der Dummling",
+            "title": "Das gute Herz und die goldene Gans",
+            "speakers": [
+                "narrator",
+                "dummling",
+                "father",
+                "grey_man"
+            ],
+            "direction": "Den Dummling offen und ohne Karikatur sprechen. Das Wunder ruhig und hell erscheinen lassen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Der Dummling ging hin und hieb den Baum um",
+            "title": "Die drei Wirtstöchter",
+            "speakers": [
+                "narrator",
+                "dummling",
+                "inn_daughters"
+            ],
+            "direction": "Die Kette mit trockenem Humor aufbauen; keine zusätzlichen Geräusche oder Ausrufe ergänzen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Am anderen Morgen nahm der Dummling die Gans",
+            "title": "Der immer längere Zug",
+            "speakers": [
+                "narrator",
+                "dummling",
+                "inn_daughters",
+                "priest",
+                "sexton",
+                "farmers"
+            ],
+            "direction": "Jede neue Figur mit einer kleinen Pause einsetzen. Das Tempo lebhaft, aber verständlich halten."
+        },
+        {
+            "id": "s05",
+            "anchor": "Er kam darauf in eine Stadt",
+            "title": "Die Königstochter lacht",
+            "speakers": [
+                "narrator",
+                "dummling",
+                "princess",
+                "king"
+            ],
+            "direction": "Die lange Ernsthaftigkeit der Prinzessin knapp setzen und ihr Lachen als Wendepunkt tragen."
+        },
+        {
+            "id": "s06",
+            "anchor": "Da verlangte sie der Dummling zur Braut",
+            "title": "Der Keller voll Wein",
+            "speakers": [
+                "narrator",
+                "dummling",
+                "king",
+                "thirsty_man"
+            ],
+            "direction": "Die neue Bedingung förmlich, die Hilfe des durstigen Mannes trocken und grosszügig erzählen."
+        },
+        {
+            "id": "s07",
+            "anchor": "Der Dummling verlangte abermals seine Braut",
+            "title": "Brotberg und Wunderschiff",
+            "speakers": [
+                "narrator",
+                "dummling",
+                "king",
+                "hungry_man",
+                "grey_man"
+            ],
+            "direction": "Die Steigerung übersichtlich erzählen. Das Versprechen des grauen Männleins ruhig hervorheben."
+        },
+        {
+            "id": "s08",
+            "anchor": "Die Hochzeit ward gefeiert",
+            "title": "Hochzeit und Königreich",
+            "speakers": [
+                "narrator",
+                "dummling",
+                "princess"
+            ],
+            "direction": "Kurz, hell und gelöst enden."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Use the explicitly named speaker in the surrounding original sentence.",
+        "unnamedQuotedSpeech": "Use narrator unless the surrounding original sentence makes the speaker unambiguous.",
+        "creatures": "The golden goose does not speak. Human characters stuck to it retain their stable cast roles; all other animal sounds remain narrator.",
+        "narration": "All narrative prose, reported speech and unspoken thoughts use narrator unless a scene direction explicitly assigns a stable cast role."
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war ein Mann, der hatte drei Söhne, davon hiess der jüngste der Dummling und wurde verachtet und verspottet und bei jeder Gelegenheit zurückgesetzt. Es geschah, dass der älteste in den Wald gehen wollte, Holz hauen, und eh’ er ging, gab ihm noch seine Mutter einen schönen feinen Eierkuchen und eine Flasche Wein mit, damit er nicht Hunger und Durst litte. Als er in den Wald kam, begegnete ihm ein altes, graues Männlein, das bot ihm einen guten Tag und sprach: „Gib mir doch ein Stück Kuchen aus deiner Tasche und lass mich einen Schluck von deinem Wein trinken! Ich bin so hungrig und durstig.“ Der kluge Sohn aber antwortete: „Geb ich dir meinen Kuchen und meinen Wein, so hab ich selber nichts, pack dich deiner Wege!“ liess das Männlein stehen und ging fort. Als er nun anfing, einen Baum zu behauen, dauerte es nicht lange, so hieb er fehl, und die Axt fuhr ihm in den Arm, dass er musste heimgehen und sich verbinden lassen. Das war aber von dem grauen Männchen gekommen.",
+            "Darauf ging der zweite Sohn in den Wald, und die Mutter gab ihm, wie dem ältesten, einen Eierkuchen und eine Flasche Wein. Dem begegnete gleichfalls das alte, graue Männchen und hielt um ein Stückchen Kuchen und einen Trunk Wein an. Aber der zweite Sohn sprach auch ganz verständig: „Was ich dir gebe, das geht mir selber ab, pack dich deiner Wege!“ liess das Männlein stehen und ging fort. Die Strafe blieb nicht aus, als er ein paar Hiebe am Baum getan, hieb er sich ins Bein, dass er musste nach Haus getragen werden.",
+            "Da sagte der Dummling: „Vater, lass mich einmal hinausgehen und Holz hauen!“ Antwortete der Vater: „Deine Brüder haben sich Schaden dabei getan, lass dich davon, du verstehst nichts davon.“ Der Dummling aber bat so lange, bis er endlich sagte: „Geh nur hin, durch Schaden wirst du klug werden.“ Die Mutter gab ihm einen Kuchen, der war mit Wasser in der Asche gebacken, und dazu eine Flasche saures Bier. Als er in den Wald kam, begegnete ihm gleichfalls das alte, graue Männchen, grüsste ihn und sprach: „Gib mir ein Stück von deinem Kuchen und einen Trunk aus deiner Flasche, ich bin so hungrig und durstig.“ Antwortet der Dummling: „Ich habe nur Aschenkuchen und saures Bier, wenn dir das recht ist, so wollen wir uns setzen und essen.“ Da setzten sie sich, und als der Dummling seinen Aschenkuchen herausholte, so war’s ein feiner Eierkuchen, und das saure Bier war ein guter Wein. Nun assen und tranken sie, und danach sprach das Männlein: „Weil du ein gutes Herz hast und von dem deinigen gerne mitteilst, so will ich dir Glück bescheren. Dort steht ein alter Baum, den hau ab, so wirst du in den Wurzeln etwas finden.“ Darauf nahm das Männlein Abschied.",
+            "Der Dummling ging hin und hieb den Baum um, und wie er fiel, sass in den Wurzeln eine Gans, die hatte Federn von reinem Gold. Er hob sie heraus, nahm sie mit sich und ging in ein Wirtshaus, da wollte er übernachten. Der Wirt hatte aber drei Töchter, die sahen die Gans, waren neugierig, was das für ein wunderlicher Vogel wäre, und hätten gar gern eine von seinen goldenen Federn gehabt. Die älteste dachte: Es wird sich schon eine Gelegenheit finden, wo ich mir eine Feder ausziehen kann. Und als der Dummling einmal hinaus gegangen war, fasste sie die Gans beim Flügel aber Finger und Hand blieben ihr daran fest hängen. Bald hernach kam die zweite und hatte keinen andern Gedanken, als sich eine goldene Feder zu holen, kaum aber hatte sie ihre Schwester angerührt, so blieb sie fest hängen. Endlich kam auch die dritte in der gleichen Absicht. Da schrien die andern: „Bleib weg, um Himmels Willen bleib weg!“ Aber sie begriff nicht, warum sie wegbleiben sollte, dachte: Sind die dabei so kann ich auch dabeisein und sprang hinzu, und wie sie ihre Schwester angerührt hatte, so blieb sie an ihr hängen. So mussten sie die Nacht bei der Ganz zubringen.",
+            "Am anderen Morgen nahm der Dummling die Gans in den Arm ging fort und kümmerte sich nicht um die drei Mädchen, die daran hingen. Sie mussten immer hinter im dreinlaufen, links und rechts, wie’s ihm in die Beine kam. Mitten auf dem Felde begegnete ihnen der Pfarrer, und als er den Aufzug sah, sprach er: „Schämt euch, ihr garstigen Mädchen, was lauft ihr dem jungen Bursch durchs Feld nach, schickt sich das?“ Damit fasste er die jüngste an der Hand und wollte sie zurückziehen, wie er sie aber anrührte, blieb er gleichfalls hängen und musste selber hinterdreinlaufen. Nicht lange, so kam der Küster daher und sah den Herrn Pfarrer, der drei Mädchen auf dem Fuss folgte. Da verwunderte er sich und rief: „Ei, Herr Pfarrer, wohinaus so geschwind? vergesst nicht, dass wir heute noch eine Kindtaufe haben.“ Lief auf ihn zu und fasste ihn am Ärmel, blieb aber auch fest hängen. Wie die fünf so hintereinander hertrabten, kamen zwei Bauern mit ihren Hacken vom Felde. Da rief der Pfarrer sie an und bat, sie möchten ihn und den Küster losmachen. Kaum aber hatten sie den Küster angerührt, so blieben sie hängen, und waren ihrer nun siebene, die dem Dummling mit der Gans nachliefen.",
+            "Er kam darauf in eine Stadt; da herrschte ein König, der hatte eine Tochter, die war so ernsthaft, dass sie niemand zum Lachen bringen konnte. Darum hatte er ein Gesetz gegeben, wer sie könnte zum Lachen bringen, der sollte sie heiraten. Der Dummling, als er das hörte, ging mit seiner Gans und ihrem Anhang vor die Königstochter, und als diese die sieben Menschen immer hintereinander herlaufen sah, fing sie überlaut an zu lachen und wollte gar nicht wieder aufhören.",
+            "Da verlangte sie der Dummling zur Braut, aber dem König gefiel der Schwiegersohn nicht, er machte allerlei Einwendungen und sagte, er müsste ihm erst einen Mann bringen, der einen Keller voll Wein austrinken könne. Der Dummling dachte an das graue Männchen, das könnte ihm wohl helfen, ging hinaus in den Wald, und auf der Stelle, wo er den Baum abgehauen hatte, sah er einen Mann sitzen, der machte ein ganz betrübtes Gesicht. Der Dummling fragte, was er sich so sehr zu Herzen nähme. Da antwortete er: „Ich habe so grossen Durst und kann ihn nicht löschen, das kalte Wasser vertrage ich nicht, ein Fass Wein habe ich zwar ausgeleert, aber was ist ein Tropfen auf einen heissen Stein?“ – „Da kann ich dir helfen,“ sagte der Dummling, „komm nur mit mir, du sollst satt haben!“ Er führte ihn darauf in des Königs Keller, und der Mann machte sich über die grossen Fässer, trank und trank, dass ihm die Hüften weh taten, und ehe ein Tag herum war, hatte er den ganzen Keller ausgetrunken.",
+            "Der Dummling verlangte abermals seine Braut, der König aber ärgerte sich, dass ein schlechter Bursch, den jedermann einen Dummling nannte, seine Tochter davontragen sollte, und machte neue Bedingungen: Er müsste erst einen Mann schaffen, der einen Berg voll Brot aufessen könnte. Der Dummling besann sich nicht lange, sondern ging gleich hinaus in den Wald. Da sass auf demselben Platz ein Mann, der schnürte sich den Leib mit einem Riemen zusammen, machte ein grämliches Gesicht und sagte: „Ich habe einen ganzen Backofen voll Raspelbrot gegessen, aber was hilft das, wenn man so grossen Hunger hat wie ich. Mein Magen bleibt leer, und ich muss ihn zuschnüren, wenn ich nicht Hungers sterben soll.“ Der Dummling war froh darüber und sprach: „Mach dich auf und geh mit mir, du sollst dich satt essen!“ Er führte ihn an den Hof des Königs, der hatte alles Mehl aus dem ganzen Reich zusammenfahren und einen ungeheuren Berg davon bauen lassen; der Mann aber aus dem Walde stellte sich davor, fing an zu essen, und in einem Tag war der ganze Berg verschwunden. Der Dummling forderte zum drittenmal seine Braut. Der König aber suchte noch einmal Ausflucht und verlangte ein Schiff, das zu Land und zu Wasser fahren könnt. „Sowie du aber damit angesegelt kommst,“ sagte er, „sollst du gleich meine Tochter zur Gemahlin haben.“ Der Dummling ging geraden Weges in den Wald, da sass das alte, graue Männchen, dem er seinen Kuchen gegeben hatte, und sagte: „Ich habe für dich getrunken und gegessen, ich will dir auch das Schiff geben; das alles tu ich, weil du barmherzig gegen mich gewesen bist.“ Da gab er ihm das Schiff, das zu Land und zu Wasser fuhr, und als der König das sah, konnte er ihm seine Tochter nicht länger vorenthalten.",
+            "Die Hochzeit ward gefeiert; nach des Königs Tod erbte der Dummling das Reich und lebte lange Zeit vergnügt mit seiner Gemahlin."
+        ]
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    }
+}

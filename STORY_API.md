@@ -61,15 +61,41 @@ The second ten-item batch adds:
 - `die-sterntaler`
 - `der-gestiefelte-kater`
 
+The third ten-item batch adds:
+
+- `das-kleine-maedchen-mit-den-schwefelhoelzern`
+- `die-drei-spinnerinnen`
+- `die-wichtelmaenner`
+- `koenig-drosselbart`
+- `die-goldene-gans`
+- `der-hase-und-der-igel`
+- `die-prinzessin-auf-der-erbse`
+- `des-kaisers-neue-kleider`
+- `schneeweisschen-und-rosenrot`
+- `hans-im-glueck`
+
+The fourth ten-item batch adds:
+
+- `von-dem-fischer-und-seiner-frau`
+- `die-weisse-schlange`
+- `die-drei-maennlein-im-walde`
+- `marienkind`
+- `strohhalm-kohle-und-bohne`
+- `katze-und-maus-in-gesellschaft`
+- `daumesdick`
+- `die-kluge-else`
+- `frau-trude`
+- `der-alte-sultan`
+
 They live under `resources/story-reading/`, outside the public web root. Every
 artefact is the vendor-neutral source from which future SSML, ElevenLabs, or
 other provider payloads are derived.
 
-Together, the 25 artefacts cover short narration, sustained dialogue, large
+Together, the 45 artefacts cover short narration, sustained dialogue, large
 character sets, verse-like speech and longer scene structures, all directed as
 single-narrator audiobook readings. All retain the published
-text; their normalisations are declared inside each artefact. Both ten-item
-batches are machine-validated and cross-checked, while their
+text; their normalisations are declared inside each artefact. All four
+ten-item batches are machine-validated and cross-checked, while their
 `providerNotes.editorialStatus` deliberately remains
 `machine_validated_pending_editorial_review` until human editorial sign-off.
 
@@ -229,6 +255,36 @@ which delegates verification and settlement to the configured facilitator.
 The adapter includes the explicit `EIP712Domain` type required by MetaMask's
 `eth_signTypedData_v4`; it mirrors viem's domain fields (`name`, `version`,
 `chainId`, `verifyingContract`) used by the official `ExactEvmScheme`.
+
+## Local single-narrator previewer
+
+Craft `DEV_MODE` also exposes a deliberately unlinked preview page at
+`GET /__story-api/reading-preview`. It lists only artefacts carrying
+`providerNotes.contentProfile: fairy_tale`. An editor selects one Märchen and
+one scene; the complete preview uses exactly one configured narrator voice.
+Cast and scene data remain delivery guidance for that narrator and never
+become separate provider voices.
+
+Configure the local `.env` only:
+
+```dotenv
+ELEVENLABS_API_KEY=YOUR_LOCAL_SECRET
+STORY_PREVIEW_ELEVENLABS_VOICE_ID=YOUR_SINGLE_NARRATOR_VOICE_ID
+STORY_PREVIEW_ELEVENLABS_VOICE_NAME="Grandpa - Familiar & Warm"
+STORY_PREVIEW_MAX_CHARACTERS=2000
+```
+
+The API key and voice ID stay server-side. The POST route retains Craft/Yii
+CSRF validation, repeats the `DEV_MODE` guard, and returns `404` outside dev
+mode. Before rendering, the UI shows the excerpt size and states that the
+explicit render click consumes ElevenLabs credits. Long scenes are cut to a
+source-exact preview prefix of at most the configured character limit,
+preferably at a sentence boundary. The provider payload prepends the approved
+fairy-tale audio tags but never changes `originalText`.
+
+The renderer currently uses `eleven_v3`, MP3 44.1 kHz/128 kbps, stability
+`0.5`, and the one voice configured in the environment. The display name is
+informational; deployments use the provider's current `voice_id`.
 
 Build and test the local page with:
 

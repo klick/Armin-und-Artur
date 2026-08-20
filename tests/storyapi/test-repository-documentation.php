@@ -79,6 +79,14 @@ foreach (['p|blockquote', 'soft_hyphen_removed', 'requires_editorial_annotation'
     expectDocumentation(str_contains($batch, $pipelineTerm), "Batch guide must document {$pipelineTerm}");
 }
 
+foreach (['fairyTalePreset', 'eleven_v3', 'Grandpa - Familiar & Warm', '[very slowly] [warm, grandfatherly storytelling]'] as $fairyTaleTerm) {
+    expectDocumentation(str_contains($format, $fairyTaleTerm), "Format guide must document {$fairyTaleTerm}");
+}
+expectDocumentation(str_contains($batch, 'non-fairy-tale'), 'Batch guide must keep the ElevenLabs preset scoped to fairy tales');
+foreach (['/__story-api/reading-preview', 'ELEVENLABS_API_KEY', 'one configured narrator voice'] as $previewTerm) {
+    expectDocumentation(str_contains($api, $previewTerm), "Story API guide must document preview term {$previewTerm}");
+}
+
 foreach (['deploy-production.yml', 'git merge --ff-only', 'web/bilder/', 'no automatic'] as $deploymentTerm) {
     expectDocumentation(str_contains($deployment, $deploymentTerm), "Deployment guide must document {$deploymentTerm}");
 }
