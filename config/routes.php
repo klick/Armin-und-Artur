@@ -12,6 +12,15 @@
 use craft\helpers\App;
 
 $routes = [
+    // SEOmatic normally registers these rules dynamically. Keep them explicit
+    // here so the public sitemap remains available even when Craft builds its
+    // site URL rules before SEOmatic's listener has been attached.
+    'sitemap.xml' => 'seomatic/sitemap/sitemap-index-redirect',
+    'sitemap.xsl' => 'seomatic/sitemap/sitemap-styles',
+    'sitemap-empty.xsl' => 'seomatic/sitemap/sitemap-empty-styles',
+    'sitemaps-<groupId:\d+>-sitemap.xml' => 'seomatic/sitemap/sitemap-index',
+    'sitemaps-<groupId:\d+>-global-custom-<siteId:\d+>-<file:[-\w\.*]+>' => 'seomatic/sitemap/sitemap-custom',
+    'sitemaps-<groupId:\d+>-<type:[\w\.*]+>-<handle:[\w\.*]+>-<siteId:\d+>-<file:[-\w\.*]+>' => 'seomatic/sitemap/sitemap',
     'api/openapi.json' => 'story-api/stories/openapi',
     'api/v1/story-reading.schema.json' => 'story-api/stories/schema',
     'schemas/story-reading-1.3.schema.json' => 'story-api/stories/schema',

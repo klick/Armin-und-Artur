@@ -4,6 +4,9 @@ namespace modules\storyapi;
 
 use Craft;
 use modules\storyapi\services\StoryReadingService;
+use nystudio107\seomatic\events\RegisterSitemapUrlsEvent;
+use nystudio107\seomatic\models\SitemapCustomTemplate;
+use yii\base\Event;
 
 /**
  * The small, public-facing Story API.
@@ -34,6 +37,12 @@ class Module extends \yii\base\Module
         $this->setComponents([
             'stories' => StoryReadingService::class,
         ]);
+
+        Event::on(
+            SitemapCustomTemplate::class,
+            SitemapCustomTemplate::EVENT_REGISTER_SITEMAP_URLS,
+            [self::class, 'registerPublicSitemapUrls'],
+        );
     }
 
     public function getStories(): StoryReadingService
@@ -42,5 +51,24 @@ class Module extends \yii\base\Module
         $stories = $this->get('stories');
 
         return $stories;
+    }
+
+    /**
+     * Add public, non-entry pages to SEOmatic's custom sitemap.
+     */
+    public static function registerPublicSitemapUrls(RegisterSitemapUrlsEvent $event): void
+    {
+        foreach ($event->sitemaps as $sitemap) {
+            $path = parse_url((string)($sitemap['loc'] ?? ''), PHP_URL_PATH);
+            if (rtrim((string)$path, '/') === '/vorlese-api') {
+                return;
+            }
+        }
+
+        $event->sitemaps[] = [
+            'loc' => '/vorlese-api',
+            'changefreq' => 'monthly',
+            'priority' => '0.8',
+        ];
     }
 }
