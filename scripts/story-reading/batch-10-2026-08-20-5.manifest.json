@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {"id":"herr-korbes","entryId":121,"entryUid":"251e5a27-5ab9-4713-b5a7-64168323c369","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/herr-korbes","language":"de"},
+    {"id":"der-hund-und-der-sperling","entryId":123,"entryUid":"ec351d8d-d1b7-484d-a6a0-cbdf68184965","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-hund-und-der-sperling","language":"de"},
+    {"id":"fundevogel","entryId":127,"entryUid":"05e3eba8-1958-4f1b-b944-cc9d6e08a5a9","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/fundevogel","language":"de"},
+    {"id":"der-gevatter-tod","entryId":131,"entryUid":"8dfc0602-12bb-4ece-b33a-d011dd33315c","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-gevatter-tod","language":"de"},
+    {"id":"der-herr-gevatter","entryId":133,"entryUid":"5d9f4d9d-7e9b-4a3d-810c-09c364fff3f8","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-herr-gevatter","language":"de"},
+    {"id":"der-schneider-im-himmel","entryId":139,"entryUid":"532b0677-3377-4530-862b-ba5a16a24887","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-schneider-im-himmel","language":"de"},
+    {"id":"die-drei-sprachen","entryId":141,"entryUid":"1b70d30b-893b-447a-a024-cb607fb871a3","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-drei-sprachen","language":"de"},
+    {"id":"laeuschen-und-floehchen","entryId":143,"entryUid":"40555441-56f8-40e0-a064-2b37ec796934","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/l%C3%A4uschen-und-fl%C3%B6hchen","language":"de"},
+    {"id":"der-singende-knochen","entryId":145,"entryUid":"35744085-bc5f-4145-b819-a0a4f8c92f4c","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-singende-knochen","language":"de"},
+    {"id":"von-dem-maeuschen-voegelchen-und-der-bratwurst","entryId":153,"entryUid":"c11f508a-d2de-4608-9ad7-56f843f051b7","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/von-dem-m%C3%A4uschen-v%C3%B6gelchen-und-der-bratwurst","language":"de"}
+  ]
+}

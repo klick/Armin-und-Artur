@@ -1,0 +1,235 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "der-raeuberbraeutigam",
+        "title": "Der Räuberbräutigam",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/der-r%C3%A4uberbr%C3%A4utigam",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 103,
+        "entryUid": "0b1af8aa-b762-4d5c-baef-320ad34c434c",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "bride": {
+            "label": "Müllerstochter / Braut",
+            "voiceProfile": "young_female_alert",
+            "delivery": "Zunächst unruhig, dann sehr beherrscht und mutig."
+        },
+        "miller": {
+            "label": "Müller / Vater",
+            "voiceProfile": "adult_male_plain",
+            "delivery": "Gutgläubig und später ernst."
+        },
+        "bridegroom": {
+            "label": "Räuberbräutigam",
+            "voiceProfile": "adult_male_smooth",
+            "delivery": "Glatt, bestimmend und zuletzt erschrocken."
+        },
+        "caged_bird": {
+            "label": "Vogel im Bauer",
+            "voiceProfile": "small_ominous",
+            "delivery": "Die Warnung rhythmisch und leise färben."
+        },
+        "old_woman": {
+            "label": "Alte Frau",
+            "voiceProfile": "older_female_urgent",
+            "delivery": "Leise, warnend und entschlossen."
+        },
+        "robbers": {
+            "label": "Räuberbande",
+            "voiceProfile": "adult_male_group_coarse",
+            "delivery": "Roh und knapp, ohne Gewalt auszumalen."
+        },
+        "wedding_guests": {
+            "label": "Hochzeitsgäste",
+            "voiceProfile": "adult_group_attentive",
+            "delivery": "Gespannt und am Ende entschlossen."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war einmal ein Müller, der hatte eine schöne Tochter, und als sie herangewachsen war, so wüns",
+            "title": "Der fremde Freier",
+            "speakers": [
+                "narrator",
+                "miller",
+                "bride",
+                "bridegroom"
+            ],
+            "direction": "Das Misstrauen der Braut früh, aber zurückhaltend zeigen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Der Bräutigam sagte „künftigen Sonntag musst du hinaus zu mir kommen, ich habe die Gäste schon e",
+            "title": "Der Weg in den Wald",
+            "speakers": [
+                "narrator",
+                "bridegroom",
+                "bride",
+                "caged_bird"
+            ],
+            "direction": "Die Warnung des Vogels klar wiederholen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Da ging die schöne Braut weiter aus einer Stube in die andere und ging durch das ganze Haus, abe",
+            "title": "Im Keller",
+            "speakers": [
+                "narrator",
+                "bride",
+                "old_woman",
+                "robbers"
+            ],
+            "direction": "Spannung langsam, Gewalt ohne zusätzliche Details sprechen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Da sprachen die Räuber „die Alte hat recht,“ liessen vom Suchen ab, setzten sich zum Essen, und ",
+            "title": "Die Flucht",
+            "speakers": [
+                "narrator",
+                "bride",
+                "old_woman",
+                "robbers"
+            ],
+            "direction": "Leise und konzentriert erzählen."
+        },
+        {
+            "id": "s05",
+            "anchor": "Als der Tag kam, wo die Hochzeit sollte gehalten werden, erschien der Bräutigam, der Müller aber",
+            "title": "Die Erzählung bei der Hochzeit",
+            "speakers": [
+                "narrator",
+                "bride",
+                "bridegroom",
+                "miller",
+                "wedding_guests"
+            ],
+            "direction": "Die als Traum vorgetragene Wahrheit gemessen entfalten."
+        },
+        {
+            "id": "s06",
+            "anchor": "Der Räuber, der bei der Erzählung ganz kreideweiss geworden war, sprang auf und wollte entfliehe",
+            "title": "Der Beweis",
+            "speakers": [
+                "narrator",
+                "bride",
+                "bridegroom",
+                "wedding_guests"
+            ],
+            "direction": "Aufdeckung und Ende knapp und ernst schliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Braut, Müller, Bräutigam, Vogel, alter Frau, Räubern oder Gästen. Die lange Traumerzählung bleibt in der Stimme der Braut, eingebettete Zitate nur leicht färben.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war einmal ein Müller, der hatte eine schöne Tochter, und als sie herangewachsen war, so wünschte er, sie wäre versorgt und gut verheiratet: er dachte „kommt ein ordentlicher Freier und hält um sie an, so will ich sie ihm geben.“ Nicht lange, so kam ein Freier, der schien sehr reich zu sein, und da der Müller nichts an ihm auszusetzen wusste, so versprach er ihm seine Tochter. Das Mädchen aber hatte ihn nicht so recht lieb, wie eine Braut ihren Bräutigam lieb haben soll, und hatte kein Vertrauen zu ihm: sooft sie ihn ansah oder an ihn dachte, fühlte sie ein Grauen in ihrem Herzen. Einmal sprach er zu ihr „du bist meine Braut und besuchst mich nicht einmal.“ Das Mädchen antwortete „ich weiss nicht, wo Euer Haus ist.“ Da sprach der Bräutigam „mein Haus ist draussen im dunkeln Wald.“ Es suchte Ausreden und meinte, es könnte den Weg dahin nicht finden.",
+            "Der Bräutigam sagte „künftigen Sonntag musst du hinaus zu mir kommen, ich habe die Gäste schon eingeladen, und damit du den Weg durch den Wald findest, so will ich dir Asche streuen.“ Als der Sonntag kam und das Mädchen sich auf den Weg machen sollte, ward ihm so angst, es wusste selbst nicht recht, warum, und damit es den Weg bezeichnen könnte, steckte es sich beide Taschen voll Erbsen und Linsen. An dem Eingang des Waldes war Asche gestreut, der ging es nach, warf aber bei jedem Schritt rechts und links ein paar Erbsen auf die Erde. Es ging fast den ganzen Tag, bis es mitten in den Wald kam, wo er am dunkelsten war, da stand ein einsames Haus, das gefiel ihm nicht, denn es sah so finster und unheimlich aus. Es trat hinein, aber es war niemand darin und herrschte die grösste Stille. Plötzlich rief eine Stimme",
+            "„kehr um, kehr um, du junge Braut, du bist in einem Mörderhaus.“",
+            "Das Mädchen blickte auf und sah, dass die Stimme von einem Vogel kam, der da in einem Bauer an der Wand hing. Nochmals rief er",
+            "„kehr um, kehr um, du junge Braut, du bist in einem Mörderhaus.“",
+            "Da ging die schöne Braut weiter aus einer Stube in die andere und ging durch das ganze Haus, aber es war alles leer und keine Menschenseele zu finden. Endlich kam sie auch in den Keller, da sass eine steinalte Frau, die wackelte mit dem Kopfe. „Könnt Ihr mir nicht sagen,“ sprach das Mädchen, „ob mein Bräutigam hier wohnt?“ – „Ach, du armes Kind,“ antwortete die Alte, „wo bist du hingeraten! du bist in einer Mördergrube. Du meinst, du wärst eine Braut, die bald Hochzeit macht, aber du wirst die Hochzeit mit dem Tode halten. Siehst du, da hab ich einen grossen Kessel mit Wasser aufsetzen müssen, wenn sie dich in ihrer Gewalt haben, so zerhacken sie dich ohne Barmherzigkeit, kochen dich und essen dich, denn es sind Menschenfresser. Wenn ich nicht Mitleid mit dir habe und dich rette, so bist du verloren.“",
+            "Darauf führte es die Alte hinter ein grosses Fass, wo man es nicht sehen konnte. „Sei wie ein Mäuschen still,“ sagte sie, „rege dich nicht und bewege dich nicht, sonst ists um dich geschehen. Nachts, wenn die Räuber schlafen, wollen wir entfliehen, ich habe schon lange auf eine Gelegenheit gewartet.“ Kaum war das geschehen, so kam die gottlose Rotte nach Haus. Sie brachten eine andere Jungfrau mitgeschleppt, waren trunken und hörten nicht auf ihr Schreien und Jammern. Sie gaben ihr Wein zu trinken, drei Gläser voll, ein Glas weissen, ein Glas roten und ein Glas gelben, davon zersprang ihr das Herz. Darauf rissen sie ihr die feinen Kleider ab, legten sie auf einen Tisch, zerhackten ihren schönen Leib in Stücke und streuten Salz darüber. Die arme Braut hinter dem Fass zitterte und bebte, denn sie sah wohl, was für ein Schicksal ihr die Räuber zugedacht hatten. Einer von ihnen bemerkte an dem kleinen Finger der Gemordeten einen goldenen Ring, und als er sich nicht gleich abziehen liess, so nahm er ein Beil und hackte den Finger ab: aber der Finger sprang in die Höhe über das Fass hinweg und fiel der Braut gerade in den Schoss. Der Räuber nahm ein Licht und wollte ihn suchen, konnte ihn aber nicht finden. Da sprach ein anderer „hast du auch schon hinter dem grossen Fasse gesucht?“ Aber die Alte rief „kommt und esst, und lasst das Suchen bis morgen: der Finger läuft euch nicht fort.“",
+            "Da sprachen die Räuber „die Alte hat recht,“ liessen vom Suchen ab, setzten sich zum Essen, und die Alte tröpfelte ihnen einen Schlaftrunk in den Wein, dass sie sich bald in den Keller hinlegten, schliefen und schnarchten. Als die Braut das hörte, kam sie hinter dem Fass hervor, und musste über die Schlafenden wegschreiten, die da reihenweise auf der Erde lagen, und hatte grosse Angst, sie möchte einen aufwecken. Aber Gott half ihr, dass sie glücklich durchkam, die Alte stieg mit ihr hinauf, öffnete die Türe, und sie eilten, so schnell sie konnten, aus der Mördergrube fort. Die gestreute Asche hatte der Wind weggeweht, aber die Erbsen und Linsen hatten gekeimt und waren aufgegangen, und zeigten im Mondschein den Weg. Sie gingen die ganze Nacht, bis sie morgens in der Mühle ankamen. Da erzählte das Mädchen seinem Vater alles, wie es sich zugetragen hatte.",
+            "Als der Tag kam, wo die Hochzeit sollte gehalten werden, erschien der Bräutigam, der Müller aber hatte alle seine Verwandte und Bekannte einladen lassen. Wie sie bei Tische sassen, ward einem jeden aufgegeben, etwas zu erzählen. Die Braut sass still und redete nichts. Da sprach der Bräutigam zur Braut „nun, mein Herz, weisst du nichts? erzähl uns auch etwas.“ Sie antwortete „so will ich einen Traum erzählen. Ich ging allein durch einen Wald und kam endlich zu einem Haus, da war keine Menschenseele darin, aber an der Wand war ein Vogel in einem Bauer, der rief",
+            "‚kehr um, kehr um, du junge Braut, du bist in einem Mörderhaus.‘",
+            "Und rief es noch einmal. Mein Schatz, das träumte mir nur. Da ging ich durch alle Stuben, und alle waren leer, und es war so unheimlich darin; ich stieg endlich hinab in den Keller, da sass eine steinalte Frau darin, die wackelte mit dem Kopfe. Ich fragte sie ‚wohnt mein Bräutigam in diesem Haus?‘ Sie antwortete ‚ach, du armes Kind, du bist in eine Mördergrube geraten, dein Bräutigam wohnt hier, aber er will dich zerhacken und töten, und will dich dann kochen und essen.‘ Mein Schatz, das träumte mir nur. Aber die alte Frau versteckte mich hinter ein grosses Fass, und kaum war ich da verborgen, so kamen die Räuber heim und schleppten eine Jungfrau mit sich, der gaben sie dreierlei Wein zu trinken, weissen, roten und gelben, davon zersprang ihr das Herz. Mein Schatz, das träumte mir nur. Darauf zogen sie ihr die feinen Kleider ab, zerhackten ihren schönen Leib auf einem Tisch in Stücke und bestreuten ihn mit Salz. Mein Schatz, das träumte mir nur. Und einer von den Räubern sah, dass an dem Goldfinger noch ein Ring steckte, und weil er schwer abzuziehen war, so nahm er ein Beil und hieb ihn ab, aber der Finger sprang in die Höhe und sprang hinter das grosse Fass und fiel mir in den Schoss. Und da ist der Finger mit dem Ring.“ Bei diesen Worten zog sie ihn hervor und zeigte ihn den Anwesenden.",
+            "Der Räuber, der bei der Erzählung ganz kreideweiss geworden war, sprang auf und wollte entfliehen, aber die Gäste hielten ihn fest und überlieferten ihn den Gerichten. Da ward er und seine ganze Bande für ihre Schandtaten gerichtet."
+        ]
+    }
+}

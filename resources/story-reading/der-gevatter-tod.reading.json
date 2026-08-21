@@ -1,0 +1,214 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "der-gevatter-tod",
+        "title": "Der Gevatter Tod",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/der-gevatter-tod",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 131,
+        "entryUid": "8dfc0602-12bb-4ece-b33a-d011dd33315c",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "poor_father": {
+            "label": "Armer Vater",
+            "voiceProfile": "adult_male_plain",
+            "delivery": "Ehrlich, nüchtern und entschlossen."
+        },
+        "god": {
+            "label": "Lieber Gott",
+            "voiceProfile": "older_male_calm",
+            "delivery": "Mild und würdevoll."
+        },
+        "devil": {
+            "label": "Teufel",
+            "voiceProfile": "adult_male_cold",
+            "delivery": "Lockend und knapp."
+        },
+        "death": {
+            "label": "Tod",
+            "voiceProfile": "ageless_male_grave",
+            "delivery": "Gleichmässig, ernst und unabwendbar."
+        },
+        "doctor": {
+            "label": "Patenkind / Arzt",
+            "voiceProfile": "young_adult_male_confident",
+            "delivery": "Zunächst aufmerksam, später kühn und verzweifelt."
+        },
+        "king": {
+            "label": "König",
+            "voiceProfile": "older_male_weak",
+            "delivery": "Krank und hoffnungsvoll."
+        },
+        "princess": {
+            "label": "Königstochter",
+            "voiceProfile": "young_female_weak",
+            "delivery": "Krank; keine erfundene direkte Rede."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es hatte ein armer Mann zwölf Kinder und musste Tag und Nacht arbeiten, damit er ihnen nur Brot ",
+            "title": "Ein gerechter Gevatter",
+            "speakers": [
+                "narrator",
+                "poor_father",
+                "god",
+                "devil",
+                "death"
+            ],
+            "direction": "Die Wahl des Vaters ruhig und ernst erzählen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Als der Knabe zu Jahren gekommen war, trat zu einer Zeit der Pate ein und hiess ihn mitgehen. Er",
+            "title": "Die Heilkunst",
+            "speakers": [
+                "narrator",
+                "death",
+                "doctor"
+            ],
+            "direction": "Regel und Warnung sehr klar sprechen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Es dauerte nicht lange, so war der Jüngling der berühmteste Arzt auf der ganzen Welt. „Er brauch",
+            "title": "Der kranke König",
+            "speakers": [
+                "narrator",
+                "doctor",
+                "death",
+                "king"
+            ],
+            "direction": "Die erste Täuschung gespannt, aber nüchtern erzählen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Bald hernach verfiel die Tochter des Königs in eine schwere Krankheit. Sie war sein einziges Kin",
+            "title": "Die Königstochter",
+            "speakers": [
+                "narrator",
+                "doctor",
+                "death",
+                "princess"
+            ],
+            "direction": "Mit wachsender Unruhe, ohne Tempoverlust."
+        },
+        {
+            "id": "s05",
+            "anchor": "Der Tod, als er sich zum zweitenmal um sein Eigentum betrogen sah, ging mit langen Schritten auf",
+            "title": "Die Lebenslichter",
+            "speakers": [
+                "narrator",
+                "doctor",
+                "death"
+            ],
+            "direction": "Dunkel, langsam und knapp schliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Vater, Gott, Teufel, Tod, Arzt oder König. Die kranke Prinzessin bleibt ohne erfundene Rede.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es hatte ein armer Mann zwölf Kinder und musste Tag und Nacht arbeiten, damit er ihnen nur Brot geben konnte. Als nun das dreizehnte zur Welt kam, wusste er sich in seiner Not nicht zu helfen, lief hinaus auf die grosse Landstrasse und wollte den ersten, der ihm begegnete, zu Gevatter bitten. Der erste, der ihm begegnete, das war der liebe Gott. Der wusste schon, was er auf dem Herzen hatte, und sprach zu ihm: „Armer Mann, du dauerst mich, ich will dein Kind aus der Taufe heben, will für es sorgen und es glücklich machen auf Erden.“ Der Mann sprach: „Wer bist du?“ – „Ich bin der liebe Gott.“ – „So begehr’ ich dich nicht zu Gevatter,“ sagte der Mann, „du gibst dem Reichen und lässest den Armen hungern.“ Das sprach der Mann, weil er nicht wusste, wie weislich Gott Reichtum und Armut verteilt. Also wendete er sich von dem Herrn und ging weiter. Da trat der Teufel zu ihm und sprach: „Was suchst du? Willst du mich zum Paten deines Kindes nehmen, so will ich ihm Gold die Hülle und Fülle und alle Lust der Welt dazu geben.“ Der Mann fragte: „Wer bist du?“ – „Ich bin der Teufel.“ – „So begehr’ ich dich nicht zu Gevatter,“ sprach der Mann, „du betrügst und verführst die Menschen.“ Er ging weiter; da kam der dürrbeinige Tod auf ihn zugeschritten und sprach: „Nimm mich zu Gevatter.“ Der Mann fragte: „Wer bist du?“ – „Ich bin der Tod, der alle gleichmacht.“ Da sprach der Mann: „Du bist der Rechte, du holst den Reichen wie den Armen ohne Unterschied, du sollst mein Gevattersmann sein.“ Der Tod antwortete: „Ich will dein Kind reich und berühmt machen; denn wer mich zum Freunde hat, dem kann’s nicht fehlen.“ Der Mann sprach: „Künftigen Sonntag ist die Taufe, da stelle dich zu rechter Zeit ein.“ Der Tod erschien, wie er versprochen hatte, und stand ganz ordentlich Gevatter.",
+            "Als der Knabe zu Jahren gekommen war, trat zu einer Zeit der Pate ein und hiess ihn mitgehen. Er führte ihn hinaus in den Wald, zeigte ihm ein Kraut, das da wuchs, und sprach: „Jetzt sollst du dein Patengeschenk empfangen. Ich mache dich zu einem berühmten Arzt. Wenn du zu einem Kranken gerufen wirst, so will ich dir jedesmal erscheinen: steh ich zu Häupten des Kranken, so kannst du keck sprechen, du wolltest ihn wieder gesund machen, und gibst du ihm dann von jenem Kraut ein, so wird er genesen; steh ich aber zu Füssen des Kranken, so ist er mein, und du musst sagen, alle Hilfe sei umsonst und kein Arzt in der Welt könne ihn retten. Aber hüte dich, dass du das Kraut nicht gegen meinen Willen gebrauchst, es könnte dir schlimm ergehen!“",
+            "Es dauerte nicht lange, so war der Jüngling der berühmteste Arzt auf der ganzen Welt. „Er braucht nur den Kranken anzusehen, so weiss er schon, wie es steht, ob er wieder gesund wird oder ob er sterben muss,“ so hiess es von ihm, und weit und breit kamen die Leute herbei, holten ihn zu den Kranken und gaben ihm so viel Gold, dass er bald ein reicher Mann war. Nun trug es sich zu, dass der König erkrankte. Der Arzt ward berufen und sollte sagen, ob Genesung möglich wäre. Wie er aber zu dem Bette trat, so stand der Tod zu den Füssen des Kranken, und da war für ihn kein Kraut mehr gewachsen. „Wenn ich doch einmal den Tod überlisten könnte,“ dachte der Arzt, „er wird’s freilich übelnehmen, aber da ich sein Pate bin, so drückt er wohl ein Auge zu, ich will’s wagen.“ Er fasste also den Kranken und legte ihn verkehrt, so dass der Tod zu Haupten desselben zu stehen kam. Dann gab er ihm von dem Kraute ein, und der König erholte sich und ward wieder gesund. Der Tod aber kam zu dem Arzte, machte ein böses und finsteres Gesicht, drohte mit dem Finger und sagte: „Du hast mich hinter das Licht geführt, diesmal will ich dir’s nachsehen, weil du mein Pate bist, aber wagst du das noch einmal, so geht dir’s an den Kragen, und ich nehme dich selbst mit fort.“",
+            "Bald hernach verfiel die Tochter des Königs in eine schwere Krankheit. Sie war sein einziges Kind, er weinte Tag und Nacht, dass ihm die Augen erblindeten, und liess bekanntmachen, wer sie vom Tode errette, der sollte ihr Gemahl werden und die Krone erben. Der Arzt, als er zu dem Bette der Kranken kam, erblickte den Tod zu ihren Füssen. Er hätte sich der Warnung seines Paten erinnern sollen, aber die grosse Schönheit der Königstochter und das Glück, ihr Gemahl zu werden, betörten ihn so, dass er alle Gedanken in den Wind schlug. Er sah nicht, dass der Tod ihm zornige Blicke zuwarf, die Hand in die Höhe hob und mit der dürren Faust drohte; er hob die Kranke auf und legte ihr Haupt dahin, wo die Füsse gelegen hatten. Dann gab er ihr das Kraut ein, und alsbald regte sich das Leben von neuem.",
+            "Der Tod, als er sich zum zweitenmal um sein Eigentum betrogen sah, ging mit langen Schritten auf den Arzt zu und sprach: „Es ist aus mit dir, und die Reihe kommt nun an dich,“ packte ihn mit seiner eiskalten Hand so hart, dass er nicht widerstehen konnte, und führte ihn in eine unterirdische Höhle. Da sah er, wie tausend und tausend Lichter in unübersehbaren Reihen brannten, einige gross, andere halbgross, andere klein. Jeden Augenblick verloschen einige, und andere brannten wieder auf, also dass die Flämmchen in beständigem Wechsel zu sein schienen. „Siehst du,“ sprach der Tod, „das sind die Lebenslichter der Menschen. Die grossen gehören Kindern, die halbgrossen Eheleuten in ihren besten Jahren, die kleinen gehören Greisen. Doch auch Kinder und junge Leute haben oft nur ein kleines Lichtchen.“ – „Zeige mir mein Lebenslicht,“ sagte der Arzt und meinte, es wäre noch recht gross. Der Tod deutete auf ein kleines Endchen, das eben auszugehen drohte, und sagte: „Siehst du, da ist es.“ – „Ach, lieber Pate,“ sagte der erschrockene Arzt, „zündet mir ein neues an, tut mir’s zuliebe, damit ich König werde und Gemahl der schönen Königstochter.“ – „Ich kann nicht,“ antwortete der Tod, „erst muss eins verlöschen, eh’ ein neues anbrennt.“ – „So setzt das alte auf ein neues, das gleich fortbrennt, wenn jenes zu Ende ist,“ bat der Arzt. Der Tod stellte sich, als ob er seinen Wunsch erfüllen wollte, langte ein frisches, grosses Licht herbei, aber weil er sich rächen wollte, versah er’s beim Umstecken absichtlich, und das Stöckchen fiel um und verlosch. Alsbald sank der Arzt zu Boden und war nun selbst in die Hand des Todes geraten."
+        ]
+    }
+}

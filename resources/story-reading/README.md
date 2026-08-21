@@ -222,7 +222,7 @@ structured field is introduced in a future schema version rather than ad hoc.
 
 ## Artefact inventory
 
-There are currently 45 complete schema-valid artefacts:
+There are currently 75 complete schema-valid artefacts:
 
 | Story ID | Editorial status |
 | --- | --- |
@@ -271,6 +271,36 @@ There are currently 45 complete schema-valid artefacts:
 | [`strohhalm-kohle-und-bohne`](strohhalm-kohle-und-bohne.reading.json) | machine validated; human review pending |
 | [`von-dem-fischer-und-seiner-frau`](von-dem-fischer-und-seiner-frau.reading.json) | machine validated; human review pending |
 | [`die-weisse-schlange`](die-weisse-schlange.reading.json) | machine validated; human review pending |
+| [`die-drei-schlangenblaetter`](die-drei-schlangenblaetter.reading.json) | machine validated; human review pending |
+| [`der-gute-handel`](der-gute-handel.reading.json) | machine validated; human review pending |
+| [`das-lumpengesindel`](das-lumpengesindel.reading.json) | machine validated; human review pending |
+| [`der-wunderliche-spielmann`](der-wunderliche-spielmann.reading.json) | machine validated; human review pending |
+| [`der-liebste-roland`](der-liebste-roland.reading.json) | machine validated; human review pending |
+| [`die-sechs-schwaene`](die-sechs-schwaene.reading.json) | machine validated; human review pending |
+| [`fitchers-vogel`](fitchers-vogel.reading.json) | machine validated; human review pending |
+| [`daumerlings-wanderschaft`](daumerlings-wanderschaft.reading.json) | machine validated; human review pending |
+| [`der-raeuberbraeutigam`](der-raeuberbraeutigam.reading.json) | machine validated; human review pending |
+| [`das-maedchen-ohne-haende`](das-maedchen-ohne-haende.reading.json) | machine validated; human review pending |
+| [`herr-korbes`](herr-korbes.reading.json) | machine validated; human review pending |
+| [`der-hund-und-der-sperling`](der-hund-und-der-sperling.reading.json) | machine validated; human review pending |
+| [`fundevogel`](fundevogel.reading.json) | machine validated; human review pending |
+| [`der-gevatter-tod`](der-gevatter-tod.reading.json) | machine validated; human review pending |
+| [`der-herr-gevatter`](der-herr-gevatter.reading.json) | machine validated; human review pending |
+| [`der-schneider-im-himmel`](der-schneider-im-himmel.reading.json) | machine validated; human review pending |
+| [`die-drei-sprachen`](die-drei-sprachen.reading.json) | machine validated; human review pending |
+| [`laeuschen-und-floehchen`](laeuschen-und-floehchen.reading.json) | machine validated; human review pending |
+| [`der-singende-knochen`](der-singende-knochen.reading.json) | machine validated; human review pending |
+| [`von-dem-maeuschen-voegelchen-und-der-bratwurst`](von-dem-maeuschen-voegelchen-und-der-bratwurst.reading.json) | machine validated; human review pending |
+| [`das-raetsel`](das-raetsel.reading.json) | machine validated; human review pending |
+| [`das-erdmaennchen`](das-erdmaennchen.reading.json) | machine validated; human review pending |
+| [`das-singende-springende-loeweneckerchen`](das-singende-springende-loeweneckerchen.reading.json) | machine validated; human review pending |
+| [`der-arme-und-der-reiche`](der-arme-und-der-reiche.reading.json) | machine validated; human review pending |
+| [`die-goldkinder`](die-goldkinder.reading.json) | machine validated; human review pending |
+| [`die-nelke`](die-nelke.reading.json) | machine validated; human review pending |
+| [`sechse-kommen-durch-die-ganze-welt`](sechse-kommen-durch-die-ganze-welt.reading.json) | machine validated; human review pending |
+| [`der-fuchs-und-die-gaense`](der-fuchs-und-die-gaense.reading.json) | machine validated; human review pending |
+| [`die-wassernixe`](die-wassernixe.reading.json) | machine validated; human review pending |
+| [`der-alte-grossvater-und-der-enkel`](der-alte-grossvater-und-der-enkel.reading.json) | machine validated; human review pending |
 
 Schema validity and exact source fidelity are technical guarantees. They are
 not substitutes for editorial sign-off. Consumers that need reviewed material

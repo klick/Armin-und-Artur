@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {"id":"die-drei-schlangenblaetter","entryId":43,"entryUid":"3195a0ee-4b30-44b4-a119-00368a008d0f","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-drei-schlangenbl%C3%A4tter","language":"de"},
+    {"id":"der-gute-handel","entryId":55,"entryUid":"e4ccfc56-068d-40c2-884f-8faa3c0bf92e","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-gute-handel","language":"de"},
+    {"id":"das-lumpengesindel","entryId":69,"entryUid":"e0c38d06-0604-4e7b-aca8-07f0fe66849c","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-lumpengesindel","language":"de"},
+    {"id":"der-wunderliche-spielmann","entryId":71,"entryUid":"b4ca103c-cf55-4bff-bcc4-b8b1afabc325","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-wunderliche-spielmann","language":"de"},
+    {"id":"der-liebste-roland","entryId":85,"entryUid":"88887be8-d90f-4daa-af17-3396367a124e","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-liebste-roland","language":"de"},
+    {"id":"die-sechs-schwaene","entryId":95,"entryUid":"a4d43218-3cd9-476b-a8dc-9956db09a606","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-sechs-schw%C3%A4ne","language":"de"},
+    {"id":"fitchers-vogel","entryId":99,"entryUid":"387df3f0-ccbf-403d-aa0b-a0830d0dd371","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/fitchers-vogel","language":"de"},
+    {"id":"daumerlings-wanderschaft","entryId":101,"entryUid":"e082b010-cb35-4eab-a1f5-99b4e8cb6a6a","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/daumerlings-wanderschaft","language":"de"},
+    {"id":"der-raeuberbraeutigam","entryId":103,"entryUid":"0b1af8aa-b762-4d5c-baef-320ad34c434c","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-r%C3%A4uberbr%C3%A4utigam","language":"de"},
+    {"id":"das-maedchen-ohne-haende","entryId":113,"entryUid":"9c52c907-5552-4d1a-9e29-c87ba6ef47cc","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-m%C3%A4dchen-ohne-h%C3%A4nde","language":"de"}
+  ]
+}

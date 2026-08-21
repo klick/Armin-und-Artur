@@ -87,14 +87,53 @@ The fourth ten-item batch adds:
 - `frau-trude`
 - `der-alte-sultan`
 
+The fifth ten-item batch adds:
+
+- `die-drei-schlangenblaetter`
+- `der-gute-handel`
+- `das-lumpengesindel`
+- `der-wunderliche-spielmann`
+- `der-liebste-roland`
+- `die-sechs-schwaene`
+- `fitchers-vogel`
+- `daumerlings-wanderschaft`
+- `der-raeuberbraeutigam`
+- `das-maedchen-ohne-haende`
+
+The sixth ten-item batch adds:
+
+- `herr-korbes`
+- `der-hund-und-der-sperling`
+- `fundevogel`
+- `der-gevatter-tod`
+- `der-herr-gevatter`
+- `der-schneider-im-himmel`
+- `die-drei-sprachen`
+- `laeuschen-und-floehchen`
+- `der-singende-knochen`
+- `von-dem-maeuschen-voegelchen-und-der-bratwurst`
+
+The seventh ten-item batch adds:
+
+- `das-raetsel`
+- `das-erdmaennchen`
+- `das-singende-springende-loeweneckerchen`
+- `der-arme-und-der-reiche`
+- `die-goldkinder`
+- `die-nelke`
+- `sechse-kommen-durch-die-ganze-welt`
+- `der-fuchs-und-die-gaense`
+- `die-wassernixe`
+- `der-alte-grossvater-und-der-enkel`
+
 They live under `resources/story-reading/`, outside the public web root. Every
 artefact is the vendor-neutral source from which future SSML, ElevenLabs, or
 other provider payloads are derived.
 
-Together, the 45 artefacts cover short narration, sustained dialogue, large
+Together, the 75 artefacts cover short narration, sustained dialogue, large
 character sets, verse-like speech and longer scene structures, all directed as
 single-narrator audiobook readings. All retain the published
-text; their normalisations are declared inside each artefact. All four
+text; their normalisations are declared inside each artefact. All seven
 ten-item batches are machine-validated and cross-checked, while their
 `providerNotes.editorialStatus` deliberately remains
 `machine_validated_pending_editorial_review` until human editorial sign-off.

@@ -1,0 +1,162 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "der-alte-grossvater-und-der-enkel",
+        "title": "Der alte Grossvater und der Enkel",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/der-alte-grossvater-und-der-enkel",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 187,
+        "entryUid": "08ba30b6-919d-4e60-8fcb-5b22570769af",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "grandfather": {
+            "label": "Alter Grossvater",
+            "voiceProfile": "older_male_frail",
+            "delivery": "Leise, müde und würdevoll."
+        },
+        "son": {
+            "label": "Sohn",
+            "voiceProfile": "adult_male_impatient",
+            "delivery": "Zunächst hart, später beschämt."
+        },
+        "daughter_in_law": {
+            "label": "Schwiegertochter",
+            "voiceProfile": "adult_female_impatient",
+            "delivery": "Zunächst ungehalten, später gerührt."
+        },
+        "grandson": {
+            "label": "Kleiner Enkel",
+            "voiceProfile": "young_male_innocent",
+            "delivery": "Unbefangen, ernst und freundlich."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war einmal ein steinalter Mann, dem waren die Augen trüb geworden, die Ohren taub, und die Kn",
+            "title": "Abseits vom Tisch",
+            "speakers": [
+                "narrator",
+                "grandfather",
+                "son",
+                "daughter_in_law"
+            ],
+            "direction": "Still und mit Mitgefühl, ohne Anklage erzählen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Einmal auch konnten seine zittrigen Hände das Schüsselchen nicht festhalten, es fiel zur Erde un",
+            "title": "Das hölzerne Tröglein",
+            "speakers": [
+                "narrator",
+                "grandfather",
+                "son",
+                "daughter_in_law",
+                "grandson"
+            ],
+            "direction": "Die Worte des Kindes schlicht; Einsicht und Versöhnung warm schliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Grossvater, Sohn, Schwiegertochter oder Enkel. Schweigen und Seufzen des Grossvaters nicht durch erfundene Sätze ergänzen.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war einmal ein steinalter Mann, dem waren die Augen trüb geworden, die Ohren taub, und die Knie zitterten ihm. Wenn er nun bei Tische sass und den Löffel kaum halten konnte, schüttete er Suppe auf das Tischtuch, und es floss ihm auch etwas wieder aus dem Mund. Sein Sohn und dessen Frau ekelten sich davor, und deswegen musste sich der alte Grossvater endlich hinter den Ofen in die Ecke setzen, und sie gaben ihm sein Essen in ein irdenes Schüsselchen und noch dazu nicht einmal satt; da sah er betrübt nach dem Tisch und die Augen wurden ihm nass.",
+            "Einmal auch konnten seine zittrigen Hände das Schüsselchen nicht festhalten, es fiel zur Erde und zerbrach. Die junge Frau schalt, er sagte nichts und seufzte nur. Da kaufte sie ihm ein hölzernes Schüsselchen für ein paar Heller, daraus musste er nun essen. Wie sie da so sitzen, so trägt der kleine Enkel von vier Jahren auf der Erde kleine Brettlein zusammen. „Was machst du da?“ fragte der Vater. „Ich mache ein Tröglein,“ antwortete das Kind, „daraus sollen Vater und Mutter essen, wenn ich gross bin.“ Da sahen sich Mann und Frau eine Weile an Fingen endlich an zu weinen, holten alsofort den alten Grossvater an den Tisch und liessen ihn von nun an immer mitessen, sagten auch nichts, wenn er ein wenig verschüttete."
+        ]
+    }
+}

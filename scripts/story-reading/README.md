@@ -92,11 +92,13 @@ used to approve publishable artefacts because it skips JSON Schema validation.
 php tests/storyapi/test-story-reading-batch.php
 ```
 
-The fourth ten-item collection is pinned in
-`batch-10-2026-08-20-3.manifest.json`. Its generated sources and scaffolds use
-`storage/runtime/story-reading-batch-2026-08-20-3/`; both remain ignored and
-must be regenerated from Craft when the published source changes. Earlier
-batch manifests remain tracked as reproducible provenance for their artefacts.
+The fourth through seventh ten-item collections are pinned in
+`batch-10-2026-08-20-3.manifest.json` through
+`batch-10-2026-08-20-6.manifest.json`. Their generated sources and scaffolds
+use the matching `storage/runtime/story-reading-batch-2026-08-20-N/`
+directories; all remain ignored and must be regenerated from Craft when the
+published source changes. Earlier batch manifests remain tracked as
+reproducible provenance for their artefacts.
 
 Only `scripts/story-reading/` is intentionally tracked; unrelated local files
 below `scripts/` remain ignored.

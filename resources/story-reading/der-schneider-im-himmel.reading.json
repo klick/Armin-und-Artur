@@ -1,0 +1,172 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "der-schneider-im-himmel",
+        "title": "Der Schneider im Himmel",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/der-schneider-im-himmel",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 139,
+        "entryUid": "532b0677-3377-4530-862b-ba5a16a24887",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "tailor": {
+            "label": "Schneider",
+            "voiceProfile": "adult_male_nosy",
+            "delivery": "Neugierig, selbstgerecht und später kleinlaut."
+        },
+        "saint_peter": {
+            "label": "Heiliger Petrus",
+            "voiceProfile": "older_male_kind",
+            "delivery": "Freundlich, warnend und pflichtbewusst."
+        },
+        "god": {
+            "label": "Lieber Gott",
+            "voiceProfile": "older_male_authoritative",
+            "delivery": "Ruhig, gerecht und bestimmt."
+        },
+        "washerwoman": {
+            "label": "Alte Frau",
+            "voiceProfile": "older_female_working",
+            "delivery": "Nur über die Handlung, ohne erfundene Rede."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es trug sich zu, dass der liebe Gott an einem schönen Tag in dem himmlischen Garten sich ergehen",
+            "title": "Der Schneider am Himmelstor",
+            "speakers": [
+                "narrator",
+                "tailor",
+                "saint_peter"
+            ],
+            "direction": "Leicht und freundlich eröffnen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Als der Herr und Meister mit dem himmlischen Gefolge wieder zurückkam, ward er zwar den Schneide",
+            "title": "Der verbotene Stuhl",
+            "speakers": [
+                "narrator",
+                "tailor",
+                "washerwoman"
+            ],
+            "direction": "Die Neugier und den voreiligen Richterspruch trocken erzählen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Petrus musste den Schneider wieder hinaus vor den Himmel bringen, und weil er zerrissene Schuhe ",
+            "title": "Gottes Urteil",
+            "speakers": [
+                "narrator",
+                "tailor",
+                "god",
+                "saint_peter"
+            ],
+            "direction": "Die Zurechtweisung ruhig und klar, nicht spöttisch schliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Schneider, Petrus oder Gott. Die beobachtete alte Frau erhält keine erfundene Rede.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es trug sich zu, dass der liebe Gott an einem schönen Tag in dem himmlischen Garten sich ergehen wollte und alle Apostel und Heiligen mitnahm, also dass niemand mehr im Himmel blieb als der heilige Petrus. Der Herr hatte ihm befohlen, während seiner Abwesenheit niemand einzulassen, Petrus stand also an der Pforte und hielt Wache. Nicht lange, so klopfte jemand an. Petrus fragte, wer da wäre und was er wollte. „Ich bin ein armer ehrlicher Schneider,“ antwortete eine feine Stimme, „der um Einlass bittet.“ – „Ja, ehrlich,“ sagte Petrus, „wie der Dieb am Galgen, du hast lange Finger gemacht und den Leuten das Tuch abgezwickt. Du kommst nicht in den Himmel, der Herr hat mir verboten, solange er draussen wäre, irgend jemand einzulassen. “ – „Seid doch barmherzig,“ rief der Schneider, „kleine Flicklappen, die von selbst vom Tisch herabfallen, sind nicht gestohlen und nicht der Rede wert. Seht, ich hinke und habe von dem Weg daher Blasen an den Füssen, ich kann unmöglich wieder umkehren. Lasst mich nur hinein, ich will alle schlechte Arbeit tun. Ich will die Kinder tragen, die Windeln waschen, die Bänke, darauf sie gespielt haben, säubern und abwischen und ihre zerrissenen Kleider flicken. “ Der heilige Petrus liess sich aus Mitleiden bewegen und öffnete dem lahmen Schneider die Himmelspforte so weit, dass er mit seinem dürren Leib hineinschlüpfen konnte. Er musste sich in einen Winkel hinter die Türe setzen und sollte sich da still und ruhig verhalten, damit ihn der Herr, wenn er zurückkäme, nicht bemerkte und zornig würde. Der Schneider gehorchte, als aber der heilige Petrus einmal zur Türe hinaustrat, stand er auf, ging voll Neugierde in allen Winkeln des Himmels herum und besah sich die Gelegenheit. Endlich kam er zu einem Platz, da standen viele schöne und köstliche Stühle und in der Mitte ein ganz goldener Sessel, der mit glänzenden Edelsteinen besetzt war; er war auch viel höher als die übrigen Stühle, und ein goldener Fussschemel stand davor. Es war aber der Sessel, auf welchem der Herr sass, wenn er daheim war, und von welchem er alles sehen konnte, was auf Erden geschah. Der Schneider stand still und sah den Sessel eine gute Weile an, denn er gefiel ihm besser als alles andere. Endlich konnte er den Vorwitz nicht bezähmen, stieg hinauf und setzte sich in den Sessel. Da sah er alles, was auf Erden geschah, und bemerkte eine alte hässliche Frau, die an einem Bach stand und wusch und zwei Schleier heimlich beiseite tat. Der Schneider erzürnte sich bei diesem Anblicke so sehr, dass er den goldenen Fussschemel ergriff und durch den Himmel auf die Erde hinab nach der alten Diebin warf. Da er aber den Schemel nicht wieder heraufholen konnte, so schlich er sich sachte aus dem Sessel weg, setzte sich an seinen Platz hinter die Türe und tat, als ob er kein Wasser getrübt hätte.",
+            "Als der Herr und Meister mit dem himmlischen Gefolge wieder zurückkam, ward er zwar den Schneider hinter der Türe nicht gewahr, als er sich aber auf seinen Sessel setzte, mangelte der Schemel. Er fragte den heiligen Petrus, wo der Schemel hingekommen wäre, der wusste es nicht. Da fragte er weiter, ob er jemand hereingelassen hätte. „Ich weiss niemand,“ antwortete Petrus, „der dagewesen wäre, als ein lahmer Schneider, der noch hinter der Türe sitzt.“ Da liess der Herr den Schneider vor sich treten und fragte ihn, ob er den Schemel weggenommen und wo er ihn hingetan hätte. „O Herr,“ antwortete der Schneider freudig, „ich habe ihn im Zorne hinab auf die Erde nach einem alten Weibe geworfen, das ich bei der Wäsche zwei Schleier stehlen sah.“ – „O du Schalk,“ sprach der Herr, „wollt ich richten, wie du richtest, wie meinst du, dass es dir schon längst ergangen wäre? Ich hätte schon lange keine Stühle, Bänke, Sessel, ja keine Ofengabel mehr hier gehabt, sondern alles nach den Sündern hinabgeworfen. Fortan kannst du nicht mehr im Himmel bleiben, sondern musst wieder hinaus vor das Tor: da sieh zu, wo du hinkommst. Hier soll niemand strafen denn ich allein, der Herr.“",
+            "Petrus musste den Schneider wieder hinaus vor den Himmel bringen, und weil er zerrissene Schuhe hatte und die Füsse voll Blasen, nahm er einen Stock in die Hand und zog nach Warteinweil, wo die frommen Soldaten sitzen und sich lustig machen."
+        ]
+    }
+}

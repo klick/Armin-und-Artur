@@ -1,0 +1,203 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-drei-sprachen",
+        "title": "Die drei Sprachen",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-drei-sprachen",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 141,
+        "entryUid": "1b70d30b-893b-447a-a024-cb607fb871a3",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "young_count": {
+            "label": "Junger Graf",
+            "voiceProfile": "young_adult_male_gentle",
+            "delivery": "Still, aufmerksam und lernbereit."
+        },
+        "father": {
+            "label": "Alter Graf / Vater",
+            "voiceProfile": "older_male_impatient",
+            "delivery": "Enttäuscht, streng und später fern."
+        },
+        "masters": {
+            "label": "Drei Meister",
+            "voiceProfile": "adult_male_group_calm",
+            "delivery": "Ihre Berichte knapp und sachlich."
+        },
+        "dogs": {
+            "label": "Hunde",
+            "voiceProfile": "animal_group_grave",
+            "delivery": "Die verstandene Botschaft nur leicht färben."
+        },
+        "frogs": {
+            "label": "Frösche",
+            "voiceProfile": "animal_group_cryptic",
+            "delivery": "Leise und rätselhaft färben."
+        },
+        "doves": {
+            "label": "Tauben",
+            "voiceProfile": "animal_group_luminous",
+            "delivery": "Sanft und feierlich färben."
+        },
+        "cardinals": {
+            "label": "Kardinäle",
+            "voiceProfile": "older_male_group_formal",
+            "delivery": "Würdevoll und prüfend."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "In der Schweiz lebte einmal ein alter Graf, der hatte nur einen einzigen Sohn, aber er war dumm ",
+            "title": "Drei Jahre bei drei Meistern",
+            "speakers": [
+                "narrator",
+                "young_count",
+                "father",
+                "masters",
+                "dogs",
+                "frogs",
+                "doves"
+            ],
+            "direction": "Lernwege und Enttäuschung klar gliedern."
+        },
+        {
+            "id": "s02",
+            "anchor": "Der Junge ward hingebracht, und blieb bei diesem Meister auch ein Jahr. Als er zurückkam, fragte",
+            "title": "Die wilden Hunde",
+            "speakers": [
+                "narrator",
+                "young_count",
+                "dogs"
+            ],
+            "direction": "Das Verstehen der Tiere ruhig als Gabe erzählen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Der Jüngling wanderte fort und kam nach einiger Zeit zu einer Burg, wo er um Nachtherberge bat. ",
+            "title": "Auf dem Weg nach Rom",
+            "speakers": [
+                "narrator",
+                "young_count",
+                "frogs"
+            ],
+            "direction": "Die Vorhersage leise und rätselhaft halten."
+        },
+        {
+            "id": "s04",
+            "anchor": "Über eine Zeit kam es ihm in den Sinn, er wollte nach Rom fahren. Auf dem Weg kam er an einem Su",
+            "title": "Die Wahl zum Papst",
+            "speakers": [
+                "narrator",
+                "young_count",
+                "doves",
+                "cardinals"
+            ],
+            "direction": "Feierlich, aber ohne zusätzliche religiöse Auslegung schliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt jungem Grafen, Vater, Meistern, Hunden, Fröschen, Tauben oder Kardinälen nach der umgebenden Zuschreibung.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "In der Schweiz lebte einmal ein alter Graf, der hatte nur einen einzigen Sohn, aber er war dumm und konnte nichts lernen. Da sprach der Vater: „Höre, mein Sohn, ich bringe nichts in deinen Kopf, ich mag es anfangen, wie ich will. Du musst fort von hier, ich will dich einem berühmten Meister übergeben. Der soll es mit dir versuchen.“ Der Junge ward in eine fremde Stadt geschickt, und blieb bei dem Meister ein ganzes Jahr. Nach Verlauf dieser Zeit kam er wieder heim, und der Vater fragte: „Nun mein Sohn, was hast du gelernt?“ – „Vater, ich habe gelernt, was die Hunde bellen,“ antwortete er. „Dass Gott erbarm!“ rief der Vater aus, „ist das alles, was du gelernt hast? ich will dich in eine andere Stadt zu einem andern Meister tun.“",
+            "Der Junge ward hingebracht, und blieb bei diesem Meister auch ein Jahr. Als er zurückkam, fragte der Vater wiederum: „Mein Sohn, was hast du gelernt?“ Er antwortete: „Vater, ich habe gelernt, was die Vögli sprechen.“ Da geriet der Vater in Zorn und sprach: „O, du verlorner Mensch, hast die kostbare Zeit hingebracht und nichts gelernt, und schämst dich nicht, mir unter die Augen zu treten? Ich will dich zu einem dritten Meister schicken, aber lernst du auch diesmal nichts, so will ich dein Vater nicht mehr sein.“ Der Sohn blieb bei dem dritten Meister ebenfalls ein ganzes Jahr, und als er wieder nach Haus kam und der Vater fragte: „Mein Sohn, was hast du gelernt?“ so antwortete er: „Lieber Vater, ich habe dieses Jahr gelernt, was die Frösche quaken.“ Da geriet der Vater in den höchsten Zorn, sprang auf, rief seine Leute herbei und sprach: „Dieser Mensch ist mein Sohn nicht mehr, ich stosse ihn aus und gebiete euch, dass ihr ihn hinaus in den Wald führt und ihm das Leben nehmt.“ Sie führten ihn hinaus, aber als sie ihn töten sollten, konnten sie nicht vor Mitleiden und liessen ihn gehen. Sie schnitten einem Reh Augen und Zunge aus, damit sie dem Alten die Wahrzeichen bringen konnten.",
+            "Der Jüngling wanderte fort und kam nach einiger Zeit zu einer Burg, wo er um Nachtherberge bat. „Ja,“ sagte der Burgherr, „wenn du da unten in dem alten Turm übernachten willst, so gehe hin, aber ich warne dich, es ist lebensgefährlich, denn er ist voll wilder Hunde, die bellen und heulen in einem fort, und zu gewissen Stunden müssen sie einen Menschen ausgeliefert haben, den sie auch gleich verzehren.“ Die ganze Gegend war darüber in Trauer und Leid, und konnte doch niemand helfen. Der Jüngling aber war ohne Furcht und sprach: „Lasst mich nur hinab zu den bellenden Hunden, und gebt mir etwas, das ich ihnen vorwerfen kann; mir sollen sie nichts tun.“ Weil er nun selber nicht anders wollte, so gaben sie ihm etwas Essen für die wilden Tiere und brachten ihn hinab zu dem Turm. Als er hineintrat, bellten ihn die Hunde nicht an, wedelten mit den Schwänzen ganz freundlich um ihn herum, frassen, was er ihnen hinsetzte, und krümmten ihm kein Härchen. Am andern Morgen kam er zu jedermanns Erstaunen gesund und unversehrt wieder zum Vorschein und sagte zu dem Burgherrn: „Die Hunde haben mir in ihrer Sprache offenbart, warum sie da hausen und dem Lande Schaden bringen. Sie sind verwünscht und müssen einen grossen Schatz hüten, der unten im Turme liegt, und kommen nicht eher zur Ruhe, als bis er gehoben ist, und wie dies geschehen muss, das habe ich ebenfalls aus ihren Reden vernommen.“ Da freuten sich alle, die das hörten, und der Burgherr sagte, er wollte ihn an Sohnes Statt annehmen, wenn er es glücklich vollbrächte. Er stieg wieder hinab, und weil er wusste, was er zu tun hatte, so vollführte er es und brachte eine mit Gold gefüllte Truhe herauf. Das Geheul der wilden Hunde ward von nun an nicht mehr gehört, sie waren verschwunden, und das Land war von der Plage befreit.",
+            "Über eine Zeit kam es ihm in den Sinn, er wollte nach Rom fahren. Auf dem Weg kam er an einem Sumpf vorbei, in welchem Frösche sassen und quakten. Er horchte auf, und als er vernahm, was sie sprachen, ward er ganz nachdenklich und traurig. Endlich langte er in Rom an, da war gerade der Papst gestorben, und unter den Kardinälen grosser Zweifel, wen sie zum Nachfolger bestimmen sollten. Sie wurden zuletzt einig, derjenige sollte zum Papst erwählt werden, an dem sich ein göttliches Wunderzeichen offenbaren würde. Und als das eben beschlossen war, in demselben Augenblick trat der junge Graf in die Kirche, und plötzlich flogen zwei schneeweisse Tauben auf seine beiden Schultern und blieben da sitzen. Die Geistlichkeit erkannte darin das Zeichen Gottes und fragte ihn auf der Stelle, ob er Papst werden wolle. Er war unschlüssig und wusste nicht, ob er dessen würdig wäre, aber die Tauben redeten ihm zu, dass er es tun möchte, und endlich sagte er „Ja.“ Da wurde er gesalbt und geweiht, und damit war eingetroffen, was er von den Fröschen unterwegs gehört und was ihn so bestürzt gemacht hatte, dass er der heilige Papst werden sollte. Darauf musste er eine Messe singen und wusste kein Wort davon, aber die zwei Tauben sassen stets auf seinen Schultern und sagten ihm alles ins Ohr."
+        ]
+    }
+}

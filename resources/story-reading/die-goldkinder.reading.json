@@ -1,0 +1,244 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-goldkinder",
+        "title": "Die Goldkinder",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-goldkinder",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 167,
+        "entryUid": "60e12b00-31a8-41f1-8e01-acd7f61085be",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "fisherman": {
+            "label": "Armer Fischer",
+            "voiceProfile": "adult_male_plain",
+            "delivery": "Bescheiden, zögernd und später väterlich."
+        },
+        "wife": {
+            "label": "Frau des Fischers",
+            "voiceProfile": "adult_female_discontent",
+            "delivery": "Ungeduldig und auf materiellen Vorteil bedacht."
+        },
+        "goldfish": {
+            "label": "Goldfisch",
+            "voiceProfile": "calm_mysterious",
+            "delivery": "Ruhig, wissend und knapp."
+        },
+        "gold_brothers": {
+            "label": "Goldene Zwillingsbrüder",
+            "voiceProfile": "young_adult_male_group_brave",
+            "delivery": "Brüderlich, mutig und klar unterscheidbar durch den Kontext."
+        },
+        "bride": {
+            "label": "Braut",
+            "voiceProfile": "young_female_loving",
+            "delivery": "Liebevoll und besorgt."
+        },
+        "witch": {
+            "label": "Hexe",
+            "voiceProfile": "older_female_deceptive",
+            "delivery": "Falsch freundlich und gefährlich."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war ein armer Mann und eine arme Frau, die hatten nichts als eine kleine Hütte und nährten si",
+            "title": "Der goldene Fisch",
+            "speakers": [
+                "narrator",
+                "fisherman",
+                "goldfish"
+            ],
+            "direction": "Armut und Wunder ruhig beginnen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Nun warf der Mann den wunderbaren Fisch wieder ins Wasser und ging heim. Wo aber sonst seine Hüt",
+            "title": "Das erste Schloss",
+            "speakers": [
+                "narrator",
+                "fisherman",
+                "wife"
+            ],
+            "direction": "Unzufriedenheit ohne Spott zeigen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Der Mann musste von vornen anfangen, seinem Gewerbe nachgehen und fischen. Das Glück wollte es a",
+            "title": "Der Fisch kehrt wieder",
+            "speakers": [
+                "narrator",
+                "fisherman",
+                "wife",
+                "goldfish"
+            ],
+            "direction": "Die Wiederholung klar staffeln."
+        },
+        {
+            "id": "s04",
+            "anchor": "Der Mann ging wieder fischen, und über eine Zeit, so wars nicht anders, er holte den Goldfisch z",
+            "title": "Die Goldkinder",
+            "speakers": [
+                "narrator",
+                "fisherman",
+                "wife",
+                "goldfish"
+            ],
+            "direction": "Die Verwandlung märchenhaft und sachlich erzählen."
+        },
+        {
+            "id": "s05",
+            "anchor": "Die Kinder wuchsen heran, wurden gross und schön, und die Lilien und Pferde wuchsen mit ihnen. D",
+            "title": "Die Brüder ziehen fort",
+            "speakers": [
+                "narrator",
+                "gold_brothers",
+                "fisherman"
+            ],
+            "direction": "Abschied warm und abenteuerlich gestalten."
+        },
+        {
+            "id": "s06",
+            "anchor": "Eines Tages kam er in ein Dorf, darin sah er ein Mädchen, das war so schön, dass er nicht glaubt",
+            "title": "Die Braut",
+            "speakers": [
+                "narrator",
+                "gold_brothers",
+                "bride"
+            ],
+            "direction": "Liebe und Warnung sanft tragen."
+        },
+        {
+            "id": "s07",
+            "anchor": "Dem Goldkind aber träumte, er zöge hinaus auf die Jagd nach einem prächtigen Hirsch, und als er ",
+            "title": "Die Jagd und die Hexe",
+            "speakers": [
+                "narrator",
+                "gold_brothers",
+                "bride",
+                "witch"
+            ],
+            "direction": "Gefahr langsam und klar entfalten."
+        },
+        {
+            "id": "s08",
+            "anchor": "Daheim aber stand der andere Bruder bei den Goldlilien, als plötzlich eine davon umfiel. „Ach Go",
+            "title": "Der Bruder kommt zu Hilfe",
+            "speakers": [
+                "narrator",
+                "gold_brothers",
+                "witch"
+            ],
+            "direction": "Rettung und Heimkehr hell schliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Fischer, Frau, Goldfisch, einem der Goldbrüder, Braut oder Hexe. Die Brüder teilen eine Gruppenrolle; der Textkontext entscheidet, welcher gemeint ist.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war ein armer Mann und eine arme Frau, die hatten nichts als eine kleine Hütte und nährten sich vom Fischfang, und es ging bei ihnen von Hand zu Mund. Es geschah aber, als der Mann eines Tages beim Wasser sass und sein Netz auswarf, dass er einen Fisch herauszog, der ganz golden war. Und als er den Fisch voll Verwunderung betrachtete, hub dieser an zu reden und sprach „hör, Fischer, wirfst du mich wieder hinab ins Wasser, so mach ich deine kleine Hütte zu einem prächtigen Schloss.“ Da antwortete der Fischer „was hilft mir ein Schloss, wenn ich nichts zu essen habe?“ Sprach der Goldfisch weiter „auch dafür soll gesorgt sein, es wird ein Schrank im Schloss sein, wenn du den aufschliessest, so stehen Schüsseln darin mit den schönsten Speisen, soviel du dir wünschest.“ „Wenn das ist,“ sprach der Mann, „so kann ich dir wohl den Gefallen tun.“ „Ja,“ sagte der Fisch, „es ist aber die Bedingung dabei, dass du keinem Menschen auf der Welt, wer es auch immer sein mag, entdeckst, woher dein Glück gekommen ist; sprichst du ein einziges Wort, so ist alles vorbei.“",
+            "Nun warf der Mann den wunderbaren Fisch wieder ins Wasser und ging heim. Wo aber sonst seine Hütte gestanden hatte, da stand jetzt ein grosses Schloss. Da machte er ein paar Augen, trat hinein und sah seine Frau, mit schönen Kleidern geputzt, in einer prächtigen Stube sitzen. Sie war ganz vergnügt und sprach „Mann, wie ist das auf einmal gekommen? das gefällt mir wohl.“ „Ja,“ sagte der Mann, „es gefällt mir auch, aber es hungert mich auch gewaltig, gibt mir erst was zu essen.“ Sprach die Frau „ich habe nichts und weiss in dem neuen Haus nichts zu finden.“ „Das hat keine Not,“ sagte der Mann, „dort sehe ich einen grossen Schrank, den schliess einmal auf.“ Wie sie den Schrank aufschloss, stand da Kuchen, Fleisch, Obst, Wein, und lachte einen ordentlich an. Da rief die Frau voll Freude „Herz, was begehrst du nun?“ und sie setzten sich nieder, assen und tranken zusammen. Wie sie satt waren, fragte die Frau „aber, Mann, wo kommt all dieser Reichtum her?“ „Ach,“ antwortete er, „frage mich nicht darum, ich darf dirs nicht sagen, wenn ichs jemand entdecke, so ist unser Glück wieder dahin.“ „Gut,“ sprach sie, „wenn ichs nicht wissen soll, so begehr ichs auch nicht zu wissen.“ Das war aber ihr Ernst nicht, es liess ihr keine Ruhe Tag und Nacht, und sie quälte und stachelte den Mann so lang, bis er in der Ungeduld heraussagte, es käme alles von einem wunderbaren goldenen Fisch, den er gefangen und dafür wieder in Freiheit gelassen hätte. Und wies heraus war, da verschwand alsbald das schöne Schloss mit dem Schrank, und sie sassen wieder in der alten Fischerhütte.",
+            "Der Mann musste von vornen anfangen, seinem Gewerbe nachgehen und fischen. Das Glück wollte es aber, dass er den goldenen Fisch noch einmal herauszog. „Hör,“ sprach der Fisch, „wenn du mich wieder ins Wasser wirfst, so will ich dir noch einmal das Schloss mit dem Schrank voll Gesottenem und Gebratenem zurückgeben; nur halt dich fest und verrat beileibe nicht, von wem dus hast, sonst gehts wieder verloren.“ „Ich will mich schon hüten,“ antwortete der Fischer und warf den Fisch in sein Wasser hinab. Daheim war nun alles wieder in voriger Herrlichkeit, und die Frau war in einer Freude über das Glück; aber die Neugierde liess ihr doch keine Ruhe, dass sie nach ein paar Tagen wieder zu fragen anhub, wie es zugegangen wäre, und wie er es angefangen habe. Der Mann schwieg eine Zeitlang still dazu, endlich aber machte sie ihn so ärgerlich, dass er herausplatzte und das Geheimnis verriet. In dem Augenblick verschwand das Schloss, und sie sassen wieder in der alten Hütte. „Nun hast dus,“ sagte der Mann, „jetzt können wir wieder am Hungertuch nagen.“ „Ach,“ sprach die Frau, „ich will den Reichtum lieber nicht, wenn ich nicht weiss, von wem er kommt; sonst habe ich doch keine Ruhe.“",
+            "Der Mann ging wieder fischen, und über eine Zeit, so wars nicht anders, er holte den Goldfisch zum drittenmal heraus. „Hör,“ sprach der Fisch, „ich sehe wohl, ich soll immer wieder in deine Hände fallen, nimm mich mit nach Haus und zerschneid mich in sechs Stücke, zwei davon gib deiner Frau zu essen, zwei deinem Pferd, und zwei leg in die Erde, so wirst du Segen davon haben.“ Der Mann nahm den Fisch mit nach Haus und tat, wie er ihm gesagt hatte. Es geschah aber, dass aus den zwei Stücken, die in die Erde gelegt waren, zwei goldene Lilien aufwuchsen, und dass das Pferd zwei goldene Füllen bekam, und des Fischers Frau zwei Kinder gebar, die ganz golden waren.",
+            "Die Kinder wuchsen heran, wurden gross und schön, und die Lilien und Pferde wuchsen mit ihnen. Da sprachen sie „Vater, wir wollen uns auf unsere goldenen Rosse setzen und in die Welt ausziehen.“ Er aber antwortete betrübt „wie will ichs aushalten, wenn ihr fortzieht und ich nicht weiss, wies euch geht?“ Da sagten sie „die zwei goldenen Lilien bleiben hier, daran könnt ihr sehen, wies uns geht: sind sie frisch, so sind wir gesund; sind sie welk, so sind wir krank; fallen sie um, so sind wir tot.“ Sie ritten fort und kamen in ein Wirtshaus, darin waren viele Leute, und als sie die zwei Goldkinder erblickten, fingen sie an zu lachen und zu spotten. Wie der eine das Gespött hörte, so schämte er sich, wollte nicht in die Welt, kehrte um und kam wieder heim zu seinem Vater. Der andere aber ritt fort und gelangte zu einem grossen Wald. Und als er hineinreiten wollte, sprachen die Leute „es geht nicht, dass Ihr durchreitet, der Wald ist voll Räuber, die werden übel mit Euch umgehen, und gar, wenn sie sehen, dass Ihr golden seid und Euer Pferd auch, so werden sie Euch totschlagen.“ Er aber liess sich nicht schrecken und sprach „ich muss und soll hindurch.“ Da nahm er Bärenfelle und überzog sich und sein Pferd damit, dass nichts mehr vom Gold zu sehen war, und ritt getrost in den Wald hinein. Als er ein wenig fortgeritten war, so hörte er es in den Gebüschen rauschen und vernahm Stimmen, die miteinander sprachen. Von der einen Seite riefs „da ist einer,“ von der andern aber „lass ihn laufen, das ist ein Bärenhäuter, und arm und kahl wie eine Kirchenmaus, was sollen wir mit ihm anfangen!“ So ritt das Goldkind glücklich durch den Wald, und geschah ihm kein Leid.",
+            "Eines Tages kam er in ein Dorf, darin sah er ein Mädchen, das war so schön, dass er nicht glaubte, es könnte ein schöneres auf der Welt sein. Und weil er eine so grosse Liebe zu ihm empfand, so ging er zu ihm und sagte „ich habe dich von ganzem Herzen lieb, willst du meine Frau werden?“ Er gefiel aber auch dem Mädchen so sehr, dass es einwilligte und sprach „ja, ich will deine Frau werden und dir treu sein mein lebelang.“ Nun hielten sie Hochzeit zusammen, und als sie eben in der grössten Freude waren, kam der Vater der Braut heim, und als er sah, dass seine Tochter Hochzeit machte, verwunderte er sich und sprach „wo ist der Bräutigam?“ Sie zeigten ihm das Goldkind, das hatte aber noch seine Bärenfelle um. Da sprach der Vater zornig „nimmermehr soll ein Bärenhäuter meine Tochter haben,“ und wollte ihn ermorden. Da bat ihn die Braut, was sie konnte, und sprach „er ist einmal mein Mann, und ich habe ihn von Herzen lieb,“ bis er sich endlich besänftigen liess. Doch aber kams ihm nicht aus den Gedanken, so dass er am andern Morgen früh aufstand und seiner Tochter Mann sehen wollte, ob er ein gemeiner und verlumpter Bettler wäre. Wie er aber hinblickte, sah er einen herrlichen, goldenen Mann im Bette, und die abgeworfenen Bärenfelle lagen auf der Erde. Da ging er zurück und dachte „wie gut ists, dass ich meinen Zorn bändigte, ich hätte eine grosse Missetat begangen.“",
+            "Dem Goldkind aber träumte, er zöge hinaus auf die Jagd nach einem prächtigen Hirsch, und als er am Morgen erwachte, sprach er zu seiner Braut „ich will hinaus auf die Jagd.“ Ihr war angst, und sie bat ihn dazubleiben und sagte „leicht kann dir ein grosses Unglück begegnen,“ aber er antwortete „ich soll und muss fort.“ Da stand er auf und zog hinaus in den Wald, und gar nicht lange, so hielt auch ein stolzer Hirsch vor ihm, ganz nach seinem Traume. Er legte an und wollte ihn schiessen, aber der Hirsch sprang fort. Da jagte er ihm nach, über Graben und durch Gebüsche, und ward nicht müde den ganzen Tag; am Abend aber verschwand der Hirsch vor seinen Augen. Und als das Goldkind sich umsah, so stand er vor einem kleinen Haus, darin sass eine Hexe. Er klopfte an, und ein Mütterchen kam heraus und fragte „was wollt Ihr so spät noch mitten in dem grossen Wald?“ Er sprach „habt Ihr keinen Hirsch gesehen?“ „Ja,“ antwortete sie, „den Hirsch kenn ich wohl,“ und ein Hündlein, das mit ihr aus dem Haus gekommen war, bellte dabei den Mann heftig an. „Willst du schweigen, du böse Kröte,“ sprach er, „sonst schiess ich dich tot.“ Da rief die Hexe zornig „was, mein Hündchen willst du töten!“ und verwandelte ihn alsbald, dass er dalag wie ein Stein, und seine Braut erwartete ihn umsonst und dachte „es ist gewiss eingetroffen, was mir so angst machte und so schwer auf dem Herzen lag.“",
+            "Daheim aber stand der andere Bruder bei den Goldlilien, als plötzlich eine davon umfiel. „Ach Gott,“ sprach er, „meinem Bruder ist ein grosses Unglück zugestossen, ich muss fort, ob ich ihn vielleicht errette.“ Da sagte der Vater „bleib hier, wenn ich auch dich verliere, was soll ich anfangen?“ Er aber antwortete „ich soll und muss fort.“ Da setzte er sich auf sein goldenes Pferd und ritt fort und kam in den grossen Wald, wo sein Bruder lag und Stein war. Die alte Hexe kam aus ihrem Haus, rief ihn an und wollte ihn auch berücken, aber er näherte sich nicht, sondern sprach „ich schiesse dich nieder, wenn du meinen Bruder nicht wieder lebendig machst.“ Sie rührte, so ungerne sies auch tat, den Stein mit dem Finger an, und alsbald erhielt er sein menschliches Leben zurück. Die beiden Goldkinder aber freuten sich, als sie sich wiedersahen, küssten und herzten sich, und ritten zusammen fort aus dem Wald, der eine zu seiner Braut, der andere heim zu seinem Vater. Da sprach der Vater „ich wusste wohl, dass du deinen Bruder erlöst hattest, denn die goldene Lilie ist auf einmal wieder aufgestanden und hat fortgeblüht.“ Nun lebten sie vergnügt, und es ging ihnen wohl bis an ihr Ende."
+        ]
+    }
+}
