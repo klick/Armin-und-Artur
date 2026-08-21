@@ -1,0 +1,143 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-wassernixe",
+        "title": "Die Wassernixe",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-wassernixe",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 183,
+        "entryUid": "8c0ce0f6-831d-467e-b997-4ce43c0d99e1",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "brother": {
+            "label": "Brüderchen",
+            "voiceProfile": "young_male_brave",
+            "delivery": "Mutig, treu und aufmerksam."
+        },
+        "sister": {
+            "label": "Schwesterchen",
+            "voiceProfile": "young_female_clever",
+            "delivery": "Klug, mutig und entschlossen."
+        },
+        "water_nixie": {
+            "label": "Wassernixe",
+            "voiceProfile": "adult_female_cold",
+            "delivery": "Herrisch, verfolgend und unheimlich ruhig."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Ein Brüderchen und ein Schwesterchen spielten an einem Brunnen, und wie sie so spielten, plumpst",
+            "title": "Gefangen bei der Wassernixe",
+            "speakers": [
+                "narrator",
+                "brother",
+                "sister",
+                "water_nixie"
+            ],
+            "direction": "Den langen Einzelabsatz in klaren gedanklichen Abschnitten lesen; Flucht und Verwandlungen nicht beschleunigen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Brüderchen, Schwesterchen oder Wassernixe. Alle Verwandlungen und Gegenstände bleiben Erzählprosa.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Ein Brüderchen und ein Schwesterchen spielten an einem Brunnen, und wie sie so spielten, plumpsten sie beide hinein. Da war unten eine Wassernixe, die sprach „jezt habe ich euch, jetzt sollt ihr mir brav arbeiten,“ und führte sie mit sich fort. Dem Mädchen gab sie verwirrten garstigen Flachs zu spinnen, und es musste Wasser in ein hohles Fass schleppen, der Junge aber sollte einen Baum mit einer stumpfen Axt hauen, und nichts zu essen bekamen sie als steinharte Klösse. Da wurden zuletzt die Kinder so ungeduldig, dass sie warteten, bis eines Sonntags die Nixe in der Kirche war, da entflohen sie. Und als die Kirche vorbei war, sah die Nixe, dass die Vögel ausgeflogen waren, und setzte ihnen mit grossen Sprüngen nach. Die Kinder erblickten sie aber von weitem, und das Mädchen warf eine Bürste hinter sich, das gab einen grossen Bürstenberg mit tausend und tausend Stacheln, über den die Nixe mit grosser Müh klettern musste; endlich aber kam sie doch hinüber. Wie das die Kinder sahen, warf der Knabe einen Kamm hinter sich, das gab einen grossen Kammberg mit tausendmal tausend Zinken, aber die Nixe wusste sich daran festzuhalten und kam zuletzt doch drüber. Da warf das Mädchen einen Spiegel hinterwärts, welches einen Spiegelberg gab, der war so glatt, so glatt, dass sie unmöglich darüber konnte. Da dachte sie „ich will geschwind nach Haus gehen und meine Axt holen und den Spiegelberg entzweihauen.“ Bis sie aber wiederkam und das Glas aufgehauen hatte, waren die Kinder längst weit entflohen, und die Wassernixe musste sich wieder in ihren Brunnen trollen."
+        ]
+    }
+}

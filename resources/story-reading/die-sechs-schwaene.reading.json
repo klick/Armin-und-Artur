@@ -1,0 +1,252 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-sechs-schwaene",
+        "title": "Die sechs Schwäne",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-sechs-schw%C3%A4ne",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 95,
+        "entryUid": "a4d43218-3cd9-476b-a8dc-9956db09a606",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "father_king": {
+            "label": "Vater und König",
+            "voiceProfile": "adult_male_concerned",
+            "delivery": "Besorgt, liebevoll und später gerecht."
+        },
+        "witch": {
+            "label": "Alte Frau / Hexe",
+            "voiceProfile": "older_female_calculating",
+            "delivery": "Ruhig fordernd und wissend."
+        },
+        "stepmother": {
+            "label": "Stiefmutter",
+            "voiceProfile": "adult_female_cold",
+            "delivery": "Misstrauisch und heimlich."
+        },
+        "sister": {
+            "label": "Schwester / junge Königin",
+            "voiceProfile": "young_female_steadfast",
+            "delivery": "Zärtlich, mutig und während des Schweigens innerlich ruhig."
+        },
+        "brothers": {
+            "label": "Sechs Brüder",
+            "voiceProfile": "young_male_group_gentle",
+            "delivery": "Brüderlich, warnend und dankbar."
+        },
+        "forest_king": {
+            "label": "König im Wald",
+            "voiceProfile": "adult_male_noble",
+            "delivery": "Behutsam, geduldig und vertrauend."
+        },
+        "king_mother": {
+            "label": "Mutter des Waldkönigs",
+            "voiceProfile": "older_female_accusing",
+            "delivery": "Kalt, argwöhnisch und anklagend."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es jagte einmal ein König in einem grossen Wald und jagte einem Wild so eifrig nach, dass ihm ni",
+            "title": "Der König verirrt sich",
+            "speakers": [
+                "narrator",
+                "father_king",
+                "witch"
+            ],
+            "direction": "Dunklen Wald und Handel ruhig eröffnen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Der König war schon einmal verheiratet gewesen und hatte von seiner ersten Gemahlin sieben Kinde",
+            "title": "Die sieben Kinder",
+            "speakers": [
+                "narrator",
+                "father_king",
+                "stepmother",
+                "sister",
+                "brothers"
+            ],
+            "direction": "Die familiäre Gefahr klar, nicht melodramatisch erzählen."
+        },
+        {
+            "id": "s03",
+            "anchor": "„Wo sind deine Brüder?“ fragte der König.",
+            "title": "Die Brüder sind verschwunden",
+            "speakers": [
+                "narrator",
+                "father_king",
+                "sister"
+            ],
+            "direction": "Trauer und Entschluss sanft tragen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Das arme Mädchen dachte: Meines Bleibens ist nicht länger hier, ich will gehen und meine Brüder ",
+            "title": "Die Hütte im Wald",
+            "speakers": [
+                "narrator",
+                "sister",
+                "brothers"
+            ],
+            "direction": "Das kurze Wiedersehen warm und dringlich lesen."
+        },
+        {
+            "id": "s05",
+            "anchor": "Das Mädchen aber fasste den festen Entschluss, seine Brüder zu erlösen, und wenn es auch sein Le",
+            "title": "Sechs Jahre Schweigen",
+            "speakers": [
+                "narrator",
+                "sister",
+                "forest_king"
+            ],
+            "direction": "Geduld und Ausdauer langsam erzählen."
+        },
+        {
+            "id": "s06",
+            "anchor": "Der König aber hatte eine böse Mutter, die war unzufrieden mit dieser Heirat und sprach schlecht",
+            "title": "Die Anklagen",
+            "speakers": [
+                "narrator",
+                "forest_king",
+                "king_mother",
+                "sister"
+            ],
+            "direction": "Die Härte nüchtern, die Stummheit würdevoll halten."
+        },
+        {
+            "id": "s07",
+            "anchor": "Als der Tag herankam, wo das Urteil sollte vollzogen werden, da war zugleich der letzte Tag von ",
+            "title": "Der letzte Tag",
+            "speakers": [
+                "narrator",
+                "sister",
+                "brothers",
+                "forest_king",
+                "king_mother"
+            ],
+            "direction": "Befreiung hell, Auflösung ernst und klar schliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Vaterkönig, Hexe, Stiefmutter, Schwester, Brüdern, Waldkönig oder dessen Mutter. Während des Schweigegebots erhält die Schwester keine erfundene Rede.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es jagte einmal ein König in einem grossen Wald und jagte einem Wild so eifrig nach, dass ihm niemand von seinen Leuten folgen konnte. Als der Abend herankam, hielt er still und blickte um sich, da sah er, dass er sich verirrt hatte. Er suchte einen Ausgang, konnte aber keinen finden. Da sah er eine alte Frau mit wackelndem Kopfe, die auf ihn zukam; das war aber eine Hexe.",
+            "„Liebe Frau,“ sprach er zu ihr, „könnt Ihr mir nicht den Weg durch den Wald zeigen?“",
+            "„O ja, Herr König,“ antwortete sie, „das kann ich wohl, aber es ist eine Bedingung dabei, wenn Ihr die nicht erfüllt, so kommt Ihr nimmermehr aus dem Wald und müsst darin Hungers sterben.“",
+            "„Was ist das für eine Bedingung?“ fragte der König.",
+            "„Ich habe eine Tochter,“ sagte die Alte, „die so schön ist, wie Ihr eine auf der Welt finden könnt, und wohl verdient, Eure Gemahlin zu werden, wollt Ihr die zur Frau Königin machen, so zeige ich Euch den Weg aus dem Walde.“",
+            "Der König in der Angst seines Herzens willigte ein, und die Alte führte ihn zu ihrem Häuschen, wo ihre Tochter beim Feuer sass. Sie empfing den König, als wenn sie ihn erwartet hätte, und er sah wohl, dass sie sehr schön war, aber sie gefiel ihm doch nicht, und er konnte sie ohne heimliches Grausen nicht ansehen. Nachdem er das Mädchen zu sich aufs Pferd gehoben hatte, zeigte ihm die Alte den Weg, und der König gelangte wieder in sein königliches Schloss, wo die Hochzeit gefeiert wurde.",
+            "Der König war schon einmal verheiratet gewesen und hatte von seiner ersten Gemahlin sieben Kinder, sechs Knaben und ein Mädchen, die er über alles auf der Welt liebte. Weil er nun fürchtete, die Stiefmutter möchte sie nicht gut behandeln und ihnen gar ein Leid antun, so brachte er sie in ein einsames Schloss, das mitten in einem Walde stand. Es lag so verborgen und der Weg war so schwer zu finden, dass er ihn selbst nicht gefunden hätte, wenn ihm nicht eine weise Frau ein Knäuel Garn von wunderbarer Eigenschaft geschenkt hätte; wenn er das vor sich hinwarf, so wickelte es sich von selbst los und zeigte ihm den Weg.",
+            "Der König ging aber so oft hinaus zu seinen lieben Kindern, dass der Königin seine Abwesenheit auffiel; sie ward neugierig und wollte wissen, was er draussen ganz allein in dem Walde zu schaffen habe. Sie gab seinen Dienern viel Geld, und die verrieten ihr das Geheimnis und sagten ihr auch von dem Knäuel, das allein den Weg zeigen könnte. Nun hatte sie keine Ruhe, bis sie herausgebracht hatte, wo der König das Knäuel aufbewahrte, und dann machte sie kleine weissseidene Hemdchen, und da sie von ihrer Mutter die Hexenkünste gelernt hatte, so nähete sie einen Zauber hinein. Und als der König einmal auf die Jagd geritten war, nahm sie die Hemdchen und ging in den Wald, und das Knäuel zeigte ihr den Weg. Die Kinder, die aus der Ferne jemand kommen sahen, meinten, ihr lieber Vater käme zu ihnen, und sprangen ihm voll Freude entgegen. Da warf sie über ein jedes eins von den Hemdchen, und wie das ihren Leib berührt hatte, verwandelten sie sich in Schwäne und flogen über den Wald hinweg. Die Königin ging ganz vergnügt nach Haus und glaubte ihre Stiefkinder los zu sein, aber das Mädchen war ihr mit den Brüdern nicht entgegengelaufen, und sie wusste nichts von ihm. Anderntags kam der König und wollte seine Kinder besuchen, er fand aber niemand als das Mädchen.",
+            "„Wo sind deine Brüder?“ fragte der König.",
+            "„Ach, lieber Vater,“ antwortete es, „die sind fort und haben mich allein zurückgelassen,“ und erzählte ihm, dass es aus seinem Fensterlein mit angesehen habe, wie seine Brüder als Schwäne über den Wald weggeflogen wären, und zeigte ihm die Federn, die sie in dem Hof hatten fallen lassen und die es aufgelesen hatte. Der König trauerte, aber er dachte nicht, dass die Königin die böse Tat vollbracht hätte, und weil er fürchtete, das Mädchen würde ihm auch geraubt, so wollte er es mit fortnehmen. Aber es hatte Angst vor der Stiefmutter und bat den König, dass es nur noch diese Nacht im Waldschloss bleiben dürfte.",
+            "Das arme Mädchen dachte: Meines Bleibens ist nicht länger hier, ich will gehen und meine Brüder suchen. Und als die Nacht kam, entfloh es und ging gerade in den Wald hinein. Es ging die ganze Nacht durch und auch den andern Tag in einem fort, bis es vor Müdigkeit nicht weiterkonnte. Da sah es eine Wildhütte, stieg hinauf und fand eine Stube mit sechs kleinen Betten, aber es getraute nicht, sich in eins zu legen, sondern kroch unter eins, legte sich auf den harten Boden und wollte die Nacht da zubringen. Als aber die Sonne bald untergehen wollte, hörte es ein Rauschen und sah, dass sechs Schwäne zum Fenster hereingeflogen kamen. Sie setzten sich auf den Boden und bliesen einander an und bliesen sich alle Federn ab, und ihre Schwanenhaut streifte sich ab wie ein Hemd. Da sah sie das Mädchen an und erkannte ihre Brüder, freute sich und kroch unter dem Bett hervor. Die Brüder waren nicht weniger erfreut, als sie ihr Schwesterchen erblickten, aber ihre Freude war von kurzer Dauer.",
+            "„Hier kann deines Bleibens nicht sein,“ sprachen sie zu ihm, „das ist eine Herberge für Räuber, wenn die heimkommen und finden dich, so ermorden sie dich.“",
+            "„Könnt ihr mich denn nicht beschützen?“ fragte das Schwesterchen.",
+            "„Nein,“ antworteten sie, „denn wir können nur eine Viertelstunde lang jeden Abend unsere Schwanenhaut ablegen und haben in dieser Zeit unsere menschliche Gestalt, aber dann werden wir wieder in Schwäne verwandelt.“ Das Schwesterchen weinte und sagte: „Könnt ihr denn nicht erlöst werden?“",
+            "„Ach nein,“ antworteten sie, „die Bedingungen sind zu schwer. Du darfst sechs Jahre lang nicht sprechen und nicht lachen und musst in der Zeit sechs Hemdchen für uns aus Sternenblumen zusammennähen. Kommt ein einziges Wort aus deinem Munde, so ist alle Arbeit verloren.“ Und als die Brüder das gesprochen hatten, war die Viertelstunde herum, und sie flogen als Schwäne wieder zum Fenster hinaus.",
+            "Das Mädchen aber fasste den festen Entschluss, seine Brüder zu erlösen, und wenn es auch sein Leben kostete. Es verliess die Wildhütte, ging mitten in den Wald und setzte sich auf einen Baum und brachte da die Nacht zu. Am andern Morgen ging es aus, sammelte Sternblumen und fing an zu nähen. Reden konnte es mit niemand, und zum Lachen hatte es keine Lust; es sass da und sah nur auf seine Arbeit. Als es schon lange Zeit da zugebracht hatte, geschah es, dass der König des Landes in dem Wald jagte und seine Jäger zu dem Baum kamen, auf welchem das Mädchen sass. Sie riefen es an und sagten: „Wer bist du?“ Es gab aber keine Antwort. „Komm herab zu uns,“ sagten sie, „wir wollen dir nichts zuleid tun.“ Es schüttelte bloss mit dem Kopf. Als sie es weiter mit Fragen bedrängten, so warf es ihnen seine goldene Halskette herab und dachte sie damit zufriedenzustellen. Sie liessen aber nicht ab, da warf es ihnen seinen Gürtel herab, und als auch dies nicht half, seine Strumpfbänder, und nach und nach alles, was es anhatte und entbehren konnte, so dass es nichts mehr als sein Hemdlein behielt. Die Jäger liessen sich aber damit nicht abweisen, stiegen auf den Baum, hoben das Mädchen herab und führten es vor den König.",
+            "Der König fragte: „Wer bist du? Was machst du auf dem Baum?“ Aber es antwortete nicht. Er fragte es in allen Sprachen, die er wusste, aber es blieb stumm wie ein Fisch. Weil es aber so schön war, so ward des Königs Herz gerührt, und er fasste eine grosse Liebe zu ihm. Er tat ihm seinen Mantel um, nahm es vor sich aufs Pferd und brachte es in sein Schloss. Da liess er ihm reiche Kleider antun, und es strahlte in seiner Schönheit wie der helle Tag, aber es war kein Wort aus ihm herauszubringen. Er setzte es bei Tisch an seine Seite, und seine bescheidenen Mienen und seine Sittsamkeit gefielen ihm so sehr, dass er sprach: „Diese begehre ich zu heiraten und keine andere auf der Welt,“ und nach einigen Tagen vermählte er sich mit ihr.",
+            "Der König aber hatte eine böse Mutter, die war unzufrieden mit dieser Heirat und sprach schlecht von der jungen Königin. „Wer weiss, wo die Dirne her ist,“ sagte sie, „die nicht reden kann: Sie ist eines Königs nicht würdig“ Über ein Jahr, als die Königin das erste Kind zur Welt brachte, nahm es ihr die Alte weg und bestrich ihr im Schlafe den Mund mit Blut. Da ging sie zum König und klagte sie an, sie wäre eine Menschenfresserin. Der König wollte es nicht glauben und litt nicht, dass man ihr ein Leid antat. Sie sass aber beständig und nähete an den Hemden und achtete auf nichts anderes. Das nächste Mal, als sie wieder einen schönen Knaben gebar, übte die falsche Schwiegermutter denselben Betrug aus, aber der König konnte sich nicht entschliessen, ihren Reden Glauben beizumessen. Er sprach: „Sie ist zu fromm und gut, als dass sie so etwas tun könnte, wäre sie nicht stumm und könnte sie sich verteidigen, so würde ihre Unschuld an den Tag kommen.“ Als aber das dritte Mal die Alte das neugeborne Kind raubte und die Königin anklagte, die kein Wort zu ihrer Verteidigung vorbrachte, so konnte der König nicht anders, er musste sie dem Gericht übergeben, und das verurteilte sie, den Tod durchs Feuer zu erleiden.",
+            "Als der Tag herankam, wo das Urteil sollte vollzogen werden, da war zugleich der letzte Tag von den sechs Jahren herum, in welchen sie nicht sprechen und nicht lachen durfte, und sie hatte ihre lieben Brüder aus der Macht des Zaubers befreit. Die sechs Hemden waren fertig geworden, nur dass an dem letzten der linke Ärmel noch fehlte. Als sie nun zum Scheiterhaufen geführt wurde, legte sie die Hemden auf ihren Arm, und als sie oben stand und das Feuer eben sollte angezündet werden, so schaute sie sich um, da kamen sechs Schwäne durch die Luft dahergezogen. Da sah sie, dass ihre Erlösung nahte, und ihr Herz regte sich in Freude.",
+            "Die Schwäne rauschten zu ihr her und senkten sich herab, so dass sie ihnen die Hemden überwerfen konnte; und wie sie davon berührt wurden, fielen die Schwanenhäute ab, und ihre Brüder standen leibhaftig vor ihr und waren frisch und schön; nur dem Jüngsten fehlte der linke Arm, und er hatte dafür einen Schwanenflügel am Rücken. Sie herzten und küssten sich, und die Königin ging zu dem Könige, der ganz bestürzt war, und fing an zu reden und sagte: „Liebster Gemahl, nun darf ich sprechen und dir offenbaren, dass ich unschuldig bin und fälschlich angeklagt,“ und erzählte ihm von dem Betrug der Alten, die ihre drei Kinder weggenommen und verborgen hätte. Da wurden sie zu grosser Freude des Königs herbeigeholt, und die böse Schwiegermutter wurde zur Strafe auf den Scheiterhaufen gebunden und zu Asche verbrannt. Der König aber und die Königin mit ihren sechs Brüdern lebten lange Jahre in Glück und Frieden."
+        ]
+    }
+}

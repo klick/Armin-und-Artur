@@ -1,0 +1,185 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "das-lumpengesindel",
+        "title": "Das Lumpengesindel",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/das-lumpengesindel",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 69,
+        "entryUid": "e0c38d06-0604-4e7b-aca8-07f0fe66849c",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "rooster": {
+            "label": "Hähnchen",
+            "voiceProfile": "small_male_bold",
+            "delivery": "Unternehmungslustig, keck und bestimmend."
+        },
+        "hen": {
+            "label": "Hühnchen",
+            "voiceProfile": "small_female_bright",
+            "delivery": "Zustimmend und lebhaft."
+        },
+        "duck": {
+            "label": "Ente",
+            "voiceProfile": "creature_indignant",
+            "delivery": "Entrüstet, später zur Arbeit gedrängt."
+        },
+        "pin": {
+            "label": "Stecknadel",
+            "voiceProfile": "tiny_precise",
+            "delivery": "Kurz, dünn und höflich färben."
+        },
+        "needle": {
+            "label": "Nähnadel",
+            "voiceProfile": "tiny_precise",
+            "delivery": "Kurz, dünn und höflich färben."
+        },
+        "innkeeper": {
+            "label": "Wirt",
+            "voiceProfile": "adult_male_suspicious",
+            "delivery": "Zögernd, später verärgert."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Hähnchen sprach zu Hühnchen: „Jetzt ist die Zeit, wo die Nüsse reif werden, da wollen wir zusamm",
+            "title": "Auf dem Nussberg",
+            "speakers": [
+                "narrator",
+                "rooster",
+                "hen"
+            ],
+            "direction": "Leicht und heiter beginnen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Wie sie so stritten, schnatterte eine Ente daher: „Ihr Diebesvolk, wer hat euch geheissen, in me",
+            "title": "Die Ente wird eingespannt",
+            "speakers": [
+                "narrator",
+                "rooster",
+                "duck"
+            ],
+            "direction": "Den Streit klar, doch nicht schrill gestalten."
+        },
+        {
+            "id": "s03",
+            "anchor": "Hähnchen, da es magere Leute waren, die nicht viel Platz einnahmen, liess sie beide einsteigen, ",
+            "title": "Im Wirtshaus",
+            "speakers": [
+                "narrator",
+                "rooster",
+                "hen",
+                "duck",
+                "pin",
+                "needle",
+                "innkeeper"
+            ],
+            "direction": "Die vielen kleinen Streiche übersichtlich und trocken erzählen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Hähnchen, Hühnchen, Ente, Stecknadel, Nähnadel oder Wirt. Alle Ding- und Tierfiguren bleiben Färbungen einer einzigen Erzählerstimme.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Hähnchen sprach zu Hühnchen: „Jetzt ist die Zeit, wo die Nüsse reif werden, da wollen wir zusammen auf den Berg gehen und uns einmal recht satt essen, ehe sie das Eichhorn alle wegholt.“ – „Ja,“ antwortete das Hühnchen, „komm, wir wollen uns eine Lust miteinander machen.“ Da gingen sie zusammen fort auf den Berg, und weil es ein heller Tag war, blieben sie bis zum Abend. Nun weiss ich nicht, ob sie sich so dick gegessen hatten, oder ob sie übermütig geworden waren, kurz, sie wollten nicht zu Fuss nach Haus gehen, und das Hähnchen musste einen kleinen Wagen von Nussschalen bauen. Als er fertig war, setzte sich Hühnchen hinein und sagte zum Hähnchen: „Du kannst dich nur immer vorspannen.“ – „Du kommst mir recht,“ sagte das Hähnchen, „lieber geh ich zu Fuss nach Haus, als dass ich mich vorspannen lasse. Nein, so haben wir nicht gewettet. Kutscher will ich wohl sein und auf dem Bock sitzen, aber selbst ziehen, das tu ich nicht.“",
+            "Wie sie so stritten, schnatterte eine Ente daher: „Ihr Diebesvolk, wer hat euch geheissen, in meinen Nussberg gehen? Wartet, das soll euch schlecht bekommen!“ Ging also mit aufgesperrtem Schnabel auf das Hähnchen los. Aber Hähnchen war auch nicht faul und stieg der Ente tüchtig zu Leib, endlich hackte es mit seinen Sporn so gewaltig auf sie los, dass sie um Gnade bat und sich gern zur Strafe vor den Wagen spannen liess. Hähnchen setzte sich nun auf den Bock und war Kutscher, und darauf ging es in einem Jagen: „Ente, lauf zu, was du kannst!“ Als sie ein Stück Weges gefahren waren, begegneten sie zwei Fussgängern, einer Stecknadel und einer Nähnadel. Sie riefen: „Halt halt!“ und sagten, es würde gleich stichdunkel werden, da könnten sie keinen Schritt weiter, auch wäre es so schmutzig auf der Strasse, ob sie nicht ein wenig einsitzen könnten, sie wären auf der Schneiderherberge vor dem Tore gewesen und hätten sich beim Bier verspätet.",
+            "Hähnchen, da es magere Leute waren, die nicht viel Platz einnahmen, liess sie beide einsteigen, doch mussten sie versprechen, ihm und seinem Hühnchen nicht auf die Füsse zu treten. Spät abends kamen sie zu einem Wirtshaus, und weil sie die Nacht nicht weiterfahren wollten, die Ente auch nicht gut zu Fuss war und von einer Seite auf die andere fiel, so kehrten sie ein. Der Wirt machte anfangs viel Einwendungen, sein Haus wäre schon voll, gedachte auch wohl, es möchte keine vornehme Herrschaft sein, endlich aber, da sie süsse Reden führten, er solle das Ei haben, welches das Hühnchen unterwegs gelegt hatte, auch die Ente behalten, die alle Tage eins legte, so sagte er endlich, sie möchten die Nacht über bleiben. Nun liessen sie wieder frisch auftragen und lebten in Saus und Braus. Frühmorgens, als es dämmerte und noch alles schlief, weckte Hähnchen das Hühnchen, holte das Ei, pickte es auf, und sie verzehrten es zusammen; die Schalen aber warfen sie auf den Feuerherd. Dann gingen sie zu der Nähnadel, die noch schlief, packten sie beim Kopf und steckten sie in das Sesselkissen des Wirts, die Stecknadel aber in sein Handtuch, endlich flogen sie, mir nichts, dir nichts, über die Heide voran. Die Ente, die gern unter freiem Himmel schlief und im Hof geblieben war, hörte sie fortschnurren, machte sich munter und fand einen Bach, auf dem sie hinabschwamm; und das ging geschwinder als vor dem Wagen. Ein paar Stunden später machte sich erst der Wirt aus den Federn, wusch sich und wollte sich am Handtuch abtrocknen, da fuhr ihm die Stecknadel über das Gesicht und machte ihm einen roten Strich von einem Ohr zum andern. Dann ging er in die Küche und wollte sich eine Pfeife anstecken. Wie er aber an den Herd kam, sprangen ihm die Eierschalen in die Augen. „Heute morgen will mir alles an meinen Kopf,“ sagte er, und liess sich verdriesslich auf seinen Grossvaterstuhl nieder; aber geschwind fuhr er wieder in die Höhe und schrie: „Auweh!“ Denn die Nähnadel hatte ihn noch schlimmer und nicht in den Kopf gestochen. Nun war er vollends böse und hatte Verdacht auf die Gäste, die so spät gestern abend gekommen waren. Und wie er ging und sich nach ihnen umsah, waren sie fort. Da tat er einen Schwur, kein Lumpengesindel mehr in sein Haus zu nehmen, das viel verzehrt, nichts bezahlt und zum Dank noch obendrein Schabernack treibt."
+        ]
+    }
+}

@@ -1,0 +1,192 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "herr-korbes",
+        "title": "Herr Korbes",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/herr-korbes",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 121,
+        "entryUid": "251e5a27-5ab9-4713-b5a7-64168323c369",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "rooster": {
+            "label": "Hähnchen",
+            "voiceProfile": "small_male_bold",
+            "delivery": "Fröhlich, führend und rhythmisch."
+        },
+        "hen": {
+            "label": "Hühnchen",
+            "voiceProfile": "small_female_bright",
+            "delivery": "Lebhaft und reisefreudig."
+        },
+        "cat": {
+            "label": "Katze",
+            "voiceProfile": "creature_curious",
+            "delivery": "Höflich und neugierig."
+        },
+        "companions": {
+            "label": "Mühlstein, Ei, Ente und Nadeln",
+            "voiceProfile": "small_group_varied",
+            "delivery": "Nur als Handlungsträger derselben Erzählerstimme färben."
+        },
+        "herr_korbes": {
+            "label": "Herr Korbes",
+            "voiceProfile": "adult_male_irritable",
+            "delivery": "Stumm handelnd; Erschrecken knapp über den Erzähler tragen."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war einmal ein Hühnchen und ein Hähnchen, die wollten zusammen eine Reise machen. Da baute da",
+            "title": "Die Reise beginnt",
+            "speakers": [
+                "narrator",
+                "rooster",
+                "hen",
+                "cat"
+            ],
+            "direction": "Heiter und leicht beginnen."
+        },
+        {
+            "id": "s02",
+            "anchor": "„als hinaus nach des Herrn Korbes seinem Haus.“",
+            "title": "Das Reiseziel",
+            "speakers": [
+                "narrator",
+                "rooster"
+            ],
+            "direction": "Den kurzen Versanschluss ohne Pause an die vorige Frage binden."
+        },
+        {
+            "id": "s03",
+            "anchor": "„Nehmt mich mit,“ sprach die Katze. Hähnchen antwortete „recht gerne, setz dich hinten auf, dass",
+            "title": "Die Katze fährt mit",
+            "speakers": [
+                "narrator",
+                "cat",
+                "rooster"
+            ],
+            "direction": "Den Dialog freundlich und rhythmisch sprechen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Danach kam ein Mühlstein, dann ein Ei, dann eine Ente, dann eine Stecknadel, und zuletzt eine Nä",
+            "title": "Im Haus des Herrn Korbes",
+            "speakers": [
+                "narrator",
+                "rooster",
+                "hen",
+                "cat",
+                "companions",
+                "herr_korbes"
+            ],
+            "direction": "Die Kette der Missgeschicke klar und trocken erzählen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede gehört Hähnchen oder Katze; Hühnchen und die übrigen Reisegefährten werden aus der Handlung gefärbt. Herr Korbes erhält keine erfundene Rede.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war einmal ein Hühnchen und ein Hähnchen, die wollten zusammen eine Reise machen. Da baute das Hähnchen einen schönen Wagen, der vier rote Räder hatte, und spannte vier Mäuschen davor. Das Hühnchen setzte sich mit dem Hähnchen auf, und sie fuhren miteinander fort. Nicht lange, so begegnete ihnen eine Katze, die sprach „wo wollt ihr hin?“, Hähnchen antwortete",
+            "„als hinaus nach des Herrn Korbes seinem Haus.“",
+            "„Nehmt mich mit,“ sprach die Katze. Hähnchen antwortete „recht gerne, setz dich hinten auf, dass du vornen nicht herabfällst.",
+            "Nehmt euch wohl in acht, dass ihr meine roten Räderchen nicht schmutzig macht. Ihr Räderchen, schweift, ihr Mäuschen, pfeift, als hinaus nach des Herrn Korbes seinem Haus.“",
+            "Danach kam ein Mühlstein, dann ein Ei, dann eine Ente, dann eine Stecknadel, und zuletzt eine Nähnadel, die setzten sich auch alle auf den Wagen und fuhren mit. Wie sie aber zu des Herrn Korbes Haus kamen, so war der Herr Korbes nicht da. Die Mäuschen fuhren den Wagen in die Scheune, das Hühnchen flog mit dem Hähnchen auf eine Stange, die Katze setzte sich ins Kamin, die Ente in die Bornstange, das Ei wickelte sich ins Handtuch, die Stecknadel steckte sich ins Stuhlkissen, die Nähnadel sprang aufs Bett mitten ins Kopfkissen, und der Mühlstein legte sich über die Türe. Da kam der Herr Korbes nach Haus, ging ans Kamin und wollte Feuer anmachen, da warf ihm die Katze das Gesicht voll Asche. Er lief geschwind in die Küche und wollte sich abwaschen, da spritzte ihm die Ente Wasser ins Gesicht. Er wollte sich an dem Handtuch abtrocknen, aber das Ei rollte ihm entgegen, zerbrach und klebte ihm die Augen zu. Er wollte sich ruhen und setzte sich auf den Stuhl, da stach ihn die Stecknadel. Er geriet in Zorn, und warf sich aufs Bett, wie er aber den Kopf aufs Kissen niederlegte, stach ihn die Nähnadel, so dass er aufschrie und ganz wütend in die weite Welt laufen wollte. Wie er aber an die Haustür kam, sprang der Mühlstein herunter und schlug ihn tot. Der Herr Korbes muss ein recht böser Mann gewesen sein."
+        ]
+    }
+}

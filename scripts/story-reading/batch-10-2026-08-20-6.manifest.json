@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {"id":"das-raetsel","entryId":155,"entryUid":"07d5c756-89c6-4e53-bcaf-ef54a1161235","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-r%C3%A4tsel","language":"de"},
+    {"id":"das-erdmaennchen","entryId":157,"entryUid":"dacd43e4-fe9f-4969-88b8-8308efc54572","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-erdm%C3%A4nnchen","language":"de"},
+    {"id":"das-singende-springende-loeweneckerchen","entryId":163,"entryUid":"bda38de3-9bec-4579-898f-455e0d9fee7b","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-singende-springende-l%C3%B6weneckerchen","language":"de"},
+    {"id":"der-arme-und-der-reiche","entryId":165,"entryUid":"02a669b7-787f-45bd-8b9c-8352a9d65ffc","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-arme-und-der-reiche","language":"de"},
+    {"id":"die-goldkinder","entryId":167,"entryUid":"60e12b00-31a8-41f1-8e01-acd7f61085be","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-goldkinder","language":"de"},
+    {"id":"die-nelke","entryId":173,"entryUid":"a068e9f6-7e2e-4a1f-91c8-ec17121d52e4","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-nelke","language":"de"},
+    {"id":"sechse-kommen-durch-die-ganze-welt","entryId":175,"entryUid":"cb47aa2a-0395-4331-93d9-b20b4252173a","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/sechse-kommen-durch-die-ganze-welt","language":"de"},
+    {"id":"der-fuchs-und-die-gaense","entryId":181,"entryUid":"82705f2a-381a-403f-bd22-a1a7caab4bfb","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-fuchs-und-die-g%C3%A4nse","language":"de"},
+    {"id":"die-wassernixe","entryId":183,"entryUid":"8c0ce0f6-831d-467e-b997-4ce43c0d99e1","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-wassernixe","language":"de"},
+    {"id":"der-alte-grossvater-und-der-enkel","entryId":187,"entryUid":"08ba30b6-919d-4e60-8fcb-5b22570769af","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-alte-grossvater-und-der-enkel","language":"de"}
+  ]
+}
