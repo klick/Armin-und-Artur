@@ -1,0 +1,191 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "der-wolf-und-der-mensch",
+        "title": "Der Wolf und der Mensch",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/der-wolf-und-der-mensch",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 201,
+        "entryUid": "58ce46af-49e0-4a1b-9ae0-8acc125434c6",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "wolf": {
+            "label": "Wolf",
+            "voiceProfile": "deep_male_boastful",
+            "delivery": "Stark, prahlerisch und später kleinlaut."
+        },
+        "fox": {
+            "label": "Fuchs",
+            "voiceProfile": "adult_cunning",
+            "delivery": "Erfahren, warnend und am Ende trocken."
+        },
+        "child": {
+            "label": "Kind",
+            "voiceProfile": "young_neutral_bright",
+            "delivery": "Kurz und unbefangen färben."
+        },
+        "old_man": {
+            "label": "Alter Mann",
+            "voiceProfile": "older_male_frail",
+            "delivery": "Ruhig und müde."
+        },
+        "hunter": {
+            "label": "Jäger",
+            "voiceProfile": "adult_male_steady",
+            "delivery": "Ruhig, entschlossen und wehrhaft."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Der Fuchs erzählte einmal dem Wolf von der Stärke des Menschen, kein Tier könnte ihm widerstehen",
+            "title": "Der Wolf will den Menschen sehen",
+            "speakers": [
+                "narrator",
+                "wolf",
+                "fox"
+            ],
+            "direction": "Prahlen und Warnung ruhig gegenüberstellen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Der Wolf stellte sich frühzeitig ein, und der Fuchs brachte ihn hinaus auf den Weg, den der Jäge",
+            "title": "Wer ist der Mensch?",
+            "speakers": [
+                "narrator",
+                "wolf",
+                "fox",
+                "child",
+                "old_man",
+                "hunter"
+            ],
+            "direction": "Die drei Begegnungen deutlich gliedern."
+        },
+        {
+            "id": "s03",
+            "anchor": "Der Wolf ging nun auf den Menschen los, der Jäger, als er ihn erblickte, sprach „es ist schade, ",
+            "title": "Der Kampf",
+            "speakers": [
+                "narrator",
+                "wolf",
+                "hunter"
+            ],
+            "direction": "Die Handlung klar und nicht effekthaft erzählen."
+        },
+        {
+            "id": "s04",
+            "anchor": "„Nun, Bruder Wolf,“ sprach der Fuchs, „wie bist du mit dem Menschen fertig worden?“ „Ach,“ antwo",
+            "title": "Die Lehre",
+            "speakers": [
+                "narrator",
+                "wolf",
+                "fox"
+            ],
+            "direction": "Die trockene Antwort des Fuchses knapp schliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Wolf, Fuchs oder Jäger. Kind und alter Mann werden nur aus der Handlung leicht gefärbt, sofern keine direkte Rede vorliegt.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Der Fuchs erzählte einmal dem Wolf von der Stärke des Menschen, kein Tier könnte ihm widerstehen, und sie müssten List gebrauchen, um sich vor ihm zu erhalten. Da antwortete der Wolf „wenn ich nur einmal einen Menschen zu sehen bekäme, ich wollte doch auf ihn losgehen“ „Dazu kann ich dir helfen,“ sprach der Fuchs, „komm nur morgen früh zu mir, so will ich dir einen zeigen.“",
+            "Der Wolf stellte sich frühzeitig ein, und der Fuchs brachte ihn hinaus auf den Weg, den der Jäger alle Tage ging. Zuerst kam ein alter abgedankter Soldat. „Ist das ein Mensch?“ fragte der Wolf. „Nein,“ antwortete der Fuchs, „das ist einer gewesen.“ Danach kam ein kleiner Knabe, der zur Schule wollte. „Ist das ein Mensch?“ „Nein, das will erst einer werden.“ Endlich kam der Jäger, die Doppelflinte auf dem Rücken und den Hirschfänger an der Seite. Sprach der Fuchs zum Wolf „siehst du, dort kommt ein Mensch, auf den musst du losgehen, ich aber will mich fort in meine Höhle machen.“",
+            "Der Wolf ging nun auf den Menschen los, der Jäger, als er ihn erblickte, sprach „es ist schade, dass ich keine Kugel geladen habe,“ legte an und schoss dem Wolf das Schrot ins Gesicht. Der Wolf verzog das Gesicht gewaltig, doch liess er sich nicht schrecken und ging vorwärts: da gab ihm der Jäger die zweite Ladung. Der Wolf verbiss den Schmerz und rückte dem Jäger zu Leibe: da zog dieser seinen blanken Hirschfänger und gab ihm links und rechts ein paar Hiebe, dass er, über und über blutend, mit Geheul zu dem Fuchs zurücklief.",
+            "„Nun, Bruder Wolf,“ sprach der Fuchs, „wie bist du mit dem Menschen fertig worden?“ „Ach,“ antwortete der Wolf, „so hab ich mir die Stärke des Menschen nicht vorgestellt, erst nahm er einen Stock von der Schulter und blies hinein, da flog mir etwas ins Gesicht, das hat mich ganz entsetzlich gekitzelt: danach pustete er noch einmal in den Stock, da flog mirs um die Nase wie Blitz und Hagelwetter, und wie ich ganz nah war, da zog er eine blanke Rippe aus dem Leib, damit hat er so auf mich losgeschlagen, dass ich beinah tot wäre liegen geblieben.“ „Siehst du,“ sprach der Fuchs, „was du für ein Prahlhans bist: du wirfst das Beil so weit, dass dus nicht wieder holen kannst.“"
+        ]
+    }
+}

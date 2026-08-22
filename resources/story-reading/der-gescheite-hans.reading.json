@@ -1,0 +1,353 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "der-gescheite-hans",
+        "title": "Der gescheite Hans",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/der-gescheite-hans",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 111,
+        "entryUid": "4ec5d127-fd90-47dc-9849-09938a31564c",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "hans": {
+            "label": "Hans",
+            "voiceProfile": "young_adult_male_literal",
+            "delivery": "Treuherzig, wörtlich und von jeder neuen Lehre überzeugt."
+        },
+        "mother": {
+            "label": "Mutter",
+            "voiceProfile": "older_female_patient",
+            "delivery": "Geduldig fragend, zunehmend fassungslos."
+        },
+        "gretel": {
+            "label": "Gretel",
+            "voiceProfile": "young_female_plain",
+            "delivery": "Freundlich und praktisch; ihre Reaktionen nicht überzeichnen."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Hansens Mutter fragt: „Wohin, Hans?“ Hans antwortet: „Zur Gretel.“ „Mach’s gut, Hans.“ „Schon gu",
+            "title": "Hans besucht Gretel",
+            "speakers": [
+                "narrator",
+                "hans",
+                "mother",
+                "gretel"
+            ],
+            "direction": "Das feste Frage-und-Antwort-Muster ruhig etablieren."
+        },
+        {
+            "id": "s02",
+            "anchor": "Gretel schenkt dem Hans ein Messer.",
+            "title": "Das Messer im Ärmel",
+            "speakers": [
+                "narrator",
+                "hans",
+                "mother",
+                "gretel"
+            ],
+            "direction": "Die wörtliche Anwendung trocken erzählen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Gretel schenkt dem Hans eine junge Ziege.",
+            "title": "Die Ziege in der Tasche",
+            "speakers": [
+                "narrator",
+                "hans",
+                "mother",
+                "gretel"
+            ],
+            "direction": "Rhythmus beibehalten, ohne schneller zu werden."
+        },
+        {
+            "id": "s04",
+            "anchor": "Gretel schenkt dem Hans ein Stück Speck.",
+            "title": "Der Speck am Strick",
+            "speakers": [
+                "narrator",
+                "hans",
+                "mother",
+                "gretel"
+            ],
+            "direction": "Die Wiederholung klar und leicht variieren."
+        },
+        {
+            "id": "s05",
+            "anchor": "Gretel schenkt dem Hans ein Kalb.",
+            "title": "Das Kalb auf dem Kopf",
+            "speakers": [
+                "narrator",
+                "hans",
+                "mother",
+                "gretel"
+            ],
+            "direction": "Komik aus der Handlung entstehen lassen."
+        },
+        {
+            "id": "s06",
+            "anchor": "Gretel sagt zum Hans: „Ich will mit dir gehn.“",
+            "title": "Gretel am Strick",
+            "speakers": [
+                "narrator",
+                "hans",
+                "mother",
+                "gretel"
+            ],
+            "direction": "Den missglückten Rat sachlich und behutsam lesen."
+        },
+        {
+            "id": "s07",
+            "anchor": "Hans geht in den Stall, sticht allen Kälbern und Schafen die Augen aus und wirft sie der Gretel ",
+            "title": "Hans bleibt gescheit",
+            "speakers": [
+                "narrator",
+                "hans",
+                "mother"
+            ],
+            "direction": "Den kurzen Schluss trocken setzen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Alle wiederkehrenden Fragen und Antworten werden Hans, seiner Mutter oder Gretel nach dem jeweiligen Namen zugeordnet. Gleichlautende Formeln behalten dieselbe Färbung.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Hansens Mutter fragt: „Wohin, Hans?“ Hans antwortet: „Zur Gretel.“ „Mach’s gut, Hans.“ „Schon gutmachen. Adies, Mutter.“ „Adies, Hans.“ Hans kommt zur Gretel. „Guten Tag, Gretel.“ „Guten Tag, Hans. Was bringst du Gutes?“ „Bring nichts, gegeben han.“",
+            "Gretel schenkt dem Hans eine Nadel.",
+            "Hans spricht: „Adies, Gretel.“",
+            "„Adies, Hans.“",
+            "Hans nimmt die Nadel, steckt sie in einen Heuwagen und geht hinter dem Wagen her nach Haus.",
+            "„Guten Abend, Mutter.“",
+            "„Guten Abend, Hans. Wo bist du gewesen?“",
+            "„Bei der Gretel gewesen.“",
+            "„Was hast du ihr gebracht?“",
+            "„Nichts gebracht, gegeben hat.“",
+            "„Was hat dir Gretel gegeben?“",
+            "„Nadel gegeben.“",
+            "„Wo hast du die Nadel, Hans?“",
+            "„In Heuwagen gesteckt.“",
+            "„Das hast du dumm gemacht, Hans, musstest die Nadel an den Ärmel stecken.“",
+            "„Tut nichts, besser machen.“",
+            "——————————————————————————–",
+            "„Wohin, Hans?“",
+            "„Zur Gretel, Mutter.“",
+            "„Mach’s gut, Hans.“",
+            "„Schon gut machen. Adies, Mutter.“",
+            "„Adies, Hans.“",
+            "Hans kommt zur Gretel.",
+            "„Guten Tag, Gretel.“",
+            "„Guten Tag, Hans. Was bringst du Gutes?“",
+            "„Bring nichts, gegeben han.“",
+            "Gretel schenkt dem Hans ein Messer.",
+            "„Adies, Gretel.“",
+            "„Adies, Hans.“",
+            "Hans nimmt das Messer, steckt’s an den Ärmel und geht nach Haus.",
+            "„Guten Abend, Mutter.“",
+            "„Guten Abend, Hans. Wo bist du gewesen?“",
+            "„Bei der Gretel gewesen.“",
+            "„Was hast du ihr gebracht?“",
+            "„Nichts gebracht, gegeben hat.“",
+            "„Was hat dir Gretel gegeben?“",
+            "„Messer gegeben.“",
+            "„Wo hast du das Messer, Hans?“",
+            "„An den Ärmel gesteckt.“",
+            "„Das hast du dumm gemacht, Hans, musstest das Messer in die Tasche stecken.“",
+            "„Tut nichts, besser machen.“",
+            "——————————————————————————–",
+            "„Wohin, Hans?“",
+            "„Zur Gretel, Mutter.“",
+            "„Mach’s gut, Hans.“",
+            "„Schon gut machen. Adies, Mutter.“",
+            "„Adies, Hans.“",
+            "Hans kommt zur Gretel.",
+            "„Guten Tag, Gretel.“",
+            "„Guten Tag, Hans. Was bringst du Gutes?“",
+            "„Bring nichts, gegeben han.“",
+            "Gretel schenkt dem Hans eine junge Ziege.",
+            "„Adies, Gretel.“",
+            "„Adies, Hans.“",
+            "Hans nimmt die Ziege, bindet ihr die Beine und steckt sie in die Tasche. Wie er nach Haus kommt, ist sie erstickt.",
+            "„Guten Abend, Mutter.“",
+            "„Guten Abend, Hans. Wo bist du gewesen?“",
+            "„Bei der Gretel gewesen.“",
+            "„Was hast du ihr gebracht?“",
+            "„Nichts gebracht, gegeben hat.“",
+            "„Was hat dir Gretel gegeben?“",
+            "„Ziege gegeben.“",
+            "„Wo hast du die Ziege, Hans?“",
+            "„In die Tasche gesteckt.“",
+            "„Das hast du dumm gemacht, Hans, musstest die Ziege an ein Seil binden.“",
+            "„Tut nichts, besser machen.“",
+            "——————————————————————————–",
+            "„Wohin, Hans?“",
+            "„Zur Gretel, Mutter.“",
+            "„Mach’s gut, Hans.“",
+            "„Schon gut machen. Adies, Mutter.“",
+            "„Adies, Hans.“",
+            "Hans kommt zur Gretel.",
+            "„Guten Tag, Gretel.“",
+            "„Guten Tag, Hans. Was bringst du Gutes?“",
+            "„Bring nichts, gegeben han.“",
+            "Gretel schenkt dem Hans ein Stück Speck.",
+            "„Adies, Gretel.“",
+            "„Adies, Hans.“",
+            "Hans nimmt den Speck, bindet ihn an ein Seil und schleift’s hinter sich her. Die Hunde kommen und fressen den Speck ab. Wie er nach Haus kommt, hat er das Seil an der Hand, und ist nichts mehr daran.",
+            "„Guten Abend, Mutter.“",
+            "„Guten Abend, Hans. Wo bist du gewesen?“",
+            "„Bei der Gretel gewesen.“",
+            "„Was hast du ihr gebracht?“",
+            "„Nichts gebracht, gegeben hat.“",
+            "„Was hat dir Gretel gegeben?“",
+            "„Stück Speck gegeben.“",
+            "„Wo hast du den Speck, Hans?“",
+            "„Ans Seil gebunden, heimgeführt, Hunde weggeholt.“",
+            "„Das hast du dumm gemacht, Hans, musstest den Speck auf dem Kopf tragen.“",
+            "„Tut nichts, besser machen.“",
+            "——————————————————————————–",
+            "„Wohin, Hans?“",
+            "„Zur Gretel, Mutter.“",
+            "„Mach’s gut, Hans.“",
+            "„Schon gut machen. Adies, Mutter.“",
+            "„Adies, Hans.“",
+            "Hans kommt zur Gretel.",
+            "„Guten Tag, Gretel.“",
+            "„Guten Tag, Hans. Was bringst du Gutes?“",
+            "„Bring nichts, gegeben han.“",
+            "Gretel schenkt dem Hans ein Kalb.",
+            "„Adies, Gretel.“",
+            "„Adies, Hans.“",
+            "Hans nimmt das Kalb, setzt es auf den Kopf, und das Kalb zertritt ihm das Gesicht.",
+            "„Guten Abend, Mutter.“",
+            "„Guten Abend, Hans. Wo bist du gewesen?“",
+            "„Bei der Gretel gewesen.“",
+            "„Was hast du ihr gebracht?“",
+            "„Nichts gebracht, gegeben hat.“",
+            "„Was hat dir Gretel gegeben?“",
+            "„Kalb gegeben.“",
+            "„Wo hast du das Kalb, Hans?“",
+            "„Auf den Kopf gesetzt, Gesicht zertreten.“",
+            "„Das hast du dumm gemacht, Hans, musstest das Kalb leiten und an die Raufe stellen.“",
+            "„Tut nichts, besser machen.“",
+            "——————————————————————————–",
+            "„Wohin, Hans?“",
+            "„Zur Gretel, Mutter.“",
+            "„Mach’s gut, Hans.“",
+            "„Schon gut machen. Adies, Mutter.“",
+            "„Adies, Hans.“",
+            "Hans kommt zur Gretel.",
+            "„Guten Tag, Gretel.“",
+            "„Guten Tag, Hans. Was bringst du Gutes?“",
+            "„Bring nichts, gegeben han.“",
+            "Gretel sagt zum Hans: „Ich will mit dir gehn.“",
+            "Hans nimmt die Gretel, bindet sie an ein Seil, leitet sie, führt sie vor die Raufe und knüpft sie fest. Darauf geht Hans zu seiner Mutter.",
+            "„Guten Abend, Mutter.“",
+            "„Guten Abend, Hans. Wo bist du gewesen?“",
+            "„Bei der Gretel gewesen.“",
+            "„Was hast du ihr gebracht?“",
+            "„Nichts gebracht.“",
+            "„Was hat dir Gretel gegeben?“",
+            "„Nichts gegeben, mitgegangen.“",
+            "„Wo hast du die Gretel gelassen?“",
+            "„Am Seil geleitet, vor die Raufe gebunden; Gras vorgeworfen.“",
+            "„Das hast du dumm gemacht, Hans, musstest ihr freundliche Augen zuwerfen.“",
+            "„Tut nichts, besser machen.“",
+            "Hans geht in den Stall, sticht allen Kälbern und Schafen die Augen aus und wirft sie der Gretel ins Gesicht. Da wird Gretel böse, reisst sich los und läuft fort und ist Hansens Braut gewesen."
+        ]
+    }
+}

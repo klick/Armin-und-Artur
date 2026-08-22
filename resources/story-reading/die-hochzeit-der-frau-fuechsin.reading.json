@@ -1,0 +1,295 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-hochzeit-der-frau-fuechsin",
+        "title": "Die Hochzeit der Frau Füchsin",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-hochzeit-der-frau-f%C3%BCchsin",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 137,
+        "entryUid": "babdd457-048d-4a6c-99bd-48edaa370fa3",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "old_fox": {
+            "label": "Alter Herr Fuchs",
+            "voiceProfile": "older_male_suspicious",
+            "delivery": "Misstrauisch, eifersüchtig und später plötzlich."
+        },
+        "frau_fuechsin": {
+            "label": "Frau Füchsin",
+            "voiceProfile": "adult_female_composed",
+            "delivery": "Trauernd, prüfend und schliesslich entschlossen."
+        },
+        "cat": {
+            "label": "Katze / Jungfer",
+            "voiceProfile": "adult_female_bright",
+            "delivery": "Höflich, geschäftig und klar."
+        },
+        "young_fox": {
+            "label": "Junger Fuchs",
+            "voiceProfile": "young_adult_male_courteous",
+            "delivery": "Werbend, höflich und selbstbewusst."
+        },
+        "wolf": {
+            "label": "Wolf",
+            "voiceProfile": "deep_male_courteous",
+            "delivery": "Höflich, aber als Bewerber deutlich gefärbt."
+        },
+        "suitors": {
+            "label": "Weitere Freier",
+            "voiceProfile": "creature_group_varied",
+            "delivery": "Jeden Bewerber nur leicht aus der Tierart färben."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Erstes Märchen",
+            "title": "Herr Fuchs stellt sich tot",
+            "speakers": [
+                "narrator",
+                "old_fox",
+                "frau_fuechsin",
+                "cat"
+            ],
+            "direction": "Den ersten Teil trocken und märchenhaft beginnen."
+        },
+        {
+            "id": "s02",
+            "anchor": "„was mache sie, Jungfer Katze? schläft se oder wacht se?“",
+            "title": "Der erste Freier",
+            "speakers": [
+                "narrator",
+                "cat",
+                "frau_fuechsin",
+                "young_fox"
+            ],
+            "direction": "Frageformeln deutlich und rhythmisch sprechen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Da ging die Katz die Tripp die Trapp, Da schlug die Tür die Klipp die Klapp. „Frau Füchsin, sind",
+            "title": "Ein Fuchs mit neun Schwänzen",
+            "speakers": [
+                "narrator",
+                "cat",
+                "frau_fuechsin",
+                "young_fox"
+            ],
+            "direction": "Entscheidung und Vorbereitung heiter führen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Die Jungfer Katze ging hinab und schickte den Freier fort. Bald darauf klopfte es wieder an, und",
+            "title": "Weitere Füchse",
+            "speakers": [
+                "narrator",
+                "cat",
+                "frau_fuechsin",
+                "young_fox",
+                "suitors"
+            ],
+            "direction": "Die Wiederholungen knapp und verständlich gliedern."
+        },
+        {
+            "id": "s05",
+            "anchor": "Als aber eben die Hochzeit sollte gefeiert werden, da regte sich der alte Herr Fuchs unter der B",
+            "title": "Der alte Fuchs kehrt zurück",
+            "speakers": [
+                "narrator",
+                "old_fox",
+                "frau_fuechsin",
+                "cat",
+                "young_fox"
+            ],
+            "direction": "Das abrupte Ende trocken schliessen."
+        },
+        {
+            "id": "s06",
+            "anchor": "Zweites Märchen",
+            "title": "Die zweite Erzählung",
+            "speakers": [
+                "narrator",
+                "frau_fuechsin",
+                "cat"
+            ],
+            "direction": "Den Neubeginn als eigene Variante kenntlich machen."
+        },
+        {
+            "id": "s07",
+            "anchor": "Als der alte Herr Fuchs gestorben war, kam der Wolf als Freier, klopfte an die Türe, und die Kat",
+            "title": "Der Wolf wirbt",
+            "speakers": [
+                "narrator",
+                "wolf",
+                "cat",
+                "frau_fuechsin"
+            ],
+            "direction": "Die Fragen höflich und klar führen."
+        },
+        {
+            "id": "s08",
+            "anchor": "„will sie haben einen andern Mann, so soll sie nur herunter gan.“ Die Katz, die lief die Trepp h",
+            "title": "Viele Bewerber",
+            "speakers": [
+                "narrator",
+                "cat",
+                "frau_fuechsin",
+                "wolf",
+                "suitors"
+            ],
+            "direction": "Die Tierfolge leicht, aber nicht hastig lesen."
+        },
+        {
+            "id": "s09",
+            "anchor": "„Katze, kehr die Stube aus, und schmeiss den alten Fuchs zum Fenster hinaus. Bracht so manche di",
+            "title": "Der passende junge Fuchs",
+            "speakers": [
+                "narrator",
+                "young_fox",
+                "cat",
+                "frau_fuechsin"
+            ],
+            "direction": "Die Zustimmung hell färben."
+        },
+        {
+            "id": "s10",
+            "anchor": "Da ward die Hochzeit gehalten mit dem jungen Herrn Fuchs, und ward gejubelt und getanzt, und wen",
+            "title": "Die Hochzeit",
+            "speakers": [
+                "narrator",
+                "young_fox",
+                "frau_fuechsin",
+                "cat"
+            ],
+            "direction": "Kurz und fröhlich abschliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt altem oder jungem Fuchs, Frau Füchsin, Katze, Wolf oder den weiteren Freiern. Beide überlieferten Varianten bleiben als getrennte Erzählabschnitte erkennbar.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Erstes Märchen",
+            "Es war einmal ein alter Fuchs mit neun Schwänzen, der glaubte, seine Frau wäre ihm nicht treu, und wollte er sie in Versuchung führen. Er streckte sich unter die Bank, regte kein Glied und stellte sich, als wenn er mausetot wäre. Die Frau Füchsin ging auf ihre Kammer, schloss sich ein, und ihre Magd, die Jungfer Katze, sass auf dem Herd und kochte. Als es nun bekannt ward, dass der alte Fuchs gestorben war, so meldeten sich die Freier. Da hörte die Magd, dass jemand vor der Haustüre stand und anklopfte; sie ging und machte auf, und da wars ein junger Fuchs, der sprach",
+            "„was mache sie, Jungfer Katze? schläft se oder wacht se?“",
+            "Sie antwortete",
+            "„ich schlafe nicht, ich wache. Will er wissen, was ich mache? Ich koche warm Bier, tue Butter hinein: will der Herr mein Gast sein?“",
+            "„Ich bedanke mich, Jungfer,“ sagte der Fuchs, „was macht die Frau Füchsin?“ Die Magd antwortete",
+            "„sie sitze auf ihrer Kammer, sie beklagt ihren Jammer, weint ihre Äuglein seidenrot, weil der alte Herr Fuchs ist tot.“",
+            "„Sag sie ihr doch, Jungfer, es wäre ein junger Fuchs da, der wollte sie gerne freien.“ „Schon gut, junger Herr.“",
+            "Da ging die Katz die Tripp die Trapp, Da schlug die Tür die Klipp die Klapp. „Frau Füchsin, sind Sie da?“ „Ach ja, mein Kätzchen, ja.“ „Es ist ein Freier draus.“ „Mein Kind, wie siehe er aus?",
+            "Hat er denn auch neun so schöne Zeiselschwänze wie der selige Herr Fuchs?“ „Ach nein,“ antwortete die Katze, „er hat nur einen.“ „So will ich ihn nicht haben.“",
+            "Die Jungfer Katze ging hinab und schickte den Freier fort. Bald darauf klopfte es wieder an, und war ein anderer Fuchs vor der Türe, der wollte die Frau Füchsin freien; er hatte zwei Schwänze; aber es ging ihm nicht besser als dem ersten. Danach kamen noch andere, immer mit einem Schwanz mehr, die alle abgewiesen wurden, bis zuletzt einer kam, der neun Schwänze hatte wie der alte Herr Fuchs. Als die Witwe das hörte, sprach sie voll Freude zu der Katze",
+            "„nun macht mir Tor und Türe auf, und kehrt den alten Herrn Fuchs hinaus.“",
+            "Als aber eben die Hochzeit sollte gefeiert werden, da regte sich der alte Herr Fuchs unter der Bank, prügelte das ganze Gesindel durch und jagte es mit der Frau Füchsin zum Haus hinaus.",
+            "Zweites Märchen",
+            "Als der alte Herr Fuchs gestorben war, kam der Wolf als Freier, klopfte an die Türe, und die Katze, die als Magd bei der Frau Füchsin diente, machte auf. Der Wolf grüsste sie und sprach",
+            "„guten Tag, Frau Katz von Kehrewitz, wie kommts, dass sie alleine sitzt? was macht sie Gutes da?“",
+            "Die Katze antwortete",
+            "„brock mir Wecke und Milch ein: will der Herr mein Gast sein?“",
+            "„Dank schön, Frau Katze,“ antwortete der Wolf, „die Frau Füchsin nicht zu Haus?“",
+            "Die Katze sprach",
+            "„sie sitzt droben in der Kammer, beweint ihren Jammer, beweint ihre grosse Not, dass der alte Herr Fuchs ist tot.“",
+            "Der Wolf antwortete",
+            "„will sie haben einen andern Mann, so soll sie nur herunter gan.“ Die Katz, die lief die Trepp hinan, und liess ihr Zeilchen rummer gan, bis sie kam vor den langen Saal: klopft an mit ihren fünf goldenen Ringen. „Frau Füchsin, ist sie drinnen? Will sie haben einen andern Mann, so soll sie nur herunter gan.“",
+            "Die Frau Füchsin fragte",
+            "„hat der Herr rote Höslein an, und hat er ein spitz Mäulchen?“ „Nein,“ antwortete die Katze. „So kann er mir nicht dienen.“",
+            "Als der Wolf abgewiesen war, kam ein Hund, ein Hirsch, ein Hase, ein Bär, ein Löwe, und nacheinander alle Waldtiere. Aber es fehlte immer eine von den guten Eigenschaften, die der alte Herr Fuchs gehabt hatte, und die Katze musste den Freier jedesmal wegschicken. Endlich kam ein junger Fuchs. Da sprach die Frau Füchsin „hat der Herr rote Höslein an, und hat er ein spitz Mäulchen?“ „Ja,“ sagte die Katze, „das hat er.“ „So soll er heraufkommen,“ sprach die Frau Füchsin, und hiess die Magd das Hochzeitsfest bereiten.",
+            "„Katze, kehr die Stube aus, und schmeiss den alten Fuchs zum Fenster hinaus. Bracht so manche dicke fette Maus, frass sie immer alleine, gab mir aber keine.“",
+            "Da ward die Hochzeit gehalten mit dem jungen Herrn Fuchs, und ward gejubelt und getanzt, und wenn sie nicht aufgehört haben, so tanzen sie noch."
+        ]
+    }
+}

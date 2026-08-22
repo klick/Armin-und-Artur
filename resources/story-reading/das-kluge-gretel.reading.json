@@ -1,0 +1,166 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "das-kluge-gretel",
+        "title": "Das kluge Gretel",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/das-kluge-gretel",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 195,
+        "entryUid": "071b7fcc-ce5c-4ba7-a551-abf8705afbe5",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "gretel": {
+            "label": "Kluge Gretel",
+            "voiceProfile": "adult_female_self_assured",
+            "delivery": "Genussfreudig, erfinderisch und vollkommen von ihren Ausreden überzeugt."
+        },
+        "master": {
+            "label": "Herr",
+            "voiceProfile": "adult_male_plain",
+            "delivery": "Erwartungsvoll, später verärgert und verwirrt."
+        },
+        "guest": {
+            "label": "Gast",
+            "voiceProfile": "adult_male_cautious",
+            "delivery": "Höflich, dann erschrocken und eilig."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war eine Köchin, die hiess Gretel, die trug Schuhe mit roten Absätzen, und wenn sie damit aus",
+            "title": "Gretels Art",
+            "speakers": [
+                "narrator",
+                "gretel"
+            ],
+            "direction": "Ihre Selbstbeschreibung lebhaft, aber nicht karikiert lesen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Es trug sich zu, dass der Herr einmal zu ihr sagte „Gretel, heut abend kommt ein Gast, richte mi",
+            "title": "Die gebratenen Hühner",
+            "speakers": [
+                "narrator",
+                "gretel",
+                "master"
+            ],
+            "direction": "Kochen, Warten und Naschen langsam steigern."
+        },
+        {
+            "id": "s03",
+            "anchor": "Wie es so im besten Essen war, kam der Herr dahergegangen und rief „eil dich, Gretel, der Gast k",
+            "title": "Die doppelte Täuschung",
+            "speakers": [
+                "narrator",
+                "gretel",
+                "master",
+                "guest"
+            ],
+            "direction": "Beide Geschichten klar auseinanderhalten und trocken schliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Gretel, ihrem Herrn oder dem Gast. Gretels beiseite gesprochene Überlegungen bleiben deutlich als ihre Rede gefärbt.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war eine Köchin, die hiess Gretel, die trug Schuhe mit roten Absätzen, und wenn sie damit ausging, so drehte sie sich hin und her, war ganz fröhlich und dachte „du bist doch ein schönes Mädel.“ Und wenn sie nach Hause kam, so trank sie aus Fröhlichkeit einen Schluck Wein, und weil der Wein auch Lust zum Essen macht, so versuchte sie das Beste, was sie kochte, so lang, bis sie satt war, und sprach „die Köchin muss wissen, wies Essen schmeckt.“",
+            "Es trug sich zu, dass der Herr einmal zu ihr sagte „Gretel, heut abend kommt ein Gast, richte mir zwei Hühner fein wohl zu.“ „Wills schon machen, Herr,“ antwortete Gretel. Nun stachs die Hühner ab, brühte sie, rupfte sie, steckte sie an den Spiess, und brachte sie, wies gegen Abend ging, zum Feuer, damit sie braten sollten. Die Hühner fingen an braun und gar zu werden, aber der Gast war noch nicht gekommen. Da rief Gretel dem Herrn „kommt der Gast nicht, so muss ich die Hühner vom Feuer tun, ist aber Jammer und Schade, wenn sie nicht bald gegessen werden, wo sie am besten im Saft sind.“ Sprach der Herr „so will ich nur selbst laufen und den Gast holen.“ Als der Herr den Rücken gekehrt hatte, legte Gretel den Spiess mit den Hühnern beiseite und dachte „so lange da beim Feuer stehen macht schwitzen und durstig, wer weiss, wann die kommen! derweil spring ich in den Keller und tue einen Schluck.“ Lief hinab, setzte einen Krug an, sprach „Gott gesegnes dir, Gretel,“ und tat einen guten Zug. „Der Wein hängt aneinander,“ sprachs weiter, „und ist nicht gut abbrechen,“ und tat noch einen ernsthaften Zug. Nun ging es und stellte die Hühner wieder übers Feuer, strich sie mit Butter und trieb den Spiess lustig herum. Weil aber der Braten so gut roch, dachte Gretel „es könnte etwas fehlen, versucht muss er werden!“ schleckte mit dem Finger und sprach „ei, was sind die Hühner so gut! ist ja Sünd und Schand, dass man sie nicht gleich isst!“ Lief zum Fenster, ob der Herr mit dem Gast noch nicht käm, aber es sah niemand: stellte sich wieder zu den Hühnern, dachte „der eine Flügel verbrennt, besser ists, ich ess ihn weg.“ Also schnitt es ihn ab und ass ihn auf, und er schmeckte ihm, und wie es damit fertig war, dachte es „der andere muss auch herab, sonst merkt der Herr, dass etwas fehlt.“ Wie die zwei Flügel verzehrt waren, ging es wieder und schaute nach dem Herrn und sah ihn nich t. „Wer weiss,“ fiel ihm ein, „sie kommen wohl gar nicht und sind wo eingekehrt.“ Da sprachs „hei, Gretel, sei guter Dinge, das eine ist doch angegriffen, tu noch einen frischen Trunk und iss es vollends auf, wenns all ist, hast du Ruhe: warum soll die gute Gottesgabe umkommen?“ Also lief es noch einmal in den Keller, tat einen ehrbaren Trunk, und ass das eine Huhn in aller Freudigkeit auf. Wie das eine Huhn hinunter war und der Herr noch immer nicht kam, sah Gretel das andere an und sprach „wo das eine ist, muss das andere auch sein, die zwei gehören zusammen: was dem einen recht ist, das ist dem andern billig; ich glaube, wenn ich noch einen Trunk tue, so sollte mirs nicht schaden.“ Also tat es noch einen herzhaften Trunk, und liess das zweite Huhn wieder zum andern laufen.",
+            "Wie es so im besten Essen war, kam der Herr dahergegangen und rief „eil dich, Gretel, der Gast kommt gleich nach.“ „Ja, Herr, wills schon zurichten,“ antwortete Gretel. Der Herr sah indessen, ob der Tisch wohl gedeckt war, nahm das grosse Messer, womit er die Hühner zerschneiden wollte, und wetzte es auf dem Gang. Indem kam der Gast, klopfte sittig und höflich an der Haustüre. Gretl lief und schaute, wer da war, und als es den Gast sah, hielt es den Finger an den Mund und sprach „still! still! macht geschwind, dass Ihr wieder fortkommt, wenn Euch mein Herr erwischt, so seid Ihr unglücklich; er hat Euch zwar zum Nachtessen eingeladen, aber er hat nichts anders im Sinn, als Euch die beiden Ohren abzuschneiden. Hört nur, wie er das Messer dazu wetzt.“ Der Gast hörte das Wetzen und eilte, was er konnte, die Stiegen wieder hinab. Gretel war nicht faul, lief schreiend zu dem Herrn und rief „da habt Ihr einen schönen Gast eingeladen!“ „Ei, warum, Gretel? was meinst du damit?“ „Ja,“ sagte es, „der hat mir beide Hühner, die ich eben auftragen wollte, von der Schüssel genommen und ist damit fortgelaufen.“ „Das ist feine Weise!“ sprach der Herr, und ward ihm leid um die schönen Hühner, „wenn er mir dann wenigstens das eine gelassen hätte, damit mir was zu essen geblieben wäre.“ Er rief ihm nach, er sollte bleiben, aber der Gast tat, als hörte er es nicht. Da lief er hinter ihm her, das Messer noch immer in der Hand, und schrie „nur eins! nur eins!“ und meinte, der Gast sollte ihm nur ein Huhn lassen und nicht alle beide nehmen: der Gast aber meinte nicht anders, als er sollte eins von seinen Ohren hergeben, und lief, als wenn Feuer unter ihm brennte, damit er sie beide heim brächte."
+        ]
+    }
+}

@@ -1,0 +1,159 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "hans-heiratet",
+        "title": "Hans heiratet",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/hans-heiratet",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 185,
+        "entryUid": "0780eb85-9beb-4c8d-ad21-7ef3fefce4c1",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "hans": {
+            "label": "Hans",
+            "voiceProfile": "young_adult_male_plain",
+            "delivery": "Nüchtern, hoffnungsvoll und leicht unbeholfen."
+        },
+        "cousin": {
+            "label": "Vetter",
+            "voiceProfile": "adult_male_advising",
+            "delivery": "Geschäftig und von seinem Rat überzeugt."
+        },
+        "bride_father": {
+            "label": "Vater der Braut",
+            "voiceProfile": "older_male_calculating",
+            "delivery": "Prüfend, praktisch und trocken."
+        },
+        "listener": {
+            "label": "Fragender Zuhörer",
+            "voiceProfile": "neutral_curious",
+            "delivery": "Die Schlussfrage wie aus einem Gespräch stellen."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es war einmal ein junger Bauer, der hiess Hans, dem wollte sein Vetter gern eine reiche Frau wer",
+            "title": "Hans sucht eine Frau",
+            "speakers": [
+                "narrator",
+                "hans",
+                "cousin",
+                "bride_father"
+            ],
+            "direction": "Die kurze List trocken und langsam entfalten."
+        },
+        {
+            "id": "s02",
+            "anchor": "„Bist du auch auf der Hochzeit gewesen?“, „Jawohl bin ich darauf gewesen, und in vollem Staat. M",
+            "title": "Die Schlussfrage",
+            "speakers": [
+                "narrator",
+                "listener"
+            ],
+            "direction": "Den Nachsatz leicht und direkt an das Publikum richten."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Hans, seinem Vetter, dem Brautvater oder im letzten Absatz dem fragenden Zuhörer.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es war einmal ein junger Bauer, der hiess Hans, dem wollte sein Vetter gern eine reiche Frau werben. Da setzte er den Hans hinter den Ofen und liess ihn gut einheizen. Dann holte er einen Topf Milch und eine gute Menge Weissbrot, gab ihm einen neugemünzten glänzenden Heller in die Hand und sprach „Hans, den Heller da halt fest, und das Weissbrot, das brocke in die Milch, und bleib da sitzen, und geh mir nicht von der Stelle bis ich wiederkomme.“ „Ja,“ sprach der Hans, „das will ich alles ausrichten.“ Nun zog der Werber ein paar alte verplackte Hosen an, ging ins andere Dorf zu einer reichen Bauerntochter und sprach „wollt Ihr nicht meinen Vetter Hans heiraten? Ihr kriegt einen wackern und gescheiten Mann, der Euch gefallen wird.“ Fragte der geizige Vater „wie siehts aus mit seinem Vermögen? hat er auch was einzubrocken?“ „Lieber Freund,“ antwortete der Werber, „mein junger Vetter sitzt warm, hat einen guten schönen Pfennig in der Hand, und hat wohl einzubrocken. Er sollte auch nicht weniger Placken (wie man die Güter nannte) zählen als ich,“ und schlug sich dabei auf seine geplackte Hose. „Wollt Ihr Euch die Mühe nehmen, mit mir hinzugehen, soll Euch zur Stunde gezeigt werden, dass alles so ist, wie ich sage.“ Da wollte der Geizhals die gute Gelegenheit nicht fahren lassen und sprach „wenn dem so ist, so habe ich weiter nichts gegen die Heirat.“ Nun ward die Hochzeit an dem bestimmten Tag gefeiert, und als die junge Frau ins Feld gehen und die Güter des Bräutigams sehen wollte, zog Hans erst sein sonntägliches Kleid aus und seinen verplackten Kittel an und sprach „ich könnte mir das gute Kleid verunehren.“ Da gingen sie zusammen ins Feld, und wo sich auf dem Weg der Weinstock abzeichnete, oder Äcker und Wiesen abgeteilt waren, deutete Hans mit dem Finger und schlug dann an einen grossen oder kleinen Placken seines Kittels und sprach „der Placken ist mein und jener auch, mein Schatz, schauet nur danach,“ und wollte damit sag en, die Frau sollte nicht in das weite Feld gaffen, sondern auf sein Kleid schauen, das wäre sein eigen.",
+            "„Bist du auch auf der Hochzeit gewesen?“, „Jawohl bin ich darauf gewesen, und in vollem Staat. Mein Kopfputz war von Schnee, da kam die Sonne, und er ist mir abgeschmolzen; mein Kleid war von Spinneweb, da kam ich durch Dornen, die rissen mir es ab; meine Pantoffel waren von Glas, da stiess ich an einen Stein, da sagten sie klink! und sprangen entzwei.“"
+        ]
+    }
+}

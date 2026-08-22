@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {"id":"die-drei-federn","entryId":213,"entryUid":"3fa794cd-5b50-4d7a-b265-a3a6f3ac28e0","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-drei-federn","language":"de"},
+    {"id":"die-bienenkoenigin","entryId":215,"entryUid":"7c746c3c-8b85-4004-91e2-75898b214477","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-bienenk%C3%B6nigin","language":"de"},
+    {"id":"der-koenigssohn-der-sich-vor-nichts-fuerchtet","entryId":217,"entryUid":"e9dfb9b0-e85b-4d0c-b15f-e4de4b71f2fc","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-k%C3%B6nigssohn-der-sich-vor-nichts-f%C3%BCrchtet","language":"de"},
+    {"id":"das-blaue-licht","entryId":219,"entryUid":"17e32bd8-2abe-4a2d-b7b2-78f51eb07677","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-blaue-licht","language":"de"},
+    {"id":"die-beiden-koenigskinder","entryId":221,"entryUid":"a6c8715f-86cc-42dc-b8cc-861fbe822c5a","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-beiden-k%C3%B6nigskinder","language":"de"},
+    {"id":"der-gelernte-jaeger","entryId":223,"entryUid":"148c9dfe-32b7-49ac-9877-6f04ccdc145c","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-gelernte-j%C3%A4ger","language":"de"},
+    {"id":"hans-mein-igel","entryId":227,"entryUid":"ab4229aa-ba01-4351-bf3e-d5b647803954","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/hans-mein-igel","language":"de"},
+    {"id":"der-arme-muellerbursch-und-das-kaetzchen","entryId":231,"entryUid":"8003257b-3e39-48d2-a2dc-afc4555c3349","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-arme-m%C3%BCllerbursch-und-das-k%C3%A4tzchen","language":"de"},
+    {"id":"der-baerenhaeuter","entryId":235,"entryUid":"bfdb0e9a-0169-4463-9755-d0fc71a05226","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-b%C3%A4renh%C3%A4uter","language":"de"},
+    {"id":"das-wasser-des-lebens","entryId":239,"entryUid":"18b385fb-a962-4edb-9d05-66374943e7cc","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-wasser-des-lebens","language":"de"}
+  ]
+}

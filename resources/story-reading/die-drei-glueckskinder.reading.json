@@ -1,0 +1,185 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-drei-glueckskinder",
+        "title": "Die drei Glückskinder",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-drei-gl%C3%BCckskinder",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 203,
+        "entryUid": "c2aae6a0-d6a3-4b39-af05-87b95b644d23",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "father": {
+            "label": "Vater",
+            "voiceProfile": "older_male_plain",
+            "delivery": "Arm, fürsorglich und gerecht."
+        },
+        "sons": {
+            "label": "Drei Söhne",
+            "voiceProfile": "young_male_group_hopeful",
+            "delivery": "Jeder Sohn schlicht, neugierig und tatkräftig."
+        },
+        "islanders": {
+            "label": "Inselbewohner",
+            "voiceProfile": "adult_group_amazed",
+            "delivery": "Staunend, verhandelnd und dankbar."
+        },
+        "king": {
+            "label": "König",
+            "voiceProfile": "older_male_authoritative",
+            "delivery": "Würdevoll und grosszügig."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Ein Vater liess einmal seine drei Söhne vor sich kommen und schenkte dem ersten einen Hahn, dem ",
+            "title": "Der Hahn",
+            "speakers": [
+                "narrator",
+                "father",
+                "sons",
+                "islanders"
+            ],
+            "direction": "Vermächtnis und erste Reise klar erzählen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Als er mit dem Reichtum heim kam, verwunderten sich seine Brüder, und der zweite sprach „so will",
+            "title": "Die Sense",
+            "speakers": [
+                "narrator",
+                "sons",
+                "islanders"
+            ],
+            "direction": "Die zweite Entdeckung im gleichen ruhigen Rhythmus führen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Nun wollte der dritte Bruder seine Katze auch an den rechten Mann bringen. Es ging ihm wie den a",
+            "title": "Die Katze",
+            "speakers": [
+                "narrator",
+                "sons",
+                "islanders"
+            ],
+            "direction": "Staunen und Handel freundlich lesen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Die Katze machte sich in dem königlichen Schlosse mit den Mäusen eine rechte Lust und biss so vi",
+            "title": "Die Mäuse im Schloss",
+            "speakers": [
+                "narrator",
+                "sons",
+                "king",
+                "islanders"
+            ],
+            "direction": "Die letzte Bewährung lebhaft, aber nicht hastig abschliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Vater, den jeweils handelnden Söhnen, Inselbewohnern oder König. Die drei Brüder teilen eine verwandte, aber nicht identische Färbung.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Ein Vater liess einmal seine drei Söhne vor sich kommen und schenkte dem ersten einen Hahn, dem zweiten eine Sense, dem dritten eine Katze. „Ich bin schon alt,“ sagte er, „und mein Tod ist nah, da wollte ich euch vor meinem Ende noch versorgen. Geld hab ich nicht, und was ich euch jetzt gebe, scheint wenig wert, es kommt aber bloss darauf an, dass ihr es verständig anwendet: sucht euch nur ein Land, wo dergleichen Dinge noch unbekannt sind, so ist euer Glück gemacht.“ Nach dem Tode des Vaters ging der äIteste mit seinem Hahn aus, wo er aber hinkam, war der Hahn schon bekannt: in den Städten sah er ihn schon von weitem auf den Türmen sitzen und sich mit dem Wind umdrehen, in den Dörfern hörte er mehr als einen krähen, und niemand wollte sich über das Tier wundern, so dass es nicht das Ansehen hatte, als würde er sein Glück damit machen. Endlich aber geriets ihm doch, dass er auf eine Insel kam, wo die Leute nichts von einem Hahn wussten, sogar ihre Zeit nicht einzuteilen verstanden. Sie wussten wohl, wenns Morgen oder Abend war, aber nachts, wenn sies nicht verschliefen, wusste sich keiner aus der Zeit herauszufinden. „Seht,“ sprach er, „was für ein stolzes Tier, es hat eine rubinrote Krone auf dem Kopf, und trägt Sporn wie ein Ritter: es ruft euch des Nachts dreimal zu bestimmter Zeit an, und wenns das letztemal ruft, so geht die Sonne bald auf. Wenns aber bei hellem Tag ruft, so richtet euch darauf ein, dann gibts gewiss anderes Wetter.“ Den Leuten gefiel das wohl, sie schliefen eine ganze Nacht nicht und hörten mit grosser Freude, wie der Hahn um zwei, vier und sechs Uhr laut und vernehmlich die Zeit abrief. Sie fragten ihn, ob das Tier nicht feil wäre, und wieviel er dafür verlangte. „Etwa so viel, als ein Esel Gold trägt,“ antwortete er. „Ein Spottgeld für ein so kostbares Tier,“ riefen sie insgesamt und gaben ihm gerne, was er gefordert hatte.",
+            "Als er mit dem Reichtum heim kam, verwunderten sich seine Brüder, und der zweite sprach „so will ich mich doch aufmachen und sehen, ob ich meine Sense auch so gut losschlagen kann.“ Es hatte aber nicht das Ansehen danach, denn überall begegneten ihm Bauern und hatten so gut eine Sense auf der Schulter als er. Doch zuletzt glückte es ihm auch auf einer Insel, wo die Leute nichts von einer Sense wussten. Wenn dort das Korn reif war, so fuhren sie Kanonen vor den Feldern auf, und schossens herunter. Das war nun ein ungewisses Ding, mancher schoss darüber hinaus, ein anderer traf statt des Halms die Ähren und schoss sie fort, dabei ging viel zugrund, und obendrein gabs einen lästerlichen Lärm. Da stellte sich der Mann hin und mähte es so still und so geschwind nieder, dass die Leute Maul und Nase vor Verwunderung aufsperrten. Sie waren willig, ihm dafür zu geben, was er verlangte, und er bekam ein Pferd, dem war Gold aufgeladen, soviel es tragen konnte.",
+            "Nun wollte der dritte Bruder seine Katze auch an den rechten Mann bringen. Es ging ihm wie den andern, solange er auf dem festen Lande blieb, war nichts auszurichten, es gab allerorten Katzen, und waren ihrer so viel, dass die neugebornen Jungen meist im Wasser ersäuft wurden. Endlich liess er sich auf eine Insel überschiffen, und es traf sich glücklicherweise, dass dort noch niemals eine gesehen war und doch die Mäuse so überhand genommen hatten, dass sie auf den Tischen und Bänken tanzten, der Hausherr mochte daheim sein oder nicht. Die Leute jammerten gewaltig über die Plage, der König selbst wusste sich in seinem Schlosse nicht dagegen zu retten: in allen Ecken pfiffen Mäuse und zernagten, was sie mit ihren Zähnen nur packen konnten. Da fing nun die Katze ihre Jagd an und hatte bald ein paar Säle gereinigt, und die Leute baten den König, das Wundertier für sein Reich zu kaufen. Der König gab gerne, was gefordert wurde, das war ein mit Gold beladener Maulesel, und der dritte Bruder kam mit den allergrössten Schätzen heim.",
+            "Die Katze machte sich in dem königlichen Schlosse mit den Mäusen eine rechte Lust und biss so viele tot, dass sie nicht mehr zu zählen waren. Endlich ward ihr von der Arbeit heiss und sie bekam Durst: da blieb sie stehen, drehte den Kopf in die Höhe und schrie „miau, miau.“ Der König samt allen seinen Leuten, als sie das seltsame Geschrei vernahmen, erschraken und liefen in ihrer Angst sämtlich zum Schloss hinaus. Unten hielt der König Rat, was zu tun das beste wäre; zuletzt ward beschlossen, einen Herold an die Katze abzuschicken und sie aufzufordern, das Schloss zu verlassen, oder zu gewärtigen, dass Gewalt gegen sie gebraucht würde. Die Räte sagten „lieber wollen wir uns von den Mäusen plagen lassen, an das Übel sind wir gewöhnt, als unser Leben einem solchen Untier preisgeben.“ Ein Edelknabe musste hinaufgehen und die Katze fragen, ob sie das Schloss gutwillig räumen wollte. Die Katze aber, deren Durst nur noch grösser geworden war, antwortete bloss „miau, miau.“ Der Edelknabe verstand „durchaus, durchaus nicht,“ und überbrachte dem König die Antwort. „Nun,“ sprachen die Räte, „soll sie der Gewalt weichen.“ Es wurden Kanonen aufgeführt und das Haus in Brand geschossen. Als das Feuer in den Saal kam, wo die Katze sass, sprang sie glücklich zum Fenster hinaus; die Belagerer hörten aber nicht eher auf, als bis das ganze Schloss in Grund und Boden geschossen war."
+        ]
+    }
+}

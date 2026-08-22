@@ -126,14 +126,53 @@ The seventh ten-item batch adds:
 - `die-wassernixe`
 - `der-alte-grossvater-und-der-enkel`
 
+The eighth ten-item batch adds:
+
+- `der-treue-johannes`
+- `das-buerle`
+- `der-frieder-und-das-katherlieschen`
+- `der-ranzen-das-huetlein-und-das-hoernlein`
+- `von-dem-machandelboom`
+- `der-gescheite-hans`
+- `die-hochzeit-der-frau-fuechsin`
+- `der-junge-riese`
+- `hans-heiratet`
+- `der-spielhansl`
+
+The ninth ten-item batch adds:
+
+- `von-dem-tode-des-huehnchens`
+- `der-fuchs-und-die-katze`
+- `das-kluge-gretel`
+- `der-fuchs-und-die-frau-gevatterin`
+- `der-wolf-und-der-fuchs`
+- `der-wolf-und-der-mensch`
+- `die-drei-glueckskinder`
+- `der-gaudieb-und-sein-meister`
+- `die-zwoelf-jaeger`
+- `haesichenbraut`
+
+The tenth ten-item batch adds:
+
+- `die-drei-federn`
+- `die-bienenkoenigin`
+- `der-koenigssohn-der-sich-vor-nichts-fuerchtet`
+- `das-blaue-licht`
+- `die-beiden-koenigskinder`
+- `der-gelernte-jaeger`
+- `hans-mein-igel`
+- `der-arme-muellerbursch-und-das-kaetzchen`
+- `der-baerenhaeuter`
+- `das-wasser-des-lebens`
+
 They live under `resources/story-reading/`, outside the public web root. Every
 artefact is the vendor-neutral source from which future SSML, ElevenLabs, or
 other provider payloads are derived.
 
-Together, the 75 artefacts cover short narration, sustained dialogue, large
+Together, the 105 artefacts cover short narration, sustained dialogue, large
 character sets, verse-like speech and longer scene structures, all directed as
 single-narrator audiobook readings. All retain the published
-text; their normalisations are declared inside each artefact. All seven
+text; their normalisations are declared inside each artefact. All ten
 ten-item batches are machine-validated and cross-checked, while their
 `providerNotes.editorialStatus` deliberately remains
 `machine_validated_pending_editorial_review` until human editorial sign-off.
