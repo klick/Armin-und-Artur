@@ -1,0 +1,217 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "der-arme-muellerbursch-und-das-kaetzchen",
+        "title": "Der arme Müllerbursch und das Kätzchen",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/der-arme-m%C3%BCllerbursch-und-das-k%C3%A4tzchen",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 231,
+        "entryUid": "8003257b-3e39-48d2-a2dc-afc4555c3349",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "hans": {
+            "label": "Hans / Müllerbursch",
+            "voiceProfile": "young_adult_male_gentle",
+            "delivery": "Bescheiden, fleissig und gutherzig."
+        },
+        "old_miller": {
+            "label": "Alter Müller",
+            "voiceProfile": "older_male_plain",
+            "delivery": "Praktisch, prüfend und gerecht."
+        },
+        "other_apprentices": {
+            "label": "Zwei andere Müllerburschen",
+            "voiceProfile": "young_male_group_mocking",
+            "delivery": "Spöttisch, bequem und selbstsicher."
+        },
+        "cat_princess": {
+            "label": "Kätzchen / Königstochter",
+            "voiceProfile": "young_female_gracious",
+            "delivery": "Als Katze freundlich und bestimmt, als Königstochter würdevoll und warm."
+        },
+        "kitten_servants": {
+            "label": "Kätzchendiener",
+            "voiceProfile": "small_creature_group_precise",
+            "delivery": "Geschäftig, höflich und märchenhaft leicht."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "In einer Mühle lebte ein alter Müller, der hatte weder Frau noch Kinder, und drei Müllerburschen",
+            "title": "Drei Müllerburschen",
+            "speakers": [
+                "narrator",
+                "hans",
+                "old_miller",
+                "other_apprentices"
+            ],
+            "direction": "Ausgangslage und Aufgabe schlicht erzählen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Da zogen alle drei miteinander aus, und wie sie vor das Dorf kamen, sagten die zwei zu dem alber",
+            "title": "Hans bleibt allein",
+            "speakers": [
+                "narrator",
+                "hans",
+                "other_apprentices"
+            ],
+            "direction": "Spott und Trennung zurückhaltend tragen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Wie nun die Sonne kam und Hans aufwachte lag er in einer tiefen Höhle; er guckte sich überall um",
+            "title": "Das Kätzchenschloss",
+            "speakers": [
+                "narrator",
+                "hans",
+                "cat_princess",
+                "kitten_servants"
+            ],
+            "direction": "Den wunderbaren Ort staunend und langsam schildern."
+        },
+        {
+            "id": "s04",
+            "anchor": "Einmal sagte sie zu ihm: „Geh hin und mähe meine Wiese und mache das Gras trocken!“ und gab ihm ",
+            "title": "Sieben Jahre Dienst",
+            "speakers": [
+                "narrator",
+                "hans",
+                "cat_princess",
+                "kitten_servants"
+            ],
+            "direction": "Arbeit, Tanz und Aufgaben klar gliedern."
+        },
+        {
+            "id": "s05",
+            "anchor": "Also machte Hans sich auf, und sie zeigte ihm den Weg zur Mühle. Sie hatte ihm aber nicht einmal",
+            "title": "Rückkehr zur Mühle",
+            "speakers": [
+                "narrator",
+                "hans",
+                "old_miller",
+                "other_apprentices"
+            ],
+            "direction": "Kontrast der Pferde und Häuser trocken erzählen."
+        },
+        {
+            "id": "s06",
+            "anchor": "Danach verlangte die Jungfrau die Pferde zu sehen, welche die andern Mahlburschen mitgebracht ha",
+            "title": "Die Königstochter",
+            "speakers": [
+                "narrator",
+                "hans",
+                "cat_princess",
+                "old_miller"
+            ],
+            "direction": "Enthüllung und glücklichen Schluss warm führen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Hans, altem Müller, den beiden Gesellen oder Kätzchen beziehungsweise Königstochter. Ihre beiden Gestalten teilen eine Sprecheridentität.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "In einer Mühle lebte ein alter Müller, der hatte weder Frau noch Kinder, und drei Müllerburschen dienten bei ihm. Wie sie nun etliche Jahre bei ihm gewesen waren, sagte er eines Tages zu ihnen: „Ich bin alt und will mich hinter den Ofen setzen; zieht aus, und wer mir das beste Pferd nach Haus bringt, dem will ich die Mühle geben, und er soll mich dafür bis an meinen Tod verpflegen.“ Der dritte von den Burschen war aber der Kleinknecht, der ward von den andern für albern gehalten, dem gönnten sie die Mühle nicht; und er wollte sie hernach nicht einmal.",
+            "Da zogen alle drei miteinander aus, und wie sie vor das Dorf kamen, sagten die zwei zu dem albernen Hans: „Du kannst nun hier bleiben, du kriegst dein Lebtag keinen Gaul.“ Hans aber ging doch mit, und als Nacht war, kamen sie an eine Höhle, da hinein legten sie sich schlafen. Die zwei Klugen warteten, bis Hans eingeschlafen war, dann stiegen sie auf, machten sich fort und liessen Hänschen liegen und meinten’s recht fein gemacht zu haben; ja, es wird euch doch nicht gut gehen!",
+            "Wie nun die Sonne kam und Hans aufwachte lag er in einer tiefen Höhle; er guckte sich überall um und rief: „Ach Gott wo bin ich!“ Da erhob er sich und krabbelte die Höhle hinauf, ging in den Wald und dachte: Ich bin hier ganz allein und verlassen, wie soll ich nun zu einem Pferd kommen! Indem er so in Gedanken dahinging, begegnete ihm ein kleines, buntes Kätzchen, das sprach ganz freundlich: „Hans, wo willst du hin?“ – „Ach, du kannst mir doch nicht helfen.“ – „Was dein Begehren ist weiss ich wohl,“ sprach das Kätzchen, „du willst einen hübschen Gaul haben. Komm mit mir und sei sieben Jahre lang mein treuer Knecht, so will ich dir einen geben, schöner, als du dein Lebtag einen gesehen hast“ Nun, das ist eine wunderliche Katze, dachte Hans, aber sehen will ich doch, ob das wahr ist, was sie sagt. Da nahm sie ihn mit in ihr verwünschtes Schlösschen und hatte da lauter Kätzchen, die ihr dienten: Die sprangen flink die Treppe auf und ab, waren lustig und guter Dinge. Abends, als sie sich zu Tisch setzten, mussten drei Musik machen, eins strich den Bass, das andere die Geige, das dritte setzte die Trompete an und blies die Backen auf, so sehr es nur konnte. Als sie gegessen hatten, wurde der Tisch weggetragen, und die Katze sagte: „Nun komm, Hans, und tanze mit mir!“ – „Nein,“ antwortete er, „mit einer Miezekatze tanze ich nicht, das habe ich noch niemals getan.“ – „So bringt ihn ins Bett!“ sagte sie zu den Kätzchen. Da leuchtete ihm eins in seine Schlafkammer, eins zog ihm die Schuhe aus, eins die Strümpfe, und zuletzt blies eins das Licht aus. Am andern Morgen kamen sie wieder und halfen ihm aus dem Bett: Eins zog ihm die Strümpfe an, eins band ihm die Strumpfbänder, eins holte die Schuhe, eins wusch ihn und eins trocknete ihm mit dem Schwanz das Gesicht ab. „Das tut recht sanft,“ sagte Hans. Er musste aber auch der Katze dienen und alle Tage Holz kleinmachen; dazu kriegte er eine Axt von Silber, und die Keile und Säge von Silber, und der Schläger war von Kupfer. Nun, da machte er’s klein, blieb da im Haus, hatte ein gutes Essen und Trinken, sah aber niemand als die bunte Katze und ihr Gesinde.",
+            "Einmal sagte sie zu ihm: „Geh hin und mähe meine Wiese und mache das Gras trocken!“ und gab ihm von Silber eine Sense und von Gold einen Wetzstein, hiess ihn aber auch alles wieder richtig abliefern. Da ging Hans hin und tat, was ihm geheissen ward nach vollbrachter Arbeit trug er Sense, Wetzstein und Heu nach Haus und fragte, ob sie ihm noch nicht seinen Lohn geben wollte. „Nein,“ sagte die Katze, „du sollst mir noch einerlei tun, da ist Bauholz von Silber, Zimmeraxt, Winkeleisen und was nötig ist, alles von Silber, daraus baue mir erst ein kleines Häuschen!“ Da baute Hans das Haus fertig und sagte, er hätte nun alles getan und hätte noch kein Pferd. Da waren ihm die sieben Jahre herumgegangen wie ein halbes. Fragte die Katze, ob er ihre Pferde sehen wollte? „Ja,“ sagte Hans. Da machte sie ihm das Häuschen auf, und wie sie die Türe so aufmachte, da stehen zwölf Pferde, ach! die waren gewesen ganz stolz, die hatten geblänkt und gespiegelt, dass sich sein Herz im Leibe freute. Nun gab sie ihm zu essen und zu trinken und sprach: „Geh heim, dein Pferd gebe ich dir nicht mit; in drei Tagen aber komm ich und bringe dir’s nach.“",
+            "Also machte Hans sich auf, und sie zeigte ihm den Weg zur Mühle. Sie hatte ihm aber nicht einmal ein neues Kleid gegeben, sondern er musste sein altes lumpiges Kittelchen behalten, das er mitgebracht hatte und das ihm in den sieben Jahren überall zu kurz geworden war. Wie er nun heimkam, so waren die beiden andern Müllerburschen auch wieder da; jeder hatte zwar sein Pferd mitgebracht, aber des einen seins war blind, des andern seins lahm. Sie fragten: „Hans, wo hast du dein Pferd?“ – „In drei Tagen wird’s nachkommen.“ Da lachten sie und sagten: „Ja, du Hans, wo willst du ein Pferd herkriegen, das wird was Rechtes sein!“ Hans ging in die Stube, der Müller sagte aber, er sollte nicht an den Tisch kommen, er wäre so zerrissen und zerlumpt, man müsste sich schämen, wenn jemand hereinkäme. Da gaben sie ihm ein bisschen Essen hinaus, und wie sie abends schlafen gingen, wollten ihm die zwei andern kein Bett geben, und er musste endlich ins Gänseställchen kriechen und sich auf ein wenig hartes Stroh legen. Am andern Morgen, wie er aufwacht, sind schon die drei Tage herum, und es kommt eine Kutsche mit sechs Pferden, ei, die glänzten, dass es schön war, und ein Bedienter, der brachte noch ein siebentes, das war für den armen Müllerbursch. Aus der Kutsche aber stieg eine prächtige Königstochter und ging in die Mühle hinein, und die Königstochter war das kleine bunte Kätzchen, dem der arme Hans sieben Jahre gedient hatte. Sie fragte den Müller, wo der Mahlbursch, der Kleinknecht, wäre? Da sagte der Müller: „Den können wir nicht in die Mühle nehmen, der ist so verrissen und liegt im Gänsestall.“ Da sagte die Königstochter, sie sollten ihn gleich holen. Also holten sie ihn heraus, und er musste sein Kittelchen zusammenpacken, um sich zu bedecken. Da schnallte der Bediente prächtige Kleider aus und musste ihn waschen und anziehen, und wie er fertig war, konnte kein König schöner aussehen.",
+            "Danach verlangte die Jungfrau die Pferde zu sehen, welche die andern Mahlburschen mitgebracht hatten, eins war blind, das andere lahm. Da liess sie den Bedienten das siebente Pferd bringen; wie der Müller das sah, sprach er, so eins wär’ ihm noch nicht auf den Hof gekommen. „Und das ist für den dritten Mahlbursch,“ sagte sie. „Da muss er die Mühle haben,“ sagte der Müller. Die Königstochter aber sprach, da wäre das Pferd, er sollte seine Mühle auch behalten; und nimmt ihren treuen Hans und setzt ihn in die Kutsche und fährt mit ihm fort. Sie fahren zuerst nach dem kleinen Häuschen, das er mit dem silbernen Werkzeug gebaut hat; da ist ein grosses Schloss, und ist alles darin von Silber und Gold; und da hat sie ihn geheiratet, und war er reich, so reich, dass er für sein Lebtag genug hatte. Darum soll keiner sagen, dass wer albern ist, deshalb nichts Rechtes werden könne."
+        ]
+    }
+}

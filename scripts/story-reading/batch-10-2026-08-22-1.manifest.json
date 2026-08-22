@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {"id":"der-treue-johannes","entryId":57,"entryUid":"229a360e-7eb5-4602-998b-42fec3acfa97","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-treue-johannes","language":"de"},
+    {"id":"das-buerle","entryId":77,"entryUid":"df2ff76f-39b0-4ce6-84a4-4ae7705c8f13","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-b%C3%BCrle","language":"de"},
+    {"id":"der-frieder-und-das-katherlieschen","entryId":81,"entryUid":"905cfb75-b1e7-46bb-9a69-36b951caa6ba","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-frieder-und-das-katherlieschen","language":"de"},
+    {"id":"der-ranzen-das-huetlein-und-das-hoernlein","entryId":87,"entryUid":"d6704f7e-74b2-4e93-8ba2-f1b89a541fce","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-ranzen-das-h%C3%BCtlein-und-das-h%C3%B6rnlein","language":"de"},
+    {"id":"von-dem-machandelboom","entryId":97,"entryUid":"ac40810e-a468-4ec8-8aa9-b53629682fec","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/von-dem-machandelboom","language":"de"},
+    {"id":"der-gescheite-hans","entryId":111,"entryUid":"4ec5d127-fd90-47dc-9849-09938a31564c","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-gescheite-hans","language":"de"},
+    {"id":"die-hochzeit-der-frau-fuechsin","entryId":137,"entryUid":"babdd457-048d-4a6c-99bd-48edaa370fa3","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-hochzeit-der-frau-f%C3%BCchsin","language":"de"},
+    {"id":"der-junge-riese","entryId":159,"entryUid":"b6ea6d64-548d-4145-9a03-242dcee2f1c2","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-junge-riese","language":"de"},
+    {"id":"hans-heiratet","entryId":185,"entryUid":"0780eb85-9beb-4c8d-ad21-7ef3fefce4c1","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/hans-heiratet","language":"de"},
+    {"id":"der-spielhansl","entryId":189,"entryUid":"b3aa4b66-e8b7-498b-8f0f-1b59b78fae56","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-spielhansl","language":"de"}
+  ]
+}

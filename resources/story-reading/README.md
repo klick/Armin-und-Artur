@@ -222,7 +222,7 @@ structured field is introduced in a future schema version rather than ad hoc.
 
 ## Artefact inventory
 
-There are currently 75 complete schema-valid artefacts:
+There are currently 105 complete schema-valid artefacts:
 
 | Story ID | Editorial status |
 | --- | --- |
@@ -301,6 +301,36 @@ There are currently 75 complete schema-valid artefacts:
 | [`der-fuchs-und-die-gaense`](der-fuchs-und-die-gaense.reading.json) | machine validated; human review pending |
 | [`die-wassernixe`](die-wassernixe.reading.json) | machine validated; human review pending |
 | [`der-alte-grossvater-und-der-enkel`](der-alte-grossvater-und-der-enkel.reading.json) | machine validated; human review pending |
+| [`der-treue-johannes`](der-treue-johannes.reading.json) | machine validated; human review pending |
+| [`das-buerle`](das-buerle.reading.json) | machine validated; human review pending |
+| [`der-frieder-und-das-katherlieschen`](der-frieder-und-das-katherlieschen.reading.json) | machine validated; human review pending |
+| [`der-ranzen-das-huetlein-und-das-hoernlein`](der-ranzen-das-huetlein-und-das-hoernlein.reading.json) | machine validated; human review pending |
+| [`von-dem-machandelboom`](von-dem-machandelboom.reading.json) | machine validated; human review pending |
+| [`der-gescheite-hans`](der-gescheite-hans.reading.json) | machine validated; human review pending |
+| [`die-hochzeit-der-frau-fuechsin`](die-hochzeit-der-frau-fuechsin.reading.json) | machine validated; human review pending |
+| [`der-junge-riese`](der-junge-riese.reading.json) | machine validated; human review pending |
+| [`hans-heiratet`](hans-heiratet.reading.json) | machine validated; human review pending |
+| [`der-spielhansl`](der-spielhansl.reading.json) | machine validated; human review pending |
+| [`von-dem-tode-des-huehnchens`](von-dem-tode-des-huehnchens.reading.json) | machine validated; human review pending |
+| [`der-fuchs-und-die-katze`](der-fuchs-und-die-katze.reading.json) | machine validated; human review pending |
+| [`das-kluge-gretel`](das-kluge-gretel.reading.json) | machine validated; human review pending |
+| [`der-fuchs-und-die-frau-gevatterin`](der-fuchs-und-die-frau-gevatterin.reading.json) | machine validated; human review pending |
+| [`der-wolf-und-der-fuchs`](der-wolf-und-der-fuchs.reading.json) | machine validated; human review pending |
+| [`der-wolf-und-der-mensch`](der-wolf-und-der-mensch.reading.json) | machine validated; human review pending |
+| [`die-drei-glueckskinder`](die-drei-glueckskinder.reading.json) | machine validated; human review pending |
+| [`der-gaudieb-und-sein-meister`](der-gaudieb-und-sein-meister.reading.json) | machine validated; human review pending |
+| [`die-zwoelf-jaeger`](die-zwoelf-jaeger.reading.json) | machine validated; human review pending |
+| [`haesichenbraut`](haesichenbraut.reading.json) | machine validated; human review pending |
+| [`die-drei-federn`](die-drei-federn.reading.json) | machine validated; human review pending |
+| [`die-bienenkoenigin`](die-bienenkoenigin.reading.json) | machine validated; human review pending |
+| [`der-koenigssohn-der-sich-vor-nichts-fuerchtet`](der-koenigssohn-der-sich-vor-nichts-fuerchtet.reading.json) | machine validated; human review pending |
+| [`das-blaue-licht`](das-blaue-licht.reading.json) | machine validated; human review pending |
+| [`die-beiden-koenigskinder`](die-beiden-koenigskinder.reading.json) | machine validated; human review pending |
+| [`der-gelernte-jaeger`](der-gelernte-jaeger.reading.json) | machine validated; human review pending |
+| [`hans-mein-igel`](hans-mein-igel.reading.json) | machine validated; human review pending |
+| [`der-arme-muellerbursch-und-das-kaetzchen`](der-arme-muellerbursch-und-das-kaetzchen.reading.json) | machine validated; human review pending |
+| [`der-baerenhaeuter`](der-baerenhaeuter.reading.json) | machine validated; human review pending |
+| [`das-wasser-des-lebens`](das-wasser-des-lebens.reading.json) | machine validated; human review pending |
 
 Schema validity and exact source fidelity are technical guarantees. They are
 not substitutes for editorial sign-off. Consumers that need reviewed material

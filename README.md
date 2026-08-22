@@ -14,7 +14,7 @@ high-quality read-aloud production.
 
 - Craft CMS serves the website and all API routes.
 - The complete original text is available through the free API.
-- 75 complete reading artefacts conform to Story Reading Format 1.3.
+- 105 complete reading artefacts conform to Story Reading Format 1.3.
 - Paid artefacts use x402 v2 with an exact per-request USDC payment.
 - Production currently advertises Base mainnet and a pilot price of 0.01 USDC.
 - A fresh `402` challenge and the catalogue are authoritative for payment
@@ -23,7 +23,7 @@ high-quality read-aloud production.
   canonical JSON. They are not maintained as competing source documents.
 
 Editorial status is intentionally explicit: three artefacts are marked
-`pilot_reviewed`, seventy are machine-validated and awaiting human editorial
+`pilot_reviewed`, one hundred are machine-validated and awaiting human editorial
 sign-off, and two earlier examples are marked as legacy examples awaiting
 editorial review.
 

@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {"id":"von-dem-tode-des-huehnchens","entryId":191,"entryUid":"a7c035e0-0d3c-494e-a4c0-d2c58d0773a0","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/von-dem-tode-des-h%C3%BChnchens","language":"de"},
+    {"id":"der-fuchs-und-die-katze","entryId":193,"entryUid":"ee88e1c0-7f7d-4929-90f9-7c24a319538a","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-fuchs-und-die-katze","language":"de"},
+    {"id":"das-kluge-gretel","entryId":195,"entryUid":"071b7fcc-ce5c-4ba7-a551-abf8705afbe5","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-kluge-gretel","language":"de"},
+    {"id":"der-fuchs-und-die-frau-gevatterin","entryId":197,"entryUid":"7067c9c3-fe17-442a-a86d-33d331d5a047","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-fuchs-und-die-frau-gevatterin","language":"de"},
+    {"id":"der-wolf-und-der-fuchs","entryId":199,"entryUid":"bed32009-ed5f-4e0a-94c4-663c9b6904c7","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-wolf-und-der-fuchs","language":"de"},
+    {"id":"der-wolf-und-der-mensch","entryId":201,"entryUid":"58ce46af-49e0-4a1b-9ae0-8acc125434c6","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-wolf-und-der-mensch","language":"de"},
+    {"id":"die-drei-glueckskinder","entryId":203,"entryUid":"c2aae6a0-d6a3-4b39-af05-87b95b644d23","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-drei-gl%C3%BCckskinder","language":"de"},
+    {"id":"der-gaudieb-und-sein-meister","entryId":207,"entryUid":"c2b5afaf-06a5-470a-ace3-e7421e083e33","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-gaudieb-und-sein-meister","language":"de"},
+    {"id":"die-zwoelf-jaeger","entryId":209,"entryUid":"e9d62b25-aac7-4d4f-980a-e1b63dca1bbf","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-zw%C3%B6lf-j%C3%A4ger","language":"de"},
+    {"id":"haesichenbraut","entryId":211,"entryUid":"c6752483-0ceb-48d8-86b5-0397c86baccc","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/h%C3%A4sichenbraut","language":"de"}
+  ]
+}
