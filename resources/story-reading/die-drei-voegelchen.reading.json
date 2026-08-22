@@ -1,0 +1,249 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-drei-voegelchen",
+        "title": "Die drei Vögelchen",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-drei-v%C3%B6gelchen",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 241,
+        "entryUid": "372fca50-7be3-4e18-8e27-b2ec084dd5f0",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "king": {
+            "label": "König",
+            "voiceProfile": "adult_male_noble",
+            "delivery": "Würdevoll, geduldig und später tief erschüttert."
+        },
+        "queen": {
+            "label": "Jüngste Schwester / Königin",
+            "voiceProfile": "young_female_gentle",
+            "delivery": "Warm, unschuldig und in der Gefangenschaft still."
+        },
+        "false_sisters": {
+            "label": "Zwei ältere Schwestern",
+            "voiceProfile": "adult_female_group_envious",
+            "delivery": "Neidisch, heimlich und zunehmend ängstlich."
+        },
+        "fisher_couple": {
+            "label": "Fischer und Fischersfrau",
+            "voiceProfile": "older_couple_kind",
+            "delivery": "Einfach, fürsorglich und verlässlich."
+        },
+        "children": {
+            "label": "Zwei Söhne und eine Tochter",
+            "voiceProfile": "young_group_brave",
+            "delivery": "Neugierig, aufrichtig und einander verbunden."
+        },
+        "bird": {
+            "label": "Weisser Vogel",
+            "voiceProfile": "small_creature_clear",
+            "delivery": "Die Verse getragen und deutlich, ohne Vogelgeräusch sprechen."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es ist wohl tausend und mehr Jahre her, da waren hier im Lande lauter kleine Könige; da hat auch",
+            "title": "Drei Schwestern am Keuterberg",
+            "speakers": [
+                "narrator",
+                "king",
+                "queen",
+                "false_sisters"
+            ],
+            "direction": "Jagd, Begegnung und Hochzeit ruhig eröffnen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Die beiden Schwestern aber kriegten keine Kinder, und als der König einmal verreisen musste, lie",
+            "title": "Das erste Kind im Wasser",
+            "speakers": [
+                "narrator",
+                "queen",
+                "false_sisters",
+                "bird"
+            ],
+            "direction": "Verrat und Vogelspruch klar, ohne zusätzliche Härte erzählen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Es wohnte aber ein Fischer am Wasser, der fischte den kleinen Jungen wieder heraus, als er noch ",
+            "title": "Der zweite Sohn",
+            "speakers": [
+                "narrator",
+                "queen",
+                "false_sisters",
+                "fisher_couple",
+                "bird"
+            ],
+            "direction": "Wiederholung erkennbar, aber nicht mechanisch lesen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Da verreiste der König wieder, und die Königin kriegte ein kleines Mädchen, das die falschen Sch",
+            "title": "Die Tochter und der Kerker",
+            "speakers": [
+                "narrator",
+                "queen",
+                "false_sisters",
+                "king",
+                "fisher_couple",
+                "bird"
+            ],
+            "direction": "Die Steigerung ernst und langsam tragen."
+        },
+        {
+            "id": "s05",
+            "anchor": "Die Kinder waren unterdessen herangewachsen, da ging der älteste einmal mit anderen Jungen hinau",
+            "title": "Die Kinder suchen ihre Herkunft",
+            "speakers": [
+                "narrator",
+                "children",
+                "fisher_couple",
+                "bird"
+            ],
+            "direction": "Aufbruch und Suche warm und übersichtlich führen."
+        },
+        {
+            "id": "s06",
+            "anchor": "Der zweite Sohn konnte nicht lange zu Hause bleiben, und er nahm seinen Flitzebogen und ging auf",
+            "title": "Der Sohn begegnet dem König",
+            "speakers": [
+                "narrator",
+                "children",
+                "king",
+                "bird"
+            ],
+            "direction": "Nähe und noch fehlendes Erkennen behutsam erzählen."
+        },
+        {
+            "id": "s07",
+            "anchor": "Da erschraken sie alle, und der König nahm den Vogel, den Fischer und die drei Kinder mit sich a",
+            "title": "Die Wahrheit kommt ans Licht",
+            "speakers": [
+                "narrator",
+                "king",
+                "queen",
+                "children",
+                "false_sisters",
+                "fisher_couple",
+                "bird"
+            ],
+            "direction": "Enthüllung, Befreiung und Wiedervereinigung warm abschliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt König, Königin, den falschen Schwestern, dem Fischerpaar, den Kindern oder dem weissen Vogel nach der unmittelbaren Zuschreibung. Die Vogelverse bleiben gesprochene Verse.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es ist wohl tausend und mehr Jahre her, da waren hier im Lande lauter kleine Könige; da hat auch einer auf dem Keuterberge gewohnt, der ging sehr gerne auf die Jagd. Als er wieder einmal mit seinen Jägern aus dem Schloss herauszog, hüteten unten am Berge drei Mädchen ihre Kühe, und wie sie den König mit den vielen Leuten sahen, so rief die älteste den anderen beiden Mädchen zu, dabei auf den König weisend: „Helo! Helo! Wenn ich den nicht kriege, so will ich keinen.“ Da antwortete die zweite auf der anderen Seite vom Berge und wies auf den, der dem König zur rechten Hand ging: „Helo! Helo! Wenn ich den nicht kriege, so will ich keinen!“ Da rief die jüngste und wies auf den, der linker Hand ging: „Helo! Helo! Wenn ich den nicht kriege, so will ich keinen!“ Das waren aber die beiden Minister. Das hörte der König alles, und als er von der Jagd heimgekommen war, liess er die drei Mädchen zu sich kommen und fragte sie, was sie da gestern am Berge gesagt hätten. Das wollten sie nun nicht sagen, und der König fragte die älteste, ob sie ihn wohl zum Manne haben wollte? Da sagte sie ja, und ihre beiden Schwestern fragten die beiden Minister, denn sie waren alle drei schön von Angesicht, besonders die Königin, die hatte Haare wie Flachs.",
+            "Die beiden Schwestern aber kriegten keine Kinder, und als der König einmal verreisen musste, liess er sie zur Königin kommen, um sie aufzumuntern, denn sie war gerade guter Hoffnung. Sie bekam einen kleinen Jungen, der brachte einen roten Stern mit auf die Welt. Da sagten die beiden Schwestern, eine zur anderen, sie wollten den hübschen Jungen ins Wasser werfen. Wie sie ihn hineingeworfen hatten (ich glaube, es war die Weser), da flog ein Vögelchen in die Höhe und sang:",
+            "„Tom Daude bereit, Auf weiter’n Bescheid Tom Lilienstrus: Wacker Junge, bist du’s?“",
+            "Als das die beiden hörten, kriegten sie Angst und machten, dass sie fortkamen. Wie der König nach Hause kam, sagten sie ihm, die Königin hätte einen Hund geboren. Da sagte der König: „Was Gott tut, das ist wohlgetan.“",
+            "Es wohnte aber ein Fischer am Wasser, der fischte den kleinen Jungen wieder heraus, als er noch lebendig war; und da seine Frau keine Kinder hatte, fütterten sie ihn auf. Nach einem Jahr war der König wieder verreist, da kriegte die Königin wieder einen Jungen, den die beiden falschen Schwestern ebenso nahmen und ins Wasser warfen. Da flog das Vögelchen wieder in die Höhe und sang:",
+            "„Tom Daude bereit, Auf weiter’n Bescheid Tom Lilienstrus: Wacker Junge, bist du’s?“",
+            "Und als der König zurückkam, sagten sie zu ihm, die Königin hätte wieder einen Hund bekommen, und er sagte wieder: „Was Gott tut, das ist wohlgetan.“ Aber der Fischer zog auch diesen Jungen aus dem Wasser und fütterte ihn auf.",
+            "Da verreiste der König wieder, und die Königin kriegte ein kleines Mädchen, das die falschen Schwestern auch ins Wasser warfen. Da flog das Vögelchen wieder in die Höhe und sang:",
+            "„Tom Daude bereit, Auf weiter’n Bescheid Tom Lilienstrus: Wacker Mädchen, bist du’s?“",
+            "Und wie der König nach Hause kam, sagten sie zu ihm, die Königin hätte eine Katze gekriegt. Da wurde der König böse und liess seine Frau ins Gefängnis werfen, darin sie lange Jahre sitzen musste.",
+            "Die Kinder waren unterdessen herangewachsen, da ging der älteste einmal mit anderen Jungen hinaus, um zu fischen. Da wollten ihn die andern nicht dabeihaben und sagten: „Du Findling, geh du deiner Wege!“ Da wurde er ganz betrübt und fragte den alten Fischer, ob das wahr sei? Der erzählte ihm, dass er einmal gefischt hätte, und er habe ihn aus dem Wasser gezogen. Da sagte der Junge, er wolle fort und seinen Vater suchen. Der Fischer bat ihn, er möchte doch bleiben, aber er liess sich gar nicht halten, bis der Fischer zuletzt einwilligte. Da machte er sich auf den Weg und ging mehrere Tage hintereinander; endlich kam er zu einem allmächtig grossen Wasser, davor stand eine alte Frau und fischte. „Guten Tag, Mutter,“ sagte der Junge. – „Grossen Dank.“ – „Du musst wohl lange fischen, ehe du einen Fisch fängst?“ – „Und du musst wohl lange suchen, ehe du deinen Vater findest. Wie willst du denn da übers Wasser kommen?“ sagte die Frau. „Ja, das mag Gott wissen.“ Da nahm die alte Frau ihn auf den Rücken und trug ihn hindurch, und er suchte lange Zeit und konnte seinen Vater nicht finden. Als nun ein Jahr vorüber war, da zog der zweite aus und wollte seinen Bruder suchen. Er kam an das Wasser, wo es ihm ebenso erging wie seinem Bruder. Nun war nur noch die Tochter alleine zu Haus, und sie jammerte so sehr nach ihren Brüdern, dass sie zuletzt auch den Fischer bat, er möchte sie ziehen lassen, sie wolle ihre Brüder suchen. Da kam sie auch zu dem grossen Wasser, und sagte zu der alten Frau: „Guten Tag, Mutter.“ – „Grossen Dank.“ – „Gott helfe Euch beim Fischen.“ Als die alte Frau das hörte, wurde sie ganz freundlich, trug sie übers Wasser und gab ihr eine Rute, und sagte: „Nun geh nur immer auf diesem Wege weiter, meine Tochter, und wenn du an einem grossen schwarzen Hund vorbeikommst, so musst du still und dreist, und ohne zu lachen und ohne ihn anzusehen, vorbeigehen. Dann kommst du an ein grosses offenes Schloss. Auf dessen Schwelle musst du die Rute fallen lassen und stracks durch das Schloss an der anderen Seite wieder herausgehen. Da ist ein alter Brunnen, aus dem ist ein alter Baum gewachsen, daran hängt ein Vogel im Bauer, den nimm auf. Dann nimm noch ein Glas Wasser aus dem Brunnen und geh mit diesen beiden denselben Weg wieder zurück. Von der Schwelle nimm die Rute wieder mit, und wenn du dann wieder bei dem Hund vorbeikommst, dann schlag ihm ins Gesicht. Jedoch ’sieh zu, dass du ihn auch triffst, und dann komm auch wieder zu mir zurück.“ Da fand sie alles geradeso, wie die Frau es gesagt hatte, und auf dem Rückweg da fand sie die beiden Brüder, die sich in der halben Welt gegenseitig gesucht hatten. Sie gingen zusammen bis zu dem schwarzen Hund, dem das Mädchen ins Gesicht schlug: da wurde er ein schöner Prinz, der mit ihnen bis zum Wasser ging. Da stand noch die alte Frau, die freute sich sehr, dass sie alle wieder da waren, und trug sie alle übers Wassers, und dann ging sie auch weg, denn nun war sie erlöst. Die andern aber gingen alle zu dem alten Fischer, und waren froh, dass sie sich wiedergefunden hatten; den Vogel aber hängten sie an die Wand.",
+            "Der zweite Sohn konnte nicht lange zu Hause bleiben, und er nahm seinen Flitzebogen und ging auf die Jagd. Als er müde war, nahm er seine Flöte und blies ein Stückchen. Der König aber war auch auf der Jagd, hörte es und ging hin, und wie er den Jungen traf, da sagte er: „Wer hat dir erlaubt, hier zu jagen?“ – „Oh, niemand.“ – „Wem gehörst du?“ – „Ich bin dem Fischer sein Sohn.“ – „Der hat ja keine Kinder.“ – „Wenn du es nicht glauben willst, so komm mit.“ Das tat der König und fragte den Fischer, der ihm alles erzählte; und das Vögelchen an der Wand fing an zu singen:",
+            "„Die Mutter sitzt allein, Wohl in dem Kerkerlein. O König, edles Blut, Dies sind deine Kinder gut. Die falschen Schwestern beide, Die taten den Kindern leide, Wohl in des Wassers Grund, Wo sie der Fischer fand.“",
+            "Da erschraken sie alle, und der König nahm den Vogel, den Fischer und die drei Kinder mit sich auf das Schloss, liess das Gefängnis aufschliessen und nahm seine Frau wieder heraus. Doch war diese ganz krank und elend geworden. Da gab ihr die Tochter von dem Wasser des Brunnens zu trinken, da wurde sie wieder frisch und gesund. Die beiden falschen Schwestern wurden aber verbrannt, und die Tochter freite den Prinzen."
+        ]
+    }
+}

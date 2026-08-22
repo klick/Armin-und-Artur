@@ -222,7 +222,7 @@ structured field is introduced in a future schema version rather than ad hoc.
 
 ## Artefact inventory
 
-There are currently 105 complete schema-valid artefacts:
+There are currently 135 complete schema-valid artefacts:
 
 | Story ID | Editorial status |
 | --- | --- |
@@ -331,6 +331,36 @@ There are currently 105 complete schema-valid artefacts:
 | [`der-arme-muellerbursch-und-das-kaetzchen`](der-arme-muellerbursch-und-das-kaetzchen.reading.json) | machine validated; human review pending |
 | [`der-baerenhaeuter`](der-baerenhaeuter.reading.json) | machine validated; human review pending |
 | [`das-wasser-des-lebens`](das-wasser-des-lebens.reading.json) | machine validated; human review pending |
+| [`die-drei-voegelchen`](die-drei-voegelchen.reading.json) | machine validated; human review pending |
+| [`der-alte-hildebrand`](der-alte-hildebrand.reading.json) | machine validated; human review pending |
+| [`die-kluge-bauerntochter`](die-kluge-bauerntochter.reading.json) | machine validated; human review pending |
+| [`die-rabe`](die-rabe.reading.json) | machine validated; human review pending |
+| [`der-koenig-vom-goldenen-berg`](der-koenig-vom-goldenen-berg.reading.json) | machine validated; human review pending |
+| [`das-eigensinnige-kind`](das-eigensinnige-kind.reading.json) | machine validated; human review pending |
+| [`der-dreschflegel-vom-himmel`](der-dreschflegel-vom-himmel.reading.json) | machine validated; human review pending |
+| [`das-totenhemdchen`](das-totenhemdchen.reading.json) | machine validated; human review pending |
+| [`die-drei-handwerksburschen`](die-drei-handwerksburschen.reading.json) | machine validated; human review pending |
+| [`die-sieben-schwaben`](die-sieben-schwaben.reading.json) | machine validated; human review pending |
+| [`die-drei-feldscherer`](die-drei-feldscherer.reading.json) | machine validated; human review pending |
+| [`die-klare-sonne-bringts-an-den-tag`](die-klare-sonne-bringts-an-den-tag.reading.json) | machine validated; human review pending |
+| [`vom-klugen-schneiderlein`](vom-klugen-schneiderlein.reading.json) | machine validated; human review pending |
+| [`maerchen-von-der-unke`](maerchen-von-der-unke.reading.json) | machine validated; human review pending |
+| [`der-zaunkoenig-und-der-baer`](der-zaunkoenig-und-der-baer.reading.json) | machine validated; human review pending |
+| [`des-teufels-russiger-bruder`](des-teufels-russiger-bruder.reading.json) | machine validated; human review pending |
+| [`doktor-allwissend`](doktor-allwissend.reading.json) | machine validated; human review pending |
+| [`der-eisenhans`](der-eisenhans.reading.json) | machine validated; human review pending |
+| [`die-weisse-und-die-schwarze-braut`](die-weisse-und-die-schwarze-braut.reading.json) | machine validated; human review pending |
+| [`die-sechs-diener`](die-sechs-diener.reading.json) | machine validated; human review pending |
+| [`die-zertanzten-schuhe`](die-zertanzten-schuhe.reading.json) | machine validated; human review pending |
+| [`einaeuglein-zweiaeuglein-und-dreiaeuglein`](einaeuglein-zweiaeuglein-und-dreiaeuglein.reading.json) | machine validated; human review pending |
+| [`die-vier-kunstreichen-brueder`](die-vier-kunstreichen-brueder.reading.json) | machine validated; human review pending |
+| [`der-eisenofen`](der-eisenofen.reading.json) | machine validated; human review pending |
+| [`ferdinand-getreu-und-ferdinand-ungetreu`](ferdinand-getreu-und-ferdinand-ungetreu.reading.json) | machine validated; human review pending |
+| [`der-krautesel`](der-krautesel.reading.json) | machine validated; human review pending |
+| [`raetselmaerchen`](raetselmaerchen.reading.json) | machine validated; human review pending |
+| [`das-dietmarsische-luegenmaerchen`](das-dietmarsische-luegenmaerchen.reading.json) | machine validated; human review pending |
+| [`das-maerchen-vom-schlaraffenland`](das-maerchen-vom-schlaraffenland.reading.json) | machine validated; human review pending |
+| [`die-schlickerlinge`](die-schlickerlinge.reading.json) | machine validated; human review pending |
 
 Schema validity and exact source fidelity are technical guarantees. They are
 not substitutes for editorial sign-off. Consumers that need reviewed material

@@ -97,9 +97,9 @@ The fourth through seventh ten-item collections are pinned in
 `batch-10-2026-08-20-6.manifest.json`. Their generated sources and scaffolds
 use the matching `storage/runtime/story-reading-batch-2026-08-20-N/`
 directories; all remain ignored and must be regenerated from Craft when the
-published source changes. The eighth through tenth collections are pinned in
+published source changes. The eighth through thirteenth collections are pinned in
 `batch-10-2026-08-22-1.manifest.json` through
-`batch-10-2026-08-22-3.manifest.json` and use the matching
+`batch-10-2026-08-22-6.manifest.json` and use the matching
 `storage/runtime/story-reading-batch-2026-08-22-N/` directories. Earlier batch
 manifests remain tracked as
 reproducible provenance for their artefacts.

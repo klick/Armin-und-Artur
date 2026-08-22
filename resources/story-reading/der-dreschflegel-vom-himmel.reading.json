@@ -1,0 +1,143 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "der-dreschflegel-vom-himmel",
+        "title": "Der Dreschflegel vom Himmel",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/der-dreschflegel-vom-himmel",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 253,
+        "entryUid": "6803e190-69bc-43a0-8f6a-e0c9b45ce3b6",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "farmer": {
+            "label": "Bauer",
+            "voiceProfile": "adult_male_tall_tale",
+            "delivery": "Treffsicher, trocken und von seiner unglaublichen Geschichte überzeugt."
+        },
+        "butcher": {
+            "label": "Metzger",
+            "voiceProfile": "adult_male_businesslike",
+            "delivery": "Praktisch und geschäftsmässig."
+        },
+        "angels": {
+            "label": "Engel",
+            "voiceProfile": "calm_group_working",
+            "delivery": "Nur als ruhig arbeitende Himmelsfiguren färben."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Es zog einmal ein Bauer mit einem Paar Ochsen zum Pflügen aus. Als er auf den Acker kam, da fing",
+            "title": "Der Dreschflegel vom Himmel",
+            "speakers": [
+                "narrator",
+                "farmer",
+                "butcher",
+                "angels"
+            ],
+            "direction": "Das Lügenmärchen als zusammenhängenden, trocken erzählten Bericht lesen; keine zusätzliche Verwunderung einfügen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Gedanken gehören dem Bauern. Metzger und Engel erhalten nur dort eine leichte Färbung, wo die Handlung sie nennt; keine Rede ergänzen.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Es zog einmal ein Bauer mit einem Paar Ochsen zum Pflügen aus. Als er auf den Acker kam, da fingen den beiden Tieren die Hörner an zu wachsen, wuchsen fort, und als er nach Haus wollte, waren sie so gross, dass er nicht mit zum Tor hinein konnte. Zu gutem Glück kam gerade ein Metzger daher, dem überliess er sie, und schlossen sie den Handel dergestalt, dass er sollte dem Metzger ein Mass Rübsamen bringen, der wollt ihm dann für jedes Korn einen Brabanter Taler aufzählen. Das heiss ich gut verkauft! Der Bauer ging nun heim, und trug das Mass Rübsamen auf dem Rücken herbei; unterwegs verlor er aber aus dem Sack ein Körnchen. Der Metzger bezahlte ihn, wie gehandelt war, richtig aus; hätte der Bauer das Korn nicht verloren, so hätte er einen Brabanter Taler mehr gehabt. Indessen, wie er wieder des Wegs zurückkam, war aus dem Korn ein Baum gewachsen, der reichte bis an den Himmel. Da dachte der Bauer „weil die Gelegenheit da ist, musst du doch sehen, was die Engel da droben machen, und ihnen einmal unter die Augen gucken.“ Also stieg er hinauf und sah, dass die Engel oben Hafer droschen, und schaute das mit an, wie er so schaute, merkte er, dass der Baum, worauf er stand, anfing zu wackeln, guckte hinunter und sah, dass ihn eben einer umhauen wollte. „Wenn du da herabstürztest, das wär ein böses Ding“ dachte er, und in der Not wusst er sich nicht besser zu helfen, als dass er die Spreu vom Hafer nahm, die haufenweis da lag, und daraus einen Strick drehte; auch griff er nach einer Hacke und einem Dreschflegel, die da herum im Himmel lagen, und liess sich an dem Seil herunter. Er kam aber unten auf der Erde gerade in ein tiefes tiefes Loch, und da war es ein rechtes Glück, dass er die Hacke hatte, denn er hackte sich damit eine Treppe, stieg in die Höhe und brachte den Dreschflegel zum Wahrzeichen mit, so dass niemand an seiner Erzählung mehr zweifeln konnte."
+        ]
+    }
+}

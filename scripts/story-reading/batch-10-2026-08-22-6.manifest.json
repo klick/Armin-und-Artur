@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {"id":"die-zertanzten-schuhe","entryId":283,"entryUid":"4ec728ec-9b90-45c2-b9e1-7bc4032a38f4","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-zertanzten-schuhe","language":"de"},
+    {"id":"einaeuglein-zweiaeuglein-und-dreiaeuglein","entryId":285,"entryUid":"ff832f5c-7691-44ab-85a4-6f5ef15a3354","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/ein%C3%A4uglein-zwei%C3%A4uglein-und-drei%C3%A4uglein","language":"de"},
+    {"id":"die-vier-kunstreichen-brueder","entryId":287,"entryUid":"6a219051-ed27-4ee1-beb3-55f4d34d6619","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-vier-kunstreichen-br%C3%BCder","language":"de"},
+    {"id":"der-eisenofen","entryId":289,"entryUid":"36fc4c5b-3027-4af0-bba3-600642d47158","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-eisenofen","language":"de"},
+    {"id":"ferdinand-getreu-und-ferdinand-ungetreu","entryId":291,"entryUid":"330720db-eb38-47a9-b117-c379ef5a29cc","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/ferdinand-getreu-und-ferdinand-ungetreu","language":"de"},
+    {"id":"der-krautesel","entryId":293,"entryUid":"eb66613c-66fa-4d27-bee3-78ad6ae4dbd5","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-krautesel","language":"de"},
+    {"id":"raetselmaerchen","entryId":295,"entryUid":"027b5fd2-ba9e-4ff8-aed4-668d5f419db4","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/r%C3%A4tselm%C3%A4rchen","language":"de"},
+    {"id":"das-dietmarsische-luegenmaerchen","entryId":297,"entryUid":"9ff9c5e4-c5d7-482c-8889-53376967714f","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-dietmarsische-l%C3%BCgenm%C3%A4rchen","language":"de"},
+    {"id":"das-maerchen-vom-schlaraffenland","entryId":299,"entryUid":"f596c241-a17c-47a2-b458-e994ed45a109","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-m%C3%A4rchen-vom-schlaraffenland","language":"de"},
+    {"id":"die-schlickerlinge","entryId":301,"entryUid":"11de8a8f-293b-41d0-9317-64be4fbdafce","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-schlickerlinge","language":"de"}
+  ]
+}

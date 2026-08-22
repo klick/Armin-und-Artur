@@ -1,0 +1,415 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-sechs-diener",
+        "title": "Die sechs Diener",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-sechs-diener",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 281,
+        "entryUid": "0eec8ff7-8db2-4ddd-9e06-434cb8e84aca",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "witch_queen": {
+            "label": "Alte Königin / Zauberin",
+            "voiceProfile": "older_female_cold",
+            "delivery": "Höhnisch, berechnend und kontrolliert."
+        },
+        "princess": {
+            "label": "Königstochter",
+            "voiceProfile": "young_female_proud",
+            "delivery": "Zunächst stolz und rachsüchtig, später ihrem Wort folgend."
+        },
+        "prince": {
+            "label": "Königssohn",
+            "voiceProfile": "young_adult_male_determined",
+            "delivery": "Liebend, mutig und seinen Dienern dankbar."
+        },
+        "father_king": {
+            "label": "Vater des Königssohns",
+            "voiceProfile": "older_male_concerned",
+            "delivery": "Besorgt, traurig und schliesslich nachgebend."
+        },
+        "fat_man": {
+            "label": "Der Dicke",
+            "voiceProfile": "deep_male_good_humoured",
+            "delivery": "Gewaltig, praktisch und gutmütig."
+        },
+        "listener": {
+            "label": "Der Horcher",
+            "voiceProfile": "adult_male_precise",
+            "delivery": "Konzentriert, ruhig und sehr genau."
+        },
+        "tall_man": {
+            "label": "Der Lange",
+            "voiceProfile": "adult_male_calm",
+            "delivery": "Gelassen, weitreichend und hilfsbereit."
+        },
+        "sharp_eyes": {
+            "label": "Der mit den scharfen Augen",
+            "voiceProfile": "adult_male_restrained",
+            "delivery": "Zurückhaltend, kraftvoll und vorsichtig."
+        },
+        "frost_man": {
+            "label": "Der Frierende",
+            "voiceProfile": "adult_male_dry",
+            "delivery": "Fröstelnd, trocken und in Feuerhitze gelassen."
+        },
+        "seer": {
+            "label": "Der Weitsichtige",
+            "voiceProfile": "adult_male_observant",
+            "delivery": "Aufmerksam und sachlich."
+        },
+        "soldiers": {
+            "label": "Kriegsvolk",
+            "voiceProfile": "adult_male_group_martial",
+            "delivery": "Als geschlossene Verfolgergruppe färben."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Vor Zeiten lebte eine alte Königin, die war eine Zauberin, und ihre Tochter war das schönste Mäd",
+            "title": "Die gefährliche Brautwerbung",
+            "speakers": [
+                "narrator",
+                "witch_queen",
+                "princess"
+            ],
+            "direction": "Zauberin und Bedingungen ernst eröffnen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Ein Königssohn, der hatte auch von der grossen Schönheit der Jungfrau gehört und sprach zu seine",
+            "title": "Der Königssohn will aufbrechen",
+            "speakers": [
+                "narrator",
+                "prince",
+                "father_king"
+            ],
+            "direction": "Liebe, Krankheit und Erlaubnis ruhig erzählen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Es trug sich zu, als er über eine Heide zu reiten kam, dass er von weitem auf der Erde etwas lie",
+            "title": "Der Dicke",
+            "speakers": [
+                "narrator",
+                "prince",
+                "fat_man"
+            ],
+            "direction": "Erste Begegnung staunend und klar lesen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Da ging der Dicke hinter dem Königssohn her, und über eine Weile fanden sie einen andern, der la",
+            "title": "Der Horcher",
+            "speakers": [
+                "narrator",
+                "prince",
+                "listener"
+            ],
+            "direction": "Fähigkeit und Warnung deutlich führen."
+        },
+        {
+            "id": "s05",
+            "anchor": "Da antwortete er: „Ich höre das Schwert sausen, das einem Freier den Kopf abschlägt.“ Der Königs",
+            "title": "Der Lange",
+            "speakers": [
+                "narrator",
+                "prince",
+                "tall_man"
+            ],
+            "direction": "Die ungewöhnliche Grösse ohne Effekthascherei erzählen."
+        },
+        {
+            "id": "s06",
+            "anchor": "Sie zogen weiter und fanden einen am Weg sitzen, der hatte die Augen zugebunden. Sprach der Köni",
+            "title": "Die scharfen Augen",
+            "speakers": [
+                "narrator",
+                "prince",
+                "sharp_eyes"
+            ],
+            "direction": "Kraft und Vorsicht ruhig gegenüberstellen."
+        },
+        {
+            "id": "s07",
+            "anchor": "„Komm mit,“ antwortete der Königssohn, „ich kann dich brauchen.“ Sie zogen weiter und fanden ein",
+            "title": "Der Frierende",
+            "speakers": [
+                "narrator",
+                "prince",
+                "frost_man"
+            ],
+            "direction": "Die umgekehrte Natur trocken und verständlich lesen."
+        },
+        {
+            "id": "s08",
+            "anchor": "„Du bist ein wunderlicher Kerl,“ sprach der Königssohn, „aber wenn du mir dienen willst, so komm",
+            "title": "Der Weitsichtige",
+            "speakers": [
+                "narrator",
+                "prince",
+                "seer"
+            ],
+            "direction": "Die Gruppe vollständig und übersichtlich machen."
+        },
+        {
+            "id": "s09",
+            "anchor": "Nun zog der Königssohn mit seinen sechs Dienern in die Stadt ein, wo die alte Königin lebte. Er ",
+            "title": "Am Hof der Zauberin",
+            "speakers": [
+                "narrator",
+                "prince",
+                "witch_queen",
+                "princess"
+            ],
+            "direction": "Ankunft und Aufgaben gespannt eröffnen."
+        },
+        {
+            "id": "s10",
+            "anchor": "„Dass du mir einen Ring herbeibringst, den ich ins Rote Meer habe fallen lassen.“ Da ging der Kö",
+            "title": "Der Ring im Roten Meer",
+            "speakers": [
+                "narrator",
+                "prince",
+                "witch_queen",
+                "fat_man",
+                "tall_man"
+            ],
+            "direction": "Zusammenarbeit und Lösung klar gliedern."
+        },
+        {
+            "id": "s11",
+            "anchor": "Sie erstaunte und sprach: „Ja, es ist der rechte Ring. Die erste Aufgabe hast du glücklich gelös",
+            "title": "Dreihundert Ochsen",
+            "speakers": [
+                "narrator",
+                "prince",
+                "witch_queen",
+                "fat_man"
+            ],
+            "direction": "Die übermässige Mahlzeit als Märchenmotiv trocken erzählen."
+        },
+        {
+            "id": "s12",
+            "anchor": "Als die Mahlzeit zu Ende war, ging der Königssohn zur Alten und sagte ihr, die zweite Aufgabe wä",
+            "title": "Die dritte Aufgabe",
+            "speakers": [
+                "narrator",
+                "prince",
+                "witch_queen",
+                "princess",
+                "listener",
+                "tall_man",
+                "sharp_eyes"
+            ],
+            "direction": "Nächtliche Wache und Zauber langsam aufbauen."
+        },
+        {
+            "id": "s13",
+            "anchor": "„O Jammer und Unglück,“ rief der Königssohn, „nun bin ich verloren!“ Die treuen Diener fingen au",
+            "title": "Die verschwundene Königstochter",
+            "speakers": [
+                "narrator",
+                "prince",
+                "listener",
+                "tall_man",
+                "sharp_eyes",
+                "princess"
+            ],
+            "direction": "Suche und Rettung konzentriert führen."
+        },
+        {
+            "id": "s14",
+            "anchor": "Da ward das stolze Herz der Jungfrau mit Zorn erfüllt und sann auf Rache. Sie liess am andern Mo",
+            "title": "Das Feuer",
+            "speakers": [
+                "narrator",
+                "princess",
+                "prince",
+                "frost_man"
+            ],
+            "direction": "Letzte Prüfung und Niederlage der List klar erzählen."
+        },
+        {
+            "id": "s15",
+            "anchor": "Nun war keine Ausflucht mehr zu finden, die schöne Jungfrau musste den unbekannten Jüngling zum ",
+            "title": "Flucht vor dem Kriegsvolk",
+            "speakers": [
+                "narrator",
+                "prince",
+                "princess",
+                "witch_queen",
+                "fat_man",
+                "soldiers"
+            ],
+            "direction": "Verfolgung lebhaft, aber nicht hastig lesen."
+        },
+        {
+            "id": "s16",
+            "anchor": "Eine halbe Stunde vor dem Schloss war ein Dorf, vor dem hütete ein Schweinehirt seine Herde. Wie",
+            "title": "Die letzte Prüfung der Braut",
+            "speakers": [
+                "narrator",
+                "prince",
+                "princess"
+            ],
+            "direction": "Verkleidung als Schweinehirt ruhig und ohne Spott erzählen."
+        },
+        {
+            "id": "s17",
+            "anchor": "„Ja,“ antwortete sie, „er ist ein Schweinehirt und ist eben ausgegangen, mit Bändern und Schnüre",
+            "title": "Im Königsschloss",
+            "speakers": [
+                "narrator",
+                "prince",
+                "princess",
+                "father_king"
+            ],
+            "direction": "Wiedererkennen und Hochzeit warm abschliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Zauberin, Königstochter, Königssohn, Vaterkönig oder dem jeweils benannten Diener. Alle sechs Diener bleiben eigenständige Färbungen derselben Erzählerstimme.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Vor Zeiten lebte eine alte Königin, die war eine Zauberin, und ihre Tochter war das schönste Mädchen unter der Sonne. Die Alte dachte aber auf nichts, als wie sie die Menschen ins Verderben locken könnte, und wenn ein Freier kam, so sprach sie, wer ihre Tochter haben wollte, müsste zuvor eine Aufgabe lösen, oder er müsste sterben. Viele waren von der Schönheit der Jungfrau verblendet und wagten es wohl, aber sie konnten nicht vollbringen, was die Alte ihnen auflegte, und dann war keine Gnade, sie mussten niederknien, und das Haupt ward ihnen abgeschlagen.",
+            "Ein Königssohn, der hatte auch von der grossen Schönheit der Jungfrau gehört und sprach zu seinem Vater: „Lasst mich hinziehen, ich will um sie werben.“",
+            "„Nimmermehr,“ antwortete der König, „gehst du fort, so gehst du in deinen Tod.“",
+            "Da legte der Sohn sich nieder und ward sterbenskrank und lag sieben Jahre lang, und kein Arzt konnte ihm helfen. Als der Vater sah, dass keine Hoffnung mehr war, sprach er voll Herzenstraurigkeit zu ihm: „Zieh hin und versuche dein Glück, ich weiss dir sonst nicht zu helfen.“ Wie der Sohn das hörte, stand er auf von seinem Lager, ward gesund und machte sich fröhlich auf den Weg.",
+            "Es trug sich zu, als er über eine Heide zu reiten kam, dass er von weitem auf der Erde etwas liegen sah wie einen grossen Heuhaufen, und wie er sich näherte, konnte er unterscheiden, dass es der Bauch eines Menschen war, der sich dahingestreckt hatte; der Bauch aber sah aus wie ein kleiner Berg. Der Dicke, wie er den Reisenden erblickte, richtete sich in die Höhe und sprach: „Wenn Ihr jemand braucht, so nehmt mich in Eure Dienste.“",
+            "Der Königssohn antwortete: „Was soll ich mit einem so ungefügen Mann anfangen?“",
+            "„Oh,“ sprach der Dicke, „das will nichts sagen, wenn ich mich recht auseinander tue, bin ich noch dreitausendmal so dick.“",
+            "„Wenn das ist,“ sagte der Königssohn, „so kann ich dich brauchen, komm mit mir.“",
+            "Da ging der Dicke hinter dem Königssohn her, und über eine Weile fanden sie einen andern, der lag da auf der Erde und hatte das Ohr auf den Rasen gelegt. Fragte der Königssohn: „Was machst du da?“",
+            "„Ich horche,“ antwortete der Mann.",
+            "„Wonach horchst du so aufmerksam?“",
+            "„Ich horche nach dem, was eben in der Welt sich zuträgt, denn meinen Ohren entgeht nichts, das Gras sogar hör ich wachsen.“",
+            "Fragte der Königssohn: „Sage mir, was hörst du am Hofe der alten Königin, welche die schöne Tochter hat?“",
+            "Da antwortete er: „Ich höre das Schwert sausen, das einem Freier den Kopf abschlägt.“ Der Königssohn sprach: „Ich kann dich brauchen, komm mit mir.“ Da zogen sie weiter und sahen einmal ein Paar Füsse da liegen und auch etwas von den Beinen, aber das Ende konnten sie nicht sehen. Als sie eine gute Strecke fortgegangen waren, kamen sie zu dem Leib und endlich auch zu dem Kopf. „Ei,“ sprach der Königssohn, „was bist du für ein langer Strick!“",
+            "„Oh,“ antwortete der Lange, „das ist noch gar nichts, wenn ich meine Gliedmassen erst recht ausstrecke, bin ich noch dreitausendmal so lang und bin grösser als der höchste Berg auf Erden. Ich will Euch gerne dienen, wenn Ihr mich annehmen wollt.“",
+            "„Komm mit,“ sprach der Königssohn, „ich kann dich brauchen.“",
+            "Sie zogen weiter und fanden einen am Weg sitzen, der hatte die Augen zugebunden. Sprach der Königssohn zu ihm: „Hast du blöde Augen, dass du nicht in das Licht sehen kannst?“",
+            "„Nein,“ antwortete der Mann, „ich darf die Binde nicht abnehmen, denn was ich mit meinen Augen ansehe, das springt auseinander, so gewaltig ist mein Blick. Kann Euch das nützen, so will ich Euch gern dienen.“",
+            "„Komm mit,“ antwortete der Königssohn, „ich kann dich brauchen.“ Sie zogen weiter und fanden einen Mann, der lag mitten im heissen Sonnenschein und zitterte und fror am ganzen Leibe, so dass ihm kein Glied stillstand. „Wie kannst du frieren?“ sprach der Königssohn, „und die Sonne scheint so warm.“",
+            "„Ach,“ antwortete der Mann, „meine Natur ist ganz anderer Art, je heisser es ist, desto mehr frier ich, und der Frost dringt mir durch alle Knochen. Und je kälter es ist, desto heisser wird mir. Mitten im Eis kann ich’s vor Hitze und mitten im Feuer vor Kälte nicht aushalten.“",
+            "„Du bist ein wunderlicher Kerl,“ sprach der Königssohn, „aber wenn du mir dienen willst, so komm mit.“ Nun zogen sie weiter und sahen einen Mann stehen, der machte einen langen Hals, schaute sich um und schaute über alle Berge hinaus. Sprach der Königssohn: „Wonach siehst du so eifrig?“",
+            "Der Mann antwortete: „Ich habe so helle Augen, dass ich über alle Wälder und Felder, Täler und Berge hinaus und durch die ganze Welt sehen kann.“ Der Königssohn sprach: „Willst du, so komm mit mir, denn so einer fehlte mir noch.“",
+            "Nun zog der Königssohn mit seinen sechs Dienern in die Stadt ein, wo die alte Königin lebte. Er sagte nicht, wer er wäre, aber er sprach: „Wollt Ihr mir Eure schöne Tochter geben, so will ich vollbringen, was Ihr mir auferlegt.“ Die Zauberin freute sich, dass ein so schöner Jüngling wieder in ihre Netze fiel, und sprach: „Dreimal will ich dir eine Aufgabe aufgeben, lösest du sie jedesmal, so sollst du der Herr und Gemahl meiner Tochter werden.“",
+            "„Was soll das erste sein?“ fragte er.",
+            "„Dass du mir einen Ring herbeibringst, den ich ins Rote Meer habe fallen lassen.“ Da ging der Königssohn heim zu seinen Dienern und sprach: „Die erste Aufgabe ist nicht leicht, ein Ring soll aus dem Roten Meer geholt werden, nun schafft Rat.“ Da sprach der mit den hellen Augen: „Ich will sehen, wo er liegt,“ schaute in das Meer hinab und sagte: „Dort hängt er an einem spitzen Stein.“ Der Lange trug sie hin und sprach: „Ich wollte ihn wohl herausholen, wenn ich ihn nur sehen könnte.“",
+            "„Wenn’s weiter nichts ist,“ rief der Dicke, legte sich nieder und hielt seinen Mund ans Wasser. Da fielen die Wellen hinein wie in einen Abgrund, und er trank das ganze Meer aus, dass es trocken ward wie eine Wiese. Der Lange bückte sich ein wenig und holte den Ring mit der Hand heraus. Da ward der Königssohn froh, als er den Ring hatte, und brachte ihn der Alten.",
+            "Sie erstaunte und sprach: „Ja, es ist der rechte Ring. Die erste Aufgabe hast du glücklich gelöst, aber nun kommt die zweite. Siehst du, dort auf der Wiese vor meinem Schlosse, da weiden dreihundert fette Ochsen, die musst du mit Haut und Haar, Knochen und Hörnern verzehren. Und unten im Keller liegen dreihundert Fässer Wein, die musst du dazu austrinken, und bleibt von den Ochsen ein Haar und von dem Wein ein Tröpfchen übrig, so ist mir dein Leben verfallen.“",
+            "Sprach der Königssohn: „Darf ich mir keine Gäste dazu laden? Ohne Gesellschaft schmeckt keine Mahlzeit.“",
+            "Die Alte lachte boshaft und antwortete: „Einen darfst du dir dazu laden, damit du Gesellschaft hast, aber weiter keinen.“",
+            "Da ging der Königssohn zu seinen Dienern und sprach zu dem Dicken: „Du sollst heute mein Gast sein und dich einmal satt essen.“ Da tat sich der Dicke voneinander und ass die dreihundert Ochsen, dass kein Haar übrigblieb, und fragte, ob weiter nichts als das Frühstück da wäre. Den Wein aber trank er gleich aus den Fässern, ohne dass er ein Glas nötig hatte, und trank den letzten Tropfen vom Nagel herunter.",
+            "Als die Mahlzeit zu Ende war, ging der Königssohn zur Alten und sagte ihr, die zweite Aufgabe wäre gelöst. Sie verwunderte sich und sprach: „So weit hat’s noch keiner gebracht, aber es ist noch eine Aufgabe übrig,“ und dachte: Du sollst mir nicht entgehen und wirst deinen Kopf nicht oben behalten. „Heute abend,“ sprach sie, „bring ich meine Tochter zu dir in deine Kammer, und du sollst sie mit deinem Arm umschlingen. Und wenn ihr da beisammen sitzt, so hüte dich, dass du nicht einschläfst. Ich komme Schlag zwölf Uhr, und ist sie dann nicht mehr in deinen Armen, so hast du verloren.“ Der Königssohn dachte: Der Bund ist leicht, ich will wohl meine Augen offen behalten, doch rief er seine Diener, erzählte ihnen, was die Alte gesagt hatte, und sprach: „Wer weiss, was für eine List dahintersteckt, Vorsicht ist gut, haltet Wache und sorgt, dass die Jungfrau nicht wieder aus meiner Kammer kommt.“",
+            "Als die Nacht einbrach, kam die Alte mit ihrer Tochter und führte sie in die Arme des Königssohns, und dann schlang sich der Lange um sie beide in einen Kreis, und der Dicke stellte sich vor die Türe, also dass keine lebendige Seele herein konnte. Da sassen sie beide, und die Jungfrau sprach kein Wort, aber der Mond schien durchs Fenster auf ihr Angesicht, dass er ihre wunderbare Schönheit sehen konnte. Er tat nichts als sie anschauen, war voll Freude und Liebe, und es kam keine Müdigkeit in seine Augen.",
+            "Das dauerte bis elf Uhr, da warf die Alte einen Zauber über alle, dass sie einschliefen, und in dem Augenblick war auch die Jungfrau entrückt.",
+            "Nun schliefen sie hart bis ein Viertel vor zwölf, da war der Zauber kraftlos, und sie erwachten alle wieder.",
+            "„O Jammer und Unglück,“ rief der Königssohn, „nun bin ich verloren!“ Die treuen Diener fingen auch an zu klagen, aber der Horcher sprach: „Seid still, ich will horchen,“ da horchte er einen Augenblick, und dann sprach er: „Sie sitzt in einem Felsen dreihundert Stunden von hier und bejammert ihr Schicksal. Du allein kannst helfen, Langer, wenn du dich aufrichtest, so bist du mit ein paar Schritten dort.“",
+            "„Ja,“ antwortete der Lange, „aber der mit den scharfen Augen muss mitgehen, damit wir den Felsen wegschaffen.“ Da huckte der Lange den mit den verbundenen Augen auf, und im Augenblick, wie man eine Hand umwendet, waren sie vor dem verwünschten Felsen. Alsbald nahm der Lange dem andern die Binde von den Augen, der sich nur umschaute, so zersprang der Felsen in tausend Stücke. Da nahm der Lange die Jungfrau auf den Arm, trug sie in einem Nu zurück, holte ebensoschnell auch noch seinen Kameraden, und eh es zwölfe schlug, sassen sie alle wieder wie vorher und waren munter und guter Dinge.",
+            "Als es zwölf schlug, kam die alte Zauberin herbeigeschlichen, machte ein höhnisches Gesicht, als wollte sie sagen: „Nun ist er mein,“ und glaubte, ihre Tochter sässe dreihundert Stunden weit im Felsen. Als sie aber ihre Tochter in den Armen des Königssohns erblickte, erschrak sie und sprach: „Da ist einer, der kann mehr als ich.“ Aber sie durfte nichts einwenden und musste ihm die Jungfrau zusagen. Da sprach sie ihr ins Ohr: „Schande für dich, dass du gemeinem Volk gehorchen sollst und dir einen Gemahl nicht nach deinem Gefallen wählen darfst.“",
+            "Da ward das stolze Herz der Jungfrau mit Zorn erfüllt und sann auf Rache. Sie liess am andern Morgen dreihundert Malter Holz zusammenfahren und sprach zu dem Königssohn, die drei Aufgaben wären gelöst, sie würde aber nicht eher seine Gemahlin werden, bis einer bereit wäre, sich mitten in das Holz zu setzen und das Feuer auszuhalten. Sie dachte, keiner seiner Diener würde sich für ihn verbrennen und aus Liebe zu ihr würde er selber sich hineinsetzen und dann wäre sie frei. Die Diener aber sprachen: „Wir haben alle etwas getan, nur der Frostige noch nicht, der muss auch daran,“ setzten ihn mitten auf den Holzstoss und steckten ihn an. Da begann das Feuer zu brennen und brannte drei Tage, bis alles Holz verzehrt war, und als die Flammen sich legten, stand der Frostige mitten in der Asche, zitterte wie ein Espenlaub und sprach: „Einen solchen Frost habe ich mein Lebtage nicht ausgehalten, und wenn er länger gedauert hätte, so wäre ich erstarrt.“",
+            "Nun war keine Ausflucht mehr zu finden, die schöne Jungfrau musste den unbekannten Jüngling zum Gemahl nehmen. Als sie aber nach der Kirche fuhren, sprach die Alte: „Ich kann die Schande nicht ertragen,“ und schickte ihr Kriegsvolk nach, das sollte alles niedermachen, was ihm vorkäme, und ihr die Tochter zurückbringen. Der Horcher aber hatte die Ohren gespitzt und die heimlichen Reden der Alten vernommen.",
+            "„Was fangen wir an?“ sprach er zu dem Dicken, aber der wusste Rat, spie einmal oder zweimal hinter dem Wagen einen Teil von dem Meereswasser aus, das er getrunken hatte, da entstand ein grosser See, worin die Kriegsvölker steckenblieben und ertranken. Als die Zauberin das vernahm, schickte sie ihre geharnischten Reiter, aber der Horcher hörte das Rasseln ihrer Rüstung und band dem einen die Augen auf, der guckte die Feinde ein bisschen scharf an, da sprangen sie auseinander wie Glas. Nun fuhren sie ungestört weiter, und als die beiden in der Kirche eingesegnet waren, nahmen die sechs Diener ihren Abschied und sprachen zu ihrem Herrn: „Eure Wünsche sind erfüllt. Ihr habt uns nicht mehr nötig, wir wollen weiter ziehen und unser Glück versuchen.“",
+            "Eine halbe Stunde vor dem Schloss war ein Dorf, vor dem hütete ein Schweinehirt seine Herde. Wie sie dahin kamen, sprach er zu seiner Frau: „Weisst du auch recht, wer ich bin? Ich bin kein Königssohn, sondern ein Schweinehirt, und der mit der Herde dort, das ist mein Vater. Wir zwei müssen auch daran und ihm helfen hüten.“ Dann stieg er mit ihr in das Wirtshaus ab und sagte heimlich zu den Wirtsleuten, in der Nacht sollten sie ihr die königlichen Kleider wegnehmen. Wie sie nun am Morgen aufwachte, hatte sie nichts anzutun, und die Wirtin gab ihr einen alten Rock und ein Paar alte, wollene Strümpfe, dabei tat sie noch, als wär’s ein grosses Geschenk, und sprach: „Wenn nicht Eurer Mann wäre, hätt ich’s Euch gar nicht gegeben.“ Da glaubte sie, er wäre wirklich ein Schweinehirt, und hütete mit ihm die Herde und dachte: Ich habe es verdient mit meinem Übermut und Stolz. Das dauerte acht Tage, da konnte sie es nicht mehr aushalten, denn die Füsse waren ihr wund geworden. Da kamen ein paar Leute und fragten, ob sie wüsste, wer ihr Mann wäre.",
+            "„Ja,“ antwortete sie, „er ist ein Schweinehirt und ist eben ausgegangen, mit Bändern und Schnüren einen kleinen Handel zu treiben.“ Sie sprachen aber: „Kommt einmal mit, wir wollen Euch zu ihm hinführen,“ und brachten sie ins Schloss hinauf; und wie sie in den Saal kam, stand da ihr Mann in königlichen Kleidern. Sie erkannte ihn aber nicht, bis er ihr um den Hals fiel, sie küsste und sprach: „Ich habe so viel für dich gelitten, da hast du auch für mich leiden sollen.“ Nun ward erst die Hochzeit gefeiert, und der’s erzählt hat, wollte, er wäre auch dabeigewesen."
+        ]
+    }
+}

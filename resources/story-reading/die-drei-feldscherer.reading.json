@@ -1,0 +1,191 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-drei-feldscherer",
+        "title": "Die drei Feldscherer",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-drei-feldscherer",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 263,
+        "entryUid": "0fd5f36c-0d63-4c25-a234-2de53af1b466",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "surgeons": {
+            "label": "Drei Feldscherer",
+            "voiceProfile": "adult_male_group_confident",
+            "delivery": "Fachstolz, selbstsicher und später zunehmend bestürzt."
+        },
+        "innkeeper": {
+            "label": "Wirt",
+            "voiceProfile": "adult_male_curious",
+            "delivery": "Gastfreundlich, neugierig und am Ende aufgebracht."
+        },
+        "maid": {
+            "label": "Magd",
+            "voiceProfile": "young_female_secretive",
+            "delivery": "Leichtsinnig, heimlich und später flüchtig."
+        },
+        "thief": {
+            "label": "Gehängter Dieb",
+            "voiceProfile": "adult_male_sly",
+            "delivery": "Nur aus dem fremden Körperteil dunkel färben; keine Rede erfinden."
+        },
+        "cat": {
+            "label": "Katze",
+            "voiceProfile": "creature_plain",
+            "delivery": "Nur als handelndes Tier färben."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Drei Feldscherer reisten in der Welt, die meinten, ihre Kunst ausgelernt zu haben, und kamen in ",
+            "title": "Drei Kunststücke",
+            "speakers": [
+                "narrator",
+                "surgeons",
+                "innkeeper",
+                "maid"
+            ],
+            "direction": "Die erstaunlichen Vorführungen klar und sachlich erzählen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Morgens, als die Feldscherer aufstanden, sagten sie dem Mädchen, es sollte ihnen den Teller hole",
+            "title": "Vertauschte Körperteile",
+            "speakers": [
+                "narrator",
+                "surgeons",
+                "maid",
+                "cat",
+                "thief"
+            ],
+            "direction": "Die groteske Verwechslung zurückhaltend und ohne Körperhorror lesen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Wie sie so dahingingen, so blieb der mit dem Schweineherzen gar nicht bei ihnen, sondern wo eine",
+            "title": "Die Folgen",
+            "speakers": [
+                "narrator",
+                "surgeons"
+            ],
+            "direction": "Verändertes Verhalten trocken und verständlich schildern."
+        },
+        {
+            "id": "s04",
+            "anchor": "Katzenaugen und der dritte ein Schweineherz. Der Wirt sprach, daran müsste das Mädchen schuld se",
+            "title": "Die Wahrheit",
+            "speakers": [
+                "narrator",
+                "surgeons",
+                "innkeeper",
+                "maid"
+            ],
+            "direction": "Entdeckung und Schluss knapp führen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Feldscherern, Wirt oder Magd. Katze und Dieb erhalten keine erfundenen Sätze; ihre Wirkung wird nur erzählt.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Drei Feldscherer reisten in der Welt, die meinten, ihre Kunst ausgelernt zu haben, und kamen in ein Wirtshaus, wo sie übernachten wollten. Der Wirt fragte, wo sie her wären und hinaus wollten. „Wir ziehen auf unsere Kunst in der Welt herum.“ „Zeigt mir doch einmal, was ihr könnt,“ sagte der Wirt. Da sprach der erste, er wollte seine Hand abschneiden und morgen früh wieder anheilen: der zweite sprach, er wollte sein Herz ausreissen und morgen früh wieder anheilen: der dritte sprach, er wollte seine Augen ausstechen und morgen früh wieder einheilen. „Könnt ihr das,“ sprach der Wirt, „so habt ihr ausgelernt.“ Sie hatten aber eine Salbe, was sie damit bestrichen, das heilte zusammen, und das Fläschchen, wo sie drin war, trugen sie beständig bei sich. Da schnitten sie Hand, Herz und Auge vom Leibe, wie sie gesagt hatten, legtens zusammen auf einen Teller und gabens dem Wirt: der Wirt gabs einem Mädchen, das sollts in den Schrank stellen und wohl aufheben. Das Mädchen aber hatte einen heimlichen Schatz, der war ein Soldat. Wie nun der Wirt, die drei Feldscherer und alle Leute im Haus schliefen, kam der Soldat und wollte was zu essen haben. Da schloss das Mädchen den Schrank auf und holte ihm etwas, und über der grossen Liebe vergass es, die Schranktüre zuzumachen, setzte sich zum Liebsten an Tisch, und sie schwätzten miteinander. Wie es so vergnügt sass und an kein Unglück dachte, kam die Katze hereingeschlichen, fand den Schrank offen, nahm die Hand, das Herz und die Augen der drei Feldscherer und lief damit hinaus. Als nun der Soldat gegessen hatte und das Mädchen das Gerät aufheben und den Schrank zuschliessen wollte, da sah es wohl, dass der Teller, den ihm der Wirt aufzuheben gegeben hatte, ledig war. Da sagte es erschrocken zu seinem Schatz „ach, was will ich armes Mädchen anfangen! Die Hand ist fort, das Herz und die Augen sind auch fort, wie wird mirs morgen früh ergehen!“, „Sei still,“ sprach der Soldat, „ich will dir aus der Not helfen: es hängt ein Dieb draussen am Galgen, dem will ich die Hand abschneiden; welche Hand wars denn?“, „Die rechte.“ Da gab ihm das Mädchen ein scharfes Messer, und er ging hin, schnitt dem armen Sünder die rechte Hand ab und brachte sie herbei. Darauf packte er die Katze und stach ihr die Augen aus; nun fehlte nur noch das Herz. „Habt ihr nicht geschlachtet und liegt das Schweinefleisch nicht im Keller?“ „Ja,“ sagte das Mädchen. „Nun, das ist gut,“ sagte der Soldat, ging hinunter und holte ein Schweineherz. Das Mädchen tat alles zusammen auf den Teller und stellte ihn in den Schrank, und als ihr Liebster darauf Abschied genommen hatte, legte es sich ruhig ins Bett.",
+            "Morgens, als die Feldscherer aufstanden, sagten sie dem Mädchen, es sollte ihnen den Teller holen, darauf Hand, Herz und Augen lägen. Da brachte es ihn aus dem Schrank, und der erste hielt sich die Diebshand an und bestrich sie mit seiner Salbe, alsbald war sie ihm angewachsen. Der zweite nahm die Katzenaugen und heilte sie ein: der dritte machte das Schweineherz fest. Der Wirt aber stand dabei, bewunderte ihre Kunst und sagte, dergleichen hätt er noch nicht gesehen, er wollte sie bei jedermann rühmen und empfehlen. Darauf bezahlten sie ihre Zeche und reisten weiter.",
+            "Wie sie so dahingingen, so blieb der mit dem Schweineherzen gar nicht bei ihnen, sondern wo eine Ecke war, lief er hin und schnüffelte darin herum, wie Schweine tun. Die andern wollten ihn an dem Rockschlippen zurückhalten, aber das half nichts, er riss sich los und lief hin, wo der dickste Unrat lag. Der zweite stellte sich auch wunderlich an, rieb die Augen und sagte zu dem andern „Kamerad, was ist das? das sind meine Augen nicht, ich sehe ja nichts, leite mich doch einer, dass ich nicht falle.“ Da gingen sie mit Mühe fort bis zum Abend, wo sie zu einer andern Herberge kamen. Sie traten zusammen in die Wirtsstube, da sass in einer Ecke ein reicher Herr vorm Tisch und zählte Geld. Der mit der Diebshand ging um ihn herum, zuckte ein paarmal mit dem Arm, endlich, wie der Herr sich umwendete, griff er in den Haufen hinein und nahm eine Handvoll Geld heraus. Der eine sahs und sprach „Kamerad, was machst du? stehlen darfst du nicht, schäm dich!“ „Ei,“ sagte er, „was kann ich dafür! es zuckt mir in der Hand, ich muss zugreifen, ich mag wollen oder nicht.“ Sie legten sich danach schlafen, und wie sie daliegen, ists so finster, dass man keine Hand vor Augen sehen kann. Auf einmal erwachte der mit den Katzenaugen, weckte die andern und sprach „Brüder, schaut einmal auf, seht ihr die weissen Mäuschen, die da herumlaufen?“, Die zwei richteten sich auf, konnten aber nichts sehen. Da sprach er „es ist mit uns nicht richtig, wir haben das Unsrige nicht wiedergekriegt, wir müssen zurück nach dem Wirt, der hat uns betrogen.“ Also machten sie sich am andern Morgen dahin auf und sagten dem Wirt, sie hätten ihr richtig Werk nicht wiedergekriegt, der eine hätte eine Diebshand, der zweite",
+            "Katzenaugen und der dritte ein Schweineherz. Der Wirt sprach, daran müsste das Mädchen schuld sein, und wollte es rufen, aber wie das die drei hatte kommen sehen, war es zum Hinterpförtchen fortgelaufen, und kam nicht wieder. Da sprachen die drei, er sollte ihnen viel Geld geben, sonst liessen sie ihm den roten Hahn übers Haus fliegen: da gab er, was er hatte und nur aufbringen konnte, und die drei zogen damit fort. Es war für ihr Lebtag genug, sie hätten aber doch lieber ihr richtig Werk gehabt."
+        ]
+    }
+}

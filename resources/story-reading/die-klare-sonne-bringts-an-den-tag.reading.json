@@ -1,0 +1,161 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "die-klare-sonne-bringts-an-den-tag",
+        "title": "Die klare Sonne bringt’s an den Tag",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/die-klare-sonne-bringts-an-den-tag",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 265,
+        "entryUid": "6eb1fdbe-4e2c-4852-8ef8-b7923f5aab9c",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "tailor": {
+            "label": "Schneidergesell / Hausherr",
+            "voiceProfile": "adult_male_guilty",
+            "delivery": "Anfangs verzweifelt, später von Schuld belastet und erschrocken."
+        },
+        "victim": {
+            "label": "Armer Reisender",
+            "voiceProfile": "adult_male_pleading",
+            "delivery": "Erschöpft, bittend und in der Erinnerung mahnend."
+        },
+        "wife": {
+            "label": "Frau des Schneiders",
+            "voiceProfile": "adult_female_plain",
+            "delivery": "Fürsorglich und aufmerksam."
+        },
+        "child": {
+            "label": "Kind",
+            "voiceProfile": "young_neutral_innocent",
+            "delivery": "Unbefangen und klar."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Ein Schneidergesell reiste in der Welt auf sein Handwerk herum, und konnte er einmal keine Arbei",
+            "title": "Die Tat auf der Landstrasse",
+            "speakers": [
+                "narrator",
+                "tailor",
+                "victim"
+            ],
+            "direction": "Armut, Versuchung und Tat ernst, ohne zusätzliche Gewalt schildern."
+        },
+        {
+            "id": "s02",
+            "anchor": "Über lang, als sie schon zwei Kinder hatten, starben Schwiegervater und Schwiegermutter, und die",
+            "title": "Die Sonne bringt es an den Tag",
+            "speakers": [
+                "narrator",
+                "tailor",
+                "wife",
+                "child",
+                "victim"
+            ],
+            "direction": "Erinnerung, kindliche Worte und Geständnis langsam und klar entfalten."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Schneider, Reisendem, Frau oder Kind. Der erinnerte Satz des Opfers behält dessen ruhige, mahnende Färbung.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Ein Schneidergesell reiste in der Welt auf sein Handwerk herum, und konnte er einmal keine Arbeit finden, und war die Armut bei ihm so gross, dass er keinen Heller Zehrgeld hatte. In der Zeit begegnete ihm auf dem Weg ein Jude, und da dachte er, der hätte viel Geld bei sich, und stiess Gott aus seinem Herzen, ging auf ihn los und sprach „gib mir dein Geld, oder ich schlag dich tot.“ Da sagte der Jude „schenkt mir doch das Leben, Geld hab ich keins und nicht mehr als acht Heller.“ Der Schneider aber sprach „du hast doch Geld, und das soll auch heraus,“ brauchte Gewalt und schlug ihn so lange, bis er nah am Tod war. Und wie der Jude nun sterben wollte, sprach er das letzte Wort „die klare Sonne wird es an den Tag bringen!“, und starb damit. Der Schneidergesell griff ihm in die Tasche und suchte nach Geld, er fand aber nicht mehr als die acht Heller, wie der Jude gesagt hatte. Da packte er ihn auf, trug ihn hinter einen Busch und zog weiter auf sein Handwerk. Wie er nun lange Zeit gereist war, kam er in eine Stadt bei einem Meister in Arbeit, der hatte eine schöne Tochter, in die verliebte er sich und heiratete sie und lebte in einer guten vergnügten Ehe.",
+            "Über lang, als sie schon zwei Kinder hatten, starben Schwiegervater und Schwiegermutter, und die jungen Leute hatten den Haushalt allein. Eines Morgens, wie der Mann auf dem Tisch vor dem Fenster sass, brachte ihm die Frau den Kaffee, und als er ihn in die Unterschale ausgegossen hatte und eben trinken wollte, da schien die Sonne darauf, und der Widerschein blinkte oben an der Wand so hin und her und machte Kringel daran. Da sah der Schneider hinauf und sprach „ja, die wills gern an den Tag bringen und kanns nicht!“ Die Frau sprach „ei, lieber Mann, was ist denn das? was meinst du damit?“ Er antwortete „das darf ich dir nicht sagen.“ Sie aber sprach „wenn du mich lieb hast, musst du mirs sagen,“ und gab ihm die allerbesten Worte, es sollts kein Mensch wieder erfahren, und liess ihm keine Ruhe. Da erzählte er, vor langen Jahren, wie er auf der Wanderschaft ganz abgerissen und ohne Geld gewesen, habe er einen Juden erschlagen, und der Jude habe in der letzten Todesangst die Worte gesprochen „die klare Sonne wirds an den Tag bringen!“ Nun hätts die Sonne eben gern an den Tag bringen wollen, und hätt an der Wand geblinkt und Kringel gemacht, sie hätts aber nicht gekonnt. Danach bat er sie noch besonders, sie dürfte es niemand sagen, sonst käm er um sein Leben, das versprach sie auch. Als er sich aber zur Arbeit gesetzt hatte, ging sie zu ihrer Gevatterin und vertraute ihr die Geschichte, sie dürfte sie aber keinem Menschen wiedersagen; ehe aber drei Tage vergingen, wusste es die ganze Stadt, und der Schneider kam vor das Gericht und ward gerichtet. Da brachte es doch die klare Sonne an den Tag."
+        ]
+    }
+}
