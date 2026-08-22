@@ -165,14 +165,53 @@ The tenth ten-item batch adds:
 - `der-baerenhaeuter`
 - `das-wasser-des-lebens`
 
+The eleventh ten-item batch adds:
+
+- `die-drei-voegelchen`
+- `der-alte-hildebrand`
+- `die-kluge-bauerntochter`
+- `die-rabe`
+- `der-koenig-vom-goldenen-berg`
+- `das-eigensinnige-kind`
+- `der-dreschflegel-vom-himmel`
+- `das-totenhemdchen`
+- `die-drei-handwerksburschen`
+- `die-sieben-schwaben`
+
+The twelfth ten-item batch adds:
+
+- `die-drei-feldscherer`
+- `die-klare-sonne-bringts-an-den-tag`
+- `vom-klugen-schneiderlein`
+- `maerchen-von-der-unke`
+- `der-zaunkoenig-und-der-baer`
+- `des-teufels-russiger-bruder`
+- `doktor-allwissend`
+- `der-eisenhans`
+- `die-weisse-und-die-schwarze-braut`
+- `die-sechs-diener`
+
+The thirteenth ten-item batch adds:
+
+- `die-zertanzten-schuhe`
+- `einaeuglein-zweiaeuglein-und-dreiaeuglein`
+- `die-vier-kunstreichen-brueder`
+- `der-eisenofen`
+- `ferdinand-getreu-und-ferdinand-ungetreu`
+- `der-krautesel`
+- `raetselmaerchen`
+- `das-dietmarsische-luegenmaerchen`
+- `das-maerchen-vom-schlaraffenland`
+- `die-schlickerlinge`
+
 They live under `resources/story-reading/`, outside the public web root. Every
 artefact is the vendor-neutral source from which future SSML, ElevenLabs, or
 other provider payloads are derived.
 
-Together, the 105 artefacts cover short narration, sustained dialogue, large
+Together, the 135 artefacts cover short narration, sustained dialogue, large
 character sets, verse-like speech and longer scene structures, all directed as
 single-narrator audiobook readings. All retain the published
-text; their normalisations are declared inside each artefact. All ten
+text; their normalisations are declared inside each artefact. All thirteen
 ten-item batches are machine-validated and cross-checked, while their
 `providerNotes.editorialStatus` deliberately remains
 `machine_validated_pending_editorial_review` until human editorial sign-off.

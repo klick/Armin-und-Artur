@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {"id":"die-drei-voegelchen","entryId":241,"entryUid":"372fca50-7be3-4e18-8e27-b2ec084dd5f0","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-drei-v%C3%B6gelchen","language":"de"},
+    {"id":"der-alte-hildebrand","entryId":243,"entryUid":"b44a4158-8abb-4d7b-bd3b-9f9ca07b4bd9","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-alte-hildebrand","language":"de"},
+    {"id":"die-kluge-bauerntochter","entryId":245,"entryUid":"dfa91bf3-8cfa-431f-b9a9-96a1488a984b","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-kluge-bauerntochter","language":"de"},
+    {"id":"die-rabe","entryId":247,"entryUid":"5ab51704-91b3-40fe-ab6b-ced5f1829b2a","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-rabe","language":"de"},
+    {"id":"der-koenig-vom-goldenen-berg","entryId":249,"entryUid":"c2d1aab2-7425-46f0-ae57-fea6ed9aeb18","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-k%C3%B6nig-vom-goldenen-berg","language":"de"},
+    {"id":"das-eigensinnige-kind","entryId":251,"entryUid":"c1de7440-0b31-4a90-8650-8af7b1b367e8","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-eigensinnige-kind","language":"de"},
+    {"id":"der-dreschflegel-vom-himmel","entryId":253,"entryUid":"6803e190-69bc-43a0-8f6a-e0c9b45ce3b6","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-dreschflegel-vom-himmel","language":"de"},
+    {"id":"das-totenhemdchen","entryId":255,"entryUid":"d2c89ca0-3490-427b-a66e-a3c2c1cb6da2","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/das-totenhemdchen","language":"de"},
+    {"id":"die-drei-handwerksburschen","entryId":259,"entryUid":"f38ce541-8f9d-4953-966e-e6e708924abf","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-drei-handwerksburschen","language":"de"},
+    {"id":"die-sieben-schwaben","entryId":261,"entryUid":"0d5aa0d5-e841-4179-b418-417001c00534","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-sieben-schwaben","language":"de"}
+  ]
+}

@@ -1,0 +1,153 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "das-dietmarsische-luegenmaerchen",
+        "title": "Das Dietmarsische Lügenmärchen",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/das-dietmarsische-l%C3%BCgenm%C3%A4rchen",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 297,
+        "entryUid": "9ff9c5e4-c5d7-482c-8889-53376967714f",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "tall_tale_narrator": {
+            "label": "Lügenmärchenerzähler",
+            "voiceProfile": "older_male_dry",
+            "delivery": "Völlig ernst, rhythmisch und von jeder Unmöglichkeit überzeugt."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Ich will euch etwas erzählen. Ich sah zwei gebratene Hühner fliegen, flogen schnell und hatten d",
+            "title": "Fliegende Hühner und schwimmende Steine",
+            "speakers": [
+                "narrator",
+                "tall_tale_narrator"
+            ],
+            "direction": "Die unmöglichen Bilder trocken und gut gegliedert erzählen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Da waren drei Kerle, wollten einen Hasen fangen, gingen auf Krücken und Stelzen, der eine war ta",
+            "title": "Vier wundersame Hasenfänger",
+            "speakers": [
+                "narrator",
+                "tall_tale_narrator"
+            ],
+            "direction": "Widersprüche klar artikulieren, nicht erklären."
+        },
+        {
+            "id": "s03",
+            "anchor": "Etliche, die wollten zu Land segeln und spannten die Segel im Wind und schifften über grosse Äck",
+            "title": "Zu Land segeln",
+            "speakers": [
+                "narrator",
+                "tall_tale_narrator"
+            ],
+            "direction": "Die Schlusskette im gleichen gemessenen Ton führen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Der gesamte Text ist ein Bericht des Lügenmärchenerzählers innerhalb der Erzählstimme. Keine weiteren Figurenstimmen oder Erklärungen hinzufügen.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Ich will euch etwas erzählen. Ich sah zwei gebratene Hühner fliegen, flogen schnell und hatten die Bäuche gen Himmel gekehrt, die Rücken nach der Hölle, und ein Amboss und ein Mühlstein schwammen über den Rhein, fein langsam und leise, und ein Frosch sass und frass eine Pflugschar zu Pfingsten auf dem Eis.",
+            "Da waren drei Kerle, wollten einen Hasen fangen, gingen auf Krücken und Stelzen, der eine war taub, der zweite blind, der dritte stumm und der vierte konnte keinen Fuss rühren. Wollt ihr wissen, wie das geschah? Der Blinde, der sah zuerst den Hasen über Feld traben, der Stumme rief dem Lahmen zu, und der Lahme fasste ihn beim Kragen.",
+            "Etliche, die wollten zu Land segeln und spannten die Segel im Wind und schifften über grosse Äcker hin: da segelten sie über einen hohen Berg, da mussten sie elendig ersaufen. Ein Krebs jagte einen Hasen in die Flucht, und hoch auf dem Dach lag eine Kuh, die war hinaufgestiegen. In dem Lande sind die Fliegen so gross als hier die Ziegen. Mache das Fenster auf, damit die Lügen hinausfliegen."
+        ]
+    }
+}

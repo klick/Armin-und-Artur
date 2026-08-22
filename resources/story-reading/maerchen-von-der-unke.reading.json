@@ -1,0 +1,206 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "maerchen-von-der-unke",
+        "title": "Märchen von der Unke",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/m%C3%A4rchen-von-der-unke",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 269,
+        "entryUid": "fdd38de6-5246-40f4-8142-71f9a740b225",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "child": {
+            "label": "Kind",
+            "voiceProfile": "young_neutral_warm",
+            "delivery": "Freundlich, offen und zur Unke vertraut."
+        },
+        "mother": {
+            "label": "Mutter",
+            "voiceProfile": "adult_female_plain",
+            "delivery": "Praktisch, im entscheidenden Moment erschrocken."
+        },
+        "snake": {
+            "label": "Unke",
+            "voiceProfile": "small_creature_gentle",
+            "delivery": "Vertraut und dankbar färben; Rufe klar, ohne Tiergeräusch."
+        },
+        "orphan": {
+            "label": "Waisenkind",
+            "voiceProfile": "young_neutral_gentle",
+            "delivery": "Behutsam, aufmerksam und hoffnungsvoll."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "I",
+            "title": "Erste Überlieferung",
+            "speakers": [
+                "narrator"
+            ],
+            "direction": "Die römische Abschnittszahl knapp als Gliederung sprechen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Es war einmal ein kleines Kind, dem gab seine Mutter jeden Nachmittag ein Schüsselchen mit Milch",
+            "title": "Kind und Hausunke",
+            "speakers": [
+                "narrator",
+                "child",
+                "mother",
+                "snake"
+            ],
+            "direction": "Die Freundschaft warm und ohne Verniedlichung erzählen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Von der Zeit an ging eine Veränderung mit dem Kinde vor. Es war, solange die Unke mit ihm gegess",
+            "title": "Die Unke bleibt fort",
+            "speakers": [
+                "narrator",
+                "child",
+                "mother",
+                "snake"
+            ],
+            "direction": "Verlust und Tod still und zurückhaltend tragen."
+        },
+        {
+            "id": "s04",
+            "anchor": "II",
+            "title": "Zweite Überlieferung",
+            "speakers": [
+                "narrator"
+            ],
+            "direction": "Die neue Variante deutlich als eigenen Abschnitt eröffnen."
+        },
+        {
+            "id": "s05",
+            "anchor": "Ein Waisenkind sass an der Stadtmauer und spann, da sah es eine Unke aus der Öffnung unten an de",
+            "title": "Das Waisenkind an der Mauer",
+            "speakers": [
+                "narrator",
+                "orphan",
+                "snake"
+            ],
+            "direction": "Gabe und Verschwinden märchenhaft und ruhig erzählen."
+        },
+        {
+            "id": "s06",
+            "anchor": "Unke ruft „huhu, huhu,“ Kind spricht „komm herut.“ Die Unke kommt hervor, da fragt das Kind nach",
+            "title": "Kurzer Unkenruf",
+            "speakers": [
+                "narrator",
+                "child",
+                "snake"
+            ],
+            "direction": "Dialekt und Rufe wortgetreu, langsam und gut artikuliert sprechen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Kind, Mutter, Waisenkind oder Unke. Abschnittsüberschriften bleiben Gliederung; Tierlaute werden nicht hinzugefügt.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "I",
+            "Es war einmal ein kleines Kind, dem gab seine Mutter jeden Nachmittag ein Schüsselchen mit Milch und Weckbrocken, und das Kind setzte sich damit hinaus in den Hof. Wenn es aber anfing zu essen, so kam die Hausunke aus einer Mauerritze hervorgekrochen, senkte ihr Köpfchen in die Milch und ass mit. Das Kind hatte seine Freude daran, und wenn es mit seinem Schüsselchen dasass und die Unke kam nicht gleich herbei, so rief es ihr zu „Unke, Unke, komm geschwind, komm herbei, du kleines Ding, sollst dein Bröckchen haben, an der Milch dich laben.“",
+            "Da kam die Unke gelaufen und liess es sich gut schmecken. Sie zeigte sich auch dankbar, denn sie brachte dem Kind aus ihrem heimlichen Schatz allerlei schöne Dinge, glänzende Steine, Perlen und goldene Spielsachen. Die Unke trank aber nur Milch und liess die Brocken liegen. Da nahm das Kind einmal sein Löffelchen, schlug ihr damit sanft auf den Kopf und sagte „Ding, iss auch Brocken.“ Die Mutter, die in der Küche stand, hörte, dass das Kind mit jemand sprach, und als sie sah, dass es mit seinem Löffelchen nach einer Unke schlug, so lief sie mit einem Scheit Holz heraus und tötete das gute Tier.",
+            "Von der Zeit an ging eine Veränderung mit dem Kinde vor. Es war, solange die Unke mit ihm gegessen hatte, gross und stark geworden, jetzt aber verlor es seine schönen roten Backen und magerte ab. Nicht lange, so fing in der Nacht der Totenvogel an zu schreien, und das Rotkehlchen sammelte Zweiglein und Blätter zu einem Totenkranz, und bald hernach lag das Kind auf der Bahre.",
+            "II",
+            "Ein Waisenkind sass an der Stadtmauer und spann, da sah es eine Unke aus der Öffnung unten an der Mauer hervorkommen. Geschwind breitete es sein blauseidenes Halstuch neben sich aus, das die Unken gewaltig lieben und auf das sie allein gehen. Alsobald die Unke das erblickte, kehrte sie um, kam wieder und brachte ein kleines goldenes Krönchen getragen, legte es darauf und ging dann wieder fort. Das Mädchen nahm die Krone auf, sie glitzerte und war von zartem Goldgespinst. Nicht lange, so kam die Unke zum zweitenmal wieder: wie sie aber die Krone nicht mehr sah, kroch sie an die Wand und schlug vor Leid ihr Köpfchen so lange dawider, als sie nur noch Kräfte hatte, bis sie endlich tot dalag. Hätte das Mädchen die Krone liegen lassen, die Unke hätte wohl noch mehr von ihren Schätzen aus der Höhle herbeigetragen. III",
+            "Unke ruft „huhu, huhu,“ Kind spricht „komm herut.“ Die Unke kommt hervor, da fragt das Kind nach seinem Schwesterchen „hast du Rotstrümpfchen nicht gesehen?“ Unke sagt „ne, ik og nit: wie du denn? huhu, huhu, huhu.“"
+        ]
+    }
+}

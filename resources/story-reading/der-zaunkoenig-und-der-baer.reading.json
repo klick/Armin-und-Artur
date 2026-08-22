@@ -1,0 +1,206 @@
+{
+    "$schema": "https://arminundartur.de/schemas/story-reading-1.3.schema.json",
+    "schemaVersion": "1.3",
+    "story": {
+        "id": "der-zaunkoenig-und-der-baer",
+        "title": "Der Zaunkönig und der Bär",
+        "language": "de",
+        "sourceUrl": "https://arminundartur.de/der-zaunk%C3%B6nig-und-der-b%C3%A4r",
+        "sourceOfTruth": "published_html",
+        "textPolicy": "read_original_verbatim"
+    },
+    "cms": {
+        "system": "craft",
+        "siteHandle": "default",
+        "entryId": 271,
+        "entryUid": "975f2f3c-36d0-4f5b-bfaf-3c75bdf386ef",
+        "sectionId": 1
+    },
+    "readingPolicy": {
+        "preserveWording": true,
+        "preservePunctuation": true,
+        "directionsAreSpoken": false,
+        "productionStyle": "single_narrator_audiobook",
+        "defaultPace": 0.84,
+        "fallbackSpeaker": "narrator",
+        "noAddedSoundEffects": true,
+        "noModernisation": true
+    },
+    "formatArchitecture": {
+        "role": "canonical_story_direction_format",
+        "principle": "This JSON is the single editorial source. Provider-specific payloads are generated from it and never edited as the master.",
+        "content": "The original text, speaker assignments, delivery intent, pauses and pronunciation notes live here.",
+        "renderTargets": {
+            "ssml": {
+                "purpose": "portable speech-synthesis markup",
+                "mapping": {
+                    "delivery.pace": "prosody@rate",
+                    "delivery.pauseAfterMs": "break@time",
+                    "speaker": "the single narrator voice; character changes are prosody and delivery, never voice switches",
+                    "providerNotes.pronunciations": "phoneme or external PLS lexicon for observed mispronunciations"
+                },
+                "limitation": "SSML does not standardize narrative roles, scene semantics or emotion labels; preserve those in this canonical JSON."
+            },
+            "elevenLabs": {
+                "purpose": "single-voice Text to Speech requests",
+                "mapping": {
+                    "speaker": "one narrator voice_id configured for the entire production",
+                    "spokenSegment": "consecutive originalText chunks in reading order",
+                    "delivery": "optional in-text audio tags in the generated provider payload"
+                },
+                "limitation": "Do not use multi-voice dialogue mode; cast entries are delivery colourings of the single narrator, not voice assignments."
+            },
+            "geminiTts": {
+                "purpose": "provider-specific single-speaker prompt and voice configuration",
+                "mapping": {
+                    "cast": "delivery directives describing how the one narrator colours each character",
+                    "scenes": "director instructions in the generated prompt"
+                }
+            }
+        }
+    },
+    "cast": {
+        "narrator": {
+            "label": "Erzähler",
+            "voiceProfile": "older_male_warm",
+            "delivery": "Warm, grossväterlich und unaufgeregt; langsam, deutlich und ohne zusätzliche Wertung erzählen."
+        },
+        "bear": {
+            "label": "Bär",
+            "voiceProfile": "deep_creature_proud",
+            "delivery": "Neugierig, später beleidigend und kampfbereit."
+        },
+        "wolf": {
+            "label": "Wolf",
+            "voiceProfile": "deep_male_informing",
+            "delivery": "Sachlich und kundig."
+        },
+        "wren_king": {
+            "label": "Zaunkönig",
+            "voiceProfile": "small_creature_regal",
+            "delivery": "Klein, würdevoll, entschlossen und strategisch."
+        },
+        "wren_queen": {
+            "label": "Frau Zaunkönigin",
+            "voiceProfile": "small_female_regal",
+            "delivery": "Fürsorglich und ebenso würdevoll."
+        },
+        "young_wrens": {
+            "label": "Junge Zaunkönige",
+            "voiceProfile": "young_creature_group_proud",
+            "delivery": "Empört, standhaft und auf ihre Ehre bedacht."
+        },
+        "scouts": {
+            "label": "Mücke und Hornisse",
+            "voiceProfile": "small_creature_group_precise",
+            "delivery": "Flink, aufmerksam und militärisch knapp."
+        },
+        "animal_armies": {
+            "label": "Tierheere",
+            "voiceProfile": "creature_group_martial",
+            "delivery": "Als grosse Gruppen klar, nicht lärmend färben."
+        }
+    },
+    "scenes": [
+        {
+            "id": "s01",
+            "anchor": "Zur Sommerszeit gingen einmal der Bär und der Wolf im Wald spazieren, da hörte der Bär so schöne",
+            "title": "Der Bär beleidigt die Königskinder",
+            "speakers": [
+                "narrator",
+                "bear",
+                "wolf",
+                "wren_king",
+                "wren_queen",
+                "young_wrens"
+            ],
+            "direction": "Familienstreit und Kriegserklärung klar und märchenhaft erzählen."
+        },
+        {
+            "id": "s02",
+            "anchor": "Als nun die Zeit kam, wo der Krieg angehen sollte, da schickte der Zaunkönig Kundschafter aus, w",
+            "title": "Die Kundschafter",
+            "speakers": [
+                "narrator",
+                "wren_king",
+                "scouts",
+                "animal_armies"
+            ],
+            "direction": "Erkundung und Plan langsam und verständlich führen."
+        },
+        {
+            "id": "s03",
+            "anchor": "Als der Tag anbrach, wo die Schlacht sollte geliefert werden, hu, da kam das vierfüssige Getier ",
+            "title": "Die Schlacht der Tiere",
+            "speakers": [
+                "narrator",
+                "wren_king",
+                "scouts",
+                "bear",
+                "animal_armies"
+            ],
+            "direction": "Bewegung lebhaft, aber ohne Geräuschkulisse erzählen."
+        },
+        {
+            "id": "s04",
+            "anchor": "Da flog der Herr König und die Frau Königin heim zu ihren Kindern und riefen „Kinder, seid fröhl",
+            "title": "Die Ehre ist wiederhergestellt",
+            "speakers": [
+                "narrator",
+                "wren_king",
+                "wren_queen",
+                "young_wrens",
+                "bear"
+            ],
+            "direction": "Sieg, Entschuldigung und Familienmahl warm abschliessen."
+        }
+    ],
+    "speakerResolution": {
+        "directSpeech": "Direkte Rede folgt Bär, Wolf, Zaunkönig, Zaunkönigin, jungen Vögeln oder Kundschaftern. Tierheere bleiben Gruppenfärbungen derselben Erzählerstimme.",
+        "unnamedQuotedSpeech": "Wenn eine Äusserung keine Figur nennt, aus der unmittelbar vorausgehenden Gesprächssituation ableiten; bei Unsicherheit die Erzählstimme neutral halten.",
+        "creatures": "Sprechende Tiere und Märchenwesen werden als Charakterfärbung derselben Erzählerstimme gelesen, niemals als eigene synthetische Stimme.",
+        "narration": "All narrative prose uses narrator."
+    },
+    "providerNotes": {
+        "editorialStatus": "machine_validated_pending_editorial_review",
+        "contentProfile": "fairy_tale",
+        "providerRule": "Do not speak directions or provider notes. Render the originalText paragraphs verbatim according to readingPolicy.",
+        "elevenLabs": {
+            "fairyTalePreset": {
+                "presetVersion": 1,
+                "modelId": "eleven_v3",
+                "stability": 0.5,
+                "voiceSelection": {
+                    "testedDisplayName": "Grandpa - Familiar & Warm",
+                    "intent": "elderly male; warm, familiar, calm, relaxed, unhurried; slightly gravelly, soft and friendly",
+                    "voiceIdPolicy": "Resolve and configure the current provider voice_id outside the canonical artefact."
+                },
+                "promptPrefix": "[very slowly] [warm, grandfatherly storytelling]",
+                "dialogueTagPolicy": "Derive concise delivery tags from cast and scene direction. Never alter originalText.",
+                "referenceTest": {
+                    "storyId": "rotkaeppchen",
+                    "paragraphIndex": 0,
+                    "observedDurationSeconds": 67,
+                    "editorialResult": "approved"
+                }
+            }
+        }
+    },
+    "originalText": {
+        "format": "paragraphs",
+        "source": "published_html",
+        "typographyNormalisation": [
+            "soft_hyphen_removed",
+            "zero_width_space_removed",
+            "nonbreaking_space_normalised",
+            "inline_whitespace_normalised",
+            "line_breaks_in_verse_normalised_to_spaces"
+        ],
+        "paragraphs": [
+            "Zur Sommerszeit gingen einmal der Bär und der Wolf im Wald spazieren, da hörte der Bär so schönen Gesang von einem Vogel und sprach „Bruder Wolf, was ist das für ein Vogel, der so schön singt?“ „Das ist der König der Vögel,“ sagte der Wolf, „vor dem müssen wir uns neigen;“ es war aber der Zaunkönig. „Wenn das ist,“ sagte der Bär, „so möcht ich auch gerne seinen königlichen Palast sehen, komm und führe mich hin.“ „Das geht nicht so, wie du meinst,“ sprach der Wolf, „du musst warten, bis die Frau Königin kommt.“ Bald darauf kam die Frau Königin und hatte Futter im Schnabel, und der Herr König auch, und wollten ihre Jungen ätzen. Der Bär wäre gerne nun gleich hinterdrein gegangen, aber der Wolf hielt ihn am Ärmel und sagte „nein, du musst warten, bis Herr und Frau Königin wieder fort sind.“ Also nahmen sie das Loch in acht, wo das Nest stand, und trabten wieder ab. Der Bär aber hatte keine Ruhe, wollte den königlichen Palast sehen, und ging nach einer kurzen Weile wieder vor. Da waren König richtig ausgeflogen: er guckte hinein und sah fünf oder sechs Junge, die lagen darin. „Ist das der königliche Palast!“, rief der Bär, „das ist ein erbärmlicher Palast! ihr seid auch keine Königskinder, ihr seid unehrliche Kinder.“ Wie das die jungen Zaunkönige hörten, wurden sie gewaltig bös und schrien „nein, das sind wir nicht, unsere Eltern sind ehrliche Leute; Bär, das soll ausgemacht werden mit dir.“ Dem Bär und dem Wolf ward angst, sie kehrten um und setzten sich in ihre Höhlen. Die jungen Zaunkönige aber schrien und lärmten fort, und als ihre Eltern wieder Futter brachten, sagten sie „wir rühren kein Fliegenbeinchen an, und sollten wir verhungern, bis ihr erst ausgemacht habt, ob wir ehrliche Kinder sind oder nicht: der Bär ist da gewesen und hat uns gescholten.“ Da sagte der alte König „seid nu r ruhig, das soll ausgemacht werden.“ Flog darauf mit der Frau Königin dem Bären vor seine Höhle und rief hinein „alter Brummbär, warum hast du meine Kinder gescholten? das soll dir übel bekommen, das wollen wir in einem blutigen Krieg ausmachen.“ Also war dem Bären der Krieg angekündigt, und ward alles vierfüssige Getier berufen, Ochs, Esel, Rind, Hirsch, Reh, und was die Erde sonst alles trägt. Der Zaunkönig aber berief alles, was in der Luft fliegt; nicht allein die Vögel gross und klein, sondern auch die Mücken, Hornissen, Bienen und Fliegen mussten herbei.",
+            "Als nun die Zeit kam, wo der Krieg angehen sollte, da schickte der Zaunkönig Kundschafter aus, wer der kommandierende General des Feindes wäre. Die Mücke war die Listigste von allen, schwärmte im Wald, wo der Feind sich versammelte, und setzte sich endlich unter ein Blatt auf den Baum, wo die Parole ausgegeben wurde. Da stand der Bär, rief den Fuchs vor sich und sprach „Fuchs, du bist der Schlauste unter allem Getier, du sollst General sein und uns anführen.“ „Gut,“ sagte der Fuchs, „aber was für Zeichen wollen wir verabreden?“ Niemand wusste es. Da sprach der Fuchs „ich habe einen schönen langen buschigen Schwanz, der sieht aus fast wie ein roter Federbusch; wenn ich den Schwanz in die Höhe halte, so geht die Sache gut, und ihr müsst darauflos marschieren: lass ich ihn aber herunterhängen, so lauft, was ihr könnt.“ Als die Mücke das gehört hatte, flog sie wieder heim und verriet dem Zaunkönig alles haarklein.",
+            "Als der Tag anbrach, wo die Schlacht sollte geliefert werden, hu, da kam das vierfüssige Getier dahergerennt mit Gebraus, dass die Erde zitterte; Zaunkönig mit seiner Armee kam auch durch die Luft daher, die schnurrte, schrie und schwärmte, dass einem angst und bange ward; und gingen sie da von beiden Seiten aneinander. Der Zaunkönig aber schickte die Hornisse hinab, sie sollte sich dem Fuchs unter den Schwanz setzen und aus Leibeskräften stechen. Wie nun der Fuchs den ersten Stich bekam, zuckte er, dass er das eine Bein aufhob, doch ertrug ers und hielt den Schwanz noch in der Höhe: beim zweiten Stich musste er ihn einen Augenblick herunterlassen: beim dritten aber konnte er sich nicht mehr halten, schrie und nahm den Schwanz zwischen die Beine. Wie das die Tiere sahen, meinten sie, alles wäre verloren, und fingen an zu laufen, jeder in seine Höhle: und hatten die Vögel die Schlacht gewonnen.",
+            "Da flog der Herr König und die Frau Königin heim zu ihren Kindern und riefen „Kinder, seid fröhlich, esst und trinkt nach Herzenslust, wir haben den Krieg gewonnen.“ Die jungen Zaunkönige aber sagten „noch essen wir nicht, der Bär soll erst vors Nest kommen und Abbitte tun und soll sagen, dass wir ehrliche Kinder sind.“ Da flog der Zaunkönig vor das Loch des Bären und rief „Brummbär, du sollst vor das Nest zu meinen Kindern gehen und Abbitte tun und sagen, dass sie ehrliche Kinder sind, sonst sollen dir die Rippen im Leib zertreten werden.“ Da kroch der Bär in der grössten Angst hin und tat Abbitte. Jetzt waren die jungen Zaunkönige erst zufrieden, setzten sich zusammen, assen und tranken und machten sich lustig bis in die späte Nacht hinein."
+        ]
+    }
+}

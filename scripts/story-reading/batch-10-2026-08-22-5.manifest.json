@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "stories": [
+    {"id":"die-drei-feldscherer","entryId":263,"entryUid":"0fd5f36c-0d63-4c25-a234-2de53af1b466","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-drei-feldscherer","language":"de"},
+    {"id":"die-klare-sonne-bringts-an-den-tag","entryId":265,"entryUid":"6eb1fdbe-4e2c-4852-8ef8-b7923f5aab9c","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-klare-sonne-bringts-an-den-tag","language":"de"},
+    {"id":"vom-klugen-schneiderlein","entryId":267,"entryUid":"8dea6f9e-39da-425f-874d-70b4644df4a1","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/vom-klugen-schneiderlein","language":"de"},
+    {"id":"maerchen-von-der-unke","entryId":269,"entryUid":"fdd38de6-5246-40f4-8142-71f9a740b225","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/m%C3%A4rchen-von-der-unke","language":"de"},
+    {"id":"der-zaunkoenig-und-der-baer","entryId":271,"entryUid":"975f2f3c-36d0-4f5b-bfaf-3c75bdf386ef","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-zaunk%C3%B6nig-und-der-b%C3%A4r","language":"de"},
+    {"id":"des-teufels-russiger-bruder","entryId":273,"entryUid":"61537250-3921-425c-a258-c34f2e885a79","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/des-teufels-russiger-bruder","language":"de"},
+    {"id":"doktor-allwissend","entryId":275,"entryUid":"2a5967b9-9d99-436f-bd23-cb9246a7f0ae","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/doktor-allwissend","language":"de"},
+    {"id":"der-eisenhans","entryId":277,"entryUid":"8ecb0241-2c46-4ec4-a043-202cde91fa60","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/der-eisenhans","language":"de"},
+    {"id":"die-weisse-und-die-schwarze-braut","entryId":279,"entryUid":"5f2602eb-eb88-4b5d-bfdf-e8cc8298f283","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-weisse-und-die-schwarze-braut","language":"de"},
+    {"id":"die-sechs-diener","entryId":281,"entryUid":"0eec8ff7-8db2-4ddd-9e06-434cb8e84aca","sectionId":1,"siteHandle":"default","sourceUrl":"https://arminundartur.de/die-sechs-diener","language":"de"}
+  ]
+}
